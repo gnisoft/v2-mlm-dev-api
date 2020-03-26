@@ -782,7 +782,7 @@ div#content {
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">User Profile</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Bank Account</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Reset Password</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">KYC Verification</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Bank Verification</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Referral Link</a></li>
                                 </ul>
                             </li>
@@ -811,10 +811,7 @@ div#content {
                                 <ul class="sub-menu" style="display: none;">
 
                                     <li><a href="<?php echo base_url('Dashboard/ActivateAccount');?>"> Active New Account</a></li>
-                                    <?php
-                                    if($user_info->paid_status > 0)
-                                    echo'<li><a href="'.base_url('Dashboard/UpgradeAccount').'"> ReTopup Account</a></li>';
-                                    ?>
+                                   
 
                                     <li><a href="<?php echo base_url('Dashboard/Fund/activation_history');?>">Active Account History</a></li>
 
@@ -832,9 +829,8 @@ div#content {
                                     <li><a href="<?php echo base_url('Dashboard/User/Directs');?>">My Referrals</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Tree/'.$user_info->user_id);?>">Direct Tree</a></li>
                                       <li><a href="<?php echo base_url('Dashboard/User/Downline');?>">Total Affiliates</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/User/Downline/L');?>">Left Affiliates</a></li>
-                                        <li><a href="<?php echo base_url('Dashboard/User/Downline/R');?>">Right Affiliates</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/GenelogyTree/'.$user_info->user_id);?>">My Team</a></li>
+                                     
+                                   
                                     <li><a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);?>"> Open New Accounts</a></li>
                                 </ul>
                             </li>
@@ -851,7 +847,7 @@ div#content {
                                     <span>Withdraw <span class="notification">1+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>"> Transfer to E-Wallet</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>"> Withdraw Money</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/IncomeTransfer')?>"> Transfer to Another Account</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal History</a></li>
                                 </ul>
@@ -870,8 +866,8 @@ div#content {
                                            </li>';
                                   }
                                   ?>
-                                  <li><a href="<?php echo base_url('Dashboard/User/RewardsStatus');?>">Rewards Status</a></li>
-                                  <li><a href="<?php echo base_url('Dashboard/User/income_ledgar');?>">Magic Account</a></li>
+                                  <li><a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Income Ledger</a>
+                                           </li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>

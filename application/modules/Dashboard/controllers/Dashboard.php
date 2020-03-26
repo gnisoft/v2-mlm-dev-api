@@ -72,7 +72,7 @@ class Dashboard extends CI_Controller {
                                 );
                                 $this->User_model->add('tbl_roi', $roiArr);
                                 // $this->repurchase_income($user['sponser_id'],($package['direct_income'] * 20 / 100),'direct_income' ,'Direct Income from Activation of Member '.$user_id);
-                                // $this->level_income($sponser['sponser_id'] , $user['user_id'],$package['level_income']);
+                                 $this->level_income($sponser['sponser_id'] , $user['user_id'],$package['level_income']);
                                 // $this->pool_entry($user['user_id'],1 , 500);
                                 // if($package['price'] == 3600)
                                 // $this->rank_bonus($user['user_id'], 200,$user['user_id'],0 , $package['price']);
@@ -726,11 +726,11 @@ class Dashboard extends CI_Controller {
                 if($sponser['paid_status'] == 1){
                     $LevelIncome = array(
                         'user_id' => $sponser['user_id'],
-                        'amount' => $income * 80 /100 ,
+                        'amount' => $income ,
                         'type' => 'direct_level_income',
                         'description' => 'Level Income from Activation of Member '.$activated_id  . ' At level '.($key + 2),
                     );
-                    $this->repurchase_income($sponser['user_id'],($income * 20 / 100),'direct_level_income' ,'Level Income from Activation of Member '.$activated_id  . ' At level '.($key + 2));
+                    //$this->repurchase_income($sponser['user_id'],($income * 20 / 100),'direct_level_income' ,'Level Income from Activation of Member '.$activated_id  . ' At level '.($key + 2));
                     $this->User_model->add('tbl_income_wallet', $LevelIncome);
                 }
                 $sponser_id = $sponser['sponser_id'];

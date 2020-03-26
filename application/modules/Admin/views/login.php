@@ -5,11 +5,10 @@
         <!-- Meta Tags -->
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-        <meta name="description" content="DWAY Life | We facilitate a world-class investment platform for our clients across the globe.">
-        <meta name="keywords" content="DWAY Life | We facilitate a world-class investment platform for our clients across the globe.">
+        
 
         <!-- Title -->
-        <title><?php echo title; ?></title>
+        <title>HOPE Partners - Admin</title>
         <link href="<?php echo base_url('classic/assets/css/site.css'); ?>" rel="stylesheet">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +25,7 @@
 
         <style>
         body{
-          background:url(http://www.bigdataforhumans.com/media/1164/gdpr_success-1.jpeg); background-size:cover; padding:40px 0px
+          background:url(https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1063787606%2F0x0.jpg); background-size:cover; padding:40px 0px
         }
         p {
     margin: 0 0 10px;

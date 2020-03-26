@@ -208,12 +208,10 @@ if (!function_exists('get_income_name')) {
     function get_income_name($income_name) {
         $incomes = array(
             'direct_income'=> 'Direct Income',
-            'matching_bonus'=> 'Matching Income',
-            'roi_income'=> 'PSI Income',
-            'rewards_income'=> 'Rewards Bonus',
-            'direct_income_withdraw' => 'Withdraw Request',
-            'withdraw_request' => 'Withdraw Request',
-            'fasttrack_income' => 'FastTrack Income',
+            'direct_level_income'=> 'Level Income',
+            
+            
+            
             'income_transfer' => 'Income Transfer',
         );
         // return array_search($income_name, $incomes);
@@ -226,12 +224,11 @@ if (!function_exists('incomes')) {
     function incomes() {
         $incomes = array(
             'direct_income'=> 'Direct Income',
-            'matching_bonus'=> 'Matching Income',
-            'roi_income'=> 'PSI Income',
-            'rewards_income'=> 'Rewards Bonus',
-            'direct_income_withdraw' => 'Withdraw Request',
-            'withdraw_request' => 'Withdraw Request',
-            'fasttrack_income' => 'FastTrack Income',
+            'direct_level_income'=> 'Level Income',
+            
+            
+            
+            'income_transfer' => 'Income Transfer',
         );
         // return array_search($income_name, $incomes);
         return $incomes;

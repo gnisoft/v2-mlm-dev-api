@@ -8,7 +8,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title><?php echo title;?></title>
+      <title>HOPE Partners - Admin</title>
       <!-- Font Awesome Icons -->
       <link rel="stylesheet" href="<?php echo base_url('Assets/')?>plugins/fontawesome-free/css/all.min.css">
       <!-- Theme style -->

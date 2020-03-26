@@ -669,7 +669,7 @@
     <!-- END page-header -->
     <div class="row">
         <div class="col-md-12">
-          <p>Bittrex BTC Worlds Best Opportunity to get success</p>
+          <p>Partners Worlds Best Opportunity to get success</p>
             <a href="<?php echo base_url('NewTheme/')?>assets/bittrexbtcplans.pdf" >Click here to Download Business Plan </a>
         </div>
     </div>

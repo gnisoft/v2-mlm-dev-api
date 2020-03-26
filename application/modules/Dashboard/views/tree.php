@@ -343,7 +343,7 @@
                     <li>
                         <div class="member-img">
                             <a href="<?php echo base_url('Dashboard/User/Tree/' . $user['user_id']); ?>">
-                                <img src="https://instaadpro.com/tree/<?php echo $user['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
+                                <img src="<?php echo base_url('uploads/');?><?php echo $user['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
                             </a>
                             <br><span><?php echo($user['name']); ?>(<?php echo($user['user_id']); ?>)</span>
                             <span><?php echo($user['user_id']); ?></span>
@@ -356,7 +356,7 @@
                                 <li>
                                     <div class="member-img">
                                         <a href="<?php echo base_url('Dashboard/User/Tree/' . $direct['user_id']); ?>">
-                                            <img src="https://instaadpro.com/tree/<?php echo $direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
+                                            <img src="<?php echo base_url('uploads/');?><?php echo $direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
                                         </a>
                                         <br><span><?php echo($direct['name']); ?></span>
                                         <span><?php echo $direct['user_id']; ?></span>
@@ -369,7 +369,7 @@
                                             <li>
                                                 <div class="member-img">
                                                     <a href="<?php echo base_url('Dashboard/User/Tree/' . $sub_direct['user_id']); ?>">
-                                                        <img src="https://instaadpro.com/tree/<?php echo $sub_direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
+                                                        <img src="<?php echo base_url('uploads/');?><?php echo $sub_direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
                                                     </a>
                                                     <br><span><?php echo($sub_direct['name']); ?></span>
                                                     <br><span><?php echo($sub_direct['user_id']); ?></span>

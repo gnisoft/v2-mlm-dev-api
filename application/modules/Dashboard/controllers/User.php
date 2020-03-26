@@ -17,6 +17,7 @@ class User extends CI_Controller {
             $response['today_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "'.$this->session->userdata['user_id'].'" and date(created_at) = date(now())', 'ifnull(sum(amount),0) as today_income');
             /*incomes */
             $response['direct_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "'.$this->session->userdata['user_id'].'" and type = "direct_income"', 'ifnull(sum(amount),0) as direct_income');
+            $response['direct_level_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "'.$this->session->userdata['user_id'].'" and type = "direct_level_income"', 'ifnull(sum(amount),0) as direct_level_income');
             $response['matching_bonus'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "'.$this->session->userdata['user_id'].'" and type = "matching_bonus"', 'ifnull(sum(amount),0) as matching_bonus');
             $response['roi_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "'.$this->session->userdata['user_id'].'" and type = "roi_income"', 'ifnull(sum(amount),0) as roi_income');
             $response['rewards_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "'.$this->session->userdata['user_id'].'" and type = "rewards_income"', 'ifnull(sum(amount),0) as rewards_income');
@@ -344,6 +345,33 @@ class User extends CI_Controller {
                 $updres = $this->User_model->update('tbl_bank_details', array('user_id' => $this->session->userdata['user_id']), array('btc' => $btc));
                 if ($updres == true) {
                     $response['message'] = 'BTC Address Updated Successfully';
+                    $response['success'] = 1;
+                } else {
+                    $response['message'] = 'There is an error while Updating BTC Address Please Try Again';
+                }
+            // }
+            echo json_encode($response);
+        } else {
+            redirect('Dashboard/User/login');
+        }
+    }
+    public function paypal_update(){
+        if (is_logged_in()) {
+            $response = array();
+            $response['csrfName'] = $this->security->get_csrf_token_name();
+            $response['csrfHash'] = $this->security->get_csrf_hash();
+            $response['success'] = 0;
+            $data = $this->security->xss_clean($this->input->post());
+            $paypal = $data['paypal'];
+            $user = $this->User_model->get_single_record('tbl_users', array('user_id' => $this->session->userdata['user_id']), 'id,user_id,password');
+            // if ($npassword !== $vpassword) {
+            //     $response['message'] = 'Verify Password Doed Not Match';
+            // } elseif ($cpassword !== $user['password']) {
+            //     $response['message'] = 'Wrong Current Password';
+            // } else {
+                $updres = $this->User_model->update('tbl_bank_details', array('user_id' => $this->session->userdata['user_id']), array('paypal' => $paypal));
+                if ($updres == true) {
+                    $response['message'] = 'Paypal Address Updated Successfully';
                     $response['success'] = 1;
                 } else {
                     $response['message'] = 'There is an error while Updating BTC Address Please Try Again';

@@ -41,13 +41,13 @@
                               <span class="text-info">10%</span>
                           </div>
                           <div class="form-group">
-                              <label>Net Amount</label>
+                              <label>Net Amount For Withdrawal</label>
                               <span class="text-success" id="netAmount"></span>
                           </div>
                           <div class="form-group">
                               <label>100% E-wallet Transfer</label><br>
-                              <input type="radio" name="pin_transfer" onclick="calculate_net_amount();" value="1" checked>Yes &nbsp;
-                              <!-- <input type="radio" name="pin_transfer" onclick="calculate_net_amount();" value="0" >No -->
+                              <input type="radio" name="pin_transfer" onclick="calculate_net_amount();" value="1" >Yes &nbsp;
+                              <input type="radio" name="pin_transfer" onclick="calculate_net_amount();" value="0" checked>No
                           </div>
                           <div class="form-group">
                               <label>Transfer Amount to E-wallet</label>
@@ -58,7 +58,7 @@
                               <span class="text-success" id="tds"></span>
                           </div> -->
                           <div class="form-group">
-                              <label>Net.  Amount</label>
+                              <label>Net.  Amount Withdrawal</label>
                               $<span class="text-success" id="NetbankAmount"></span>
                           </div>
                           <div class="form-group">

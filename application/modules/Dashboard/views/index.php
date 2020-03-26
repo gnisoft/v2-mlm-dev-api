@@ -479,7 +479,7 @@ $userinfo = userinfo();
                 </div>
                 <div class="fozs">
                     <div class="row">
-                        <div class="col-xl-2 col-md-3 col-sm-6 Polaroid">
+                        <div class="col-xl-4 col-md-4 col-sm-6 Polaroid">
                             <!-- Card -->
                             <div class="dt-card text-center">
                                 <!-- Card Header -->
@@ -508,7 +508,7 @@ $userinfo = userinfo();
                             </div>
                             <!-- /card -->
                         </div>
-                        <div class="col-xl-2 col-md-3 col-sm-6 iPhone">
+                        <div class="col-xl-4 col-md-4 col-sm-6 iPhone">
                             <!-- Card -->
                             <div class="dt-card text-center overflow-hidden">
                                 <!-- Card Header -->
@@ -516,7 +516,7 @@ $userinfo = userinfo();
                                     <!-- Card Heading -->
                                     <div class="dt-card__heading text-center">
                                         <div class="dt-separator-h-v1 mb-2"></div>
-                                        <h3 class="mb-0">Matching  <br>Bonus</h3>
+                                        <h3 class="mb-0">Level  <br>Bonus</h3>
                                     </div>
                                     <!-- /card heading -->
                                 </div>
@@ -524,13 +524,13 @@ $userinfo = userinfo();
                                 <!-- Card Body -->
                                 <div class=" dt-card__body px-5">
                                     <!-- Card Text -->
-                                    <p class="mb-5">Total Matching  Bonus
+                                    <p class="mb-5">Total Level  Bonus
                                         <br>
-                                        <span id="R_Bouns">$<?php echo $matching_bonus['matching_bonus']; ?></span>
+                                        <span id="R_Bouns">$<?php echo $direct_level_income['direct_level_income']; ?></span>
                                     </p>
                                     <!-- /card text-->
                                     <!-- Button -->
-                                    <a href="<?php echo base_url('Dashboard/User/Income/matching_bonus');?>" class="text-uppercase f-12 font-weight-500">More Details</a>
+                                    <a href="<?php echo base_url('Dashboard/User/Income/direct_level_income');?>" class="text-uppercase f-12 font-weight-500">More Details</a>
                                     <!-- /button -->
                                 </div>
                                 <!-- /card body -->
@@ -540,103 +540,9 @@ $userinfo = userinfo();
                             </div>
                             <!-- /card -->
                         </div>
-                        <div class="col-xl-2 col-md-3 col-sm-6">
-                            <!-- Card -->
-                            <div class="dt-card overflow-hidden">
-                                <!-- Card Header -->
-                                <div class="dt-card__header px-5">
-                                    <!-- Card Heading -->
-                                    <div class="dt-card__heading text-center">
-                                        <div class="dt-separator-h-v1 mb-2"></div>
-                                        <h3 class="mb-0">PSI Account</h3>
-                                        <span id="R_Bouns">$<?php echo $roi_income['roi_income']; ?></span>
-                                    </div>
-                                    <!-- /card heading -->
-                                </div>
-                                <!-- /card header -->
-                                <!-- Card Body -->
-                                <div class="dt-card__body text-center">
-                                    <!-- Image -->
-                                    <div class="mx-n8 mb-n8">
-                                        <img class="w-100" src="<?php echo base_url('NewTheme/')?>assets/img/gedget.jpg" alt="Gedget">
-                                    </div>
-                                    <!-- /image -->
-                                </div>
-                                <!-- /card body -->
-                                <!-- Button -->
-                                <a href="<?php echo base_url('Dashboard/User/Income/roi_income');?>" class="btn btn-primary btn-block rounded-0 text-uppercase">PSI History</a>
-                                <!-- /button -->
-                            </div>
-                            <!-- /card -->
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-sm-4 Grid">
-                            <!-- Grid -->
-                            <div class="row">
-                                <!-- Grid Item -->
-                                <div class="col-sm-6 col-6">
-                                    <!-- Card -->
-                                    <div class="card  pic text-primary text-center">
-                                        <!-- Card Body -->
-                                        <div class="card-body py-3 px-1">
-                                            <a href="<?php echo base_url('Dashboard/Settings/SendSmsUser');?>">
-                                                <!-- Icon -->
-                                                <i class="ti-themify-favicon text-primary f-s-18 pull-left m-r-10"></i>
-                                                <!-- /icon -->
-                                                <span class="d-block f-12">Sms</span>
-                                            </a>
-                                        </div>
-                                        <!-- /card body -->
-                                    </div>
-                                    <!-- /card -->
-                                </div>
-                                <!-- Grid Item -->
-                                <!-- Grid Item -->
-                                <div class="col-sm-6 col-6">
-                                    <!-- Card -->
-                                    <div class="card pic text-primary text-center">
-                                        <!-- Card Body -->
-                                        <div class="card-body py-3 px-1">
-                                            <a href="<?php echo base_url('Dashboard/Settings/SendYoutubeUser');?>">
-                                                <!-- Icon -->
-                                                <i class="ti-layout-media-left-alt text-primary f-s-18 pull-left m-r-10"></i>
-                                                <!-- /icon -->
-                                                <span class="d-block f-12">Youtube</span>
-                                            </a>
-                                        </div>
-                                        <!-- /card body -->
-                                    </div>
-                                    <!-- /card -->
-                                </div>
-                                <!-- Grid Item -->
-                                <!-- Grid Item -->
-                                <div class="col-12">
-                                    <!-- Card -->
-                                    <div class="card">
-                                        <!-- Card Image -->
-                                        <img class="card-img-top" src="<?php echo base_url('NewTheme/')?>assets/img/kids-with-laptop.jpeg" alt="Kid">
-                                        <!-- /card image -->
-                                        <!-- Card Body -->
-                                        <div class="card-body p-4">
-                                            <!-- Card Text-->
-                                            <p class="card-text mb-3">
-                                                Your Rewards Income
-                                                <br>
-                                                <span id="pro_income">$ <?php echo $rewards_income['rewards_income'];?></span>
-                                            </p>
-                                            <!-- /card text-->
-                                            <!-- Card Link -->
-                                            <a href="<?php echo base_url('Dashboard/User/Income/rewards_income');?>" class="card-link font-weight-500 f-12 text-uppercase">View history</a>
-                                            <!-- /card link -->
-                                        </div>
-                                        <!-- /card body -->
-                                    </div>
-                                    <!-- /card -->
-                                </div>
-                                <!-- /grid item -->
-                            </div>
-                            <!-- /grid -->
-                        </div>
-                        <div class="col-xl-2 col-md-3 col-sm-4 ">
+                        
+                        
+                        <div class="col-xl-4 col-md-4 col-sm-4 ">
                             <!-- Grid -->
                             <div class="row">
                                 <!-- Grid Item -->
@@ -688,82 +594,7 @@ $userinfo = userinfo();
                             </div>
                             <!-- /grid -->
                         </div>
-                        <div class="col-xl-2 col-md-3 col-sm-4 ghf">
-                            <!-- Grid -->
-                            <div class="row">
-                                <!-- Grid Item -->
-                                <div class="col-12">
-                                    <!-- Chart Card -->
-                                    <div class="dt-card dt-chart">
-                                        <!-- Chart Header -->
-                                        <div class="dt-chart__header pt-4 px-5 mb-6">
-                                            <div class="d-flex align-items-center mb-2">
-                                                <div class="flex-1">
-                                                    <h5 class="font-weight-500 mb-1">Fast track Income</h5>
-                                                    <p class="f-12 mb-0">Till  last month </p>
-                                                </div>
-                                                <a href="/Dashboard.html#" class="d-inline-block ml-1 mr-n2">
-                                                    <i class="icon icon-arrow-right icon-1x"></i>
-                                                </a>
-                                            </div>
-                                            <div class="trending-section align-items-baseline">
-                                                <span class="value display-3 font-weight-500 text-primary" id="Ro_yolti"> $<?php echo $fasttrack_income['fasttrack_income']?></span>
-                                                <i class="icon icon-pointer-up icon-lg"></i>
-                                            </div>
-                                        </div>
-                                        <!-- /chart header -->
-                                        <!-- Chart Body -->
-                                        <div class="dt-chart__body">
-                                            <!-- Chart -->
-                                            <div id="ct-work-status" class="chart-area-work height-75 stroke-w-1 fill-opacity-0_8">
-                                                <img src="<?php echo base_url('NewTheme/')?>assets/img/Capture.PNG">
-                                            </div>
-                                            <!-- /chart -->
-                                        </div>
-                                        <!-- /chart body -->
-                                    </div>
-                                    <!-- /chart card -->
-                                </div>
-                                <!-- /grid item -->
-                                <!-- Grid Item -->
-                                <div class="col-6 d-none d-sm-block top-css">
-                                    <!-- Card -->
-                                    <div class="card bg-primary text-white text-center">
-                                        <!-- Card Body -->
-                                        <div class="card-body py-3 px-1">
-                                            <a href="/Deposit-By-Wallet.html">
-                                                <!-- Icon -->
-                                                <i class="ti-upload text-primary f-s-18 pull-left m-r-10"></i>
-                                                <!-- /icon -->
-                                                <span class="d-block f-12">Top-up</span>
-                                            </a>
-                                        </div>
-                                        <!-- /card body -->
-                                    </div>
-                                    <!-- /card -->
-                                </div>
-                                <!-- Grid Item -->
-                                <!-- Grid Item -->
-                                <div class="col-6 d-none d-sm-block top-css">
-                                    <!-- Card -->
-                                    <div class="card bg-secondary text-white text-center">
-                                        <!-- Card Body -->
-                                        <div class="card-body py-3 px-1">
-                                            <a href="/Level-Wise-Business.html">
-                                                <!-- Icon -->
-                                                <i class="ti-bar-chart text-primary f-s-18 pull-left m-r-10"></i>
-                                                <!-- /icon -->
-                                                <span class="d-block f-12">Level </span>
-                                            </a>
-                                        </div>
-                                        <!-- /card body -->
-                                    </div>
-                                    <!-- /card -->
-                                </div>
-                                <!-- Grid Item -->
-                            </div>
-                            <!-- /grid -->
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="row">
