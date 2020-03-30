@@ -1,16 +1,17 @@
 
-<div class="color-scheme-01">
+
     <!DOCTYPE HTML>
     <html lang="en">
         <head>
             <meta charset="utf-8">
             <meta name="HandheldFriendly" content="true" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <!--<link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />-->
+            <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
             <title><?php echo title; ?></title>
             <meta http-equiv='cache-control' content='no-cache'>
             <meta http-equiv='expires' content='0'>
             <meta http-equiv='pragma' content='no-cache'>
-            <link href="<?php echo base_url('uploads/'); ?>Fav-1.png" rel="shortcut icon" type="image/png">
 
             <link href="<?php echo base_url('classic/register/'); ?>css/font-awesome.min.css" rel="stylesheet">
 <!--            <link href="<?php // echo base_url('classic/register/');                                     ?>css/bootstrap.min.css" rel="stylesheet" media="screen">-->
@@ -214,4 +215,3 @@
             </div>
         </body>
     </html>
-</div>

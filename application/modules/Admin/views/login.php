@@ -5,8 +5,7 @@
         <!-- Meta Tags -->
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-        
-
+        <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
         <!-- Title -->
         <title>HOPE Partners - Admin</title>
         <link href="<?php echo base_url('classic/assets/css/site.css'); ?>" rel="stylesheet">
