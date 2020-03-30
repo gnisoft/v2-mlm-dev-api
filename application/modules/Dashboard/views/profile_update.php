@@ -562,13 +562,13 @@ $userinfo = userinfo();
                     <a id="T22" class="nav-link" data-toggle="tab" href="#E-CURRENCY-ACCOUNT" role="tab">Withdrawal Accounts</a>
                 </li>
                 <li class="nav-item" id="T3">
-                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESET-PASSWORD" role="tab">Reset Password</a>
+                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESET-PASSWORD" role="tab">Change Password</a>
                 </li>
                 <li class="nav-item" id="T5">
-                    <a id="T25" class="nav-link" data-toggle="tab" href="#KYC" role="tab"  style="display:none;">KYC VERIFICATION</a>
+                    <a id="T25" class="nav-link" data-toggle="tab" href="#KYC" role="tab" >Bank Verification</a>
                 </li>
                 <li class="nav-item" id="T4">
-                    <a id="T24" class="nav-link" data-toggle="tab" href="#REFERRAL-LINK" role="tab">Referral Linl</a>
+                    <a id="T24" class="nav-link" data-toggle="tab" href="#REFERRAL-LINK" role="tab">Referral Link</a>
                 </li>
             </ul>
             <!-- END profile-header-tab -->
@@ -590,7 +590,7 @@ $userinfo = userinfo();
                                     <div class="panel panel-default">
                                         <!-- BEGIN panel-heading -->
                                         <div class="panel-heading">
-                                            <h4 class="panel-title">Deal with us via given  below link </h4>
+                                            <h4 class="panel-title">Click here to sign up a new member via your referral link. </h4>
                                             <p class="desc" id="RefLink102">
                                                 <a href="<?php echo base_url('Dashboard/User/Register/?sponser_id=' . $userinfo->user_id); ?>" target="_blank">Click Link</a>
                                             </p>
@@ -625,7 +625,7 @@ $userinfo = userinfo();
                                                                     <div class="col-sm-6 col-md-12">
                                                                         <input type="text" id="linkTxt" value="<?php echo base_url('Dashboard/User/Register/?sponser_id=' . $userinfo->user_id); ?>" class="form-control">
                                                                         <button id="btnCopy" iconcls="icon-save" class="btncopy btn-rounded m-b-5 copy-section">
-                                                                            <i class="ti-export f-s-14 pull-left m-r-5"></i>Click here to copy referral link
+                                                                            <i class="ti-export f-s-14 pull-left m-r-5"></i>Click here to sign up a new member via your referral link.
                                                                         </button>
                                                                     </div>
                                                                     <div class="col-sm-6 col-md-12">
@@ -666,7 +666,7 @@ $userinfo = userinfo();
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="field">Contact Number</td>
+                                            <td class="field">Mobile Number</td>
                                             <td class="value">
                                                 <input type="number" class="form-control" value="<?php echo $userinfo->phone; ?>" name="phone">
                                                 <!-- <span id="txtMobileNo"></span>
@@ -690,42 +690,112 @@ $userinfo = userinfo();
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="field">City</td>
-                                            <td class="value">
-                                                <input type="text" class="form-control" value="<?php echo $userinfo->city; ?>" name="city">
-                                                <!-- <span id="txtCity"></span>
-                                                <span class="pull-right">
-                                                    <a href="#" data-toggle="modal">
-                                                        <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
-                                                    </a>
-                                                </span> -->
-                                            </td>
-                                        </tr>
+                                    <thead>
                                         <tr>
-                                            <td class="field">Registration Date</td>
-                                            <td class="value">
-                                                <span id="signon"><?php echo $userinfo->created_at; ?> </span>
-                                            </td>
+                                            <th colspan="2">ADDRESS</th>
                                         </tr>
-                                        <tr>
-                                            <td class="field">Activation Date</td>
-                                            <td class="value">
-                                                <span id="Activeon"><?php echo $userinfo->topup_date; ?></span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field">Status</td>
-                                            <td class="value">
-                                                <span id="sts">
-                                                    <?php echo $userinfo->package_id > 0 ? 'Active' : 'Free'; ?>
-                                                </span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="field"></td><td class="value">
-                                                <button class="btn btn-xs btn-primary" >Update</button>
-                                            </td>
-                                        </tr>
+                                    </thead>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Street 1</td>
+                                        <td class="value">
+                                            <input type="text" class="form-control" value="<?php echo $userinfo->address; ?>" name="address">
+                                            <!-- <span id="txtCity"></span>
+                                            <span class="pull-right">
+                                                <a href="#" data-toggle="modal">
+                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                                </a>
+                                            </span> -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Street 2</td>
+                                        <td class="value">
+                                            <input type="text" class="form-control" value="<?php echo $userinfo->address2; ?>" name="address2">
+                                            <!-- <span id="txtCity"></span>
+                                            <span class="pull-right">
+                                                <a href="#" data-toggle="modal">
+                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                                </a>
+                                            </span> -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="field">State/Province</td>
+                                        <td class="value">
+                                            <input type="text" class="form-control" value="<?php echo $userinfo->state; ?>" name="state">
+                                            <!-- <span id="txtCity"></span>
+                                            <span class="pull-right">
+                                                <a href="#" data-toggle="modal">
+                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                                </a>
+                                            </span> -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="field">City</td>
+                                        <td class="value">
+                                            <input type="text" class="form-control" value="<?php echo $userinfo->city; ?>" name="city">
+                                            <!-- <span id="txtCity"></span>
+                                            <span class="pull-right">
+                                                <a href="#" data-toggle="modal">
+                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                                </a>
+                                            </span> -->
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="field">Zip/Postal Code</td>
+                                        <td class="value">
+                                            <input type="number" class="form-control" value="<?php echo $userinfo->postal_code; ?>" name="postal_code">
+                                            <!-- <span id="txtCity"></span>
+                                            <span class="pull-right">
+                                                <a href="#" data-toggle="modal">
+                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                                </a>
+                                            </span> -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Country</td>
+                                        <td class="value">
+                                            <input type="text" class="form-control" value="<?php echo $userinfo->country; ?>" name="country">
+                                            <!-- <span id="txtCity"></span>
+                                            <span class="pull-right">
+                                                <a href="#" data-toggle="modal">
+                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                                </a>
+                                            </span> -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Registration Date</td>
+                                        <td class="value">
+                                            <span id="signon"><?php echo $userinfo->created_at; ?> </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Activation Date</td>
+                                        <td class="value">
+                                            <span id="Activeon"><?php echo $userinfo->topup_date; ?></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field">Status</td>
+                                        <td class="value">
+                                            <span id="sts">
+                                                <?php echo $userinfo->package_id > 0 ? 'Active' : 'Free'; ?>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="field"></td><td class="value">
+                                            <button class="btn btn-xs btn-primary" >Update</button>
+                                        </td>
+                                    </tr>
 
                                     </tbody>
                                 </table>
@@ -751,7 +821,7 @@ $userinfo = userinfo();
                                 </div>
                                 <div class="panel-body">
                                     <p class="desc"></p>
-                                    <?php echo form_open_multipart(base_url('Dashboard/user/BankDetails'), array('id' => 'bankform', 'style' => 'display:block;' , 'class' => 'bnkfrm')); ?>
+                                    <?php echo form_open_multipart(base_url('Dashboard/user/BankDetails'), array('id' => 'bankform', 'style' => 'display:block;', 'class' => 'bnkfrm')); ?>
                                     <h4 class="panel-title text-center">BANK ACCOUNT</h4>
                                     <div class="card-block">
                                         <div id="edit-contact-info" class="row" style="">
@@ -768,7 +838,7 @@ $userinfo = userinfo();
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="col-md-12">A/c Name
+                                                <label class="col-md-12">Name on Account
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-md-12">
@@ -785,7 +855,7 @@ $userinfo = userinfo();
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="col-md-12">A/c No
+                                                <label class="col-md-12">Account Number
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-md-12">
@@ -793,15 +863,32 @@ $userinfo = userinfo();
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
-                                                <label class="col-sm-12">MICR Code
+                                                <label class="col-md-12">Confirm Account Number
+                                                    <span class="text-c-pink">*</span>
+                                                </label>
+                                                <div class="col-md-12">
+                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Account number" name="bank_account_number" id="txtAccountNo" maxlength="16" required="" >
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12">
+                                                <label class="col-sm-12">International Routing Number
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
                                                     <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code" id="txtIFSCode" maxlength="11" required="">
                                                 </div>
                                             </div>
+                                            <div class="form-group col-md-12">
+                                                <label class="col-sm-12">BIC/SWIFT Code
+                                                    <span class="text-c-pink">*</span>
+                                                </label>
+                                                <div class="col-sm-12">
+                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code" id="txtIFSCode" maxlength="11" required="">
+                                                </div>
+                                            </div>
+
                                             <div class="form-group col-md-12" >
-                                                <label class="col-sm-12">Pan Or Tax Card
+                                                <label class="col-sm-12">Tax/BOR Identification Number
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
@@ -819,7 +906,7 @@ $userinfo = userinfo();
                                                 <div class="col-sm-12">
                                                     <input type="File" id="bankFileuplaod" name="userfile">
                                                 </div>
-                                            </div> 
+                                            </div>
                                             <div class="form-group col-md-6">
                                                 <div class="row">
                                                     <div class="col-sm-12">
@@ -829,7 +916,7 @@ $userinfo = userinfo();
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12">
-                                                    <img id="ImgBANKP" src="<?php echo base_url('uploads/' . $user_bank->passbook_image) ?>" alt="Bank Proof">
+                                                    <img id="ImgBANKP" src="<?php echo base_url('uploads/' . ($user_bank->passbook_image == '' ? 'no_image.png' : $user_bank->passbook_image)) ?>" alt="Bank Proof">
                                                 </div>
                                             </div>
                                             <div class=" form-group col-md-12 text-center m-t-20">
@@ -953,7 +1040,7 @@ $userinfo = userinfo();
                         </div>
                         <!-- END tab-pane -->
                         <!-- BEGIN tab-pane -->
-                        <div class="tab-pane " id="KYC" style="display:none;">
+                        <div class="tab-pane " id="KYC">
                             <!-- BEGIN panel -->
                             <div class="panel panel-default">
                                 <!-- BEGIN panel-heading -->
@@ -998,9 +1085,9 @@ $userinfo = userinfo();
                                                                                             <input type="hidden" name="proof_type" value="id_proof"/><br>
                                                                                             <?php
                                                                                             if ($user_bank->id_proof != '') {
-                                                                                                echo'<img src="' . base_url('uploads/' . $user_bank->id_proof) . '" class="img-responsive" style="max-width:200px;"><br>';
+                                                                                                echo'<img src="' . base_url('uploads/' . ($user_bank->id_proof == '' ? 'no_image.png' : $user_bank->id_proof)) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/' . $user_bank->id_proof) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<img src="' . base_url('uploads/' . ( $user_bank->id_proof == '' ? 'no_image.png' : $user_bank->id_proof)) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
                                                                                                 echo'<span class="wanki">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
@@ -1036,7 +1123,7 @@ $userinfo = userinfo();
                                                                                             if ($user_bank->id_proof2 != '') {
                                                                                                 echo'<img src="' . base_url('uploads/' . $user_bank->id_proof2) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/' . $user_bank->id_proof2) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
                                                                                                 echo'<span class="wanki">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
@@ -1072,7 +1159,7 @@ $userinfo = userinfo();
                                                                                             if ($user_bank->id_proof3 != '') {
                                                                                                 echo'<img src="' . base_url('uploads/' . $user_bank->id_proof3) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/' . $user_bank->id_proof3) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
                                                                                                 echo'<span class="wanki">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
@@ -1108,7 +1195,7 @@ $userinfo = userinfo();
                                                                                             if ($user_bank->id_proof4 != '') {
                                                                                                 echo'<img src="' . base_url('uploads/' . $user_bank->id_proof4) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/' . $user_bank->id_proof4) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
                                                                                                 echo'<span class="wanki">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
@@ -1550,21 +1637,7 @@ $userinfo = userinfo();
         </div>
         <!-- END row -->
     </div>
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0 text-dark"> Profile Update</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active"> Genelogy View</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="content">
         <div class="container-fluid">
 
@@ -1675,8 +1748,8 @@ $userinfo = userinfo();
     }, 'json')
 
     $(document).on('change', '#bnktoggle', function () {
-        var tab = $(this). children("option:selected").data('tab');
-        $('.bnkfrm').css('display' , 'none');
-        $('#'+tab).toggle();
+        var tab = $(this).children("option:selected").data('tab');
+        $('.bnkfrm').css('display', 'none');
+        $('#' + tab).toggle();
     })
 </script>

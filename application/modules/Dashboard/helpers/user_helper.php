@@ -166,7 +166,7 @@ if (!function_exists('notify_user')) {
 }
 if (!function_exists('tax')) {
 
-    function tax() { 
+    function tax() {
         $ci = & get_instance();
         $ci->load->model('user_model');
         $tax = $ci->user_model->get_single_object('tbl_tax', array('id' => 1), '*');
@@ -174,7 +174,7 @@ if (!function_exists('tax')) {
     }
 
 }
-if (!function_exists('cart_items')) {  
+if (!function_exists('cart_items')) {
 
     function cart_items() {
         $ci = & get_instance();
@@ -182,7 +182,7 @@ if (!function_exists('cart_items')) {
         $userdetails = $ci->Shopping_model->cart_items($ci->session->userdata['user_id']);
         return $userdetails;
     }
- 
+
 }
 if (!function_exists('tree_img')) {
 
@@ -207,11 +207,11 @@ if (!function_exists('get_income_name')) {
 
     function get_income_name($income_name) {
         $incomes = array(
-            'direct_income'=> 'Direct Income',
-            'direct_level_income'=> 'Level Income',
-            
-            
-            
+          'direct_income'=> 'Direct Revenue',
+          'direct_level_income'=> 'Other Revenue',
+
+
+
             'income_transfer' => 'Income Transfer',
         );
         // return array_search($income_name, $incomes);
@@ -223,11 +223,11 @@ if (!function_exists('incomes')) {
 
     function incomes() {
         $incomes = array(
-            'direct_income'=> 'Direct Income',
-            'direct_level_income'=> 'Level Income',
-            
-            
-            
+            'direct_income'=> 'Direct Revenue',
+            'direct_level_income'=> 'Other Revenue',
+
+
+
             'income_transfer' => 'Income Transfer',
         );
         // return array_search($income_name, $incomes);

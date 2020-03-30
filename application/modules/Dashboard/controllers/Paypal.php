@@ -29,10 +29,13 @@ class Paypal extends CI_Controller {
     function index() {
         $this->load->view('content/payment_credit_form');
     }
-
+    public function paypal_token(){
+        pr($payment->getAccessToken($this->_api_context)); 
+    }
     function create_payment_with_paypal() {
 
         // setup PayPal api context
+         $payment = new Payment();
         $this->_api_context->setConfig($this->config->item('settings'));
 
 

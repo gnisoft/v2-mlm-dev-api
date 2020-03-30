@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Bcoin - Cryptocurrency HTML5 Template</title>
+    <title>Partners | Helping Others by Promoting Empowerment</title>
     <meta name="description" content="">
     <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,36 @@
     <link rel="stylesheet" href="<?php echo base_url('SiteAssets/'); ?>css/responsive.css">
     <!-- link modernizr js -->
     <script src="<?php echo base_url('SiteAssets/'); ?>js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+    .header-style-multipage {
+    background: #191919 none repeat scroll 0 0;
+
+}
+.logo {
+    float: left;
+    margin: 0px 0;
+    position: relative;
+    -webkit-transition: all 0.4s ease-in-out 0s;
+    transition: all 0.4s ease-in-out 0s;
+    z-index: 1111;
+}
+.header-style-multipage .main-menu li a {
+    color: #fff;
+
+}
+.header-area.header-style-multipage.stricky-fixed {
+
+    background: #191919;
+
+}
+
+@media (max-width: 767px) {
+.logo {
+    margin: 0px 0;
+    float: left;
+}
+}
+    </style>
 </head>
 
 <body>

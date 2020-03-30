@@ -12,19 +12,91 @@ $userinfo = userinfo();
                 <h1 class="page-header">
                     Dashboard
                     <small> Account summary, All breif details </small>
-                    <?php
-                    if($userinfo->paid_status == 1){
-                        if($userinfo->directs <= 3){
-                            ?>
-                            <p style="background: red;
-    color: #fff;
-    padding: 8px;">Time left For Fast Track Income: <b id="timer"></b> </p>
-                            <?php
-                        }
-                    }
-                    ?>
 
                 </h1>
+                <div class="ng-scope">
+
+
+                    <div class="ng-scope">
+                        <div class="ng-scope">
+                            <!-- ngIf: state.currentStep > 0 -->
+                            <div class="ng-scope">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="progress-widget panel panel-light-grey border border-dark collapsed" style="">
+                                            <!-- ngIf: !isMobile -->
+
+                                            <div class="progress-widget__wrapper  kik" id="collapseExample">
+                                                <!-- step 1 -->
+                                                <div class="progress-widget__item  progress-widget__item_4-items passed disabled tooltip-col">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle">
+                                                            <div class="progress-widget__step">
+                                                                <!-- ngIf: state.currentStep <= 1 -->
+                                                                <!-- ngIf: state.currentStep > 1 -->
+                                                                <span class="ti-check ng-scope" style="position: relative;top: -3px;"></span>
+                                                                <!-- end ngIf: state.currentStep > 1 -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title">
+                                                            <span>Complete Profile</span>
+                                                            <span class="tooltiptext3">Fill in all your details in the form to take you one step closer to benifits!</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- step 2 -->
+                                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12">
+                                                            <span>Bitcoin / Paypal Account</span>
+                                                            <span class="tooltiptext3">Add your Bitcoin, Paypal account for payment withdrawal.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- ************************* GLOBAL Version ************************* -->
+                                                <!-- step 3 -->
+                                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing" id="DepCnt2">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="KycCnt">3</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12 ">
+                                                            <span>Document</span>
+                                                            <span class="tooltiptext3">Don't forget to upload documents for verification within 30 days so you can continue Benifits!</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- step 4 -->
+                                                <div class="progress-widget__item  progress-widget__item_4-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 4, &#39;current&#39;: state.currentStep === 4}" ui-sref="app.platforms.download" href="/en/platforms">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle passed" id="DepCnt3">
+                                                            <div class="progress-widget__step">
+                                                                <span id="DepCnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title ">
+                                                            <span>Active Account</span>
+                                                            <span class="tooltiptext3">Choose deposit amount, Growth option for deposit. You can deposit for other/self</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end ngIf: state.currentStep > 0 -->
+                        </div>
+                    </div>
+
+                </div>
                 <script>
                     var countDownDate = new Date("<?php echo date('Y-m-d H:i',strtotime('+78 hour',strtotime($userinfo->topup_date))); ?>").getTime();
 
@@ -146,41 +218,7 @@ $userinfo = userinfo();
                                     <!-- BEGIN col-6 -->
                                     <div class="col-6">
                                         <!-- BEGIN widget -->
-                                        <ul class="widget widget-list m-b-0 no-bg inverse-mode">
-                                            <li>
-                                                <!-- BEGIN widget-list-container -->
-                                                <a href="#" class="widget-list-container">
-                                                    <div class="widget-list-media icon p-l-0">
-                                                        <i class="ti-ticket bg-gradient-orange"></i>
-                                                    </div>
-                                                    <div class="widget-list-content">
-                                                        <h4 class="widget-title">Business </h4>
-                                                        <ul class="widget-inline-list widget-desc hidden-xs">
-                                                          <h4 class="widget-title">Left Business : $<?php echo $userinfo->leftPower;?></h4>
-                                                          <h4 class="widget-title">Right Business : $<?php echo $userinfo->rightPower;?></h4>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                                <!-- END widget-list-container -->
-                                            </li>
 
-                                            <li>
-                                                <a href="#" class="widget-list-container">
-                                                    <div class="widget-list-media icon p-l-0">
-                                                        <i class="ti-settings bg-gradient-silver"></i>
-                                                    </div>
-                                                    <div class="widget-list-content">
-                                                        <h4 class="widget-title">Settings</h4>
-                                                        <!--<div class="widget-desc hidden-xs">Accounts, Login password</div>-->
-                                                        <ul class="widget-inline-list widget-desc hidden-xs">
-                                                            <li>Accounts</li>
-                                                            <li>Login password</li>
-                                                        </ul>
-                                                    </div>
-                                                </a>
-                                                <!-- END widget-list-container -->
-                                            </li>
-                                        </ul>
                                         <!-- END widget -->
                                     </div>
                                     <!-- END col-6 -->
@@ -195,51 +233,7 @@ $userinfo = userinfo();
                     <!-- BEGIN col-3 -->
                     <div class="col-lg-3 col-sm-6">
                         <!-- BEGIN widget -->
-                        <div class="widget widget-card inverse-mode with-min-height">
-                            <!-- BEGIN widget-card-cover -->
-                            <div class="widget-card-cover">
-                                <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/c.jpg" alt="">
-                            </div>
-                            <!-- END widget-card-cover -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content">
-                                <div class="dropdown dropdown-icon pull-right">
-                                    <a data-toggle="dropdown">
-                                        <i class="ti-more-alt"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li>
-                                            <a href="#">Deposit By F-Wallet</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Deposit History </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4 class="widget-title">
-                                    <b>Available Balance</b>
 
-                                </h4>
-                            </div>
-                            <!-- END widget-card-content -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content bottom">
-                                <div class="widget-card-icon bg-gradient-purple">
-                                    <i class="ti-control-backward"></i>
-                                </div>
-                                <div class="widget-card-info">
-                                    <h4 class="widget-title">
-                                        <a href="#" id="TOTAL_DEPOSIT">$<?php echo number_format($income_balance['income_balance'],2);?></a>
-                                    </h4>
-                                    <ul class="widget-inline-list">
-                                        <li>Total You Have till now</li>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- END widget-card-content -->
-                        </div>
                         <!-- END widget -->
                         <!-- BEGIN widget -->
                         <div class="widget widget-card inverse-mode with-min-height">
@@ -293,48 +287,7 @@ $userinfo = userinfo();
                     <!-- BEGIN col-3 -->
                     <div class="col-lg-3 col-sm-6">
                         <!-- BEGIN widget -->
-                        <div class="widget widget-card inverse-mode with-min-height">
-                            <!-- BEGIN widget-card-cover -->
-                            <div class="widget-card-cover">
-                                <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/nn.jpg" alt="">
-                            </div>
-                            <!-- END widget-card-cover -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content">
-                                <div class="dropdown dropdown-icon pull-right">
-                                    <a href="/Dashboard.html#" data-toggle="dropdown">
-                                        <i class="ti-more-alt"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>">Withdrawal Request</a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal Status</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4 class="widget-title">TOTAL WITHDRAWAL</h4>
-                            </div>
-                            <!-- END widget-card-content -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content bottom">
-                                <div class="widget-card-icon bg-gradient-orange">
-                                    <i class="ti-stats-up"></i>
-                                </div>
-                                <div class="widget-card-info">
-                                    <h4 class="widget-title">
-                                        <a href="/Dashboard.html#" id="TotWithdrawal">$<?php echo $total_withdrawal['total_withdrawal']?></a>
-                                    </h4>
-                                    <ul class="widget-inline-list">
-                                        <li>Total Withdrawal till now</li>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- END widget-card-content -->
-                        </div>
+
                         <!-- END widget -->
                         <!-- BEGIN widget -->
                         <div class="widget widget-card inverse-mode with-min-height">
@@ -383,103 +336,10 @@ $userinfo = userinfo();
                     <!-- END col-3 -->
                 </div>
 
-                <div class="ng-scope">
 
-
-                    <div class="ng-scope">
-                        <div class="ng-scope">
-                            <!-- ngIf: state.currentStep > 0 -->
-                            <div class="ng-scope">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="progress-widget panel panel-light-grey border border-dark collapsed" style="">
-                                            <!-- ngIf: !isMobile -->
-                                            <button class="progress-widget__btn close progress-widget__btn_close ng-scope" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                                <!-- ngIf: !state.collapsed -->
-                                                <span class="ti-close ng-scope" style=""></span>
-                                                <span class="ti-angle-down ng-scope" style=""></span>
-                                                <!-- end ngIf: !state.collapsed -->
-                                                <!-- ngIf: state.collapsed -->
-                                            </button>
-                                            <!-- end ngIf: !isMobile -->
-                                            <button class="progress-widget__btn close progress-widget__btn_close kki" data-toggle="modal" data-target="#myModal">
-                                                <span class="ti-angle-down ng-scope" style=""></span>
-                                            </button>
-                                            <!-- ngIf: isMobile -->
-                                            <div class="progress-widget__wrapper  kik" id="collapseExample">
-                                                <!-- step 1 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items passed disabled tooltip-col">
-                                                    <div class="progress-widget__item-layer">
-                                                        <div class="progress-widget__circle">
-                                                            <div class="progress-widget__step">
-                                                                <!-- ngIf: state.currentStep <= 1 -->
-                                                                <!-- ngIf: state.currentStep > 1 -->
-                                                                <span class="ti-check ng-scope" style="position: relative;top: -3px;"></span>
-                                                                <!-- end ngIf: state.currentStep > 1 -->
-                                                            </div>
-                                                        </div>
-                                                        <div class="progress-widget__title">
-                                                            <span>Complete Profile</span>
-                                                            <span class="tooltiptext3">Fill in all your details in the form to take you one step closer to benifits!</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- step 2 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2 }" ui-sref="app.money.deposits" href="/en/deposits">
-                                                    <div class="progress-widget__item-layer">
-                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
-                                                            <div class="progress-widget__step asaping12">
-                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="progress-widget__title fancing12">
-                                                            <span>Bitcoin Account</span>
-                                                            <span class="tooltiptext3">Add your Bitcoin account for payment withdrawal.</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- ************************* GLOBAL Version ************************* -->
-                                                <!-- step 3 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
-                                                    <div class="progress-widget__item-layer">
-                                                        <div class="progress-widget__circle wr1ing" id="DepCnt2">
-                                                            <div class="progress-widget__step asaping12">
-                                                                <span id="KycCnt">3</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="progress-widget__title fancing12 ">
-                                                            <span>Document</span>
-                                                            <span class="tooltiptext3">Don't forget to upload documents for verification within 30 days so you can continue Benifits!</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- step 4 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 4, &#39;current&#39;: state.currentStep === 4}" ui-sref="app.platforms.download" href="/en/platforms">
-                                                    <div class="progress-widget__item-layer">
-                                                        <div class="progress-widget__circle passed" id="DepCnt3">
-                                                            <div class="progress-widget__step">
-                                                                <span id="DepCnt" class="ti-check passed progress-widget__circle"></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="progress-widget__title ">
-                                                            <span>Active Account</span>
-                                                            <span class="tooltiptext3">Choose deposit amount, Growth option for deposit. You can deposit for other/self</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end ngIf: state.currentStep > 0 -->
-                        </div>
-                    </div>
-
-                </div>
                 <div class="fozs">
                     <div class="row">
-                        <div class="col-xl-4 col-md-4 col-sm-6 Polaroid">
+                        <div class="col-xl-4 col-md-4 col-sm-6 Polaroid" style="display:none">
                             <!-- Card -->
                             <div class="dt-card text-center">
                                 <!-- Card Header -->
@@ -508,7 +368,7 @@ $userinfo = userinfo();
                             </div>
                             <!-- /card -->
                         </div>
-                        <div class="col-xl-4 col-md-4 col-sm-6 iPhone">
+                        <div class="col-xl-4 col-md-4 col-sm-6 iPhone" style="display:none">
                             <!-- Card -->
                             <div class="dt-card text-center overflow-hidden">
                                 <!-- Card Header -->
@@ -540,9 +400,9 @@ $userinfo = userinfo();
                             </div>
                             <!-- /card -->
                         </div>
-                        
-                        
-                        <div class="col-xl-4 col-md-4 col-sm-4 ">
+
+
+                        <div class="col-xl-4 col-md-4 col-sm-4 " style="display:none">
                             <!-- Grid -->
                             <div class="row">
                                 <!-- Grid Item -->
@@ -594,7 +454,7 @@ $userinfo = userinfo();
                             </div>
                             <!-- /grid -->
                         </div>
-                        
+
                     </div>
                 </div>
                 <div class="row">

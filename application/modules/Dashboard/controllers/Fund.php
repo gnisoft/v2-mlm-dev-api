@@ -15,6 +15,7 @@ class Fund extends CI_Controller {
         if (is_logged_in()) {
             $response = array();
             $response['user'] = $this->User_model->get_single_record('tbl_users', array('user_id' => $this->session->set_userdata['user_id']), '*');
+            $response['requests'] = $this->User_model->get_records('tbl_payment_request', array('user_id' => $this->session->userdata['user_id']), '*');
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 $data = $this->security->xss_clean($this->input->post());
                 $config['upload_path'] = './uploads/';
@@ -83,11 +84,12 @@ class Fund extends CI_Controller {
             redirect('Dashboard/User/login');
         }
     }
+
     public function activation_history() {
         if (is_logged_in()) {
             $response = array();
-            $response['records'] = $this->User_model->get_records('tbl_wallet', array('user_id' => $this->session->userdata['user_id'],'type' => 'account_activation'), '*');
-            $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id'],'type' => 'account_activation'), 'ifnull(sum(amount),0) as wallet_amount');
+            $response['records'] = $this->User_model->get_records('tbl_wallet', array('user_id' => $this->session->userdata['user_id'], 'type' => 'account_activation'), '*');
+            $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id'], 'type' => 'account_activation'), 'ifnull(sum(amount),0) as wallet_amount');
             $this->load->view('header');
             $this->load->view('wallet_ledger', $response);
             $this->load->view('footer');
@@ -97,7 +99,7 @@ class Fund extends CI_Controller {
     }
 
     public function transfer_fund() {
-      
+
         if (is_logged_in()) {
             $response = array();
             $response['user'] = $this->User_model->get_single_record('tbl_users', array('user_id' => $this->session->set_userdata['user_id']), '*');
@@ -207,7 +209,8 @@ class Fund extends CI_Controller {
             redirect('Dashboard/User/login');
         }
     }
-    public function withdraw_summary(){
+
+    public function withdraw_summary() {
         if (is_logged_in()) {
             $response = array();
             $response['withdraw_transctions'] = $this->User_model->get_records('tbl_withdraw', array('user_id' => $this->session->userdata['user_id']), '*');

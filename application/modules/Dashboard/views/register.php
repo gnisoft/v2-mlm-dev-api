@@ -148,7 +148,7 @@ select.form-control:not([size]):not([multiple]) {
                                 <div class="page-header text-center">
                                     <img src="<?php echo base_url(logo); ?>" style="max-width: 160px;margin-bottom: 20px;padding: 15px;border-radius: 10px;margin: 0;">
                                     <h1 class="page-title">Registration Form</h1>
-                                    <p class="small">You must be a Network member to be able to login!</p>
+                                    <p class="small">You must be a Partners member to be able to login!</p>
                                 </div>
 
                                 <div class="panel panel-primary">
@@ -173,10 +173,10 @@ select.form-control:not([size]):not([multiple]) {
                                         <input type="text" class="form-control" placeholder="Enter Email" name="email" value="<?php echo set_value('email'); ?>" required>
                                         <span class="text-danger"> <?php echo form_error('email'); ?></span>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" style="display:none">
                                         <label for="pwd">Position:</label>
                                         <select class="form-control" name="position">
-                                            <option value="L">LEFT</option>
+                                            <option value="L" selected>LEFT</option>
                                             <option value="R">RIGHT</option>
                                         </select>
                                     </div>
@@ -196,7 +196,7 @@ select.form-control:not([size]):not([multiple]) {
                                         })
                                     </script>
                                     <div class="form-group">
-                                        <label for="pwd">Phone:</label>
+                                        <label for="pwd">Country Code:</label>
                                         <div class="row">
                                           <div class="col-md-4 col-xs-4">
                                         <input type="text" class="form-control" id="countryCode"  value="+1" readonly></div>

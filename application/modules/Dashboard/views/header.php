@@ -722,9 +722,7 @@ div#content {
                             <li class="dropdown">
                                 <a href="<?php echo base_url('Dashboard/Support/ComposeMail');?>" class=" navbar-icon with-label"><i class="ti-bell"></i></a>
                             </li>
-                            <li class="dropdown">
-                                <a href="<?php echo base_url('Dashboard/User/Profile');?>" class="navbar-icon"><i class="ti-settings"></i></a>
-                            </li>
+                            
                             <li class="dropdown">
                                 <a href="javascript:;" data-toggle="dropdown">
                                     <span class="navbar-user-img online pull-left" id="Mem_Profl_Pic">
@@ -781,78 +779,71 @@ div#content {
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">User Profile</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Bank Account</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Reset Password</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Bank Verification</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Referral Link</a></li>
-                                </ul>
-                            </li>
 
-                            <li class="nav-divider"></li>
-                            <li class="nav-header">My Money</li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret caret-right pull-right"></b>
-                                    <i class="ti-wallet"></i>
-                                    <span>Wallet Request <span class="notification">2+</span></span>
-                                </a>
-                                <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund');?>">Fund Request</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/requests');?>">Request Status</a></li>
-                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');?>">Transfer Wallet</a></li> -->
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">Wallet History</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Change Password</a></li>
+
+
                                 </ul>
                             </li>
+  <li class="nav-divider"></li>
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-hand-point-right"></i>
-                                    <span>Active Account <span class="notification">2+</span></span>
+                                    <span>Membership <span class="notification">2+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
+                                    <li><a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);?>">Referral Link</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/ActivateAccount');?>"> Activate Membership </a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan');?>" > Business Plan</a></li>
 
-                                    <li><a href="<?php echo base_url('Dashboard/ActivateAccount');?>"> Active New Account</a></li>
-                                   
 
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/activation_history');?>">Active Account History</a></li>
 
                                 </ul>
                             </li>
+
+<li class="nav-divider"></li>
+
+                                                        <li class="has-sub">
+                                                            <a href="javascript:;">
+                                                                <b class="caret caret-right pull-right"></b>
+                                                                <i class="ti-palette"></i>
+                                                                <span>Network <span class="notification">3+</span></span>
+                                                            </a>
+                                                            <ul class="sub-menu" style="display: none;">
+                                                                <li><a href="<?php echo base_url('Dashboard/User/Directs');?>">Direct Network</a></li>
+                                                                  <li><a href="<?php echo base_url('Dashboard/User/Downline');?>">Total Network</a></li>
+                                                                  <li><a href="<?php echo base_url('Dashboard/User/Tree/'.$user_info->user_id);?>">Genealogy</a></li>
+
+
+                                                            </ul>
+                                                        </li>
+
+
+                                                        <li class="nav-divider"></li>
+                                                        <li><a href="<?php echo base_url('Dashboard/User/Shopping/');?>"><i class="ti-lock"></i><span>Shop HOPE</span></a></li>
+
+
                             <li class="nav-divider"></li>
-                            <li class="nav-header">Network</li>
+
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
-                                    <i class="ti-palette"></i>
-                                    <span>Affiliates <span class="notification">3+</span></span>
+                                    <i class="ti-wallet"></i>
+                                    <span>E-Wallet <span class="notification">2+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/User/Directs');?>">My Referrals</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/Tree/'.$user_info->user_id);?>">Direct Tree</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/User/Downline');?>">Total Affiliates</a></li>
-                                     
-                                   
-                                    <li><a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);?>"> Open New Accounts</a></li>
+                                  <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Payment Accounts</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund');?>">Fund Request</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/requests');?>">Request Status</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>">Withdrawal</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/IncomeTransfer')?>"> Transfer</a></li>
+                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');?>">Transfer Wallet</a></li> -->
+
                                 </ul>
                             </li>
 
-
-
-                            <!--End utility-->
-                            <li class="nav-divider"></li>
-                            <li class="nav-header">Main Wallet</li>
-                            <li class="has-sub">
-                                <a href="javascript:;">
-                                    <b class="caret caret-right pull-right"></b>
-                                    <i class="ti-hand-point-left"></i>
-                                    <span>Withdraw <span class="notification">1+</span></span>
-                                </a>
-                                <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>"> Withdraw Money</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/IncomeTransfer')?>"> Transfer to Another Account</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal History</a></li>
-                                </ul>
-                            </li>
+  <li class="nav-divider"></li>
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
@@ -867,28 +858,33 @@ div#content {
                                            </li>';
                                   }
                                   ?>
-                                  <li><a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Income Ledger</a>
-                                           </li>
+                                  <li><a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Total Revenue</a></li>
+
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">E-Wallet History</a></li>
+                                      <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal Accounts</a></li>
+                                      <li><a href="<?php echo base_url('Dashboard/IncomeTransfer')?>"> Transfer History</a></li>
+                                             <li><a href="<?php echo base_url('Dashboard/Fund/activation_history');?>">Membership History</a></li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
-                            <li class="nav-header">Accounts</li>
+
                             <li class="has-sub expand">
                                 <a href="javascript:;">
                                     <span class="caret caret-right pull-right"></span>
                                     <i class="ti-email"></i>
-                                    <span>Ticket <span class="notification">1+</span></span>
+                                    <span>Support <span class="notification">1+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: block;">
+                                  <li><a href="<?php echo base_url('Dashboard/Support/Inbox');?>">Mailbox</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/Support/ComposeMail');?>">Create Ticket</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Support/Inbox');?>">Inbox</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/Support/Outbox');?>">OutBox</a></li>
+
+
                                 </ul>
                             </li>
+<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);?>"> Open New Accounts</a></li> -->
 
-                            <li class="nav-divider"></li>
 
-                            <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan');?>" target="_blank"><i class="ti-id-badge"></i><span> Business Plan</span></a></li>
+
                             <li class="nav-divider"></li>
                             <li><a href="<?php echo base_url('Dashboard/User/logout');?>"><i class="ti-lock"></i><span>Log-Out</span></a></li>
                             <li class="nav-copyright">© 2020 <b>Bitwin</b><br></li>

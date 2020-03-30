@@ -6,7 +6,6 @@
             <meta charset="utf-8">
             <meta name="HandheldFriendly" content="true" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <!--<link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />-->
             <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
             <title><?php echo title; ?></title>
             <meta http-equiv='cache-control' content='no-cache'>
