@@ -25,5 +25,9 @@ class Paypal_model extends CI_Model {
         $this->db->insert('payments', $insertArr);
         return $this->db->insert_id();
     }
+    function add($table, $data) {
+        $this->db->insert($table, $data);
+        return $this->db->insert_id();
+    }
 
 }

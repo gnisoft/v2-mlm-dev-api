@@ -425,6 +425,15 @@ class Dashboard extends CI_Controller {
     //     }
     // }
 
+    public function success($message){
+        if($message == 'success'){
+            $response['message'] = 'Payment Completed Succesfully';
+        }else{
+            $response['message'] = 'Error in Payment Process';
+        }
+
+        $this->load->view('payment_response', $response);
+    }
     public function payment_response($message){
         if($message == 'success'){
             $response['message'] = 'Payment Completed Succesfully';

@@ -28,6 +28,6 @@
                     </div>
                 </div>
             </fieldset>
-        </form>
+        <?php echo form_close();?>
     </div>
 </div> 

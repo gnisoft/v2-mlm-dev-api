@@ -10,6 +10,8 @@
             <meta http-equiv='cache-control' content='no-cache'>
             <meta http-equiv='expires' content='0'>
             <meta http-equiv='pragma' content='no-cache'>
+            <link href="<?php echo base_url('uploads/'); ?>Fav-1.png" rel="shortcut icon" type="image/png">
+
             <link href="<?php echo base_url('classic/register/'); ?>css/font-awesome.min.css" rel="stylesheet">
 <!--            <link href="<?php // echo base_url('classic/register/');                                     ?>css/bootstrap.min.css" rel="stylesheet" media="screen">-->
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">

@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Bcoin - Cryptocurrency HTML5 Template</title>
     <meta name="description" content="">
+    <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('SiteAssets/'); ?>img/favicon.png">
@@ -41,7 +42,7 @@
                         <div class="col-md-6 col-sm-8">
                             <div class="header-top-left">
                                 <ul class="info">
-                                    <li><i class="fa fa-envelope" aria-hidden="true"></i> scootpool@gmail.com</li>
+                                    <li><i class="fa fa-envelope" aria-hidden="true"></i> info@partners.com</li>
                                     <li><i class="fa fa-phone" aria-hidden="true"></i> +(857) 163 123 7884</li>
                                 </ul>
                             </div>

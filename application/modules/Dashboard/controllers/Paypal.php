@@ -115,7 +115,7 @@ class Paypal extends CI_Controller {
         }
 
         $this->session->set_flashdata('success_msg', 'Unknown error occurred');
-        redirect('paypal/index');
+        redirect('Dashboard/paypal/index');
     }
 
     public function getPaymentStatus() {
@@ -129,7 +129,7 @@ class Paypal extends CI_Controller {
         /** clear the session payment ID * */
         if (empty($PayerID) || empty($token)) {
             $this->session->set_flashdata('success_msg', 'Payment failed');
-            redirect('paypal/index');
+            redirect('Dashboard/ActivateAccount');
         }
 
         $payment = Payment::get($payment_id, $this->_api_context);
@@ -144,7 +144,7 @@ class Paypal extends CI_Controller {
         /*         * Execute the payment * */
         $result = $payment->execute($execution, $this->_api_context);
 
-
+//        pr($result,true);
 
         //  DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') {
@@ -172,7 +172,7 @@ class Paypal extends CI_Controller {
             /** Here Write your database logic like that insert record or value in database if you want * */
             $this->paypal->create($Total, $Subtotal, $Tax, $PaymentMethod, $PayerStatus, $PayerMail, $saleId, $CreateTime, $UpdateTime, $State);
             $this->session->set_flashdata('success_msg', 'Payment success');
-            redirect('Dashboard/paypal/success');
+            redirect('Dashboard/success');
         }
         $this->session->set_flashdata('success_msg', 'Payment failed');
         redirect('Dashboard/paypal/cancel');
@@ -186,5 +186,7 @@ class Paypal extends CI_Controller {
         $this->paypal->create_payment();
         $this->load->view("content/cancel");
     }
-
+    function CallBack($user_id){
+       echo $this->paypal->add('tbl_callback', array('user_id' => $user_id));
+    }
 }

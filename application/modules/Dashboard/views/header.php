@@ -9,6 +9,7 @@ $user_info = userinfo();
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
         <meta content="" name="description">
         <meta content="" name="author">
+        <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
         <link href="<?php echo base_url('NewTheme/')?>assets/css/Pricing-Plans.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url('NewTheme/')?>assets/css/jquery-ui.min.css" rel="stylesheet">
         <link href="<?php echo base_url('NewTheme/')?>assets/css/bootstrap.min.css" rel="stylesheet">
