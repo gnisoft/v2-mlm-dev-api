@@ -22,7 +22,7 @@ class Management extends CI_Controller {
             $response['direct_income'] = $this->Main_model->get_sum('tbl_income_wallet', array('type' => 'direct_income'), 'ifnull(sum(amount),0) as sum , type');
             $response['matching_bonus'] = $this->Main_model->get_sum('tbl_income_wallet', array('type' => 'matching_bonus'), 'ifnull(sum(amount),0) as sum , type');
             $response['roi_income'] = $this->Main_model->get_sum('tbl_income_wallet', array('type' => 'roi_income'), 'ifnull(sum(amount),0) as sum , type');
-           
+
 
             $response['total_sent_fund'] = $this->Main_model->get_sum('tbl_wallet', array(), 'ifnull(sum(amount),0) as sum');
             $response['used_fund'] = $this->Main_model->get_sum('tbl_wallet', array('amount <' => '0'), 'ifnull(sum(amount),0) as sum ');
@@ -33,45 +33,48 @@ class Management extends CI_Controller {
         }
     }
 
-    public function CommingSoon($header = ''){
-        $response['header'] = ucwords(str_replace('_',' ',$header));
-        $this->load->view('coming_soon',$response);
+    public function CommingSoon($header = '') {
+        $response['header'] = ucwords(str_replace('_', ' ', $header));
+        $this->load->view('coming_soon', $response);
     }
-    public function sample(){
+
+    public function sample() {
         $this->load->view('sample');
     }
+
     public function get_user($user_id) {
         if (is_admin()) {
             $response = array();
             $response['success'] = 0;
             $user = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user_id), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
-            if(!empty($user)){
+            if (!empty($user)) {
                 $response['success'] = 1;
                 $response['message'] = 'user Found';
                 $response['user'] = $user;
                 echo $user['name'];
-            }else{
+            } else {
                 echo 'User Not Found';
             }
         } else {
             redirect('Admin/Management/login');
         }
     }
+
     public function users() {
         if (is_admin()) {
             $response['users'] = $this->Main_model->get_records('tbl_users', array(), 'id,user_id,name,last_name,phone,password,master_key,email,sponser_id,directs,package_id,paid_status,created_at,disabled,position,package_amount');
-            foreach($response['users'] as $key => $user){
+            foreach ($response['users'] as $key => $user) {
                 $response['users'][$key]['e_wallet'] = $this->Main_model->get_single_record('tbl_wallet', array('user_id' => $user['user_id']), 'ifnull(sum(amount),0) as e_wallet');
                 $response['users'][$key]['income_wallet'] = $this->Main_model->get_single_record('tbl_income_wallet', array('user_id' => $user['user_id']), 'ifnull(sum(amount),0) as income_wallet');
                 // $response['users'][$key]['rank'] = calculate_rank($user['directs']);
                 // $response['users'][$key]['package'] = calculate_package($user['package_id']);
-
             }
             $this->load->view('users', $response);
         } else {
             redirect('Admin/Management/login');
         }
     }
+
     public function today_joinings() {
         if (is_admin()) {
             $response['users'] = $this->Main_model->get_records('tbl_users', 'date(created_at) = date(now())', '*');
@@ -98,6 +101,7 @@ class Management extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+
     public function UserInvoice() {
         if (is_admin()) {
             $response['users'] = $this->Main_model->get_records('tbl_users', array('paid_status' => 1), '*');
@@ -149,7 +153,7 @@ class Management extends CI_Controller {
             $response = array();
             $response['user'] = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user_id), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
             $response['users'] = $this->Main_model->get_records('tbl_users', array('sponser_id' => $user_id), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
-            foreach($response['users'] as $key => $directs){
+            foreach ($response['users'] as $key => $directs) {
                 $response['users'][$key]['sub_directs'] = $this->Main_model->get_records('tbl_users', array('user_id' => $directs['user_id']), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
             }
             $this->load->view('tree', $response);
@@ -157,11 +161,12 @@ class Management extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
-    public function Pool($user_id = 'adminadmin' ,$pool_id) {
+
+    public function Pool($user_id = 'adminadmin', $pool_id) {
         if (is_admin()) {
             $response = array();
             // $response['user'] = $this->Main_model->get_single_record('tbl_pool', array('user_id' => $user_id , 'pool_level' => $pool_id), '*');
-            $response['users'] = $this->Main_model->get_records('tbl_pool', array( 'pool_level' => $pool_id), '*');
+            $response['users'] = $this->Main_model->get_records('tbl_pool', array('pool_level' => $pool_id), '*');
             // foreach($response['users'] as $key => $directs){
             //     $response['users'][$key]['user_info'] = $this->Main_model->get_single_record('tbl_users', array('user_id' => $directs['user_id']), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
             // }
@@ -213,9 +218,9 @@ class Management extends CI_Controller {
 
     public function Fund_requests($status = '') {
         if (is_admin()) {
-            if($status == ''){
+            if ($status == '') {
                 $where = array();
-            }else{
+            } else {
                 $where = array('status' => $status);
             }
             $response['requests'] = $this->Main_model->get_records('tbl_payment_request', $where, '*');
@@ -224,6 +229,7 @@ class Management extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+
     public function fund_history() {
         if (is_admin()) {
             $response['requests'] = $this->Main_model->get_records('tbl_wallet', array(), '*');
@@ -248,73 +254,80 @@ class Management extends CI_Controller {
                     }
                 } elseif ($data['status'] == 'Approve') {
                     if ($response['request']['status'] !== 1) {
-                        /**Topup Member */
-                        $user = $this->Main_model->get_single_record('tbl_users', array('user_id' =>  $response['request']['user_id']), '*');
-                        $package = $this->Main_model->get_single_record('tbl_package', array('price' => $response['request']['amount']), '*');
-                        // pr($user,true);
-                        if($user['paid_status'] == 0){
-                            // $sendWallet = array(
-                            //     'user_id' => $user['user_id'],
-                            //     'amount' => -$package['price'],
-                            //     'type' => 'account_activation',
-                            //     'remark' => 'Account Activation Deduction for '.$user_id,
-                            // );
-                            // $this->User_model->add('tbl_wallet', $sendWallet);
-                            $topupData = array(
-                                    'paid_status' => 1,
-                                    'package_id' => $package['id'] ,
-                                    'package_amount' => $package['price'],
-                                    'topup_date' => date('Y-m-d h:i:s'),
-                                    'capping' => $package['capping'],
-                                    );
-                            $this->Main_model->update('tbl_users', array('user_id' => $user['user_id']),$topupData);
-                            $this->Main_model->update_directs($user['sponser_id']);
-                            $sponser = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user['sponser_id']), 'sponser_id,directs');
-                            $DirectIncome = array(
-                                'user_id' => $user['sponser_id'],
-                                'amount' => $package['direct_income'] ,
-                                'type' => 'direct_income', 
-                                'description' => 'Direct Income from Activation of Member '.$user['user_id'],
+                        /*                         * Topup Member */
+//                        $user = $this->Main_model->get_single_record('tbl_users', array('user_id' =>  $response['request']['user_id']), '*');
+//                        $package = $this->Main_model->get_single_record('tbl_package', array('price' => $response['request']['amount']), '*');
+//                        // pr($user,true);
+//                        if($user['paid_status'] == 0){
+//                            // $sendWallet = array(
+//                            //     'user_id' => $user['user_id'],
+//                            //     'amount' => -$package['price'],
+//                            //     'type' => 'account_activation',
+//                            //     'remark' => 'Account Activation Deduction for '.$user_id,
+//                            // );
+//                            // $this->User_model->add('tbl_wallet', $sendWallet);
+//                            $topupData = array(
+//                                    'paid_status' => 1,
+//                                    'package_id' => $package['id'] ,
+//                                    'package_amount' => $package['price'],
+//                                    'topup_date' => date('Y-m-d h:i:s'),
+//                                    'capping' => $package['capping'],
+//                                    );
+//                            $this->Main_model->update('tbl_users', array('user_id' => $user['user_id']),$topupData);
+//                            $this->Main_model->update_directs($user['sponser_id']);
+//                            $sponser = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user['sponser_id']), 'sponser_id,directs');
+//                            $DirectIncome = array(
+//                                'user_id' => $user['sponser_id'],
+//                                'amount' => $package['direct_income'] ,
+//                                'type' => 'direct_income', 
+//                                'description' => 'Direct Income from Activation of Member '.$user['user_id'],
+//                            );
+//                            $this->Main_model->add('tbl_income_wallet', $DirectIncome);
+//                            $this->update_business($user['user_id'], $user['user_id'], $level = 1, $package['bv'] , $type = 'topup');
+//                            $roiArr = array(
+//                                'user_id' => $user['user_id'],  
+//                                'amount' => ($package['price'] * 2),
+//                                'roi_amount' => $package['commision'],
+//                            );
+//                            $this->Main_model->add('tbl_roi', $roiArr);
+//                            $this->session->set_flashdata('error', 'Account Activated Successfully');
+//                            $updres = $this->Main_model->update('tbl_payment_request', array('id' => $id), array('status' => 1, 'remarks' => $data['remarks']));
+//                        }else{
+//                            $this->session->set_flashdata('error', 'This Account Already Acitvated');
+//                        }
+                        /*                         * Topup Member */
+                        $updres = $this->Main_model->update('tbl_payment_request', array('id' => $id), array('status' => 1, 'remarks' => $data['remarks']));
+                        if ($updres == true) {
+                            $this->session->set_flashdata('error', 'Reqeust Accepted And Fund released Successfully');
+                            $walletData = array(
+                                'user_id' => $response['request']['user_id'],
+                                'amount' => $response['request']['amount'],
+                                'sender_id' => 'admin',
+                                'type' => 'admin_fund',
+                                'remark' => $data['remarks'],
                             );
-                            $this->Main_model->add('tbl_income_wallet', $DirectIncome);
-                            $this->update_business($user['user_id'], $user['user_id'], $level = 1, $package['bv'] , $type = 'topup');
-                            $roiArr = array(
-                                'user_id' => $user['user_id'],  
-                                'amount' => ($package['price'] * 2),
-                                'roi_amount' => $package['commision'],
-                            );
-                            $this->Main_model->add('tbl_roi', $roiArr);
-                            $this->session->set_flashdata('error', 'Account Activated Successfully');
-                            $updres = $this->Main_model->update('tbl_payment_request', array('id' => $id), array('status' => 1, 'remarks' => $data['remarks']));
-                        }else{
-                            $this->session->set_flashdata('error', 'This Account Already Acitvated');
+                            $this->Main_model->add('tbl_wallet', $walletData);
+                        } else {
+                            $this->session->set_flashdata('error', 'There is an error while Rejecting request Please try Again ..');
                         }
-                        /**Topup Member */
-                        // $updres = $this->Main_model->update('tbl_payment_request', array('id' => $id), array('status' => 1, 'remarks' => $data['remarks']));
-                        // if ($updres == true) {
-                        //     $this->session->set_flashdata('error', 'Reqeust Accepted And Fund released Successfully');
-                        //     $walletData = array(
-                        //         'user_id' => $response['request']['user_id'],
-                        //         'amount' => $response['request']['amount'],
-                        //         'sender_id' => 'admin',
-                        //         'type' => 'admin_fund',
-                        //         'remark' => $data['remarks'],
-                        //     );
-                        //     $this->Main_model->add('tbl_wallet', $walletData);
-                        // } else {
-                        //     $this->session->set_flashdata('error', 'There is an error while Rejecting request Please try Again ..');
-                        // }
                     } else {
                         $this->session->set_flashdata('error', 'This Payment Request Already Approved');
                     }
                 }
             }
+            $response['request'] = $this->Main_model->get_single_record('tbl_payment_request', array('id' => $id), '*');
             $this->load->view('update_fund_request', $response);
         } else {
             redirect('Admin/Management/login');
         }
     }
-    function update_business($user_name = 'A915813', $downline_id = 'A915813', $level = 1, $business = '40' , $type = 'topup') {
+
+    public function bank_list() {
+        $banks = $this->Main_model->get_records('tbl_bank_list', array(), '*');
+        echo json_encode($banks);
+    }
+
+    function update_business($user_name = 'A915813', $downline_id = 'A915813', $level = 1, $business = '40', $type = 'topup') {
         $user = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user_name), $select = 'upline_id , position,user_id');
         if (!empty($user)) {
             if ($user['position'] == 'L') {
@@ -324,7 +337,7 @@ class Management extends CI_Controller {
             } else {
                 return;
             }
-            $this->Main_model->update_business($c, $user['upline_id'] , $business);
+            $this->Main_model->update_business($c, $user['upline_id'], $business);
             $downlineArray = array(
                 'user_id' => $user['upline_id'],
                 'downline_id' => $downline_id,
@@ -342,7 +355,8 @@ class Management extends CI_Controller {
             }
         }
     }
-    public function SendWallet(){
+
+    public function SendWallet() {
         $response = array();
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->security->xss_clean($this->input->post());
@@ -352,7 +366,7 @@ class Management extends CI_Controller {
                 $user_id = $data['user_id'];
                 $amount = $data['amount'];
                 $user = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user_id), '*');
-                if(!empty($user)){
+                if (!empty($user)) {
                     $sendWallet = array(
                         'user_id' => $user_id,
                         'amount' => $amount,
@@ -362,13 +376,14 @@ class Management extends CI_Controller {
                     );
                     $this->Main_model->add('tbl_wallet', $sendWallet);
                     $this->session->set_flashdata('message', 'Fund Sent Successfully');
-                }else{
+                } else {
                     $this->session->set_flashdata('message', 'Invalid User ID');
                 }
             }
         }
         $this->load->view('send_wallet', $response);
     }
+
     public function UpdateRank($user_id) {
         if (is_admin()) {
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -464,7 +479,6 @@ class Management extends CI_Controller {
 //             }
 //             $this->Main_model->update_bv($c, $user['upline_id'], $bv);
 //             $user_name = $user['upline_id'];
-
 //             if ($user['upline_id'] != '') {
 //                 $this->update_business($user_name, $level = 1, $bv);
 //             }
@@ -488,9 +502,10 @@ class Management extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
-    function blockStatus($user_id , $status) {
+
+    function blockStatus($user_id, $status) {
         if (is_admin()) {
-            $response['success'] = 0; 
+            $response['success'] = 0;
             $updres = $this->Main_model->update('tbl_users', array('user_id' => $user_id), array('disabled' => $status));
             if ($updres == true) {
                 $response['success'] = 1;
@@ -558,14 +573,14 @@ class Management extends CI_Controller {
         }
     }
 
-    function popup_upload(){
+    function popup_upload() {
         if (is_admin()) {
             $response = array();
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 $data = $this->security->xss_clean($this->input->post());
 
                 $data = html_escape($data);
-                if($data['type'] == 'image'){
+                if ($data['type'] == 'image') {
                     if (!empty($_FILES['media']['name'])) {
                         $config['upload_path'] = './uploads/';
                         $config['allowed_types'] = 'gif|jpg|png|pdf|jpeg';
@@ -581,49 +596,46 @@ class Management extends CI_Controller {
 
                             $fileData = array('upload_data' => $this->upload->data());
 
-                                //die('here');
-                                $fileData = array('upload_data' => $this->upload->data());
-                                $userData['media'] = $fileData['upload_data']['file_name'];
-                                $userData['type'] = 'image';
-                                $userData['caption'] = $this->input->post('caption');
-                                $updres = $this->Main_model->add('tbl_popup',$userData);
-                                if ($updres == true) {
-                                    $response = array('error' => 'Popup Uploaded Successfully');
-                                    $this->session->set_flashdata('error', 'Popup Uploaded Successfully');
-                                    $this->load->view('popup.php',$response);
-                                } else {
-                                    $response = array('error' => 'There is an error while uploading Popup Image, Please try Again ..');
-                                    $this->session->set_flashdata('error', 'There is an error while uploading Popup Image, Please try Again ..');
-                                    $this->load->view('popup.php', $response);
-                                }
-
+                            //die('here');
+                            $fileData = array('upload_data' => $this->upload->data());
+                            $userData['media'] = $fileData['upload_data']['file_name'];
+                            $userData['type'] = 'image';
+                            $userData['caption'] = $this->input->post('caption');
+                            $updres = $this->Main_model->add('tbl_popup', $userData);
+                            if ($updres == true) {
+                                $response = array('error' => 'Popup Uploaded Successfully');
+                                $this->session->set_flashdata('error', 'Popup Uploaded Successfully');
+                                $this->load->view('popup.php', $response);
+                            } else {
+                                $response = array('error' => 'There is an error while uploading Popup Image, Please try Again ..');
+                                $this->session->set_flashdata('error', 'There is an error while uploading Popup Image, Please try Again ..');
+                                $this->load->view('popup.php', $response);
+                            }
                         }
-                    }else{
+                    } else {
                         $response = array('error' => 'There is an error while uploading Popup Image, Please try Again ..');
                         $this->session->set_flashdata('error', 'There is an error while uploading Popup Image, Please try Again ..');
                         $this->load->view('popup.php', $response);
                     }
-                }else{
+                } else {
                     $userData['media'] = $this->input->post('media');
                     $userData['type'] = 'video';
                     $userData['caption'] = $this->input->post('caption');
-                    $updres = $this->Main_model->add('tbl_popup',$userData);
+                    $updres = $this->Main_model->add('tbl_popup', $userData);
                     if ($updres == true) {
                         $response = array('error' => 'Popup Uploaded Successfully');
                         $this->session->set_flashdata('error', 'Popup Uploaded Successfully');
-                        $this->load->view('popup.php',$response);
+                        $this->load->view('popup.php', $response);
                     } else {
                         $response = array('error' => 'There is an error while uploading Popup Image, Please try Again ..');
                         $this->session->set_flashdata('error', 'There is an error while uploading Popup Image, Please try Again ..');
                         $this->load->view('popup.php', $response);
                     }
                 }
-                    
-
-                }else{
-                    $response = $this->session->set_flashdata('error', 'Validation Failed');
-                    $this->load->view('popup.php',$response);
-                }
+            } else {
+                $response = $this->session->set_flashdata('error', 'Validation Failed');
+                $this->load->view('popup.php', $response);
+            }
         } else {
             redirect('Admin/Management/login');
         }

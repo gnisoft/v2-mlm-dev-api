@@ -14,8 +14,10 @@ class Fund extends CI_Controller {
     public function Request_fund() {
         if (is_logged_in()) {
             $response = array();
-            $response['user'] = $this->User_model->get_single_record('tbl_users', array('user_id' => $this->session->set_userdata['user_id']), '*');
+            $response['user'] = $this->User_model->get_single_record('tbl_users', array('user_id' => $this->session->userdata['user_id']), '*');
+            $response['balance'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as sum');
             $response['requests'] = $this->User_model->get_records('tbl_payment_request', array('user_id' => $this->session->userdata['user_id']), '*');
+//            pr($response,true);
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 $data = $this->security->xss_clean($this->input->post());
                 $config['upload_path'] = './uploads/';

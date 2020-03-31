@@ -105,7 +105,7 @@ class User extends CI_Controller {
         $response = array();
         $sponser_id = $this->input->get('sponser_id');
         if ($sponser_id == '') {
-            $sponser_id = '';
+            $sponser_id = 'Admin';
         }
         $response['sponser_id'] = $sponser_id;
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -251,7 +251,7 @@ class User extends CI_Controller {
         redirect('Dashboard/User/login');
     }
 
-    public function Profile() {
+    public function Profile($mode = 'profile') {
         if (is_logged_in()) {
             $response = array();
             // $response['active_tab'] = 'profile';
@@ -285,20 +285,22 @@ class User extends CI_Controller {
             $countries = $this->User_model->get_records('countries', array(), '*');
             $response['upline'] = $this->User_model->get_single_record('tbl_users', array('user_id' => $userinfo->upline_id), 'name,first_name,last_name,phone,email');
             $response['user_bank'] = (object) $this->User_model->get_single_record('tbl_bank_details', array('user_id' => $this->session->userdata['user_id']), '*');
-            // $response['stateArr'] = $this->User_model->get_records('states', array('country_id' => $userinfo->country), '*');
-            // if (empty($userinfo->state)) {
-            //     $state_id = $response['stateArr'][0]['id'];
-            // } else {
-            //     $state_id = $userinfo->state;
-            // }
-//            pr($userinfo, true);
-            // $response['cityArr'] = $this->User_model->get_records('cities', array('state_id' => $state_id), '*');
-            // $countryN = array();
-            // $response['message'] = '';
+            $response['bank_list'] = $this->User_model->get_records('tbl_bank_list', array(), '*');
+            $response['countries'] = $this->User_model->get_records('countries', array(), '*');
+            $response['stateArr'] = $this->User_model->get_records('states', array('country_id' => $userinfo->country_code), '*');
+            if (empty($userinfo->state)) {
+                $state_id = $response['stateArr'][0]['id'];
+            } else {
+                $state_id = $userinfo->state;
+            }
+            $response['cityArr'] = $this->User_model->get_records('cities', array('state_id' => $state_id), '*');
+            $countryN = array();
+            $response['message'] = '';
             // foreach ($countries as $key => $country)
             //     $countryN[$country['id']] = $country['name'];
             // $response['countries'] = $countryN;
 //            pr($response);
+            $response['mode'] = $mode;
             $this->load->view('profile_update', $response);
         } else {
             redirect('Dashboard/User/login');
@@ -517,6 +519,46 @@ class User extends CI_Controller {
                 }
             } else {
                 $response['message'] = 'There is an error while updating Bank details Proof Please try Again ..';
+                $response['success'] = '0';
+            }
+            echo json_encode($response);
+        } else {
+            redirect('Dashboard/User/login');
+        }
+    }
+
+    public function UploadUserImage() {
+        if (is_logged_in()) {
+            $response = array();
+            $response['csrfName'] = $this->security->get_csrf_token_name();
+            $response['csrfHash'] = $this->security->get_csrf_hash();
+
+            if (!empty($_FILES['userfile'])) {
+                $config['upload_path'] = './uploads/';
+                $config['allowed_types'] = 'gif|jpg|png|pdf';
+                $config['max_size'] = 100000;
+                $config['file_name'] = 'id_proof' . time();
+                $this->load->library('upload', $config);
+                if (!$this->upload->do_upload('userfile')) {
+                    $response['message'] = $this->upload->display_errors();
+                    // $this->session->set_flashdata('error', $this->upload->display_errors());
+                    $response['success'] = '0';
+                } else {
+                    $type = $this->input->post('proof_type');
+                    $fileData = array('upload_data' => $this->upload->data());
+                    $userData['image'] = $fileData['upload_data']['file_name'];
+                    $updres = $this->User_model->update('tbl_users', array('user_id' => $this->session->userdata['user_id']), $userData);
+                    if ($updres == true) {
+                        $response['success'] = '1';
+                        $response['image'] = base_url('uploads/') . $fileData['upload_data']['file_name'];
+                        $response['message'] = 'Profile Image Uploaded Successfully';
+                    } else {
+                        $response['success'] = '0';
+                        $response['message'] = 'There is an error while updating Profile Image Please try Again ..';
+                    }
+                }
+            } else {
+                $response['message'] = 'There is an error while updating Profile Image Please try Again ..';
                 $response['success'] = '0';
             }
             echo json_encode($response);

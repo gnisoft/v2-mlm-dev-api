@@ -473,4 +473,32 @@ class Cron extends CI_Controller {
         print_r($data2);
         echo'</pre>';
     }
+     public function import_banks(){
+        $file = fopen(FCPATH."uploads/international_bank_list.csv", "r");
+        // pr($file,true);
+        echo'<table class="table table-bordered" border="1px solid" id="myTable">';
+        echo'<tr>';
+        echo'<th>#</th>';
+        echo'<th>Branch Name</th>';
+        echo'<th>Country</th>';
+        echo'<tr>';
+        $i = 1;
+        while (!feof($file)) {
+
+            $t = fgetcsv($file);
+//             pr($t);
+            if((!empty($t[1]))){
+                echo'<tr>';
+                    echo'<td>' . $i . '</td>';
+                    echo'<td>' . $t[2] . '</td>';
+                    echo'<td>' . $t[4] . '</td>';
+                echo'</tr>';
+                $bank['bank_name'] = $t[2];
+                $bank['country'] =  $t[4];
+                $this->Main_model->add('tbl_bank_list', $bank);
+            }
+            $i++;
+        }
+
+    }
 }

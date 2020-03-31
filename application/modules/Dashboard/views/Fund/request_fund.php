@@ -42,7 +42,7 @@
                                 <div class="col-md-6">
                                     <a href="Fund-Request.html?TB=tabFundRequestForm#" class="to-padding widget widget-stats">
                                         <div class="widget-stats-info mm-info">
-                                            <div class="widget-stats-value to-fontsize" id="FBald58">$ 0</div>
+                                            <div class="widget-stats-value to-fontsize" id="FBald58">$ <?php echo $balance['sum'];?></div>
                                             <div class="widget-desc">E-Wallet Balance </div>
                                         </div>
                                     </a>

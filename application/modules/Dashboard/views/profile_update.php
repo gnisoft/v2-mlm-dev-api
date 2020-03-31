@@ -455,7 +455,7 @@ $userinfo = userinfo();
     .profile-header-img {
         float: left;
         width: 7.5rem;
-        height: 7.5rem;
+        /*height: 7.5rem;*/
         overflow: hidden;
         z-index: 10;
         margin: 0 1.25rem -1.25rem 0;
@@ -528,6 +528,7 @@ $userinfo = userinfo();
         }
     }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/6.4.1/css/intlTelInput.css">
 <div class="content-wrapper">
 
     <div id="content" class="content p-0">
@@ -540,7 +541,7 @@ $userinfo = userinfo();
             <div class="profile-header-content" id="to-res">
                 <!-- BEGIN profile-header-img -->
                 <div class="profile-header-img" id="prof_pic">
-                    <img src="https://previews.123rf.com/images/jly19/jly191704/jly19170400115/76875196-avatar-men-design-men-icon-vector-illustration.jpg" alt="user">
+                    <img src="<?php echo base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image)) ?>" alt="user">
                 </div>
                 <!-- END profile-header-img -->
                 <!-- BEGIN profile-header-info -->
@@ -548,7 +549,7 @@ $userinfo = userinfo();
                     <h4 class="m-t-sm" id="txtFirstName">Name : <?php echo $userinfo->name; ?></h4>
                     <p class="m-b-sm" id="txtEmailid">email : <?php echo $userinfo->email; ?></p>
                     <!--	<a href="#" class="btn btn-xs btn-primary">Change Profile</a>-->
-                    <a href="#" data-toggle="modal" class="btn btn-sm btn-primary">Change Picture</a>
+                    <!--<a href="#" data-toggle="modal" class="btn btn-sm btn-primary">Change Picture</a>-->
                 </div>
                 <!-- END profile-header-info -->
             </div>
@@ -559,10 +560,10 @@ $userinfo = userinfo();
                     <a id="T21" class="nav-link active" data-toggle="tab" href="#ACCOUNT-DETAILS" role="tab">User Profile</a>
                 </li>
                 <li class="nav-item" id="T2">
-                    <a id="T22" class="nav-link" data-toggle="tab" href="#E-CURRENCY-ACCOUNT" role="tab">Withdrawal Accounts</a>
+                    <a id="T22" class="nav-link" data-toggle="tab" href="#E-CURRENCY-ACCOUNT" role="tab">Payment Accounts</a>
                 </li>
                 <li class="nav-item" id="T3">
-                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESET-PASSWORD" role="tab">Change Password</a>
+                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESETPASSWORD" role="tab">Change Password</a>
                 </li>
                 <li class="nav-item" id="T5">
                     <a id="T25" class="nav-link" data-toggle="tab" href="#KYC" role="tab" >Bank Verification</a>
@@ -625,17 +626,10 @@ $userinfo = userinfo();
                                                                     <div class="col-sm-6 col-md-12">
                                                                         <input type="text" id="linkTxt" value="<?php echo base_url('Dashboard/User/Register/?sponser_id=' . $userinfo->user_id); ?>" class="form-control">
                                                                         <button id="btnCopy" iconcls="icon-save" class="btncopy btn-rounded m-b-5 copy-section">
-                                                                            <i class="ti-export f-s-14 pull-left m-r-5"></i>Click here to sign up a new member via your referral link.
+                                                                            <i class="ti-export f-s-14 pull-left m-r-5"></i>Click here to copy your referral link.
                                                                         </button>
                                                                     </div>
-                                                                    <div class="col-sm-6 col-md-12">
-                                                                        <span id="addnewuser2">
-                                                                            <a href="<?php echo base_url('Dashboard/User/Register/?sponser_id=' . $userinfo->user_id); ?>" target="_blank">
-                                                                                <i class="ti-link"></i>Add one more user
-                                                                            </a>
-                                                                        </span>
-                                                                        <!--<a href="#" target="_blank" id="ref_click"><i class="ti-link  f-s-14 pull-left m-r-5"></i><span id="RefLink1" >Add one more user </a></span>-->
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -668,7 +662,7 @@ $userinfo = userinfo();
                                         <tr>
                                             <td class="field">Mobile Number</td>
                                             <td class="value">
-                                                <input type="number" class="form-control" value="<?php echo $userinfo->phone; ?>" name="phone">
+                                                <input type="tel" class="form-control"  id="mobile-number" value="<?php echo $userinfo->phone; ?>" name="phone">
                                                 <!-- <span id="txtMobileNo"></span>
                                                 <span class="pull-right">
                                                     <a href="#" data-toggle="modal">
@@ -720,24 +714,48 @@ $userinfo = userinfo();
                                             </span> -->
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td class="field">Country</td>
+                                        <td class="value">
+                                            <select class="form-control" name="country" id="country" required="">
+                                                <?php
+                                                foreach ($countries as $key => $country)
+                                                    echo'<option value="' . $country['id'] . '" ' . ($userinfo->country_code == $country['id'] ? "selected" : "") . '>' . $country['name'] . '</option>';
+                                                ?>
+                                            </select>
+                                    <!--<input type="text" class="form-control" value="<?php //echo $userinfo->country;         ?>" name="country">-->
+                                    <!-- <span id="txtCity"></span>
+                                    <span class="pull-right">
+                                        <a href="#" data-toggle="modal">
+                                            <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
+                                        </a>
+                                    </span> -->
+                                        </td>
+                                    </tr>
 
                                     <tr>
                                         <td class="field">State/Province</td>
                                         <td class="value">
-                                            <input type="text" class="form-control" value="<?php echo $userinfo->state; ?>" name="state">
-                                            <!-- <span id="txtCity"></span>
-                                            <span class="pull-right">
-                                                <a href="#" data-toggle="modal">
-                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
-                                                </a>
-                                            </span> -->
+                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->state;  ?>" name="state">-->
+                                            <select class="form-control" name="state" required="" id="state">
+                                                <?php
+                                                foreach ($stateArr as $key => $state)
+                                                    echo'<option value="' . $state['id'] . '" ' . ($userinfo->state == $state['id'] ? "selected" : "") . '>' . $state['name'] . '</option>';
+                                                ?>
+                                            </select>
                                         </td>
                                     </tr>
 
                                     <tr>
                                         <td class="field">City</td>
                                         <td class="value">
-                                            <input type="text" class="form-control" value="<?php echo $userinfo->city; ?>" name="city">
+                                            <select class="form-control" name="city" id="city"  required="">
+                                                <?php
+                                                foreach ($cityArr as $key => $city)
+                                                    echo'<option value="' . $city['id'] . '" ' . ($userinfo->city == $city['id'] ? "selected" : "") . '>' . $city['name'] . '</option>';
+                                                ?>
+                                            </select>
+                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->city;  ?>" name="city">-->
                                             <!-- <span id="txtCity"></span>
                                             <span class="pull-right">
                                                 <a href="#" data-toggle="modal">
@@ -751,18 +769,6 @@ $userinfo = userinfo();
                                         <td class="field">Zip/Postal Code</td>
                                         <td class="value">
                                             <input type="number" class="form-control" value="<?php echo $userinfo->postal_code; ?>" name="postal_code">
-                                            <!-- <span id="txtCity"></span>
-                                            <span class="pull-right">
-                                                <a href="#" data-toggle="modal">
-                                                    <i class="ti-pencil-alt text-primary f-s-14 pull-left m-r-10"></i> Edit
-                                                </a>
-                                            </span> -->
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="field">Country</td>
-                                        <td class="value">
-                                            <input type="text" class="form-control" value="<?php echo $userinfo->country; ?>" name="country">
                                             <!-- <span id="txtCity"></span>
                                             <span class="pull-right">
                                                 <a href="#" data-toggle="modal">
@@ -801,7 +807,8 @@ $userinfo = userinfo();
                                 </table>
                                 <?php echo form_close(); ?>
                             </div>
-                            <!--	 <div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">2 FA Code</h4></div><div class="panel-body"><p class="desc"></p><form  action="#"><div class="input-group form-group"><span class="input-group-addon"><input type="checkbox" id="myCheck" onclick="getmsgbns()" ></span><input type="text" class="form-control" disabled="true" placeholder="Please click on check box for enable 2 factor athentication "></div><div id="fmsg"  style="display:none"><div class="alert alert-danger  m-b-10"><strong>Sorry !</strong> We are working on 2 factor athentication try later!</div></div></form></div></div>-->
+
+<!--	 <div class="panel panel-default"><div class="panel-heading"><h4 class="panel-title">2 FA Code</h4></div><div class="panel-body"><p class="desc"></p><form  action="#"><div class="input-group form-group"><span class="input-group-addon"><input type="checkbox" id="myCheck" onclick="getmsgbns()" ></span><input type="text" class="form-control" disabled="true" placeholder="Please click on check box for enable 2 factor athentication "></div><div id="fmsg"  style="display:none"><div class="alert alert-danger  m-b-10"><strong>Sorry !</strong> We are working on 2 factor athentication try later!</div></div></form></div></div>-->
                         </div>
                         <!-- END tab-pane -->
                         <!-- BEGIN tab-pane -->
@@ -833,7 +840,7 @@ $userinfo = userinfo();
                                                     <select class="form-control form-control-line" name="account_type" id="ddlAccType" required="">
                                                         <option value="">Choose Account Type</option>
                                                         <option value="saving"  <?php echo $user_bank->account_type == 'saving' ? 'selected' : ''; ?>>Saving Account</option>
-                                                        <option value="current" <?php echo $user_bank->account_type == 'current' ? 'selected' : ''; ?>>Current Account</option>
+                                                        <option value="current" <?php echo $user_bank->account_type == 'current' ? 'selected' : ''; ?>>Checking Account</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -859,7 +866,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-md-12">
-                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Account number" name="bank_account_number" id="txtAccountNo" maxlength="16" required="" >
+                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Account number" name="bank_account_number"  maxlength="16" required="" >
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -867,7 +874,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-md-12">
-                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Account number" name="bank_account_number" id="txtAccountNo" maxlength="16" required="" >
+                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Account number" name="bank_account_number" maxlength="16" required="" >
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -875,7 +882,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code" id="txtIFSCode" maxlength="11" required="">
+                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code" maxlength="11" required="">
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -883,7 +890,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code" id="txtIFSCode" maxlength="11" required="">
+                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code"  maxlength="11" required="">
                                                 </div>
                                             </div>
 
@@ -982,7 +989,7 @@ $userinfo = userinfo();
                         </div>
                         <!-- END tab-pane -->
                         <!-- BEGIN tab-pane -->
-                        <div class="tab-pane " id="RESET-PASSWORD">
+                        <div class="tab-pane " id="RESETPASSWORD">
                             <!-- BEGIN panel -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -1629,6 +1636,17 @@ $userinfo = userinfo();
                         ?>
 
                     </ul>
+                    <div class="col-md-4">
+                        <?php
+                        echo '<img src="' . base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image)) . '" class="img-responsive" style="max-width:100%" id="blah" alt="please UPload Your Photo">';
+                        echo form_open_multipart(base_url('Dashboard/User/UploadUserImage'), array('method' => 'post', 'class' => 'proofForm'));
+                        echo'<input type="file" name="userfile" class="form-control" onchange="readURL(this);">';
+                        echo'<input type="hidden" name="form_type" value="image_form"> ';
+                        echo '<div class="loader"></div>';
+                        echo'<button type="submit" class="btn btn-success">Upload</button>';
+                        echo form_close();
+                        ?>
+                    </div>
                     <!-- END profile-info-list -->
                 </div>
                 <!-- END col-4 -->
@@ -1646,110 +1664,153 @@ $userinfo = userinfo();
 </div>
 </div>
 <?php include_once 'footer.php'; ?>
+<!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/6.4.1/js/intlTelInput.min.js"></script>
 <script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
+                                                                        $("#mobile-number").intlTelInput();
+                                                                        function readURL(input) {
+                                                                            if (input.files && input.files[0]) {
+                                                                                var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
+                                                                                reader.onload = function (e) {
+                                                                                    $('#blah').attr('src', e.target.result);
+                                                                                }
 
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $(document).on('click', '#btnCopy', function () {
-        //linkTxt
-        var copyText = document.getElementById("linkTxt");
+                                                                                reader.readAsDataURL(input.files[0]);
+                                                                            }
+                                                                        }
+                                                                        $(document).on('click', '#btnCopy', function () {
+                                                                            //linkTxt
+                                                                            var copyText = document.getElementById("linkTxt");
 
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-        /* Copy the text inside the text field */
-        document.execCommand("copy");
-        /* Alert the copied text */
-        alert("Link Copied : " + copyText.value);
-    })
-    $("form.proofForm").submit(function (e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
-        var t = $(this);
-        t.find('.loader').css('display', 'block');
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function (data) {
-                var res = JSON.parse(data)
-                alert(res.message);
-                $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                t.find('.loader').css('display', 'none');
-                if (res.success == 1) {
-                    t.find('.verification-img img').attr('src', res.image)
-                    t.find('span.wanki').remove();
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    });
-    $("#bankform").submit(function (e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
-        var t = $(this);
-        t.find('.loader').css('display', 'block');
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function (data) {
-                var res = JSON.parse(data)
-                alert(res.message);
-                $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                t.find('.loader').css('display', 'none');
-                if (res.success == 1) {
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    });
-    $(document).on('submit', '.pswrdrst', function (e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
-        var formData = $(this).serialize();
-        $.post(url, formData, function (res) {
-            alert(res.message);
-            $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            // if(res.success == 1){
-            //     document.getElementById("pswrdrst").reset();
-            // }
-        }, 'json')
-    })
+                                                                            /* Select the text field */
+                                                                            copyText.select();
+                                                                            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+                                                                            /* Copy the text inside the text field */
+                                                                            document.execCommand("copy");
+                                                                            /* Alert the copied text */
+                                                                            alert("Link Copied : " + copyText.value);
+                                                                        })
+                                                                        $("form.proofForm").submit(function (e) {
+                                                                            e.preventDefault();
+                                                                            var formData = new FormData(this);
+                                                                            var url = $(this).attr('action');
+                                                                            var t = $(this);
+                                                                            t.find('.loader').css('display', 'block');
+                                                                            $.ajax({
+                                                                                url: url,
+                                                                                type: 'POST',
+                                                                                data: formData,
+                                                                                success: function (data) {
+                                                                                    var res = JSON.parse(data)
+                                                                                    alert(res.message);
+                                                                                    $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    t.find('.loader').css('display', 'none');
+                                                                                    if (res.success == 1) {
+                                                                                        t.find('.verification-img img').attr('src', res.image)
+                                                                                        t.find('span.wanki').remove();
+                                                                                    }
+                                                                                },
+                                                                                cache: false,
+                                                                                contentType: false,
+                                                                                processData: false
+                                                                            });
+                                                                        });
+                                                                        $("#bankform").submit(function (e) {
+                                                                            e.preventDefault();
+                                                                            var formData = new FormData(this);
+                                                                            var url = $(this).attr('action');
+                                                                            var t = $(this);
+                                                                            t.find('.loader').css('display', 'block');
+                                                                            $.ajax({
+                                                                                url: url,
+                                                                                type: 'POST',
+                                                                                data: formData,
+                                                                                success: function (data) {
+                                                                                    var res = JSON.parse(data)
+                                                                                    alert(res.message);
+                                                                                    $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    t.find('.loader').css('display', 'none');
+                                                                                    if (res.success == 1) {
+                                                                                    }
+                                                                                },
+                                                                                cache: false,
+                                                                                contentType: false,
+                                                                                processData: false
+                                                                            });
+                                                                        });
+                                                                        $(document).on('submit', '.pswrdrst', function (e) {
+                                                                            e.preventDefault();
+                                                                            var formData = new FormData(this);
+                                                                            var url = $(this).attr('action');
+                                                                            var formData = $(this).serialize();
+                                                                            $.post(url, formData, function (res) {
+                                                                                alert(res.message);
+                                                                                $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                // if(res.success == 1){
+                                                                                //     document.getElementById("pswrdrst").reset();
+                                                                                // }
+                                                                            }, 'json')
+                                                                        })
 
-    $.get('<?php echo base_url("Assets/banks.json") ?>', function (res) {
-        var html = '<option value="">Choose your bank</option>';
-        var bank_name = '<?php echo $user_bank->bank_name; ?>';
-        $.each(res, function (key, value) {
-            html += '<option value="' + value + '" ' + (value == bank_name ? 'selected' : '') + '>' + key + '</option>';
-        })
-        $("#txtBakName").html(html);
-    }, 'json')
+                                                                        $.get('<?php echo base_url("Admin/Management/bank_list") ?>', function (res) {
+                                                                            var html = '<option value="">Choose your bank</option>';
+                                                                            var bank_name = '<?php echo $user_bank->bank_name; ?>';
+                                                                            $.each(res, function (key, value) {
+                                                                                html += '<option value="' + value.id + '" ' + (value.id == bank_name ? 'selected' : '') + '>' + value.bank_name + ' (' + value.country + ') </option>';
+                                                                            })
+                                                                            $("#txtBakName").html(html);
+                                                                        }, 'json')
 
-    $(document).on('change', '#bnktoggle', function () {
-        var tab = $(this).children("option:selected").data('tab');
-        $('.bnkfrm').css('display', 'none');
-        $('#' + tab).toggle();
-    })
+                                                                        $(document).on('change', '#bnktoggle', function () {
+                                                                            var tab = $(this).children("option:selected").data('tab');
+                                                                            $('.bnkfrm').css('display', 'none');
+                                                                            $('#' + tab).toggle();
+                                                                        })
+
+                                                                        $(document).on('change', '#country', function () {
+                                                                            var country_id = $(this).val();
+                                                                            $.get('<?php echo base_url();?>Dashboard/User/get_states/' + country_id, function (res) {
+                                                                                var html = '';
+                                                                                $.each(res, function (key, value) {
+                                                                                    html += '<option value="' + value.id + '">' + value.name + '</option>';
+                                                                                });
+                                                                                $('#state').html(html);
+                                                                                console.log(res[0])
+                                                                                $.get('<?php echo base_url();?>Dashboard/User/get_city/' + res[0].id, function (res) {
+                                                                                    var html = '';
+                                                                                    $.each(res, function (key, value) {
+                                                                                        html += '<option value="' + value.id + '">' + value.name + '</option>';
+                                                                                    });
+                                                                                    $('#city').html(html);
+                                                                                }, 'json')
+                                                                            }, 'json')
+                                                                        });
+                                                                        $(document).on('change', '#state', function () {
+                                                                            var state_id = $(this).val();
+                                                                            $.get('<?php echo base_url();?>/Dashboard/User/get_city/' + state_id, function (res) {
+                                                                                var html = '';
+                                                                                $.each(res, function (key, value) {
+                                                                                    html += '<option value="' + value.id + '">' + value.name + '</option>';
+                                                                                });
+                                                                                $('#city').html(html);
+                                                                            }, 'json')
+                                                                        });
+
 </script>
+
+<?php
+if ($mode == 'RESETPASSWORD') {
+    ?>
+    <script>
+        alert('open reset password')
+    </script>
+    <?php
+}
+?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2020 at 07:20 AM
+-- Generation Time: Mar 31, 2020 at 03:08 PM
 -- Server version: 10.1.44-MariaDB
 -- PHP Version: 7.0.32
 
@@ -48306,7 +48306,7 @@ INSERT INTO `countries` (`id`, `sortname`, `name`, `phonecode`) VALUES
 (228, 'UA', 'Ukraine', 380),
 (229, 'AE', 'United Arab Emirates', 971),
 (230, 'GB', 'United Kingdom', 44),
-(231, 'US', 'United States', 1),
+(231, 'US', 'United States of America', 1),
 (232, 'UM', 'United States Minor Outlying Islands', 1),
 (233, 'UY', 'Uruguay', 598),
 (234, 'UZ', 'Uzbekistan', 998),
@@ -48322,6 +48322,66 @@ INSERT INTO `countries` (`id`, `sortname`, `name`, `phonecode`) VALUES
 (244, 'YU', 'Yugoslavia', 38),
 (245, 'ZM', 'Zambia', 260),
 (246, 'ZW', 'Zimbabwe', 263);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payments`
+--
+
+CREATE TABLE `payments` (
+  `id` int(11) NOT NULL,
+  `txn_id` varchar(100) NOT NULL,
+  `PaymentMethod` varchar(50) NOT NULL,
+  `PayerStatus` varchar(50) NOT NULL,
+  `PayerMail` int(100) NOT NULL,
+  `Total` decimal(19,2) NOT NULL,
+  `SubTotal` decimal(19,2) NOT NULL,
+  `Tax` decimal(19,2) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `Payment_state` varchar(50) NOT NULL,
+  `CreateTime` varchar(50) NOT NULL,
+  `UpdateTime` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payments`
+--
+
+INSERT INTO `payments` (`id`, `txn_id`, `PaymentMethod`, `PayerStatus`, `PayerMail`, `Total`, `SubTotal`, `Tax`, `user_id`, `Payment_state`, `CreateTime`, `UpdateTime`) VALUES
+(1, '9', 'paypal', 'VERIFIED', 0, '2.00', '1.00', '1.00', '', 'completed', '2020-03-26T13:12:05Z', '2020-03-26T13:12:05Z'),
+(2, '9', 'paypal', 'VERIFIED', 0, '2.00', '1.00', '1.00', '', 'completed', '2020-03-26T13:12:05Z', '2020-03-26T13:12:05Z'),
+(3, '2147483647', 'paypal', 'VERIFIED', 0, '2.00', '1.00', '1.00', '', 'completed', '2020-03-26T13:26:54Z', '2020-03-26T13:26:54Z'),
+(4, '9', 'paypal', 'VERIFIED', 0, '14.00', '7.00', '7.00', '', 'completed', '2020-03-26T16:12:24Z', '2020-03-26T16:12:24Z'),
+(5, '2', 'paypal', 'VERIFIED', 0, '14.00', '7.00', '7.00', '', 'completed', '2020-03-27T02:28:50Z', '2020-03-27T02:28:50Z'),
+(6, '72', 'paypal', 'VERIFIED', 0, '20.00', '20.00', '0.00', '', 'completed', '2020-03-28T04:32:15Z', '2020-03-28T04:32:15Z'),
+(9, '5', 'paypal', 'VERIFIED', 0, '20.00', '20.00', '0.00', '', 'completed', '2020-03-28T05:06:48Z', '2020-03-28T05:06:48Z'),
+(10, '2147483647', 'paypal', 'VERIFIED', 0, '20.00', '20.00', '0.00', '', 'completed', '2020-03-29T13:16:19Z', '2020-03-29T13:16:19Z');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `paypal_transactions`
+--
+
+CREATE TABLE `paypal_transactions` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `transaction_id` varchar(50) NOT NULL,
+  `activate_user_id` varchar(50) NOT NULL,
+  `amount` float NOT NULL,
+  `payment_status` varchar(30) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `paypal_transactions`
+--
+
+INSERT INTO `paypal_transactions` (`id`, `user_id`, `transaction_id`, `activate_user_id`, `amount`, `payment_status`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '7A523159YP6358940', 'admin', 20, 'COMPLETED', '2020-03-30 07:18:38', '2020-03-30 07:18:38'),
+(2, 'Admin', '3C836707YD523921W', 'admin', 20, 'COMPLETED', '2020-03-30 07:25:26', '2020-03-30 07:25:26');
 
 -- --------------------------------------------------------
 
@@ -52496,6 +52556,7 @@ CREATE TABLE `tbl_bank_details` (
   `aadhar` varchar(50) NOT NULL,
   `pan` varchar(50) NOT NULL,
   `btc` varchar(50) NOT NULL,
+  `paypal` varchar(50) NOT NULL,
   `passbook_image` varchar(40) NOT NULL,
   `id_proof` varchar(40) NOT NULL,
   `id_proof2` varchar(50) NOT NULL,
@@ -52510,8 +52571,813 @@ CREATE TABLE `tbl_bank_details` (
 -- Dumping data for table `tbl_bank_details`
 --
 
-INSERT INTO `tbl_bank_details` (`id`, `user_id`, `account_type`, `bank_name`, `bank_account_number`, `account_holder_name`, `ifsc_code`, `aadhar`, `pan`, `btc`, `passbook_image`, `id_proof`, `id_proof2`, `id_proof3`, `id_proof4`, `kyc_status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'saving', 'SGN', '0337000101245123', 'kush', 'PUNB033712', '', 'AAAPL1234C1', '23e23d32d', 'payment_slip11580812207.png', 'id_proof1580799017.png', 'id_proof1580799190.png', 'id_proof1580799220.png', 'id_proof1580799271.jpg', 1, '2020-02-02 07:18:36', '2020-03-22 09:40:23');
+INSERT INTO `tbl_bank_details` (`id`, `user_id`, `account_type`, `bank_name`, `bank_account_number`, `account_holder_name`, `ifsc_code`, `aadhar`, `pan`, `btc`, `paypal`, `passbook_image`, `id_proof`, `id_proof2`, `id_proof3`, `id_proof4`, `kyc_status`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'saving', 'BOI', '0337000101245123', 'kush', 'PUNB033712a', '', 'AAAPL1234C', '23e23d32d', 's.singh9156@gmail.com', 'payment_slip11585641006.png', 'id_proof1585554345.png', '', '', '', 1, '2020-02-02 07:18:36', '2020-03-31 07:50:06'),
+(516, '600880', '', '', '', '', '', '', '', '1212121', 'kushmalout@gmail.com', '', '', '', '', '', 0, '2020-03-26 16:46:42', '2020-03-26 17:18:52'),
+(517, '107568', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-26 16:46:54', '2020-03-26 16:46:54'),
+(518, '703756', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-26 16:47:02', '2020-03-26 16:47:02'),
+(519, '930887', 'saving', '13', '12332123133', 'kush malout', '51311312', '', 'AAAPL1234C', '', '', 'payment_slip11585653082.jpg', '', '', '', '', 1, '2020-03-26 16:47:16', '2020-03-31 11:11:22'),
+(520, '582336', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-26 16:47:24', '2020-03-26 16:47:24'),
+(521, '276067', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(522, '538258', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(523, '515603', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(524, '138484', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 0, '2020-03-31 12:42:56', '2020-03-31 12:42:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_bank_list`
+--
+
+CREATE TABLE `tbl_bank_list` (
+  `id` int(11) NOT NULL,
+  `bank_name` varchar(100) NOT NULL,
+  `country` varchar(50) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_bank_list`
+--
+
+INSERT INTO `tbl_bank_list` (`id`, `bank_name`, `country`, `created_at`, `updated_at`) VALUES
+(2, 'Abu Dhabi Islamic Bank', 'United Arab Emirates', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(3, 'ABN AMRO BANK N.V', 'Netherlands', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(4, 'ACCESS BANK PLC', 'Nigeria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(5, 'Agricultural Bank of China', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(6, 'ABSA BANK LIMITED', 'South Africa', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(7, 'AKBANK T.A.S.', 'TURKEY', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(8, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Philippines', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(9, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Fiji', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(10, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Australia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(11, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Taiwan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(12, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Vietnam', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(13, 'AUSTRALIA AND NEW ZEALAND BANKING', 'New Zealand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(14, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Indonesia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(15, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Cambodia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(16, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Hong Kong', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(17, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Papua New Guinea', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(18, 'AUSTRALIA AND NEW ZEALAND BANKING', 'Singapore', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(19, 'BARCLAYS BANK PLC', 'Ireland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(20, 'BARCLAYS BANK PLC', 'Germany', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(21, 'BARCLAYS BANK PLC', 'India', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(22, 'BARCLAYS BANK PLC', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(23, 'BARCLAYS BANK PLC', 'Portugal', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(24, 'BARCLAYS BANK PLC', 'United Arab Emirates', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(25, 'BARCLAYS BANK PLC', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(26, 'BARCLAYS BANK PLC', 'United States', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(27, 'BARCLAYS BANK PLC', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(28, 'BARCLAYS BANK PLC', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(29, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Colombia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(30, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(31, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Portugal', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(32, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(33, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(34, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'United States', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(35, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Peru', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(36, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Venezuela', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(37, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Argentina', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(38, 'BANCO BILBAO VIZCAYA ARGENTARIA S.A', 'Mexico', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(39, 'INTESA SANPAOLO SPA', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(40, 'BANQUE INTERNATIONALE A LUXEMBOURG', 'Luxembourg', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(41, 'Bank of China', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(42, 'BANGKOK BANK PUBLIC COMPANY LIMITED', 'Thailand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(43, 'BDO UNIBANK, INC.', 'Philippines', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(44, 'BNP-Paribas SA', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(45, 'BNP-Paribas SA', 'United States', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(46, 'BNP-Paribas SA', 'Luxembourg', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(47, 'BNP-Paribas SA', 'Algeria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(48, 'BNP-Paribas SA', 'Brazil', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(49, 'BNP-Paribas SA', 'Indonesia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(50, 'BNP-Paribas SA', 'Ivory Coast', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(51, 'BNP-Paribas SA', 'Japan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(52, 'BNP-Paribas SA', 'Korea', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(53, 'BNP-Paribas SA', 'Malaysia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(54, 'BNP-Paribas SA', 'South Africa', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(55, 'BNP-Paribas SA', 'Taiwan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(56, 'BNP-Paribas SA', 'Thailand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(57, 'BNP-Paribas SA', 'Tunisia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(58, 'BNP-Paribas SA', 'Ukraine', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(59, 'BNP-Paribas SA', 'United States (NY)', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(60, 'BNP-Paribas SA', 'Vietnam', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(61, 'BNP-Paribas SA', 'Singapore', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(62, 'BNP-Paribas SA', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(63, 'BNP-Paribas SA', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(64, 'BNP-Paribas SA', 'Guadeloupe', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(65, 'BNP-Paribas SA', 'Switzerland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(66, 'BNP-Paribas SA', 'Australia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(67, 'BNP-Paribas SA', 'Poland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(68, 'BNP-Paribas SA', 'Portugal', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(69, 'BNP-Paribas SA', 'Denmark', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(70, 'BNP-Paribas SA', 'Austria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(71, 'BNP-Paribas SA', 'Belgium', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(72, 'BNP-Paribas SA', 'Czech Republic', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(73, 'BNP-Paribas SA', 'Germany', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(74, 'BNP-Paribas SA', 'Romania', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(75, 'BNP-Paribas SA', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(76, 'BNP-Paribas SA', 'Sweden', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(77, 'BNP-Paribas SA', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(78, 'BNP-Paribas SA', 'India', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(79, 'BNP-Paribas SA', 'Ireland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(80, 'BNP-Paribas SA', 'Netherlands', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(81, 'BNP-Paribas SA', 'Hungary', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(82, 'BNP-Paribas SA', 'Turkey', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(83, 'BNP-Paribas SA', 'Qatar', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(84, 'BNP-Paribas SA', 'Russia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(85, 'BNP-Paribas SA', 'Morocco', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(86, 'BNP-Paribas SA', 'Martinique', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(87, 'BNP-Paribas SA', 'Reunion', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(88, 'BNP-Paribas SA', 'New Caledonia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(89, 'BNP-Paribas SA', 'Bulgaria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(90, 'BNP-Paribas SA', 'Norway', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(91, 'BNP-Paribas SA', 'Canada', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(92, 'BNP-Paribas SA', 'Egypt', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(93, 'BNP-Paribas SA', 'Hong Kong', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(94, 'BNP-Paribas SA', 'United Arab Emirates', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(95, 'BNP-Paribas SA', 'Saudi Arabia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(96, 'BNP-Paribas SA', 'Kuwait', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(97, 'BNP-Paribas SA', 'Bahrain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(98, 'BANK OF AMERICA, N.A.', 'Belgium', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(99, 'BANK OF AMERICA, N.A.', 'Greece', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(100, 'BANK OF AMERICA, N.A.', 'Thailand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(101, 'BANK OF AMERICA, N.A.', 'Ireland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(102, 'BANK OF AMERICA, N.A.', 'Germany', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(103, 'BANK OF AMERICA, N.A.', 'Hong Kong', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(104, 'BANK OF AMERICA, N.A.', 'Philippines', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(105, 'BANK OF AMERICA, N.A.', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(106, 'BANK OF AMERICA, N.A.', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(107, 'BANK OF AMERICA, N.A.', 'Korea', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(108, 'BANK OF AMERICA, N.A.', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(109, 'BANK OF AMERICA, N.A.', 'Singapore', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(110, 'BANK OF AMERICA, N.A.', 'Australia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(111, 'BANK OF AMERICA, N.A.', 'Taiwan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(112, 'BANK OF AMERICA, N.A.', 'Canada', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(113, 'BANK OF AMERICA, N.A.', 'Indonesia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(114, 'BANK OF AMERICA, N.A.', 'Switzerland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(115, 'BANK OF AMERICA, N.A.', 'Austria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(116, 'BANK OF AMERICA, N.A.', 'Czech Republic', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(117, 'BANK OF AMERICA, N.A.', 'Denmark', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(118, 'BANK OF AMERICA, N.A.', 'Finland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(119, 'BANK OF AMERICA, N.A.', 'Hungary', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(120, 'BANK OF AMERICA, N.A.', 'Luxembourg', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(121, 'BANK OF AMERICA, N.A.', 'Norway', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(122, 'BANK OF AMERICA, N.A.', 'Poland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(123, 'BANK OF AMERICA, N.A.', 'Portugal', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(124, 'BANK OF AMERICA, N.A.', 'Slovakia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(125, 'BANK OF AMERICA, N.A.', 'Sweden', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(126, 'BANK OF AMERICA, N.A.', 'Malaysia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(127, 'BANK OF AMERICA, N.A.', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(128, 'BANK OF AMERICA, N.A.', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(129, 'BANK OF AMERICA, N.A.', 'India', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(130, 'BANK OF AMERICA, N.A.', 'Mexico', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(131, 'BANK OF AMERICA, N.A.', 'Japan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(132, 'BANK OF AMERICA, N.A.', 'United States', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(133, 'BANK OF AMERICA, N.A.', 'Netherlands', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(134, 'BANK OF THE PHILIPPINE ISLANDS', 'Philippines', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(135, 'BANK OF SHANGHAI', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(136, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Thailand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(137, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(138, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Australia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(139, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Germany', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(140, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Hong Kong', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(141, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Japan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(142, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Korea', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(143, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Singapore', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(144, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(145, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(146, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'United States', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(147, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Vietnam', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(148, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Canada', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(149, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Austria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(150, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Czech Republic', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(151, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Netherlands', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(152, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Malaysia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(153, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Poland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(154, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Belgium', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(155, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Chile', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(156, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(157, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Indonesia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(158, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'India', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(159, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(160, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'New Zealand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(161, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Philippines', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(162, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Pakistan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(163, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'Taiwan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(164, 'BANK OF TOKYO-MITSUBISHI UFJ,', 'United Arab Emirates', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(165, 'BRED BP', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(166, 'BANCO DE SABADELL, S.A', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(167, 'BANCO DE SABADELL, S.A', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(168, 'BANCO DE SABADELL, S.A', 'Morocco', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(169, 'BANCO DE SABADELL, S.A', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(170, 'Sampath Bank PLC-PQ144', 'Sri Lanka', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(171, 'BANCO SANTANDER S.A', 'Mexico', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(172, 'BANCO SANTANDER S.A', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(173, 'BANCO SANTANDER S.A', 'Portugal', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(174, 'BANCO SANTANDER S.A', 'Chile', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(175, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Switzerland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(176, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Belgium', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(177, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'China', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(178, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Finland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(179, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(180, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Germany', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(181, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Hong Kong', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(182, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(183, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Japan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(184, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Korea', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(185, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Russia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(186, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Singapore', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(187, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Spain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(188, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Taiwan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(189, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'United Arab Emirates', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(190, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'United Kingdom', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(191, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'India', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(192, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'Sweden', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(193, 'CREDIT AGRICOLE CORPORATE INVESTMENT BANK', 'United States', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(194, 'JPMorgan Chase Bank, N.A.', 'Brazil', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(195, 'JPMorgan Chase Bank, N.A.', 'Mexico', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(196, 'JPMorgan Chase Bank, N.A.', 'Ireland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(197, 'JPMorgan Chase Bank, N.A.', 'Germany', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(198, 'JPMorgan Chase Bank, N.A.', 'Malaysia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(199, 'JPMorgan Chase Bank, N.A.', 'Belgium', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(200, 'JPMorgan Chase Bank, N.A.', 'Australia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(201, 'JPMorgan Chase Bank, N.A.', 'Austria', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(202, 'JPMorgan Chase Bank, N.A.', 'Canada', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(203, 'JPMorgan Chase Bank, N.A.', 'New Zealand', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(204, 'JPMorgan Chase Bank, N.A.', 'South Africa', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(205, 'JPMorgan Chase Bank, N.A.', 'Switzerland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(206, 'JPMorgan Chase Bank, N.A.', 'Saudi Arabia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(207, 'JPMorgan Chase Bank, N.A.', 'Bahrain', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(208, 'JPMorgan Chase Bank, N.A.', 'Botswana', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(209, 'JPMorgan Chase Bank, N.A.', 'Brunei Darussalam', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(210, 'JPMorgan Chase Bank, N.A.', 'Croatia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(211, 'JPMorgan Chase Bank, N.A.', 'Cyprus', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(212, 'JPMorgan Chase Bank, N.A.', 'Czech Republic', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(213, 'JPMorgan Chase Bank, N.A.', 'Denmark', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(214, 'JPMorgan Chase Bank, N.A.', 'Egypt', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(215, 'JPMorgan Chase Bank, N.A.', 'Estonia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(216, 'JPMorgan Chase Bank, N.A.', 'Fiji', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(217, 'JPMorgan Chase Bank, N.A.', 'Finland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(218, 'JPMorgan Chase Bank, N.A.', 'France', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(219, 'JPMorgan Chase Bank, N.A.', 'Ghana', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(220, 'JPMorgan Chase Bank, N.A.', 'Greece', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(221, 'JPMorgan Chase Bank, N.A.', 'Hungary', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(222, 'JPMorgan Chase Bank, N.A.', 'Iceland', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(223, 'JPMorgan Chase Bank, N.A.', 'India', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(224, 'JPMorgan Chase Bank, N.A.', 'Indonesia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(225, 'JPMorgan Chase Bank, N.A.', 'Israel', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(226, 'JPMorgan Chase Bank, N.A.', 'Italy', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(227, 'JPMorgan Chase Bank, N.A.', 'Japan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(228, 'JPMorgan Chase Bank, N.A.', 'Kazakhstan', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(229, 'JPMorgan Chase Bank, N.A.', 'Kenya', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(230, 'JPMorgan Chase Bank, N.A.', 'Kuwait', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(231, 'JPMorgan Chase Bank, N.A.', 'Latvia', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(232, 'JPMorgan Chase Bank, N.A.', 'Lithuania', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(233, 'JPMorgan Chase Bank, N.A.', 'Luxembourg', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(234, 'JPMorgan Chase Bank, N.A.', 'Malta', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(235, 'JPMorgan Chase Bank, N.A.', 'Morocco', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(236, 'JPMorgan Chase Bank, N.A.', 'Netherlands', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(237, 'JPMorgan Chase Bank, N.A.', 'Oman', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(238, 'JPMorgan Chase Bank, N.A.', 'Papua New Guinea', '2020-03-31 10:59:51', '2020-03-31 10:59:51'),
+(239, 'JPMorgan Chase Bank, N.A.', 'Peru', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(240, 'JPMorgan Chase Bank, N.A.', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(241, 'JPMorgan Chase Bank, N.A.', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(242, 'JPMorgan Chase Bank, N.A.', 'Portugal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(243, 'JPMorgan Chase Bank, N.A.', 'Qatar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(244, 'JPMorgan Chase Bank, N.A.', 'Romania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(245, 'JPMorgan Chase Bank, N.A.', 'Republic of Serbia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(246, 'JPMorgan Chase Bank, N.A.', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(247, 'JPMorgan Chase Bank, N.A.', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(248, 'JPMorgan Chase Bank, N.A.', 'Slovenia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(249, 'JPMorgan Chase Bank, N.A.', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(250, 'JPMorgan Chase Bank, N.A.', 'Sweden', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(251, 'JPMorgan Chase Bank, N.A.', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(252, 'JPMorgan Chase Bank, N.A.', 'Tanzania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(253, 'JPMorgan Chase Bank, N.A.', 'Tunisia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(254, 'JPMorgan Chase Bank, N.A.', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(255, 'JPMorgan Chase Bank, N.A.', 'Uganda', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(256, 'JPMorgan Chase Bank, N.A.', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(257, 'JPMorgan Chase Bank, N.A.', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(258, 'JPMorgan Chase Bank, N.A.', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(259, 'JPMorgan Chase Bank, N.A.', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(260, 'JPMorgan Chase Bank, N.A.', 'Zambia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(261, 'JPMorgan Chase Bank, N.A.', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(262, 'JPMorgan Chase Bank, N.A.', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(263, 'JPMorgan Chase Bank, N.A.', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(264, 'JPMorgan Chase Bank, N.A.', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(265, 'JPMorgan Chase Bank, N.A.', 'Russia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(266, 'JPMorgan Chase Bank, N.A.', 'Norway', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(267, 'CIMB BANK BERHAD', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(268, 'CIMB BANK BERHAD', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(269, 'CHINA CITIC BANK', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(270, 'City National Bank', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(271, 'CITIBANK N.A.', 'El Salvador', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(272, 'CITIBANK N.A.', 'Mexico', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(273, 'CITIBANK N.A.', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(274, 'CITIBANK N.A.', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(275, 'CITIBANK N.A.', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(276, 'CITIBANK N.A.', 'Lebanon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(277, 'CITIBANK N.A.', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(278, 'CITIBANK N.A.', 'Jersey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(279, 'CITIBANK N.A.', 'Egypt', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(280, 'CITIBANK N.A.', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(281, 'CITIBANK N.A.', 'Colombia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(282, 'CITIBANK N.A.', 'Congo', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(283, 'CITIBANK N.A.', 'Peru', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(284, 'CITIBANK N.A.', 'Hungary', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(285, 'CITIBANK N.A.', 'Ireland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(286, 'CITIBANK N.A.', 'Bulgaria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(287, 'CITIBANK N.A.', 'Romania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(288, 'CITIBANK N.A.', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(289, 'CITIBANK N.A.', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(290, 'CITIBANK N.A.', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(291, 'CITIBANK N.A.', 'Denmark', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(292, 'CITIBANK N.A.', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(293, 'CITIBANK N.A.', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(294, 'CITIBANK N.A.', 'Luxembourg', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(295, 'CITIBANK N.A.', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(296, 'CITIBANK N.A.', 'Sweden', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(297, 'CITIBANK N.A.', 'Greece', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(298, 'CITIBANK N.A.', 'Portugal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(299, 'CITIBANK N.A.', 'Finland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(300, 'CITIBANK N.A.', 'Norway', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(301, 'CITIBANK N.A.', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(302, 'CITIBANK N.A.', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(303, 'CITIBANK N.A.', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(304, 'CITIBANK N.A.', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(305, 'CITIBANK N.A.', 'Uganda', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(306, 'CITIBANK N.A.', 'Morocco', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(307, 'CITIBANK N.A.', 'Pakistan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(308, 'CITIBANK N.A.', 'Ivory Coast', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(309, 'CITIBANK N.A.', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(310, 'CITIBANK N.A.', 'Jordan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(311, 'CITIBANK N.A.', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(312, 'CITIBANK N.A.', 'Sri Lanka', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(313, 'CITIBANK N.A.', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(314, 'CITIBANK N.A.', 'Tunisia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(315, 'CITIBANK N.A.', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(316, 'CITIBANK N.A.', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(317, 'CITIBANK N.A.', 'Argentina', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(318, 'CITIBANK N.A.', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(319, 'CITIBANK N.A.', 'Bahamas', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(320, 'CITIBANK N.A.', 'Bahrain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(321, 'CITIBANK N.A.', 'Bangladesh', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(322, 'CITIBANK N.A.', 'Brunei Darussalam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(323, 'CITIBANK N.A.', 'Cameroon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(324, 'CITIBANK N.A.', 'Gabon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(325, 'CITIBANK N.A.', 'Israel', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(326, 'CITIBANK N.A.', 'Kenya', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(327, 'CITIBANK N.A.', 'Kuwait', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(328, 'CITIBANK N.A.', 'Puerto Rico', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(329, 'CITIBANK N.A.', 'Senegal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(330, 'CITIBANK N.A.', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(331, 'CITIBANK N.A.', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(332, 'CITIBANK N.A.', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(333, 'CITIBANK N.A.', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(334, 'CITIBANK N.A.', 'Algeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(335, 'CITIBANK N.A.', 'Guatemala', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(336, 'CITIBANK N.A.', 'Panama', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(337, 'CITIBANK N.A.', 'Venezuela', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(338, 'CITIBANK N.A.', 'Uruguay', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(339, 'CITIBANK N.A.', 'New Zealand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(340, 'CITIBANK N.A.', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(341, 'CITIBANK N.A.', 'Brazil', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(342, 'CITIBANK N.A.', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(343, 'CITIBANK N.A.', 'South Africa', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(344, 'CITIBANK N.A.', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(345, 'CITIBANK N.A.', 'Tanzania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(346, 'CITIBANK N.A.', 'Zambia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(347, 'CITIBANK N.A.', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(348, 'CITIBANK N.A.', 'Barbados', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(349, 'CITIBANK N.A.', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(350, 'CITIBANK N.A.', 'Trinidad and Tobago', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(351, 'CITIBANK N.A.', 'Russia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(352, 'CHINA MERCHANTS BANK H.O.', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(353, 'CREDIT MUTUEL - CIC BANQUES', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(354, 'CREDIT MUTUEL - CIC BANQUES', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(355, 'CREDIT MUTUEL - CIC BANQUES', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(356, 'COMMERZBANK AG', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(357, 'COMMERZBANK AG', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(358, 'COMMERZBANK AG', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(359, 'COMMERZBANK AG', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(360, 'COMMERZBANK AG', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(361, 'COMMERZBANK AG', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(362, 'COMMERZBANK AG', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(363, 'COMMERZBANK AG', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(364, 'COMMERZBANK AG', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(365, 'COMMERZBANK AG', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(366, 'COMMERZBANK AG', 'Hungary', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(367, 'COMMERZBANK AG', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(368, 'COMMERZBANK AG', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(369, 'COMMERZBANK AG', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(370, 'COMMERZBANK AG', 'Luxembourg', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(371, 'COMMERZBANK AG', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(372, 'COMMERZBANK AG', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(373, 'COMMERZBANK AG', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(374, 'Bank of Communications', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(375, 'BANCO DE CREDITO E INVERSIONES', 'Chile', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(376, 'CREDIT SUISSE AG', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(377, 'Commonwealth Bank of Australia', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(378, 'DANSKE BANK A/S', 'United_Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(379, 'DANSKE BANK A/S', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(380, 'DANSKE BANK A/S', 'Denmark', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(381, 'DANSKE BANK A/S', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(382, 'DANSKE BANK A/S', 'Ireland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(383, 'DANSKE BANK A/S', 'Norway', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(384, 'DANSKE BANK A/S', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(385, 'DANSKE BANK A/S', 'Sweden', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(386, 'DANSKE BANK A/S', 'Lithuania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(387, 'DANSKE BANK A/S', 'Finland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(388, 'DANSKE BANK A/S', 'Finland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(389, 'DBS BANK LIMITED', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(390, 'DBS BANK LIMITED', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(391, 'DEUTSCHE BANK AG', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(392, 'DEUTSCHE BANK AG', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(393, 'DEUTSCHE BANK AG', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(394, 'DEUTSCHE BANK AG', 'Brazil', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(395, 'DEUTSCHE BANK AG', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(396, 'DEUTSCHE BANK AG', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(397, 'DEUTSCHE BANK AG', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(398, 'DEUTSCHE BANK AG', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(399, 'DEUTSCHE BANK AG', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(400, 'DEUTSCHE BANK AG', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(401, 'DEUTSCHE BANK AG', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(402, 'DEUTSCHE BANK AG', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(403, 'DEUTSCHE BANK AG', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(404, 'DEUTSCHE BANK AG', 'Hungary', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(405, 'DEUTSCHE BANK AG', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(406, 'DEUTSCHE BANK AG', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(407, 'DEUTSCHE BANK AG', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(408, 'DEUTSCHE BANK AG', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(409, 'DEUTSCHE BANK AG', 'Korea, Republic of', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(410, 'DEUTSCHE BANK AG', 'Sri Lanka', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(411, 'DEUTSCHE BANK AG', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(412, 'DEUTSCHE BANK AG', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(413, 'DEUTSCHE BANK AG', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(414, 'DEUTSCHE BANK AG', 'Pakistan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(415, 'DEUTSCHE BANK AG', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(416, 'DEUTSCHE BANK AG', 'Portugal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(417, 'DEUTSCHE BANK AG', 'Saudi Arabia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(418, 'DEUTSCHE BANK AG', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(419, 'DEUTSCHE BANK AG', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(420, 'DEUTSCHE BANK AG', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(421, 'DEUTSCHE BANK AG', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(422, 'DEUTSCHE BANK AG', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(423, 'DEUTSCHE BANK AG', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(424, 'Skandinaviska Enskilda Banken AB', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(425, 'Skandinaviska Enskilda Banken AB', 'Sweden', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(426, 'Skandinaviska Enskilda Banken AB', 'Norway', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(427, 'Skandinaviska Enskilda Banken AB', 'Denmark', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(428, 'Skandinaviska Enskilda Banken AB', 'Finland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(429, 'Skandinaviska Enskilda Banken AB', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(430, 'Skandinaviska Enskilda Banken AB', 'Latvia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(431, 'Skandinaviska Enskilda Banken AB', 'Lithuania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(432, 'Skandinaviska Enskilda Banken AB', 'Estonia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(433, 'EVERBRIGHT BANK OF CHINA', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(434, 'FIRST BANK OF NIGERIA LIMITED', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(435, 'FIRST Commercial Bank', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(436, 'FIRSTRAND BANK LIMITED', 'South Africa', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(437, 'THE FIFTH THIRD BANK', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(438, 'BANCO DE GALICIA Y BUENOS AIRES', 'Argentina', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(439, 'CHINA GUANGFA BANK CO., LTD', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(440, 'ERSTE GROUP BANK AG', 'Romania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(441, 'ERSTE GROUP BANK AG', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(442, 'ERSTE GROUP BANK AG', 'Croatia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(443, 'ERSTE GROUP BANK AG', 'Republic of Serbia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(444, 'ERSTE GROUP BANK AG', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(445, 'ERSTE GROUP BANK AG', 'Hungary', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(446, 'ERSTE GROUP BANK AG', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(447, 'BELFIUS BANK SA/NV', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(448, 'GUARANTY TRUST BANK PLC', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(449, 'Svenska Handelsbanken AB (publ)', 'Sweden', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(450, 'Industrial and Commercial Bank of China', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(451, 'ING BANK N.V.', 'Portugal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(452, 'ING BANK N.V.', 'Russia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(453, 'ING BANK N.V.', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(454, 'ING BANK N.V.', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(455, 'ING BANK N.V.', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(456, 'ING BANK N.V.', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(457, 'ING BANK N.V.', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(458, 'ING BANK N.V.', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(459, 'ING BANK N.V.', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(460, 'ING BANK N.V.', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(461, 'ING BANK N.V.', 'Hungary', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(462, 'ING BANK N.V.', 'Bulgaria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(463, 'ING BANK N.V.', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(464, 'ING BANK N.V.', 'Romania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(465, 'ING BANK N.V.', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(466, 'ING BANK N.V.', 'Ireland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(467, 'ING BANK N.V.', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(468, 'ING BANK N.V.', 'Ukraine', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(469, 'ING BANK N.V.', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(470, 'ING BANK N.V.', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(471, 'ING BANK N.V.', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(472, 'ING BANK N.V.', 'Luxembourg', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(473, 'ING BANK N.V.', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(474, 'ING BANK N.V.', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(475, 'THE BANK OF NEW YORK MELLON', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(476, 'Turkiye Is Bankasi A.S.', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(477, 'Jyske Bank A/S', 'Denmark', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(478, 'KASIKORNBANK PUBLIC COMPANY LIMITED', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(479, 'KASIKORNBANK PUBLIC COMPANY LIMITED', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(480, 'KASIKORNBANK PUBLIC COMPANY LIMITED', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(481, 'KASIKORNBANK PUBLIC COMPANY LIMITED', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(482, 'KASIKORNBANK PUBLIC COMPANY LIMITED', 'Laos', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(483, 'KEYBANK NATIONAL ASSOCIATION', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(484, 'KEB HANA BANK', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(485, 'KEB HANA BANK', 'Brazil', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(486, 'KEB HANA BANK', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(487, 'KEB HANA BANK', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(488, 'KEB HANA BANK', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(489, 'KBC Bank NV', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(490, 'LLOYDS BANK PLC', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(491, 'MALAYAN BANKING BERHAD (MAYBANK)', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(492, 'METROPOLITAN BANK & TRUST COMPANY', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(493, 'BANCO MERCANTIL DEL NORTE, S.A.', 'MEXICO', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(494, 'MIZUHO BANK, LTD.', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(495, 'MIZUHO BANK, LTD.', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(496, 'MIZUHO BANK, LTD.', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(497, 'MIZUHO BANK, LTD.', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(498, 'MIZUHO BANK, LTD.', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(499, 'MIZUHO BANK, LTD.', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(500, 'MIZUHO BANK, LTD.', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(501, 'MIZUHO BANK, LTD.', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(502, 'MIZUHO BANK, LTD.', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(503, 'MIZUHO BANK, LTD.', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(504, 'MIZUHO BANK, LTD.', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(505, 'MIZUHO BANK, LTD.', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(506, 'MIZUHO BANK, LTD.', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(507, 'MIZUHO BANK, LTD.', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(508, 'MIZUHO BANK, LTD.', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(509, 'MIZUHO BANK, LTD.', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(510, 'MIZUHO BANK, LTD.', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(511, 'MIZUHO BANK, LTD.', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(512, 'MIZUHO BANK, LTD.', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(513, 'MIZUHO BANK, LTD.', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(514, 'MIZUHO BANK, LTD.', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(515, 'HSBC BANK PLC', 'Macau', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(516, 'HSBC BANK PLC', 'Sri Lanka', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(517, 'HSBC BANK PLC', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(518, 'HSBC BANK PLC', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(519, 'HSBC BANK PLC', 'Bangladesh', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(520, 'HSBC BANK PLC', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(521, 'HSBC BANK PLC', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(522, 'HSBC BANK PLC', 'Mauritius', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(523, 'HSBC BANK PLC', 'Brunei Darussalam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(524, 'HSBC BANK PLC', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(525, 'HSBC BANK PLC', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(526, 'HSBC BANK PLC', 'Russia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(527, 'HSBC BANK PLC', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(528, 'HSBC BANK PLC', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(529, 'HSBC BANK PLC', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(530, 'HSBC BANK PLC', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(531, 'HSBC BANK PLC', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(532, 'HSBC BANK PLC', 'Egypt', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(533, 'HSBC BANK PLC', 'Kazakhstan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(534, 'HSBC BANK PLC', 'Bahrain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(535, 'HSBC BANK PLC', 'Lebanon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(536, 'HSBC BANK PLC', 'Jordan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(537, 'HSBC BANK PLC', 'Pakistan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(538, 'HSBC BANK PLC', 'Qatar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(539, 'HSBC BANK PLC', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(540, 'HSBC BANK PLC', 'Oman', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(541, 'HSBC BANK PLC', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(542, 'HSBC BANK PLC', 'Greece', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(543, 'HSBC BANK PLC', 'Ireland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(544, 'HSBC BANK PLC', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(545, 'HSBC BANK PLC', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(546, 'HSBC BANK PLC', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(547, 'HSBC BANK PLC', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(548, 'HSBC BANK PLC', 'South Africa', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(549, 'HSBC BANK PLC', 'Israel', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(550, 'HSBC BANK PLC', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(551, 'HSBC BANK PLC', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(552, 'HSBC BANK PLC', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(553, 'HSBC BANK PLC', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(554, 'HSBC BANK PLC', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(555, 'HSBC BANK PLC', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(556, 'HSBC BANK PLC', 'Monaco', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(557, 'HSBC BANK PLC', 'Luxembourg', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(558, 'HSBC BANK PLC', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(559, 'HSBC BANK PLC', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(560, 'HSBC BANK PLC', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(561, 'HSBC BANK PLC', 'New Zealand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(562, 'HSBC BANK PLC', 'Guernsey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(563, 'HSBC BANK PLC', 'Jersey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(564, 'HSBC BANK PLC', 'Malta', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(565, 'HSBC BANK PLC', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(566, 'HSBC BANK PLC', 'Saudi Arabia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(567, 'HSBC BANK PLC', 'Kuwait', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(568, 'National Australia Bank Limited', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(569, 'Natixis', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(570, 'Natixis', 'Algeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(571, 'NORDEA BANK FINLAND PLC', 'Sweden', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(572, 'NORDEA BANK FINLAND PLC', 'Denmark', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(573, 'NORDEA BANK FINLAND PLC', 'Estonia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(574, 'NORDEA BANK FINLAND PLC', 'Latvia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(575, 'NORDEA BANK FINLAND PLC', 'Finland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(576, 'NORDEA BANK FINLAND PLC', 'Lithuania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(577, 'NORDEA BANK FINLAND PLC', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52');
+INSERT INTO `tbl_bank_list` (`id`, `bank_name`, `country`, `created_at`, `updated_at`) VALUES
+(578, 'NORDEA BANK FINLAND PLC', 'Norway', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(579, 'CREDIT DU NORD', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(580, 'NatWest', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(581, 'OBERBANK AG', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(582, 'Oversea-Chinese Banking CorporationLTD', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(583, 'China Construction Bank Corporation', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(584, 'PNC BANK,N.A., PITTSBURGH, PA', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(585, 'PostFinance AG', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(586, 'Qatar International Islamic Bank', 'Qatar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(587, 'QATAR NATIONAL BANK ALAHLI S.A.E   (QNB ALAHLI)', 'Egypt', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(588, 'Qatar National Bank', 'Qatar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(589, 'Qatar National Bank', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(590, 'Qatar National Bank', 'Mauritania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(591, 'Qatar National Bank', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(592, 'Qatar National Bank', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(593, 'Qatar National Bank', 'Sudan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(594, 'Qatar National Bank', 'Yemen', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(595, 'RABOBANK NEDERLAND', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(596, 'ROYAL BANK OF SCOTLAND PLC', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(597, 'ROYAL BANK OF SCOTLAND PLC', 'Ireland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(598, 'RHB BANK BERHAD', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(599, 'ROYAL BANK OF CANADA', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(600, 'RAIFFEISEN BANK INTERNATIONAL AG', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(601, 'THE STANDARD BANK OF SOUTH AFRICA', 'Kenya', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(602, 'THE STANDARD BANK OF SOUTH AFRICA', 'Botswana', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(603, 'THE STANDARD BANK OF SOUTH AFRICA', 'Ghana', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(604, 'THE STANDARD BANK OF SOUTH AFRICA', 'Tanzania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(605, 'THE STANDARD BANK OF SOUTH AFRICA', 'Uganda', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(606, 'THE STANDARD BANK OF SOUTH AFRICA', 'Zambia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(607, 'THE STANDARD BANK OF SOUTH AFRICA', 'Zimbabwe', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(608, 'THE STANDARD BANK OF SOUTH AFRICA', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(609, 'THE STANDARD BANK OF SOUTH AFRICA', 'Mauritius', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(610, 'THE STANDARD BANK OF SOUTH AFRICA', 'Angola', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(611, 'THE STANDARD BANK OF SOUTH AFRICA', 'Malawi', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(612, 'THE STANDARD BANK OF SOUTH AFRICA', 'Namibia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(613, 'THE STANDARD BANK OF SOUTH AFRICA', 'Congo', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(614, 'THE STANDARD BANK OF SOUTH AFRICA', 'Mozambique', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(615, 'THE STANDARD BANK OF SOUTH AFRICA', 'Swaziland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(616, 'THE STANDARD BANK OF SOUTH AFRICA', 'Lesotho', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(617, 'THE STANDARD BANK OF SOUTH AFRICA', 'South Africa', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(618, 'STANDARD CHARTERED BANK LIMITED', 'Bahrain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(619, 'STANDARD CHARTERED BANK LIMITED', 'Bangladesh', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(620, 'STANDARD CHARTERED BANK LIMITED', 'Botswana', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(621, 'STANDARD CHARTERED BANK LIMITED', 'Brunei Darussalam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(622, 'STANDARD CHARTERED BANK LIMITED', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(623, 'STANDARD CHARTERED BANK LIMITED', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(624, 'STANDARD CHARTERED BANK LIMITED', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(625, 'STANDARD CHARTERED BANK LIMITED', 'Macau', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(626, 'STANDARD CHARTERED BANK LIMITED', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(627, 'STANDARD CHARTERED BANK LIMITED', 'Mauritius', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(628, 'STANDARD CHARTERED BANK LIMITED', 'Oman', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(629, 'STANDARD CHARTERED BANK LIMITED', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(630, 'STANDARD CHARTERED BANK LIMITED', 'Qatar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(631, 'STANDARD CHARTERED BANK LIMITED', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(632, 'STANDARD CHARTERED BANK LIMITED', 'South Africa', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(633, 'STANDARD CHARTERED BANK LIMITED', 'Sri Lanka', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(634, 'STANDARD CHARTERED BANK LIMITED', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(635, 'STANDARD CHARTERED BANK LIMITED', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(636, 'STANDARD CHARTERED BANK LIMITED', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(637, 'STANDARD CHARTERED BANK LIMITED', 'Zimbabwe', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(638, 'STANDARD CHARTERED BANK LIMITED', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(639, 'STANDARD CHARTERED BANK LIMITED', 'Pakistan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(640, 'STANDARD CHARTERED BANK LIMITED', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(641, 'STANDARD CHARTERED BANK LIMITED', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(642, 'STANDARD CHARTERED BANK LIMITED', 'Cameroon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(643, 'STANDARD CHARTERED BANK LIMITED', 'Ivory Coast', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(644, 'STANDARD CHARTERED BANK LIMITED', 'Gambia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(645, 'STANDARD CHARTERED BANK LIMITED', 'Ghana', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(646, 'STANDARD CHARTERED BANK LIMITED', 'Kenya', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(647, 'STANDARD CHARTERED BANK LIMITED', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(648, 'STANDARD CHARTERED BANK LIMITED', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(649, 'STANDARD CHARTERED BANK LIMITED', 'Nepal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(650, 'STANDARD CHARTERED BANK LIMITED', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(651, 'STANDARD CHARTERED BANK LIMITED', 'Lebanon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(652, 'STANDARD CHARTERED BANK LIMITED', 'Sierra Leone', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(653, 'STANDARD CHARTERED BANK LIMITED', 'Tanzania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(654, 'STANDARD CHARTERED BANK LIMITED', 'Uganda', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(655, 'STANDARD CHARTERED BANK LIMITED', 'Zambia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(656, 'STANDARD CHARTERED BANK LIMITED', 'Jordan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(657, 'STANDARD CHARTERED BANK LIMITED', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(658, 'STANDARD CHARTERED BANK LIMITED', 'Afghanistan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(659, 'STANDARD CHARTERED BANK LIMITED', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(660, 'Security Bank Corporation', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(661, 'SHINHAN BANK', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(662, 'SHINHAN BANK', 'Canada', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(663, 'SHINHAN BANK', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(664, 'SHINHAN BANK', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(665, 'SHINHAN BANK', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(666, 'SHINHAN BANK', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(667, 'SHINHAN BANK', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(668, 'SHINHAN BANK', 'Kazakhstan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(669, 'SHINHAN BANK', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(670, 'SHINHAN BANK', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(671, 'SHINHAN BANK', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(672, 'SHINHAN BANK', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(673, 'SHINHAN BANK', 'Cambodia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(674, 'SHINHAN BANK', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(675, 'SHINHAN BANK', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(676, 'SHINHAN BANK', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(677, 'SHINHAN BANK', 'Myanmar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(678, 'SHINHAN BANK', 'Philippines', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(679, 'SHINHAN BANK', 'United Arab Emirates', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(680, 'SUMITOMO MITSUI BANKING CORPORATION', 'Indonesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(681, 'SUMITOMO MITSUI BANKING CORPORATION', 'Australia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(682, 'SUMITOMO MITSUI BANKING CORPORATION', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(683, 'SUMITOMO MITSUI BANKING CORPORATION', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(684, 'SUMITOMO MITSUI BANKING CORPORATION', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(685, 'SUMITOMO MITSUI BANKING CORPORATION', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(686, 'SUMITOMO MITSUI BANKING CORPORATION', 'Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(687, 'SUMITOMO MITSUI BANKING CORPORATION', 'Malaysia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(688, 'SUMITOMO MITSUI BANKING CORPORATION', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(689, 'SUMITOMO MITSUI BANKING CORPORATION', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(690, 'SUMITOMO MITSUI BANKING CORPORATION', 'Thailand', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(691, 'SUMITOMO MITSUI BANKING CORPORATION', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(692, 'SUMITOMO MITSUI BANKING CORPORATION', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(693, 'Société Générale', 'Algeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(694, 'Société Générale', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(695, 'Société Générale', 'Belgium', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(696, 'Société Générale', 'Benin', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(697, 'Société Générale', 'Burkina Faso', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(698, 'Société Générale', 'Cameroon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(699, 'Société Générale', 'Chad', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(700, 'Société Générale', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(701, 'Société Générale', 'Congo', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(702, 'Société Générale', 'Cote d\'Ivoire', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(703, 'Société Générale', 'Cyprus', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(704, 'Société Générale', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(705, 'Société Générale', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(706, 'Société Générale', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(707, 'Société Générale', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(708, 'Société Générale', 'France', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(709, 'Société Générale', 'French Polynesia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(710, 'Société Générale', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(711, 'Société Générale', 'Ghana', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(712, 'Société Générale', 'Guinea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(713, 'Société Générale', 'Guinee Equatorial', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(714, 'Société Générale', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(715, 'Société Générale', 'India', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(716, 'Société Générale', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(717, 'Société Générale', 'Japan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(718, 'Société Générale', 'Jordan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(719, 'Société Générale', 'Lebanon', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(720, 'Société Générale', 'Luxembourg', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(721, 'Société Générale', 'Macedonia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(722, 'Société Générale', 'Madagascar', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(723, 'Société Générale', 'Mauritania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(724, 'Société Générale', 'Monaco', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(725, 'Société Générale', 'Montenegro', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(726, 'Société Générale', 'Morocco', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(727, 'Société Générale', 'Mozambique', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(728, 'Société Générale', 'Netherlands', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(729, 'Société Générale', 'New Caledonia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(730, 'Société Générale', 'Poland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(731, 'Société Générale', 'Republic of Moldova', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(732, 'Société Générale', 'Republic of Serbia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(733, 'Société Générale', 'Romania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(734, 'Société Générale', 'Russia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(735, 'Société Générale', 'Senegal', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(736, 'Société Générale', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(737, 'Société Générale', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(738, 'Société Générale', 'Slovenia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(739, 'Société Générale', 'Spain', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(740, 'Société Générale', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(741, 'Société Générale', 'Togo', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(742, 'Société Générale', 'Tunisia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(743, 'Société Générale', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(744, 'Société Générale', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(745, 'Société Générale', 'Vietnam', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(746, 'Société Générale', 'South Korea', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(747, 'Société Générale', 'Taiwan', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(748, 'Landesbank Baden-Wurttemberg', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(749, 'Shanghai Pudong Development Bank', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(750, 'SHENGJING BANK CO.,LTD', 'China', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(751, 'TURKIYE GARANTI BANKASI A.S.', 'Turkey', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(752, 'UBS AG', 'Switzerland', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(753, 'UNITED BANK FOR AFRICA PLC', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(754, 'Unicredit S.p.A.', 'Bosnia-Herzegovina', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(755, 'Unicredit S.p.A.', 'Czech Republic', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(756, 'Unicredit S.p.A.', 'Germany', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(757, 'Unicredit S.p.A.', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(758, 'Unicredit S.p.A.', 'Austria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(759, 'Unicredit S.p.A.', 'Slovakia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(760, 'Unicredit S.p.A.', 'Hungary', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(761, 'Unicredit S.p.A.', 'Republic of Serbia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(762, 'Unicredit S.p.A.', 'Slovenia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(763, 'Unicredit S.p.A.', 'Bulgaria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(764, 'Unicredit S.p.A.', 'Italy', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(765, 'Unicredit S.p.A.', 'Romania', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(766, 'Unicredit S.p.A.', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(767, 'Unicredit S.p.A.', 'Croatia', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(768, 'Unicredit S.p.A.', 'Hong Kong', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(769, 'Unicredit S.p.A.', 'Singapore', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(770, 'U.S. Bancorp', 'United States', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(771, 'Wema Bank Plc', 'Nigeria', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(772, 'WELLS FARGO BANK, N.A.', 'United Kingdom', '2020-03-31 10:59:52', '2020-03-31 10:59:52'),
+(773, 'WELLS FARGO BANK, N.A.', 'United States', '2020-03-31 10:59:53', '2020-03-31 10:59:53'),
+(774, 'WESTPAC BANKING CORPORATION', 'Australia', '2020-03-31 10:59:53', '2020-03-31 10:59:53'),
+(775, 'WESTPAC BANKING CORPORATION', 'New Zealand', '2020-03-31 10:59:53', '2020-03-31 10:59:53'),
+(776, 'ZENITH BANK PLC', 'Nigeria', '2020-03-31 10:59:53', '2020-03-31 10:59:53');
 
 -- --------------------------------------------------------
 
@@ -52528,6 +53394,27 @@ CREATE TABLE `tbl_business_matching` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_callback`
+--
+
+CREATE TABLE `tbl_callback` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `parameters` varchar(500) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_callback`
+--
+
+INSERT INTO `tbl_callback` (`id`, `user_id`, `parameters`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '', '2020-03-28 05:05:08', '2020-03-28 05:05:08');
 
 -- --------------------------------------------------------
 
@@ -52583,6 +53470,37 @@ CREATE TABLE `tbl_downline_business` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_downline_business`
+--
+
+INSERT INTO `tbl_downline_business` (`id`, `user_id`, `downline_id`, `business`, `type`, `position`, `level`, `created_at`, `updated_at`) VALUES
+(1, '703756', '930887', 100, 'topup', 'L', 1, '2020-03-26 04:47:57', '2020-03-26 16:47:57'),
+(2, '107568', '930887', 100, 'topup', 'L', 2, '2020-03-26 04:47:57', '2020-03-26 16:47:57'),
+(3, '600880', '930887', 100, 'topup', 'L', 3, '2020-03-26 04:47:57', '2020-03-26 16:47:57'),
+(4, 'Admin', '930887', 100, 'topup', 'L', 4, '2020-03-26 04:47:57', '2020-03-26 16:47:57'),
+(5, '107568', '703756', 100, 'topup', 'L', 1, '2020-03-26 04:48:05', '2020-03-26 16:48:05'),
+(6, '600880', '703756', 100, 'topup', 'L', 2, '2020-03-26 04:48:05', '2020-03-26 16:48:05'),
+(7, 'Admin', '703756', 100, 'topup', 'L', 3, '2020-03-26 04:48:05', '2020-03-26 16:48:05'),
+(8, '600880', '107568', 100, 'topup', 'L', 1, '2020-03-26 04:48:12', '2020-03-26 16:48:12'),
+(9, 'Admin', '107568', 100, 'topup', 'L', 2, '2020-03-26 04:48:12', '2020-03-26 16:48:12'),
+(10, 'Admin', '600880', 100, 'topup', 'L', 1, '2020-03-26 04:48:18', '2020-03-26 16:48:18'),
+(11, 'Admin', '600880', 20, 'topup', 'L', 1, '2020-03-26 04:53:51', '2020-03-26 16:53:51'),
+(12, '600880', '107568', 20, 'topup', 'L', 1, '2020-03-26 04:53:57', '2020-03-26 16:53:57'),
+(13, 'Admin', '107568', 20, 'topup', 'L', 2, '2020-03-26 04:53:57', '2020-03-26 16:53:57'),
+(14, '107568', '703756', 20, 'topup', 'L', 1, '2020-03-26 04:54:05', '2020-03-26 16:54:05'),
+(15, '600880', '703756', 20, 'topup', 'L', 2, '2020-03-26 04:54:05', '2020-03-26 16:54:05'),
+(16, 'Admin', '703756', 20, 'topup', 'L', 3, '2020-03-26 04:54:05', '2020-03-26 16:54:05'),
+(17, '703756', '930887', 20, 'topup', 'L', 1, '2020-03-26 04:54:12', '2020-03-26 16:54:12'),
+(18, '107568', '930887', 20, 'topup', 'L', 2, '2020-03-26 04:54:12', '2020-03-26 16:54:12'),
+(19, '600880', '930887', 20, 'topup', 'L', 3, '2020-03-26 04:54:12', '2020-03-26 16:54:12'),
+(20, 'Admin', '930887', 20, 'topup', 'L', 4, '2020-03-26 04:54:12', '2020-03-26 16:54:12'),
+(21, '930887', '582336', 20, 'topup', 'L', 1, '2020-03-26 04:54:17', '2020-03-26 16:54:17'),
+(22, '703756', '582336', 20, 'topup', 'L', 2, '2020-03-26 04:54:17', '2020-03-26 16:54:17'),
+(23, '107568', '582336', 20, 'topup', 'L', 3, '2020-03-26 04:54:17', '2020-03-26 16:54:17'),
+(24, '600880', '582336', 20, 'topup', 'L', 4, '2020-03-26 04:54:17', '2020-03-26 16:54:17'),
+(25, 'Admin', '582336', 20, 'topup', 'L', 5, '2020-03-26 04:54:17', '2020-03-26 16:54:17');
+
 -- --------------------------------------------------------
 
 --
@@ -52599,6 +53517,57 @@ CREATE TABLE `tbl_downline_count` (
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_downline_count`
+--
+
+INSERT INTO `tbl_downline_count` (`id`, `user_id`, `position`, `downline_id`, `level`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'L', '600880', 1, '2020-03-26 04:46:42', '2020-03-26 16:46:42'),
+(2, '600880', 'L', '107568', 1, '2020-03-26 04:46:54', '2020-03-26 16:46:54'),
+(3, 'Admin', 'L', '107568', 2, '2020-03-26 04:46:54', '2020-03-26 16:46:54'),
+(4, '107568', 'L', '703756', 1, '2020-03-26 04:47:02', '2020-03-26 16:47:02'),
+(5, '600880', 'L', '703756', 2, '2020-03-26 04:47:02', '2020-03-26 16:47:02'),
+(6, 'Admin', 'L', '703756', 3, '2020-03-26 04:47:02', '2020-03-26 16:47:02'),
+(7, '703756', 'L', '930887', 1, '2020-03-26 04:47:16', '2020-03-26 16:47:16'),
+(8, '107568', 'L', '930887', 2, '2020-03-26 04:47:16', '2020-03-26 16:47:16'),
+(9, '600880', 'L', '930887', 3, '2020-03-26 04:47:16', '2020-03-26 16:47:16'),
+(10, 'Admin', 'L', '930887', 4, '2020-03-26 04:47:16', '2020-03-26 16:47:16'),
+(11, '930887', 'L', '582336', 1, '2020-03-26 04:47:24', '2020-03-26 16:47:24'),
+(12, '703756', 'L', '582336', 2, '2020-03-26 04:47:24', '2020-03-26 16:47:24'),
+(13, '107568', 'L', '582336', 3, '2020-03-26 04:47:24', '2020-03-26 16:47:24'),
+(14, '600880', 'L', '582336', 4, '2020-03-26 04:47:24', '2020-03-26 16:47:24'),
+(15, 'Admin', 'L', '582336', 5, '2020-03-26 04:47:24', '2020-03-26 16:47:24'),
+(16, '582336', 'L', '276067', 1, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(17, '930887', 'L', '276067', 2, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(18, '703756', 'L', '276067', 3, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(19, '107568', 'L', '276067', 4, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(20, '600880', 'L', '276067', 5, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(21, 'Admin', 'L', '276067', 6, '2020-03-30 07:29:34', '2020-03-30 07:29:34'),
+(22, '276067', 'L', '538258', 1, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(23, '582336', 'L', '538258', 2, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(24, '930887', 'L', '538258', 3, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(25, '703756', 'L', '538258', 4, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(26, '107568', 'L', '538258', 5, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(27, '600880', 'L', '538258', 6, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(28, 'Admin', 'L', '538258', 7, '2020-03-31 10:06:36', '2020-03-31 10:06:36'),
+(29, '538258', 'L', '515603', 1, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(30, '276067', 'L', '515603', 2, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(31, '582336', 'L', '515603', 3, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(32, '930887', 'L', '515603', 4, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(33, '703756', 'L', '515603', 5, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(34, '107568', 'L', '515603', 6, '2020-03-31 11:10:48', '2020-03-31 11:10:48'),
+(35, '600880', 'L', '515603', 7, '2020-03-31 11:10:49', '2020-03-31 11:10:49'),
+(36, 'Admin', 'L', '515603', 8, '2020-03-31 11:10:49', '2020-03-31 11:10:49'),
+(37, '515603', 'L', '138484', 1, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(38, '538258', 'L', '138484', 2, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(39, '276067', 'L', '138484', 3, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(40, '582336', 'L', '138484', 4, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(41, '930887', 'L', '138484', 5, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(42, '703756', 'L', '138484', 6, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(43, '107568', 'L', '138484', 7, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(44, '600880', 'L', '138484', 8, '2020-03-31 12:42:56', '2020-03-31 12:42:56'),
+(45, 'Admin', 'L', '138484', 9, '2020-03-31 12:42:56', '2020-03-31 12:42:56');
+
 -- --------------------------------------------------------
 
 --
@@ -52614,6 +53583,23 @@ CREATE TABLE `tbl_income_wallet` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_income_wallet`
+--
+
+INSERT INTO `tbl_income_wallet` (`id`, `user_id`, `amount`, `type`, `description`, `created_at`, `updated_at`) VALUES
+(5, 'none', '2', 'direct_income', 'Direct Income from Activation of Member admin', '2020-03-26 16:53:44', '2020-03-26 16:53:44'),
+(6, 'admin', '2', 'direct_income', 'Direct Income from Activation of Member 600880', '2020-03-26 16:53:51', '2020-03-26 16:53:51'),
+(7, '600880', '2', 'direct_income', 'Direct Income from Activation of Member 107568', '2020-03-26 16:53:57', '2020-03-26 16:53:57'),
+(8, 'Admin', '1', 'direct_level_income', 'Level Income from Activation of Member 107568 At level 2', '2020-03-26 16:53:57', '2020-03-26 16:56:55'),
+(9, '600880', '2', 'direct_income', 'Direct Income from Activation of Member 703756', '2020-03-26 16:54:05', '2020-03-26 16:54:05'),
+(10, 'Admin', '1', 'direct_level_income', 'Level Income from Activation of Member 703756 At level 2', '2020-03-26 16:54:05', '2020-03-26 16:56:57'),
+(11, '703756', '2', 'direct_income', 'Direct Income from Activation of Member 930887', '2020-03-26 16:54:12', '2020-03-26 16:54:12'),
+(12, '600880', '1', 'direct_level_income', 'Level Income from Activation of Member 930887 At level 2', '2020-03-26 16:54:12', '2020-03-26 16:57:00'),
+(13, '703756', '2', 'direct_income', 'Direct Income from Activation of Member 582336', '2020-03-26 16:54:17', '2020-03-26 16:54:17'),
+(14, '600880', '1', 'direct_level_income', 'Level Income from Activation of Member 582336 At level 2', '2020-03-26 16:54:17', '2020-03-26 16:57:01'),
+(15, 'none', '2', 'direct_income', 'Direct Income from Activation of Member admin', '2020-03-30 07:25:26', '2020-03-30 07:25:26');
 
 -- --------------------------------------------------------
 
@@ -52706,7 +53692,7 @@ CREATE TABLE `tbl_package` (
 --
 
 INSERT INTO `tbl_package` (`id`, `title`, `description`, `price`, `bv`, `commision`, `direct_income`, `level_income`, `products`, `capping`, `image`, `created_at`, `updated_at`) VALUES
-(1, '$20 Package', 'this is Rs 3600 Package', 20, 100, 0.5, '2', '1', '', 1000000, '', '2020-01-17 03:48:38', '2020-03-24 07:20:04');
+(1, '$20 Package', 'this is Rs 3600 Package', 20, 20, 0.5, '2', '1', '', 1000000, '', '2020-01-17 03:48:38', '2020-03-26 16:49:53');
 
 -- --------------------------------------------------------
 
@@ -52732,7 +53718,10 @@ CREATE TABLE `tbl_payment_request` (
 --
 
 INSERT INTO `tbl_payment_request` (`id`, `user_id`, `payment_method`, `amount`, `image`, `status`, `remarks`, `transaction_id`, `created_at`, `updated_at`) VALUES
-(3, '483801', '', 100, '', 0, 'btc payment', 'CPEC2FYB9AUSZIBNWYD3AGAHCP', '2020-03-03 13:40:40', '2020-03-03 08:12:44');
+(3, '483801', '', 100, '', 1, 'btc payment', 'CPEC2FYB9AUSZIBNWYD3AGAHCP', '2020-03-03 13:40:40', '2020-03-31 09:24:32'),
+(4, 'Admin', 'bank', 20, 'payment_slip2.jpg', 1, '', '', '2020-03-30 07:55:54', '2020-03-31 09:28:00'),
+(5, 'Admin', 'PayPal', 100, 'payment_slip1.png', 0, '', '', '2020-03-31 08:08:54', '2020-03-31 08:08:54'),
+(6, 'Admin', 'Cash', 100, 'payment_slip2.png', 1, '', '', '2020-03-31 11:17:33', '2020-03-31 11:17:44');
 
 -- --------------------------------------------------------
 
@@ -52843,6 +53832,16 @@ CREATE TABLE `tbl_repurchase_income` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_repurchase_income`
+--
+
+INSERT INTO `tbl_repurchase_income` (`id`, `user_id`, `type`, `amount`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', 'direct_level_income', '0.2', 'Level Income from Activation of Member 107568 At level 2', '2020-03-26 16:53:57', '2020-03-26 16:53:57'),
+(2, 'Admin', 'direct_level_income', '0.2', 'Level Income from Activation of Member 703756 At level 2', '2020-03-26 16:54:05', '2020-03-26 16:54:05'),
+(3, '600880', 'direct_level_income', '0.2', 'Level Income from Activation of Member 930887 At level 2', '2020-03-26 16:54:12', '2020-03-26 16:54:12'),
+(4, '600880', 'direct_level_income', '0.2', 'Level Income from Activation of Member 582336 At level 2', '2020-03-26 16:54:17', '2020-03-26 16:54:17');
+
 -- --------------------------------------------------------
 
 --
@@ -52872,6 +53871,23 @@ CREATE TABLE `tbl_roi` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_roi`
+--
+
+INSERT INTO `tbl_roi` (`id`, `user_id`, `amount`, `roi_amount`, `days`, `created_at`, `updated_at`) VALUES
+(1, '930887', 40, 0.5, 0, '2020-03-26 16:47:57', '2020-03-26 16:47:57'),
+(2, '703756', 40, 0.5, 0, '2020-03-26 16:48:05', '2020-03-26 16:48:05'),
+(3, '107568', 40, 0.5, 0, '2020-03-26 16:48:12', '2020-03-26 16:48:12'),
+(4, '600880', 40, 0.5, 0, '2020-03-26 16:48:18', '2020-03-26 16:48:18'),
+(5, 'Admin', 40, 0.5, 0, '2020-03-26 16:53:44', '2020-03-26 16:53:44'),
+(6, '600880', 40, 0.5, 0, '2020-03-26 16:53:51', '2020-03-26 16:53:51'),
+(7, '107568', 40, 0.5, 0, '2020-03-26 16:53:57', '2020-03-26 16:53:57'),
+(8, '703756', 40, 0.5, 0, '2020-03-26 16:54:05', '2020-03-26 16:54:05'),
+(9, '930887', 40, 0.5, 0, '2020-03-26 16:54:12', '2020-03-26 16:54:12'),
+(10, '582336', 40, 0.5, 0, '2020-03-26 16:54:17', '2020-03-26 16:54:17'),
+(11, 'Admin', 40, 0.5, 0, '2020-03-30 07:25:26', '2020-03-30 07:25:26');
 
 -- --------------------------------------------------------
 
@@ -52924,6 +53940,39 @@ CREATE TABLE `tbl_sponser_count` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_sponser_count`
+--
+
+INSERT INTO `tbl_sponser_count` (`id`, `user_id`, `downline_id`, `position`, `level`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '600880', '', 1, '0000-00-00 00:00:00', '2020-03-26 16:46:42'),
+(2, 'none', '600880', '', 2, '0000-00-00 00:00:00', '2020-03-26 16:46:42'),
+(3, '600880', '107568', '', 1, '0000-00-00 00:00:00', '2020-03-26 16:46:54'),
+(4, 'admin', '107568', '', 2, '0000-00-00 00:00:00', '2020-03-26 16:46:54'),
+(5, 'none', '107568', '', 3, '0000-00-00 00:00:00', '2020-03-26 16:46:54'),
+(6, '600880', '703756', '', 1, '0000-00-00 00:00:00', '2020-03-26 16:47:02'),
+(7, 'admin', '703756', '', 2, '0000-00-00 00:00:00', '2020-03-26 16:47:02'),
+(8, 'none', '703756', '', 3, '0000-00-00 00:00:00', '2020-03-26 16:47:02'),
+(9, '703756', '930887', '', 1, '0000-00-00 00:00:00', '2020-03-26 16:47:16'),
+(10, '600880', '930887', '', 2, '0000-00-00 00:00:00', '2020-03-26 16:47:16'),
+(11, 'admin', '930887', '', 3, '0000-00-00 00:00:00', '2020-03-26 16:47:16'),
+(12, 'none', '930887', '', 4, '0000-00-00 00:00:00', '2020-03-26 16:47:16'),
+(13, '703756', '582336', '', 1, '0000-00-00 00:00:00', '2020-03-26 16:47:24'),
+(14, '600880', '582336', '', 2, '0000-00-00 00:00:00', '2020-03-26 16:47:24'),
+(15, 'admin', '582336', '', 3, '0000-00-00 00:00:00', '2020-03-26 16:47:24'),
+(16, 'none', '582336', '', 4, '0000-00-00 00:00:00', '2020-03-26 16:47:24'),
+(17, 'Admin', '276067', '', 1, '0000-00-00 00:00:00', '2020-03-30 07:29:34'),
+(18, 'none', '276067', '', 2, '0000-00-00 00:00:00', '2020-03-30 07:29:34'),
+(19, '930887', '538258', '', 1, '0000-00-00 00:00:00', '2020-03-31 10:06:36'),
+(20, '703756', '538258', '', 2, '0000-00-00 00:00:00', '2020-03-31 10:06:36'),
+(21, '600880', '538258', '', 3, '0000-00-00 00:00:00', '2020-03-31 10:06:36'),
+(22, 'admin', '538258', '', 4, '0000-00-00 00:00:00', '2020-03-31 10:06:36'),
+(23, 'none', '538258', '', 5, '0000-00-00 00:00:00', '2020-03-31 10:06:36'),
+(24, 'Admin', '515603', '', 1, '0000-00-00 00:00:00', '2020-03-31 11:10:49'),
+(25, 'none', '515603', '', 2, '0000-00-00 00:00:00', '2020-03-31 11:10:49'),
+(26, 'Admin', '138484', '', 1, '0000-00-00 00:00:00', '2020-03-31 12:42:56'),
+(27, 'none', '138484', '', 2, '0000-00-00 00:00:00', '2020-03-31 12:42:56');
 
 -- --------------------------------------------------------
 
@@ -52996,7 +54045,11 @@ CREATE TABLE `tbl_users` (
   `password` varchar(100) NOT NULL,
   `sponser_id` varchar(20) NOT NULL,
   `upline_id` varchar(20) NOT NULL,
+  `directs` int(11) NOT NULL,
+  `paid_status` int(11) NOT NULL,
   `position` varchar(5) NOT NULL,
+  `package_id` int(11) NOT NULL,
+  `package_amount` int(11) NOT NULL,
   `left_node` varchar(50) NOT NULL,
   `right_node` varchar(50) NOT NULL,
   `last_left` varchar(50) NOT NULL,
@@ -53008,7 +54061,6 @@ CREATE TABLE `tbl_users` (
   `leftBusiness` int(11) NOT NULL,
   `rightBusiness` int(11) NOT NULL,
   `is_placed` int(11) NOT NULL,
-  `directs` int(11) NOT NULL,
   `id_number` int(11) NOT NULL,
   `master_key` int(11) NOT NULL,
   `country_code` varchar(50) NOT NULL,
@@ -53017,12 +54069,10 @@ CREATE TABLE `tbl_users` (
   `courtesy_title` varchar(10) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
-  `package_id` int(11) NOT NULL,
-  `package_amount` int(11) NOT NULL,
-  `paid_status` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(30) NOT NULL,
   `address` varchar(50) NOT NULL,
+  `address2` varchar(100) NOT NULL,
   `country` varchar(30) NOT NULL,
   `state` varchar(30) NOT NULL,
   `city` varchar(30) NOT NULL,
@@ -53044,8 +54094,17 @@ CREATE TABLE `tbl_users` (
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `user_id`, `password`, `sponser_id`, `upline_id`, `position`, `left_node`, `right_node`, `last_left`, `last_right`, `left_count`, `right_count`, `leftPower`, `rightPower`, `leftBusiness`, `rightBusiness`, `is_placed`, `directs`, `id_number`, `master_key`, `country_code`, `user_type`, `name`, `courtesy_title`, `first_name`, `last_name`, `package_id`, `package_amount`, `paid_status`, `email`, `phone`, `address`, `country`, `state`, `city`, `postal_code`, `cell_phone`, `site_url`, `role`, `image`, `otp`, `disabled`, `promo_code`, `capping`, `created_at`, `updated_at`, `topup_date`) VALUES
-(1, 'Admin', '123', 'none', 'none', '', 'Admin', 'Admin', 'Admin', 'Admin', 0, 0, 0, 0, 0, 0, 0, 2, 0, 123, '', '', 'Partners', '', 'Partners', 'Partners', 1, 100, 1, 'bitwin@gmail.com', '0001', '', '', '', 'mohali', 123221, '', '', 'U', '', 0, 0, '', 1000000, '2020-02-02 07:18:26', '2020-03-22 09:42:18', '2020-02-08 08:37:11');
+INSERT INTO `tbl_users` (`id`, `user_id`, `password`, `sponser_id`, `upline_id`, `directs`, `paid_status`, `position`, `package_id`, `package_amount`, `left_node`, `right_node`, `last_left`, `last_right`, `left_count`, `right_count`, `leftPower`, `rightPower`, `leftBusiness`, `rightBusiness`, `is_placed`, `id_number`, `master_key`, `country_code`, `user_type`, `name`, `courtesy_title`, `first_name`, `last_name`, `email`, `phone`, `address`, `address2`, `country`, `state`, `city`, `postal_code`, `cell_phone`, `site_url`, `role`, `image`, `otp`, `disabled`, `promo_code`, `capping`, `created_at`, `updated_at`, `topup_date`) VALUES
+(1, 'Admin', '123', 'none', 'none', 1, 1, '', 1, 20, '600880', 'Admin', '138484', 'Admin', 9, 0, 100, 0, 0, 0, 0, 0, 123, '101', '', 'Partners', '', 'Partners', 'Partners', 'bitwin@gmail.com', '91', 'jandi wasddasali gali', 'asdadasdas', '101', 'asdsadada', 'adasda', 123221, '', '', 'U', 'id_proof1585651625.png', 0, 0, '', 1000000, '2020-02-02 07:18:26', '2020-03-31 12:42:56', '2020-03-30 07:25:26'),
+(520, '600880', '123', 'admin', 'Admin', 2, 1, 'L', 1, 20, '107568', '', '138484', '600880', 8, 0, 80, 0, 0, 0, 0, 0, 291451, '231', '', 'test', '', '', '', 'test@gmail.com', '1234567890', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 1000000, '2020-03-26 16:46:42', '2020-03-31 12:42:56', '2020-03-26 04:53:51'),
+(521, '107568', '123', '600880', '600880', 0, 1, 'L', 1, 20, '703756', '', '138484', '107568', 7, 0, 60, 0, 0, 0, 0, 0, 535542, '231', '', 'test', '', '', '', 'test@gmail.com', '1234567890', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 1000000, '2020-03-26 16:46:54', '2020-03-31 12:42:56', '2020-03-26 04:53:57'),
+(522, '703756', '123', '600880', '107568', 2, 1, 'L', 1, 20, '930887', '', '138484', '703756', 6, 0, 40, 0, 0, 0, 0, 0, 853726, '231', '', 'test', '', '', '', 'test@gmail.com', '1234567890', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 1000000, '2020-03-26 16:47:02', '2020-03-31 12:42:56', '2020-03-26 04:54:05'),
+(523, '930887', '123', '703756', '703756', 0, 1, 'L', 1, 20, '582336', '', '138484', '930887', 5, 0, 20, 0, 0, 0, 0, 0, 458172, '231', '', 'test', '', '', '', 'test@gmail.com', '1234567890', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 1000000, '2020-03-26 16:47:16', '2020-03-31 12:42:56', '2020-03-26 04:54:12'),
+(524, '582336', '123', '703756', '930887', 0, 1, 'L', 1, 20, '276067', '', '138484', '582336', 4, 0, 0, 0, 0, 0, 0, 0, 369765, '231', '', 'test', '', '', '', 'test@gmail.com', '1234567890', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 1000000, '2020-03-26 16:47:24', '2020-03-31 12:42:56', '2020-03-26 04:54:17'),
+(525, '276067', '123', 'Admin', '582336', 0, 0, 'L', 0, 0, '538258', '', '138484', '276067', 3, 0, 0, 0, 0, 0, 0, 0, 133538, '101', '', 'test', '', '', '', 'test@gmail.com', '9912121231', '', '', '217', '3528', '39825', 0, '', '', '', '', 0, 0, '', 0, '2020-03-30 07:29:34', '2020-03-31 13:03:16', '0000-00-00 00:00:00'),
+(526, '538258', '123', '930887', '276067', 0, 0, 'L', 0, 0, '515603', '', '138484', '538258', 2, 0, 0, 0, 0, 0, 0, 0, 158896, '230', '', 'kush', '', '', '', 'kushmalout@gmail.com', '5454545455454', '', '', '', '', '', 0, '', '', '', 'id_proof1585649940.jpg', 0, 0, '', 0, '2020-03-31 10:06:36', '2020-03-31 12:42:56', '0000-00-00 00:00:00'),
+(527, '515603', '112233', 'Admin', '538258', 0, 0, 'L', 0, 0, '138484', '', '138484', '515603', 1, 0, 0, 0, 0, 0, 0, 0, 294526, '229', '', 'test', '', '', '', 'test@gmail.co', '123', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 0, '2020-03-31 11:10:48', '2020-03-31 12:42:56', '0000-00-00 00:00:00'),
+(528, '138484', '123', 'Admin', '515603', 0, 0, 'L', 0, 0, '', '', '138484', '138484', 0, 0, 0, 0, 0, 0, 0, 0, 965274, '101', '', 'kush', '', '', '', 'kushmalout@gmail.com', '+919803116396', '', '', '', '', '', 0, '', '', '', '', 0, 0, '', 0, '2020-03-31 12:42:56', '2020-03-31 12:42:56', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -53063,6 +54122,27 @@ CREATE TABLE `tbl_wallet` (
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_wallet`
+--
+
+INSERT INTO `tbl_wallet` (`id`, `user_id`, `amount`, `sender_id`, `type`, `remark`, `created_at`, `updated_at`) VALUES
+(1, 'admin', '1000', 'admin', 'admin_amount', 'Fund Sent By Admin', '2020-03-26 16:46:13', '2020-03-26 16:46:13'),
+(2, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 930887', '2020-03-26 16:47:57', '2020-03-26 16:47:57'),
+(3, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 703756', '2020-03-26 16:48:05', '2020-03-26 16:48:05'),
+(4, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 107568', '2020-03-26 16:48:12', '2020-03-26 16:48:12'),
+(5, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 600880', '2020-03-26 16:48:18', '2020-03-26 16:48:18'),
+(6, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for admin', '2020-03-26 16:53:44', '2020-03-26 16:53:44'),
+(7, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 600880', '2020-03-26 16:53:51', '2020-03-26 16:53:51'),
+(8, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 107568', '2020-03-26 16:53:57', '2020-03-26 16:53:57'),
+(9, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 703756', '2020-03-26 16:54:05', '2020-03-26 16:54:05'),
+(10, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 930887', '2020-03-26 16:54:12', '2020-03-26 16:54:12'),
+(11, 'Admin', '-20', '', 'account_activation', 'Account Activation Deduction for 582336', '2020-03-26 16:54:17', '2020-03-26 16:54:17'),
+(12, '483801', '100', 'admin', 'admin_fund', 'btc payment', '2020-03-31 09:24:32', '2020-03-31 09:24:32'),
+(13, '483801', '100', 'admin', 'admin_fund', 'btc payment', '2020-03-31 09:24:35', '2020-03-31 09:24:35'),
+(14, 'Admin', '20', 'admin', 'admin_fund', '', '2020-03-31 09:28:00', '2020-03-31 09:28:00'),
+(15, 'Admin', '100', 'admin', 'admin_fund', '', '2020-03-31 11:17:44', '2020-03-31 11:17:44');
 
 -- --------------------------------------------------------
 
@@ -53108,6 +54188,18 @@ ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `payments`
+--
+ALTER TABLE `payments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `paypal_transactions`
+--
+ALTER TABLE `paypal_transactions`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
@@ -53132,9 +54224,21 @@ ALTER TABLE `tbl_bank_details`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_bank_list`
+--
+ALTER TABLE `tbl_bank_list`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_business_matching`
 --
 ALTER TABLE `tbl_business_matching`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tbl_callback`
+--
+ALTER TABLE `tbl_callback`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -53328,6 +54432,18 @@ ALTER TABLE `countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
+-- AUTO_INCREMENT for table `payments`
+--
+ALTER TABLE `payments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `paypal_transactions`
+--
+ALTER TABLE `paypal_transactions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `states`
 --
 ALTER TABLE `states`
@@ -53349,13 +54465,25 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_bank_details`
 --
 ALTER TABLE `tbl_bank_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=516;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=525;
+
+--
+-- AUTO_INCREMENT for table `tbl_bank_list`
+--
+ALTER TABLE `tbl_bank_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=777;
 
 --
 -- AUTO_INCREMENT for table `tbl_business_matching`
 --
 ALTER TABLE `tbl_business_matching`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_callback`
+--
+ALTER TABLE `tbl_callback`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_cart`
@@ -53373,19 +54501,19 @@ ALTER TABLE `tbl_charges`
 -- AUTO_INCREMENT for table `tbl_downline_business`
 --
 ALTER TABLE `tbl_downline_business`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `tbl_downline_count`
 --
 ALTER TABLE `tbl_downline_count`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_income_wallet`
 --
 ALTER TABLE `tbl_income_wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_news`
@@ -53415,7 +54543,7 @@ ALTER TABLE `tbl_package`
 -- AUTO_INCREMENT for table `tbl_payment_request`
 --
 ALTER TABLE `tbl_payment_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_point_matching_income`
@@ -53451,7 +54579,7 @@ ALTER TABLE `tbl_product_images`
 -- AUTO_INCREMENT for table `tbl_repurchase_income`
 --
 ALTER TABLE `tbl_repurchase_income`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_rewards`
@@ -53463,7 +54591,7 @@ ALTER TABLE `tbl_rewards`
 -- AUTO_INCREMENT for table `tbl_roi`
 --
 ALTER TABLE `tbl_roi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_slider_images`
@@ -53481,7 +54609,7 @@ ALTER TABLE `tbl_sms_counter`
 -- AUTO_INCREMENT for table `tbl_sponser_count`
 --
 ALTER TABLE `tbl_sponser_count`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tbl_support_message`
@@ -53511,13 +54639,13 @@ ALTER TABLE `tbl_task_links`
 -- AUTO_INCREMENT for table `tbl_users`
 --
 ALTER TABLE `tbl_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=520;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=529;
 
 --
 -- AUTO_INCREMENT for table `tbl_wallet`
 --
 ALTER TABLE `tbl_wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_withdraw`

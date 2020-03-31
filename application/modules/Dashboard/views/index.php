@@ -6,12 +6,9 @@ $userinfo = userinfo();
             <!-- BEGIN #content -->
             <div id="content" class="content">
                 <!-- BEGIN page-header -->
-                <h2 class="page-titel">
-                    <span style="">DASHBOARD </span> / HOME
-                </h2>
+
                 <h1 class="page-header">
-                    Dashboard
-                    <small> Account summary, All breif details </small>
+                  Dashboard - Account Summary and Details
 
                 </h1>
                 <div class="ng-scope">
@@ -28,7 +25,7 @@ $userinfo = userinfo();
 
                                             <div class="progress-widget__wrapper  kik" id="collapseExample">
                                                 <!-- step 1 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items passed disabled tooltip-col">
+                                                <div class="progress-widget__item  progress-widget__item_3-items passed disabled tooltip-col">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle">
                                                             <div class="progress-widget__step">
@@ -45,7 +42,7 @@ $userinfo = userinfo();
                                                     </div>
                                                 </div>
                                                 <!-- step 2 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2 }" ui-sref="app.money.deposits" href="/en/deposits">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
                                                             <div class="progress-widget__step asaping12">
@@ -53,14 +50,14 @@ $userinfo = userinfo();
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title fancing12">
-                                                            <span>Bitcoin / Paypal Account</span>
-                                                            <span class="tooltiptext3">Add your Bitcoin, Paypal account for payment withdrawal.</span>
+                                                            <span>Paypal Account</span>
+                                                            <span class="tooltiptext3">Add your Paypal account for payment withdrawal.</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- ************************* GLOBAL Version ************************* -->
                                                 <!-- step 3 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle wr1ing" id="DepCnt2">
                                                             <div class="progress-widget__step asaping12">
@@ -68,13 +65,26 @@ $userinfo = userinfo();
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title fancing12 ">
+                                                            <span>Bitcoin Account</span>
+                                                            <span class="tooltiptext3">Add your Bitcoin account for payment withdrawal</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- step 4 -->
+                                                <div class="progress-widget__item  progress-widget__item_3-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 4, &#39;current&#39;: state.currentStep === 4}" ui-sref="app.platforms.download" href="/en/platforms">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle passed" id="DepCnt3">
+                                                            <div class="progress-widget__step">
+                                                                <span id="DepCnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title ">
                                                             <span>Document</span>
                                                             <span class="tooltiptext3">Don't forget to upload documents for verification within 30 days so you can continue Benifits!</span>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <!-- step 4 -->
-                                                <div class="progress-widget__item  progress-widget__item_4-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 4, &#39;current&#39;: state.currentStep === 4}" ui-sref="app.platforms.download" href="/en/platforms">
+                                                <div class="progress-widget__item  progress-widget__item_3-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 5, &#39;current&#39;: state.currentStep === 5}" ui-sref="app.platforms.download" href="/en/platforms">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle passed" id="DepCnt3">
                                                             <div class="progress-widget__step">
@@ -146,20 +156,21 @@ $userinfo = userinfo();
                                     <!--<span id="rank_tem"></span>-->
                                 </a>
                                 <h4 class="widget-title">
-                                    <b>GETTING STARTED</b>
+                                    <b>PARTNERS OVERVIEW</b>
                                 </h4>
                             </div>
                             <!-- END widget-card-content -->
                             <!-- BEGIN widget-card-content -->
                             <div class="widget-card-content bottom p-b-5">
                                 <div class="text-center">
-                                    <h4>Package Amount : $<?php echo $userinfo->package_amount;?></h4>
-                                    <h3 class="m-b-0">Welcome,
-                                        <span id="Mem_Name1"><?php
-                                        echo $userinfo->name;?></span>
+                                    <h4>Active Member : $<?php echo $userinfo->package_amount;?></h4>
+                                    <h3 class="m-b-0">Welcome to HOPE Partners
+                                        <!-- <span id="Mem_Name1"><?php
+                                        //echo $userinfo->name;?></span> -->
                                     </h3>
+                                    <br>
                                     <p class="opacity-7" id="RefLink102">
-                                          <a style="background:red; padding: 5px; color:white" href="<?php echo base_url('/Dashboard/User/Register/?sponser_id='.$userinfo->user_id)?>" target="_blank">Share Link: <?php echo ($userinfo->user_id)?></a>
+                                          <a style="background:red; padding: 5px; color:white" href="<?php echo base_url('/Dashboard/User/Register/?sponser_id='.$userinfo->user_id)?>" target="_blank">Share Referral Link: <?php echo ($userinfo->user_id)?></a>
                                     </p>
                                 </div>
                                 <!-- BEGIN row -->
@@ -175,11 +186,11 @@ $userinfo = userinfo();
                                                         <i class="ti-user bg-gradient-blue"></i>
                                                     </div>
                                                     <div class="widget-list-content">
-                                                        <h4 class="widget-title">My Team</h4>
+                                                        <h4 class="widget-title">My Direct Team</h4>
                                                         <!--<div class="widget-desc hidden-xs">Directs, Non-Directs</div>-->
-                                                        <ul class="widget-inline-list widget-desc hidden-xs">
+                                                        <!-- <ul class="widget-inline-list widget-desc hidden-xs">
                                                             <li>Non-Directs</li>
-                                                        </ul>
+                                                        </ul> -->
                                                     </div>
                                                 </a>
                                                 <!-- END widget-list-container -->
@@ -191,26 +202,14 @@ $userinfo = userinfo();
                                                         <i class="ti-anchor bg-gradient-purple"></i>
                                                     </div>
                                                     <div class="widget-list-content">
-                                                        <h4 class="widget-title">My Referral
+                                                        <h4 class="widget-title">My Indirect Team
                                                         </h4>
-                                                        <div class="widget-desc hidden-xs">Directs</div>
+                                                        <!-- <div class="widget-desc hidden-xs">Directs</div> -->
                                                     </div>
                                                 </a>
                                                 <!-- END widget-list-container -->
                                             </li>
-                                            <li>
-                                                <!-- BEGIN widget-list-container -->
-                                                <a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$userinfo->user_id);?>" target="_blank" class="widget-list-container">
-                                                    <div class="widget-list-media icon p-l-0">
-                                                        <i class="ti-lock bg-gradient-green"></i>
-                                                    </div>
-                                                    <div class="widget-list-content">
-                                                        <h4 class="widget-title">Sign-up</h4>
-                                                        <div class="widget-desc hidden-xs">Add new user</div>
-                                                    </div>
-                                                </a>
-                                                <!-- END widget-list-container -->
-                                            </li>
+
                                         </ul>
                                         <!-- END widget -->
                                     </div>
@@ -218,7 +217,38 @@ $userinfo = userinfo();
                                     <!-- BEGIN col-6 -->
                                     <div class="col-6">
                                         <!-- BEGIN widget -->
+                                        <ul class="widget widget-list m-b-0 no-bg inverse-mode">
+                                            <li>
+                                                <!-- BEGIN widget-list-container -->
+                                                <a href="#" class="widget-list-container">
+                                                    <div class="widget-list-media icon p-l-0">
+                                                        <i class="ti-user bg-gradient-blue"></i>
+                                                    </div>
+                                                    <div class="widget-list-content">
+                                                        <h4 class="widget-title">My Team</h4>
+                                                        <!--<div class="widget-desc hidden-xs">Directs, Non-Directs</div>-->
+                                                        <!-- <ul class="widget-inline-list widget-desc hidden-xs">
+                                                            <li>Directs & Non-Directs</li>
+                                                        </ul> -->
+                                                    </div>
+                                                </a>
+                                                <!-- END widget-list-container -->
+                                            </li>
 
+                                            <li>
+                                                <!-- BEGIN widget-list-container -->
+                                                <a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$userinfo->user_id);?>" target="_blank" class="widget-list-container">
+                                                    <div class="widget-list-media icon p-l-0">
+                                                        <i class="ti-lock bg-gradient-green"></i>
+                                                    </div>
+                                                    <div class="widget-list-content">
+                                                        <h4 class="widget-title">Add Teammate</h4>
+
+                                                    </div>
+                                                </a>
+                                                <!-- END widget-list-container -->
+                                            </li>
+                                        </ul>
                                         <!-- END widget -->
                                     </div>
                                     <!-- END col-6 -->
@@ -240,7 +270,7 @@ $userinfo = userinfo();
                             <!-- BEGIN widget-card-cover -->
                             <div class="widget-card-cover">
                                 <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/p.jpg" alt="">
+                                <img src="<?php echo base_url('NewTheme/')?>assets/img/e-wallet-2.png" alt="">
                             </div>
                             <!-- END widget-card-cover -->
                             <!-- BEGIN widget-card-content -->
@@ -251,17 +281,17 @@ $userinfo = userinfo();
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
-                                            <a href="#">Fund-Request</a>
+                                            <a href="<?php echo base_url('Dashboard/Fund/Request_fund');?>">Fund Request</a>
                                         </li>
                                         <li>
-                                            <a href="#">Fund-Request Status</a>
+                                            <a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>">Withdraw</a>
                                         </li>
                                         <li>
-                                            <a href="#">Transaction History</a>
+                                            <a href="<?php echo base_url('Dashboard/IncomeTransfer')?>">Transfer</a>
                                         </li>
                                     </ul>
                                 </div>
-                                <h4 class="widget-title">f-Wallet</h4>
+                                <h4 class="widget-title">E-Wallet</h4>
                             </div>
                             <!-- END widget-card-content -->
                             <!-- BEGIN widget-card-content -->
@@ -271,11 +301,39 @@ $userinfo = userinfo();
                                 </div>
                                 <div class="widget-card-info">
                                     <h4 class="widget-title">
-                                        <a href="/Dashboard.html#" id="MAR">$<?php echo $wallet_balance['wallet_balance'];?></a>
+                                        <a href="/Dashboard.html#" id="MAR"><?php echo $wallet_balance['wallet_balance'];?> Points</a>
                                     </h4>
                                     <ul class="widget-inline-list">
-                                        <li>Available On f- Wallet </li>
+                                        <li>Available On E- Wallet </li>
                                         <li></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- END widget-card-content -->
+                        </div>
+
+                        <div class="widget widget-card inverse-mode with-min-height">
+                            <!-- BEGIN widget-card-cover -->
+                            <div class="widget-card-cover">
+                                <div class="cover-bg with-gradient"></div>
+                                <img src="<?php echo base_url('NewTheme/')?>assets/img/insurance.jpg" alt="">
+                            </div>
+                            <!-- END widget-card-cover -->
+                            <!-- BEGIN widget-card-content -->
+
+                            <!-- END widget-card-content -->
+                            <!-- BEGIN widget-card-content -->
+                            <div class="widget-card-content bottom">
+                                <div class="widget-card-icon bg-gradient-blue">
+                                    <i class="ti-wand"></i>
+                                </div>
+                                <div class="widget-card-info">
+                                    <h4 class="widget-title">
+                                        <a href="https://hope.net.ph/insurance/" id="MAR">Your Coverage</a>
+                                    </h4>
+                                    <ul class="widget-inline-list">
+
+                                        <li>Insurance</li>
                                     </ul>
                                 </div>
                             </div>
@@ -294,7 +352,7 @@ $userinfo = userinfo();
                             <!-- BEGIN widget-card-cover -->
                             <div class="widget-card-cover">
                                 <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/t.jpeg">
+                                <img src="<?php echo base_url('NewTheme/')?>assets/img/e-wallet.png">
                             </div>
                             <!-- END widget-card-cover -->
                             <!-- BEGIN widget-card-content -->
@@ -305,7 +363,10 @@ $userinfo = userinfo();
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
-                                            <a href="/IWallet-Transaction-History.html">Transaction History</a>
+                                            <a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">E-Wallet History</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Total Revenue</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -321,10 +382,38 @@ $userinfo = userinfo();
                                 </div>
                                 <div class="widget-card-info">
                                     <h4 class="widget-title text-ellipsis">
-                                        <a href="<?php echo base_url('Dashboard/User/income_ledgar');?>" id="DED">$<?php echo $total_income['total_income'];?></a>
+                                        <a href="<?php echo base_url('Dashboard/User/income_ledgar');?>" id="DED"><?php echo $total_income['total_income'];?> Points</a>
                                     </h4>
                                     <ul class="widget-inline-list">
                                         <li>Total Income</li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- END widget-card-content -->
+                        </div>
+
+                        <div class="widget widget-card inverse-mode with-min-height">
+                            <!-- BEGIN widget-card-cover -->
+                            <div class="widget-card-cover">
+                                <div class="cover-bg with-gradient"></div>
+                                <img src="<?php echo base_url('NewTheme/')?>assets/img/hope-partner.png">
+                            </div>
+                            <!-- END widget-card-cover -->
+                            <!-- BEGIN widget-card-content -->
+
+                            <!-- END widget-card-content -->
+                            <!-- BEGIN widget-card-content -->
+                            <div class="widget-card-content bottom">
+                                <div class="widget-card-icon  bg-gradient-blue">
+                                    <i class="ti-shopping-cart"></i>
+                                </div>
+                                <div class="widget-card-info">
+                                    <h4 class="widget-title text-ellipsis">
+                                        <a href="https://hope.net.ph/insurance/" id="DED">Shop Hope</a>
+                                    </h4>
+                                    <ul class="widget-inline-list">
+                                        <li>Empower Yourself</li>
                                         <li></li>
                                     </ul>
                                 </div>
@@ -492,7 +581,7 @@ $userinfo = userinfo();
                                     </div>
                                     <div class="col-4">
                                         <div class="widget-title" id="TOTALROI"><?php echo $userinfo->package_amount;?></div>
-                                        <div class="widget-desc">Magic Account</div>
+                                        <div class="widget-desc">Package Amount</div>
                                     </div>
                                     <div class="col-4">
                                         <div class="widget-title" style="color: #4cd964;" id="MemSts"><?php echo $userinfo->paid_status == 0 ? 'Free' : 'Active';?></div>
@@ -513,15 +602,11 @@ $userinfo = userinfo();
                                     </div>
                                     <div class="widget-list-content">
                                         <h4 class="widget-title text-ellipsis" id="Actived_On1">
-                                            <b>Doj : </b><?php echo $userinfo->created_at;?>
+                                            <b>Joined : </b><?php echo $userinfo->created_at;?>
                                         </h4>
                                         <!--	<div class="widget-desc" id="TotTeam1"></div>-->
                                     </div>
-                                    <div class="widget-list-action">
-                                        <div class="text-muted">
-                                            <i class="ti-angle-right"></i>
-                                        </div>
-                                    </div>
+
                                 </a>
                             </li>
                             <li>
@@ -533,15 +618,11 @@ $userinfo = userinfo();
                                     </div>
                                     <div class="widget-list-content">
                                         <h4 class="widget-title text-ellipsis" id="DOJ">
-                                            <b>Act. On : </b><?php echo $userinfo->paid_status == 0 ? 'Free' : $userinfo->topup_date;?>
+                                            <b>Activated : </b><?php echo $userinfo->paid_status == 0 ? 'Free' : $userinfo->topup_date;?>
                                         </h4>
                                         <!--<div class="widget-desc" id="Totbussiness"></div>-->
                                     </div>
-                                    <div class="widget-list-action">
-                                        <div class="text-muted">
-                                            <i class="ti-angle-right"></i>
-                                        </div>
-                                    </div>
+
                                 </a>
                             </li>
                         </ul>
@@ -549,7 +630,7 @@ $userinfo = userinfo();
                     </div>
                     <!-- END col-3 -->
                     <!-- BEGIN col-3 -->
-                    <div class="col-lg-4 col-sm-6 with-rounded-corner">
+                    <div class="col-lg-4 col-sm-6 with-rounded-corner" style="display:none">
                         <!-- BEGIN section-title -->
                         <div class="section-title m-t-10">RECENT REFFERAL SIGNUP</div>
                         <!-- END section-title -->

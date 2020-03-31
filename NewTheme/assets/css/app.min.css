@@ -581,7 +581,7 @@ body.rtl .progress-widget__step {
     content: "";
     position: absolute;
     top: -20px;
-    left: 87px;   
+    left: 87px;
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent #bdb3b3 transparent;
@@ -621,7 +621,7 @@ body.rtl .progress-widget__step {
     content: "";
     position: absolute;
     top: -20px;
-    left: 87px;   
+    left: 87px;
     border-width: 10px;
     border-style: solid;
     border-color: transparent transparent #bdb3b3 transparent;
@@ -631,7 +631,7 @@ body.rtl .progress-widget__step {
 }
 
 
-/*///////////////Top Tooltip w/ Bottom Arrow////////////////*/ 
+/*///////////////Top Tooltip w/ Bottom Arrow////////////////*/
 
 
 
@@ -645,7 +645,7 @@ body.rtl .progress-widget__step {
 
 
 
-@media only screen and (max-width: 767px) 
+@media only screen and (max-width: 767px)
 {
 	.collapsed .progress-widget__item {
     display: none!important;
@@ -668,7 +668,7 @@ body.rtl .progress-widget__step {
 
 .collapsed .progress-widget__wrapper {
     display: block;
-  
+
 }
 .kki {
     display: block!important;
@@ -678,11 +678,11 @@ body.rtl .progress-widget__step {
 }
 .progress-widget__wrapper {
     display: none;
-  
+
 }
 #myModal .progress-widget__wrapper {
     display: block;
-  
+
 }
 .current .progress-widget__title {
     font-weight: 700;
@@ -743,11 +743,3 @@ button {
 .border-dark {
     border-color: #bfbfbfb0!important;
 }
-
-
-
-
-
-
-
-

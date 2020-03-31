@@ -585,6 +585,10 @@ div#content {
     max-width: 100%;
     overflow: scroll;
 }
+.sidebar, .sidebar:before {
+    top: 3.9125rem;
+
+}
         </style>
     </head>
     <body data-gr-c-s-loaded="true">
@@ -701,7 +705,7 @@ div#content {
                     <div class="navbar-header">
                         <a href="<?php echo base_url('Dashboard');?>" class="navbar-brand">
                             <img src="<?php echo base_url(logo)?>" alt="logo" id="screen-logo">
-                            <img src="<?php echo base_url(logo)?>" alt="logo" id="mobile-logo">
+                            <img src="<?php echo base_url('uploads/')?>Fav-1.png" alt="logo" style="max-width:42px" id="mobile-logo">
                         </a>
                         <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                             <span class="icon-bar"></span>
@@ -722,7 +726,7 @@ div#content {
                             <li class="dropdown">
                                 <a href="<?php echo base_url('Dashboard/Support/ComposeMail');?>" class=" navbar-icon with-label"><i class="ti-bell"></i></a>
                             </li>
-                            
+
                             <li class="dropdown">
                                 <a href="javascript:;" data-toggle="dropdown">
                                     <span class="navbar-user-img online pull-left" id="Mem_Profl_Pic">
@@ -861,8 +865,8 @@ div#content {
                                   <li><a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Total Revenue</a></li>
 
                                     <li><a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">E-Wallet History</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal Accounts</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/IncomeTransfer')?>"> Transfer History</a></li>
+                                      <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal History</a></li>
+                                      <li><a href="<?php echo base_url('Dashboard/Fund/transfer_history')?>"> Transfer History</a></li>
                                              <li><a href="<?php echo base_url('Dashboard/Fund/activation_history');?>">Membership History</a></li>
                                 </ul>
                             </li>
@@ -887,7 +891,7 @@ div#content {
 
                             <li class="nav-divider"></li>
                             <li><a href="<?php echo base_url('Dashboard/User/logout');?>"><i class="ti-lock"></i><span>Log-Out</span></a></li>
-                            <li class="nav-copyright">© 2020 <b>Bitwin</b><br></li>
+                            <li class="nav-copyright">© 2020 <b>HOPE Partners</b><br></li>
                         </ul>
                         <!-- END nav -->
                     </div>

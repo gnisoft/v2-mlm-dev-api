@@ -9,6 +9,7 @@
         <script src="<?php echo base_url('Assets/plugins/jquery/jquery.min.js'); ?>"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/6.4.1/css/intlTelInput.css">
     </head>
 
     <style>
@@ -108,31 +109,31 @@
         div#wrapper
         {
 
-          background: url(http://142.93.203.54/~partners/uploads/AdobeStock_305949962.jpg);
-          background-size:cover;
+            background: url(http://142.93.203.54/~partners/uploads/AdobeStock_305949962.jpg);
+            background-size:cover;
         }
         .small, small {
-font-size: 80%;
-font-weight: 400;
-color: #f2b813;
-}
-.text-center {
-text-align: center!important;
-color: #fff;
-}
-p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    color: #f8ea4e;
-}
-.Accept {
-    color: #fff;
-    font-size: 12px;
-}
-select.form-control:not([size]):not([multiple]) {
-    height: 45px;
+            font-size: 80%;
+            font-weight: 400;
+            color: #f2b813;
+        }
+        .text-center {
+            text-align: center!important;
+            color: #fff;
+        }
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #f8ea4e;
+        }
+        .Accept {
+            color: #fff;
+            font-size: 12px;
+        }
+        select.form-control:not([size]):not([multiple]) {
+            height: 45px;
 
-}
+        }
     </style>
 
     <body>
@@ -152,7 +153,7 @@ select.form-control:not([size]):not([multiple]) {
                                 </div>
 
                                 <div class="panel panel-primary">
-                                    <!-- <h5><?php //echo title;   ?></h5> -->
+                                    <!-- <h5><?php //echo title;      ?></h5> -->
                                     <span class="text-danger">
                                         <?php echo $this->session->flashdata('error'); ?>
                                     </span>
@@ -184,25 +185,27 @@ select.form-control:not([size]):not([multiple]) {
                                         <label for="country">Country:</label>
                                         <select class="form-control" name="country" id="country">
                                             <?php
-                                            foreach($countries as $key => $country)
-                                                echo'<option value="'.$country['id'].'" '.(($country['id'] == 231) ? 'selected' : '').' data-countryCode="'.$country['phonecode'].'">'.$country['name'].'</option>';
+                                            foreach ($countries as $key => $country)
+                                                echo'<option value="' . $country['id'] . '" ' . (($country['id'] == 231) ? 'selected' : '') . ' data-countryCode="' . $country['phonecode'] . '">' . $country['name'] . '</option>';
                                             ?>
                                         </select>
                                     </div>
                                     <script>
-                                        $(document).on('change','#country',function(){
-                                            var countryCode = '+'+$("#country option:selected").attr('data-countryCode');
+                                        $(document).on('change', '#country', function () {
+                                            var countryCode = '+' + $("#country option:selected").attr('data-countryCode');
                                             $('#countryCode').val(countryCode)
                                         })
                                     </script>
                                     <div class="form-group">
                                         <label for="pwd">Country Code:</label>
                                         <div class="row">
-                                          <div class="col-md-4 col-xs-4">
-                                        <input type="text" class="form-control" id="countryCode"  value="+1" readonly></div>
-                                          <div class="col-md-8 col-xs-8"><input type="phone" class="form-control"  placeholder="Enter Phone" name="phone" value="<?php echo set_value('phone'); ?>" required></div>
-                                        <span class="text-danger"> <?php echo form_error('phone'); ?></span>
-                                      </div>
+                                            <!--<<div class="col-md-4 col-xs-4">
+                                                input type="text" class="form-control" id="mobile-number"  value="+1" ></div>-->
+                                            <div class="col-md-12 col-xs-12">
+                                                <input type="tel" class="form-control"  id="mobile-number" placeholder="Enter Phone" name="phone" value="<?php echo set_value('phone'); ?>" required>
+                                            </div>
+                                            <span class="text-danger"> <?php echo form_error('phone'); ?></span>
+                                        </div>
                                     </div>
                                     <!-- <div class="form-group">
                                         <label for="pwd">PAN card:</label>
@@ -218,7 +221,7 @@ select.form-control:not([size]):not([multiple]) {
                                         <span>
                                             <input id="chTerms" name="chTerms" type="checkbox" required="required">
                                         </span>&nbsp;
-                                        I have read the   <a style="cursor:pointer;color:red; font-size:16px" target="_blank" href="<?php echo base_url('Site/Main/content/terms');?>" target="_blank">Terms &amp; Conditions</a>
+                                        I have read the   <a style="cursor:pointer;color:red; font-size:16px" target="_blank" href="<?php echo base_url('Site/Main/content/terms'); ?>" target="_blank">Terms &amp; Conditions</a>
 
                                     </div>
                                     <div class="form-group">
@@ -239,27 +242,31 @@ select.form-control:not([size]):not([multiple]) {
                 </div>
             </div>
         </div>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/6.4.1/js/intlTelInput.min.js"></script>
+
         <script>
-            $(document).on('blur', '#sponser_id', function () {
-                check_sponser();
-            })
-            function check_sponser() {
-                var user_id = $('#sponser_id').val();
-                if (user_id != '') {
-                    var url = '<?php echo base_url("Dashboard/User/get_user/") ?>' + user_id;
-                    $.get(url, function (res) {
-                        $('#errorMessage').html(res);
-                    })
-                }
-            }
-            check_sponser();
-            $(document).on('submit', '#RegisterForm', function () {
-                if (confirm('Please Check All The Fields Before Submit')) {
-                    yourformelement.submit();
-                } else {
-                    return false;
-                }
-            })
+                                        $("#mobile-number").intlTelInput();
+                                        $(document).on('blur', '#sponser_id', function () {
+                                            check_sponser();
+                                        })
+                                        function check_sponser() {
+                                            var user_id = $('#sponser_id').val();
+                                            if (user_id != '') {
+                                                var url = '<?php echo base_url("Dashboard/User/get_user/") ?>' + user_id;
+                                                $.get(url, function (res) {
+                                                    $('#errorMessage').html(res);
+                                                })
+                                            }
+                                        }
+                                        check_sponser();
+                                        $(document).on('submit', '#RegisterForm', function () {
+                                            if (confirm('Please Check All The Fields Before Submit')) {
+                                                yourformelement.submit();
+                                            } else {
+                                                return false;
+                                            }
+                                        })
         </script>
     </body>
 </html>
