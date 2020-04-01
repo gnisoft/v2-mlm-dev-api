@@ -49,10 +49,14 @@ if (!function_exists('pool_count')) {
 if (!function_exists('country_flag')) {
 
     function country_flag($country_id) {
-        $ci = & get_instance();
-        $ci->load->model('user_model');
-        $name = $ci->user_model->get_single_object('countries', array('id' => $country_id), 'name');
-        return str_replace(' ', '-', $name->name);
+        if ($country_id != '') {
+            $ci = & get_instance();
+            $ci->load->model('user_model');
+            $name = $ci->user_model->get_single_object('countries', array('id' => $country_id), 'name');
+            return str_replace(' ', '-', $name->name);
+        }else{
+            return;
+        }
     }
 
 }

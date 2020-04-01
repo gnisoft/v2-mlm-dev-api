@@ -764,7 +764,7 @@ $userinfo = userinfo();
                                     <tr>
                                         <td class="field">City</td>
                                         <td class="value">
-                                            <select class="form-control" name="city" id="city"  required="">
+                                            <select class="form-control" name="city" id="city">
                                                 <?php
                                                 foreach ($cityArr as $key => $city)
                                                     echo'<option value="' . $city['id'] . '" ' . ($userinfo->city == $city['id'] ? "selected" : "") . '>' . $city['name'] . '</option>';

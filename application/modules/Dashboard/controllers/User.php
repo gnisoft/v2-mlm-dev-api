@@ -140,6 +140,7 @@ class User extends CI_Controller {
                         $userData['last_left'] = $userData['user_id'];
                         $userData['last_right'] = $userData['user_id'];
                         $userData['country_code'] = $this->input->post('country');
+                        $userData['country'] = $this->input->post('country');
                         $userData['email'] = $this->input->post('email');
                         $userData['master_key'] = rand(100000, 999999);
                         if ($userData['position'] == 'L') {
