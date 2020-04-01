@@ -480,7 +480,7 @@ class Dashboard extends CI_Controller {
                     $user_id = $this->input->post('user_id');
                     $transfer_user = $this->User_model->get_single_record('tbl_users', array('user_id' => $user_id), '*');
                     $balance = $this->User_model->get_single_record('tbl_income_wallet', ' user_id = "' . $this->session->userdata['user_id'] . '"', 'ifnull(sum(amount),0) as balance');
-                    if ($withdraw_amount >= 25) {
+                    if ($withdraw_amount >= 10) {
                         if ($balance['balance'] >= $withdraw_amount) {
                             // if($user['master_key'] == $master_key){
                             $DirectIncome = array(
@@ -506,7 +506,7 @@ class Dashboard extends CI_Controller {
                             $this->session->set_flashdata('message', 'Insuffcient Balance');
                         }
                     } else {
-                        $this->session->set_flashdata('message', 'Minimum Transfer Amount is Rs 25');
+                        $this->session->set_flashdata('message', 'Minimum Transfer Amount is $10');
                     }
                 } else {
                     $this->session->set_flashdata('message', 'erorrrrr');

@@ -403,20 +403,6 @@ $userinfo = userinfo();
         z-index: 1;
         display:none;
     }
-    .profile-info-list {
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-        background: #f8f8f8;
-        padding: 20px;
-        margin-top: 20px;
-    }
-    .profile-info-list>li.title {
-        font-size: 20px;
-
-        color: #000;
-
-    }
 
     /* Safari */
     @-webkit-keyframes spin {
@@ -431,9 +417,9 @@ $userinfo = userinfo();
 </style>
 <style type="text/css">.at-icon{fill:#fff;border:0}.at-icon-wrapper{display:inline-block;overflow:hidden}a .at-icon-wrapper{cursor:pointer}.at-rounded,.at-rounded-element .at-icon-wrapper{border-radius:12%}.at-circular,.at-circular-element .at-icon-wrapper{border-radius:50%}.addthis_32x32_style .at-icon{width:2pc;height:2pc}.addthis_24x24_style .at-icon{width:24px;height:24px}.addthis_20x20_style .at-icon{width:20px;height:20px}.addthis_16x16_style .at-icon{width:1pc;height:1pc}#at16lb{display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:1001;background-color:#000;opacity:.001}#at_complete,#at_error,#at_share,#at_success{position:static!important}.at15dn{display:none}#at15s,#at16p,#at16p form input,#at16p label,#at16p textarea,#at_share .at_item{font-family:arial,helvetica,tahoma,verdana,sans-serif!important;font-size:9pt!important;outline-style:none;outline-width:0;line-height:1em}* html #at15s.mmborder{position:absolute!important}#at15s.mmborder{position:fixed!important;width:250px!important}#at15s{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);float:none;line-height:1em;margin:0;overflow:visible;padding:5px;text-align:left;position:absolute}#at15s a,#at15s span{outline:0;direction:ltr;text-transform:none}#at15s .at-label{margin-left:5px}#at15s .at-icon-wrapper{width:1pc;height:1pc;vertical-align:middle}#at15s .at-icon{width:1pc;height:1pc}.at4-icon{display:inline-block;background-repeat:no-repeat;background-position:top left;margin:0;overflow:hidden;cursor:pointer}.addthis_16x16_style .at4-icon,.addthis_default_style .at4-icon,.at4-icon,.at-16x16{width:1pc;height:1pc;line-height:1pc;background-size:1pc!important}.addthis_32x32_style .at4-icon,.at-32x32{width:2pc;height:2pc;line-height:2pc;background-size:2pc!important}.addthis_24x24_style .at4-icon,.at-24x24{width:24px;height:24px;line-height:24px;background-size:24px!important}.addthis_20x20_style .at4-icon,.at-20x20{width:20px;height:20px;line-height:20px;background-size:20px!important}.at4-icon.circular,.circular .at4-icon,.circular.aticon{border-radius:50%}.at4-icon.rounded,.rounded .at4-icon{border-radius:4px}.at4-icon-left{float:left}#at15s .at4-icon{text-indent:20px;padding:0;overflow:visible;white-space:nowrap;background-size:1pc;width:1pc;height:1pc;background-position:top left;display:inline-block;line-height:1pc}.addthis_vertical_style .at4-icon,.at4-follow-container .at4-icon{margin-right:5px}html>body #at15s{width:250px!important}#at15s.atm{background:none!important;padding:0!important;width:10pc!important}#at15s_inner{background:#fff;border:1px solid #fff;margin:0}#at15s_head{position:relative;background:#f2f2f2;padding:4px;cursor:default;border-bottom:1px solid #e5e5e5}.at15s_head_success{background:#cafd99!important;border-bottom:1px solid #a9d582!important}.at15s_head_success a,.at15s_head_success span{color:#000!important;text-decoration:none}#at15s_brand,#at15sptx,#at16_brand{position:absolute}#at15s_brand{top:4px;right:4px}.at15s_brandx{right:20px!important}a#at15sptx{top:4px;right:4px;text-decoration:none;color:#4c4c4c;font-weight:700}#at15sptx:hover{text-decoration:underline}#at16_brand{top:5px;right:30px;cursor:default}#at_hover{padding:4px}#at_hover .at_item,#at_share .at_item{background:#fff!important;float:left!important;color:#4c4c4c!important}#at_share .at_item .at-icon-wrapper{margin-right:5px}#at_hover .at_bold{font-weight:700;color:#000!important}#at_hover .at_item{width:7pc!important;padding:2px 3px!important;margin:1px;text-decoration:none!important}#at_hover .at_item.athov,#at_hover .at_item:focus,#at_hover .at_item:hover{margin:0!important}#at_hover .at_item.athov,#at_hover .at_item:focus,#at_hover .at_item:hover,#at_share .at_item.athov,#at_share .at_item:hover{background:#f2f2f2!important;border:1px solid #e5e5e5;color:#000!important;text-decoration:none}.ipad #at_hover .at_item:focus{background:#fff!important;border:1px solid #fff}.at15t{display:block!important;height:1pc!important;line-height:1pc!important;padding-left:20px!important;background-position:0 0;text-align:left}.addthis_button,.at15t{cursor:pointer}.addthis_toolbox a.at300b,.addthis_toolbox a.at300m{width:auto}.addthis_toolbox a{margin-bottom:5px;line-height:initial}.addthis_toolbox.addthis_vertical_style{width:200px}.addthis_button_facebook_like .fb_iframe_widget{line-height:100%}.addthis_button_facebook_like iframe.fb_iframe_widget_lift{max-width:none}.addthis_toolbox a.addthis_button_counter,.addthis_toolbox a.addthis_button_facebook_like,.addthis_toolbox a.addthis_button_facebook_send,.addthis_toolbox a.addthis_button_facebook_share,.addthis_toolbox a.addthis_button_foursquare,.addthis_toolbox a.addthis_button_linkedin_counter,.addthis_toolbox a.addthis_button_pinterest_pinit,.addthis_toolbox a.addthis_button_tweet{display:inline-block}.addthis_toolbox span.addthis_follow_label{display:none}.addthis_toolbox.addthis_vertical_style span.addthis_follow_label{display:block;white-space:nowrap}.addthis_toolbox.addthis_vertical_style a{display:block}.addthis_toolbox.addthis_vertical_style.addthis_32x32_style a{line-height:2pc;height:2pc}.addthis_toolbox.addthis_vertical_style .at300bs{margin-right:4px;float:left}.addthis_toolbox.addthis_20x20_style span{line-height:20px}.addthis_toolbox.addthis_32x32_style span{line-height:2pc}.addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact,.addthis_toolbox.addthis_pill_combo_style a{float:left}.addthis_toolbox.addthis_pill_combo_style a.addthis_button_tweet{margin-top:-2px}.addthis_toolbox.addthis_pill_combo_style .addthis_button_compact .at15t_compact{margin-right:4px}.addthis_default_style .addthis_separator{margin:0 5px;display:inline}div.atclear{clear:both}.addthis_default_style .addthis_separator,.addthis_default_style .at4-icon,.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300bs,.addthis_default_style .at300m{float:left}.at300b img,.at300bo img{border:0}a.at300b .at4-icon,a.at300m .at4-icon{display:block}.addthis_default_style .at300b,.addthis_default_style .at300bo,.addthis_default_style .at300m{padding:0 2px}.at300b,.at300bo,.at300bs,.at300m{cursor:pointer}.addthis_button_facebook_like.at300b:hover,.addthis_button_facebook_like.at300bs:hover,.addthis_button_facebook_send.at300b:hover,.addthis_button_facebook_send.at300bs:hover{opacity:1}.addthis_20x20_style .at15t,.addthis_20x20_style .at300bs{overflow:hidden;display:block;height:20px!important;width:20px!important;line-height:20px!important}.addthis_32x32_style .at15t,.addthis_32x32_style .at300bs{overflow:hidden;display:block;height:2pc!important;width:2pc!important;line-height:2pc!important}.at300bs{overflow:hidden;display:block;background-position:0 0;height:1pc;width:1pc;line-height:1pc!important}.addthis_default_style .at15t_compact,.addthis_default_style .at15t_expanded{margin-right:4px}#at_share .at_item{width:123px!important;padding:4px;margin-right:2px;border:1px solid #fff}#at16p{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);z-index:10000001;position:absolute;top:50%;left:50%;width:300px;padding:10px;margin:0 auto;margin-top:-185px;margin-left:-155px;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#5e5e5e}#at_share{margin:0;padding:0}#at16pt{position:relative;background:#f2f2f2;height:13px;padding:5px 10px}#at16pt a,#at16pt h4{font-weight:700}#at16pt h4{display:inline;margin:0;padding:0;font-size:9pt;color:#4c4c4c;cursor:default}#at16pt a{position:absolute;top:5px;right:10px;color:#4c4c4c;text-decoration:none;padding:2px}#at15sptx:focus,#at16pt a:focus{outline:thin dotted}#at15s #at16pf a{top:1px}#_atssh{width:1px!important;height:1px!important;border:0!important}.atm{width:10pc!important;padding:0;margin:0;line-height:9pt;letter-spacing:normal;font-family:arial,helvetica,tahoma,verdana,sans-serif;font-size:9pt;color:#444;background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABtJREFUeNpiZGBgaGAgAjAxEAlGFVJHIUCAAQDcngCUgqGMqwAAAABJRU5ErkJggg==);padding:4px}.atm-f{text-align:right;border-top:1px solid #ddd;padding:5px 8px}.atm-i{background:#fff;border:1px solid #d5d6d6;padding:0;margin:0;box-shadow:1px 1px 5px rgba(0,0,0,.15)}.atm-s{margin:0!important;padding:0!important}.atm-s a:focus{border:transparent;outline:0;transition:none}#at_hover.atm-s a,.atm-s a{display:block;text-decoration:none;padding:4px 10px;color:#235dab!important;font-weight:400;font-style:normal;transition:none}#at_hover.atm-s .at_bold{color:#235dab!important}#at_hover.atm-s a:hover,.atm-s a:hover{background:#2095f0;text-decoration:none;color:#fff!important}#at_hover.atm-s .at_bold{font-weight:700}#at_hover.atm-s a:hover .at_bold{color:#fff!important}.atm-s a .at-label{vertical-align:middle;margin-left:5px;direction:ltr}.at_PinItButton{display:block;width:40px;height:20px;padding:0;margin:0;background-image:url(//s7.addthis.com/static/t00/pinit00.png);background-repeat:no-repeat}.at_PinItButton:hover{background-position:0 -20px}.addthis_toolbox .addthis_button_pinterest_pinit{position:relative}.at-share-tbx-element .fb_iframe_widget span{vertical-align:baseline!important}#at16pf{height:auto;text-align:right;padding:4px 8px}.at-privacy-info{position:absolute;left:7px;bottom:7px;cursor:pointer;text-decoration:none;font-family:helvetica,arial,sans-serif;font-size:10px;line-height:9pt;letter-spacing:.2px;color:#666}.at-privacy-info:hover{color:#000}.body .wsb-social-share .wsb-social-share-button-vert{padding-top:0;padding-bottom:0}.body .wsb-social-share.addthis_counter_style .addthis_button_tweet.wsb-social-share-button{padding-top:40px}.body .wsb-social-share.addthis_counter_style .addthis_button_facebook_like.wsb-social-share-button{padding-top:21px}@media print{#at4-follow,#at4-share,#at4-thankyou,#at4-whatsnext,#at4m-mobile,#at15s,.at4,.at4-recommended{display:none!important}}@media screen and (max-width:400px){.at4win{width:100%}}@media screen and (max-height:700px) and (max-width:400px){.at4-thankyou-inner .at4-recommended-container{height:122px;overflow:hidden}.at4-thankyou-inner .at4-recommended .at4-recommended-item:first-child{border-bottom:1px solid #c5c5c5}}</style>
 <style type="text/css">.at-branding-logo{font-family:helvetica,arial,sans-serif;text-decoration:none;font-size:10px;display:inline-block;margin:2px 0;letter-spacing:.2px}.at-branding-logo .at-branding-icon{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAMAAAC67D+PAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////+GlNUkcc1QAAAB1JREFUeNpiYIQDBjQmAwMmkwEM0JnY1WIxFyDAABGeAFEudiZsAAAAAElFTkSuQmCC")}.at-branding-logo .at-branding-icon,.at-branding-logo .at-privacy-icon{display:inline-block;height:10px;width:10px;margin-left:4px;margin-right:3px;margin-bottom:-1px;background-repeat:no-repeat}.at-branding-logo .at-privacy-icon{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAMAAABR24SMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAABhQTFRF8fr9ot/xXcfn2/P5AKva////////AKTWodjhjAAAAAd0Uk5T////////ABpLA0YAAAA6SURBVHjaJMzBDQAwCAJAQaj7b9xifV0kUKJ9ciWxlzWEWI5gMF65KUTv0VKkjVeTerqE/x7+9BVgAEXbAWI8QDcfAAAAAElFTkSuQmCC")}.at-branding-logo span{text-decoration:none}.at-branding-logo .at-branding-addthis,.at-branding-logo .at-branding-powered-by{color:#666}.at-branding-logo .at-branding-addthis:hover{color:#333}.at-cv-with-image .at-branding-addthis,.at-cv-with-image .at-branding-addthis:hover{color:#fff}a.at-branding-logo:visited{color:initial}.at-branding-info{display:inline-block;padding:0 5px;color:#666;border:1px solid #666;border-radius:50%;font-size:10px;line-height:9pt;opacity:.7;transition:all .3s ease;text-decoration:none}.at-branding-info span{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.at-branding-info:before{content:'i';font-family:Times New Roman}.at-branding-info:hover{color:#0780df;border-color:#0780df}</style>
-<!--<script type="text/javascript" charset="utf-8" async="" src="./My Profile_files/counter.1e8689847c822d3197cd.js.download"></script>-->
+<script type="text/javascript" charset="utf-8" async="" src="./My Profile_files/counter.1e8689847c822d3197cd.js.download"></script>
 <style type="text/css">.addthis_counter{font-weight:700;display:inline-block;border:0;outline:0;cursor:pointer;color:#fff}.addthis_counter a{display:block;font-family:arial,helvetica,sans-serif!important;text-decoration:none!important;border:0}.addthis_counter{text-decoration:none!important;text-align:left}.addthis_counter .addthis_button_expanded{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAACaCAMAAADcrusAAAAA21BMVEX////+bUznWjrnWjrBwcGJiYnm5ubFxcWMjIyRkZH39/f19fX////nWjr+bUzys6n+uq7/7+z87evqd2H+hm3/5+P+sKPxqJz65OH/9/b+el3paU//zcT2yMDshXH99vX+kXz+nIn/w7n0vrX30cz9bEv/3tn529f/1s/ukYH3aUn+ppbvnY/bUjTmWTn/3dX+9fP3aEj/9vT52NH/5d/aUTP9a0r74tzlWDjfWz386+f/7en4b1H/7uv4b1D/3db/9/X/7uraUjT+9vT87Oj87OnpZEb52dH+dlezszuQAAAABHRSTlMAExMAzBw6IQAAAnlJREFUeF6009eKKzEMBuBJriW5T2/pPdvbqb28/xMdGbOQiyxZZ9n/QnjAH8KWJxl8uqeI3H8ZJFcUmatkFktmCUXnXHIBIRevJ/AcBuUSQI0onZ8k1/QxkNqVJIvyNPl8S1/ZMFkuuYxtqhQoS2MA1RNIGKUArjwk/4Lk0jtXp0QpjEjJHiw5SbzZQlo6eUi+fafba0985LKwqSOqJdNaMdmQ5O+NOn6WYsNlPk7nnvRF6iF3lOBz/MZqZ6kvZCBS+bUn1h/MvTCXmumYArEKijlYJr6N6t8y/fcn5zz+dfwvNlhH9ZmtB8nw6REj8vg0TO4wMnfJPpbsE4zOueQGQm5eT+A5DKopgF5htjhJLvFDIE1eoeiq0+T3A/5lw2Q65TIxmdagDU4AdIsgYJUB5NUh+RMklzbPmwwxgxVq0YLBXCBvNpBVuTgkP3/hw6UnPmLamSxHbATTRjPZouDvrT5+lm7LZTHJFp60XeYhdxTgc/zGmtxg24lAhPZrT4w/WP7CXBqmEwzEaOgWYJj4Nrp9y/Tfn5zz+Hex5Ecy3EX12e+G/9mrQxUAYBgGooEFAm3//3snZmviJnL+6cMRrXSgHqsWOGb8iISEhISEqDxRAsSld5De/nLbr4MViEEYDMI5mFQ3ff/nXejx33YHcyqtc/8QQSXaRYfJZpAaFWx2FdwfMXyqYdYjp4punpP5fcgiiyyyyCKVl9+6nxQHCP+t20WHCTdIjQo2KjgDAT/Y7UQk/li1tkPtyaQlEhBARABBUV+lvhc1rz4w+FX4bKWLrA0cp7Ue+KhqnpA/mXggAQFEBBAU9VXqe1HzzgNTv2Iyx9Dc8gWOjkKMG1wfQQAAAABJRU5ErkJggg==");background-repeat:no-repeat;display:inline-block}.addthis_counter .atc_s{background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUBAMAAAB/pwA+AAAAFVBMVEUAAAD///////////////////////9Iz20EAAAABnRSTlMAwPm7kB4+mBDvAAAAP0lEQVQI12MIVksDgyRTBrM0KEhmAApChRnS4ACdKcCIl5ko6MAiKAZmJjAAARsKE6GAsGE43IBwJLLTER4CAHvvQkc3Hji8AAAAAElFTkSuQmCC");background-size:10px;background-repeat:no-repeat;background-color:#fe6d4c;background-position:5px 5px;display:inline-block;border-radius:2px;min-width:25px;text-decoration:none}.addthis_counter .atc_s:hover{background-color:#e75a3a}.addthis_counter.addthis_bubble_style{background-image:url("data:image/gif;base64,R0lGODlhUgBkAKIEAOrq6sLCwoWFhf///////wAAAAAAAAAAACH5BAEAAAQALAAAAABSAGQAAAP/SLoa/jDKSetkOGsdwPhgKI5kaYpAsK1sd75wPKZsjQVyrpuq7eO7YLDnqwGFyBixuDomn6UlkwOtkqTTm3ULwmYXTi7U+3WJreSp+VxNF9fs8ZcBjz/dRo8dPSfU90l4TXqAcn1/hTuCLYSJQ31gjY45i3mTipB0kpcnlTZhnDyZdKFKo2ClMJ5GqS+rLa2dpw2xorOgtR+vg7kou7y9AzSzYBbGx8gRxAwCzc7P0NHS09TSywoCm60AAsvZwSDcxALgId2z5OUf56fp6uyj7uXwmfLg9JD2wfh9+r38X76pGwBwisCBBYscRFhP2718Dh/OWThwXb+IEidi/New+SKIhD4ozmu3sRVIhSVLnVRYcWXIluNgopPZjmY8m/VwQlQnblxKRz29VRtKtCg0YsmSOsBgtGmzNz9zDCMgEkpQWGyI+KuyElebBVuhdI2jNc5JRF+pRtUBEu3XqlYSum0DNy6jPQHqcrVEVq2ds2spYQssY2xWsGZ/9MWW+NNiqo35cpmqV8jVFkqTMXVqlEnmz1I4i4Y3twplwjqCehVTthC71VxaA3qdSPYe2oVs/0WVG7HrBqgx+f1deouKylsEFDeOPPlyNM3tPpcTXSzw2oMT4QakOzJs475n8+Ye/vZ4vOV30+rN+Pf1PacBXQWdefPopgQSAAA7");background-repeat:no-repeat}.addthis_counter a.atc_s{font-size:11px;font-weight:100;color:#fff;padding:0 5px 0 20px;line-height:20px;overflow:hidden;cursor:pointer;transition:none}.addthis_counter .atc_s-span,.addthis_counter a.atc_s{display:block;height:20px}.addthis_counter .addthis_button_expanded.at300m .at4-icon{display:none!important}.addthis_counter a.addthis_button_expanded:hover,.addthis_counter.addthis_pill_style a.addthis_button_expanded:hover{text-decoration:none;color:#000}.addthis_counter .addthis_button_expanded{display:block;background-repeat:no-repeat;background-position:0 -40px;width:50px;height:33px;line-height:33px;padding-bottom:4px;margin-bottom:3px;text-align:center;text-decoration:none;font-size:1pc;font-weight:700;color:#333}.addthis_counter{vertical-align:top}.addthis_counter.addthis_native_counter .addthis_button_expanded{font-weight:400}* html .addthis_counter.compatmode0 .addthis_button_expanded{padding-bottom:0!important}* html .addthis_counter .addthis_button_expanded{height:37px}.addthis_counter .addthis_button_expanded:hover{background-position:0 -77px;cursor:pointer;color:#000}.addthis_counter .addthis_button_expanded .at300bs{display:none!important}.addthis_counter.addthis_pill_style{display:block;height:25px;overflow:hidden}.addthis_counter.addthis_pill_style a.atc_s{float:left}.addthis_counter.addthis_pill_style a.addthis_button_expanded{display:none;background-repeat:no-repeat;background-position:0 -114px;width:34px!important;height:20px;line-height:20px;margin:0 0 0 3px;padding:0 0 0 4px;float:left;text-align:center;text-decoration:none;font-family:arial,helvetica,sans-serif;font-weight:700;font-size:11px;color:#333;-ms-box-sizing:content-box;-o-box-sizing:content-box;box-sizing:content-box}.addthis_counter.addthis_pill_style.addthis_nonzero a.addthis_button_expanded{display:block!important;transition:none}.addthis_counter.addthis_pill_style a.addthis_button_expanded:hover{background-position:0 -134px!important}.addthis_counter.addthis_bubble_style{margin:0 0 0 -2px;text-align:center;font-weight:700;font-family:arial,helvetica,sans-serif;color:#000;background-repeat:no-repeat;background-position:0 -4pc;padding:0 0 0 4px;height:1pc;width:2pc!important;-ms-box-sizing:content-box;-o-box-sizing:content-box;box-sizing:content-box}.addthis_native_counter_parent .addthis_counter.addthis_bubble_style{background-position:0 -4pc!important}.addthis_counter.addthis_bubble_style.addthis_native_counter{margin:0 2px}.addthis_counter.addthis_bubble_style a.addthis_button_expanded{font-size:11px;height:1pc;line-height:1pc;width:34px;background:none}.addthis_counter.addthis_bubble_style:hover{background-position:-36px -4pc!important}.addthis_20x20_style .addthis_counter.addthis_bubble_style{background-repeat:no-repeat;background-position:0 -5pc!important;height:20px;width:35px!important;line-height:20px;padding:0 0 0 6px}.addthis_20x20_style .addthis_counter.addthis_bubble_style:hover{background-position:-41px -5pc!important}.addthis_20x20_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded{background:none;font-size:9pt;line-height:20px;height:20px;margin:0;width:35px!important;padding:0!important}.addthis_20x20_style .addthis_counter.addthis_bubble_style.addthis_native_counter a.addthis_button_expanded{font-size:11px}.addthis_32x32_style .addthis_counter.addthis_bubble_style,.addthis_32x32_white_style .addthis_counter.addthis_bubble_style{background-repeat:no-repeat;background-position:0 0!important;height:2pc;width:56px!important;line-height:2pc;padding:0 0 0 6px}.addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded,.addthis_32x32_white_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded{background:none;font-size:1pc;line-height:2pc;height:2pc;margin:0;width:56px!important;padding:0!important}.addthis_32x32_style .addthis_counter.addthis_bubble_style:hover,.addthis_32x32_white_style .addthis_counter.addthis_bubble_style:hover{background-position:0 -2pc!important}.addthis_counter.addthis_bubble_style .atc_s{display:none!important}* html .addthis_counter.addthis_bubble_style{width:36px!important;display:inline}* html .addthis_counter.bubblecompatmode0{width:2pc!important;display:block}* html .addthis_counter.addthis_bubble_style a.addthis_button_expanded{width:24px!important;height:14px!important;line-height:14px!important;padding:0;margin-top:1px!important;display:inline}* html .addthis_counter.bubblecompatmode0 a.addthis_button_expanded{width:36px}* html .addthis_32x32_style .addthis_counter.addthis_bubble_style{width:60px!important}* html .addthis_32x32_style .addthis_counter.addthis_bubble_style a.addthis_button_expanded{width:46px;height:26px!important;line-height:26px!important;margin-top:2px!important}* html .addthis_32x32_style .addthis_counter.bubblecompatmode0 a.addthis_button_expanded{height:2pc!important;line-height:2pc!important}</style>
-<!--<script charset="utf-8" src="./My Profile_files/button.550007e6cc79c00bac51111d8131d860.js.download"></script>-->
+<script charset="utf-8" src="./My Profile_files/button.550007e6cc79c00bac51111d8131d860.js.download"></script>
 <style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
     .fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0;margin:0;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
     .fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style>
@@ -573,13 +559,12 @@ $userinfo = userinfo();
                 <li class="nav-item" id="T1">
                     <a id="T21" class="nav-link active" data-toggle="tab" href="#ACCOUNT-DETAILS" role="tab">User Profile</a>
                 </li>
-                <li class="nav-item" id="T3">
-                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESETPASSWORD" role="tab">Change Password</a>
-                </li>
                 <li class="nav-item" id="T2">
                     <a id="T22" class="nav-link" data-toggle="tab" href="#E-CURRENCY-ACCOUNT" role="tab">Payment Accounts</a>
                 </li>
-
+                <li class="nav-item" id="T3">
+                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESETPASSWORD" role="tab">Change Password</a>
+                </li>
                 <li class="nav-item" id="T5">
                     <a id="T25" class="nav-link" data-toggle="tab" href="#KYC" role="tab" >Bank Verification</a>
                 </li>
@@ -624,14 +609,14 @@ $userinfo = userinfo();
                                                                 <a class="addthis_button_facebook_like  at300b" fb:''like:''layout="button_count">
                                                                    <div class="fb-like fb_iframe_widget" data-layout="button_count" data-show_faces="false" data-share="false" data-action="like" data-width="90" data-height="25" data-font="arial" data-href="" data-send="false" style="height: 25px;">
                                                                         <span style="vertical-align: bottom; width: 0px; height: 0px;">
-                                                                            <iframe name="f35fe8d0ab72a28" width="90px" height="25px" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="#" class="" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe>
+                                                                            <iframe name="f35fe8d0ab72a28" width="90px" height="25px" title="fb:like Facebook Social Plugin" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" src="./My Profile_files/like.html" class="" style="border: none; visibility: visible; width: 0px; height: 0px;"></iframe>
                                                                         </span>
                                                                     </div>
                                                                 </a>
                                                                 <a class="addthis_button_tweet at300b">
                                                                     <div class="tweet_iframe_widget" style="width: 62px; height: 25px;">
                                                                         <span>
-                                                                            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="#" data-url="" style="position: static; visibility: visible; width: 1px; height: 1px;"></iframe>
+                                                                            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" title="Twitter Tweet Button" src="./My Profile_files/tweet_button.69e02060c7c44baddf1b5629549acc0c.en.html" data-url="" style="position: static; visibility: visible; width: 1px; height: 1px;"></iframe>
                                                                         </span>
                                                                     </div>
                                                                 </a>
@@ -650,7 +635,7 @@ $userinfo = userinfo();
                                                         </div>
                                                         <div class="atclear"></div>
                                                     </div>
-                                                    <!--<script type="text/javascript" src="./My Profile_files/addthis_widget.js.download"></script>-->
+                                                    <script type="text/javascript" src="./My Profile_files/addthis_widget.js.download"></script>
                                                 </div>
                                                 <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5bb4c0eae2bd7243"></script>-->
                                                 <!----------fb-links-ens--------------->
@@ -738,7 +723,7 @@ $userinfo = userinfo();
                                                     echo'<option value="' . $country['id'] . '" ' . ($userinfo->country_code == $country['id'] ? "selected" : "") . '>' . $country['name'] . '</option>';
                                                 ?>
                                             </select>
-                                    <!--<input type="text" class="form-control" value="<?php //echo $userinfo->country;              ?>" name="country">-->
+                                    <!--<input type="text" class="form-control" value="<?php //echo $userinfo->country;         ?>" name="country">-->
                                     <!-- <span id="txtCity"></span>
                                     <span class="pull-right">
                                         <a href="#" data-toggle="modal">
@@ -751,7 +736,7 @@ $userinfo = userinfo();
                                     <tr>
                                         <td class="field">State/Province</td>
                                         <td class="value">
-                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->state;       ?>" name="state">-->
+                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->state;  ?>" name="state">-->
                                             <select class="form-control" name="state" required="" id="state">
                                                 <?php
                                                 foreach ($stateArr as $key => $state)
@@ -770,7 +755,7 @@ $userinfo = userinfo();
                                                     echo'<option value="' . $city['id'] . '" ' . ($userinfo->city == $city['id'] ? "selected" : "") . '>' . $city['name'] . '</option>';
                                                 ?>
                                             </select>
-                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->city;       ?>" name="city">-->
+                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->city;  ?>" name="city">-->
                                             <!-- <span id="txtCity"></span>
                                             <span class="pull-right">
                                                 <a href="#" data-toggle="modal">
@@ -1080,7 +1065,7 @@ $userinfo = userinfo();
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <div class="lead">
-                                                            Verify your Identity and Proof of Residence in order to activate your account and get access to all areas of HOPE Partners.
+                                                            Verify your Identity and Proof of Residence in order to activate your account and get access to all areas of Amoyo.
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1616,23 +1601,8 @@ $userinfo = userinfo();
                     <!-- end panel -->
                 </div>
                 <!-- BEGIN col-4 -->
-                <div class="col-md-4 " style="background:white">
+                <div class="col-md-4 ">
                     <!-- BEGIN profile-info-list -->
-
-                    <div class="col-md-12">
-                        <?php
-                        echo '<img src="' . base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image)) . '" class="img-responsive" style="max-width: 100%;
-    margin: auto;
-    margin-bottom: 10px;" id="blah" alt="please UPload Your Photo">';
-                        echo form_open_multipart(base_url('Dashboard/User/UploadUserImage'), array('method' => 'post', 'class' => 'proofForm'));
-                        echo'<input style="margin:10px 0px" type="file" name="userfile" class="form-control" onchange="readURL(this);">';
-                        echo'<input type="hidden" name="form_type" value="image_form"> ';
-                        echo '<div class="loader"></div>';
-                        echo'<button type="submit" class="btn btn-success">Upload</button>';
-                        echo form_close();
-                        ?>
-                    </div>
-                    <!-- END profile-info-list -->
                     <ul class="profile-info-list">
                         <li class="title">UPLINE DETAIL</li>
                         <!-- <li><div class="field">Id:</div><div class="value" ><span   id="txtSPNameID"></span></div></li>-->
@@ -1666,6 +1636,18 @@ $userinfo = userinfo();
                         ?>
 
                     </ul>
+                    <div class="col-md-4">
+                        <?php
+                        echo '<img src="' . base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image)) . '" class="img-responsive" style="max-width:100%" id="blah" alt="please UPload Your Photo">';
+                        echo form_open_multipart(base_url('Dashboard/User/UploadUserImage'), array('method' => 'post', 'class' => 'proofForm'));
+                        echo'<input type="file" name="userfile" class="form-control" onchange="readURL(this);">';
+                        echo'<input type="hidden" name="form_type" value="image_form"> ';
+                        echo '<div class="loader"></div>';
+                        echo'<button type="submit" class="btn btn-success">Upload</button>';
+                        echo form_close();
+                        ?>
+                    </div>
+                    <!-- END profile-info-list -->
                 </div>
                 <!-- END col-4 -->
             </div>
@@ -1682,154 +1664,152 @@ $userinfo = userinfo();
 </div>
 </div>
 <?php include_once 'footer.php'; ?>
-<script type="text/javascript">
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    $(document).on('click', '#btnCopy', function () {
-        //linkTxt
-        var copyText = document.getElementById("linkTxt");
-
-        /* Select the text field */
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-        /* Copy the text inside the text field */
-        document.execCommand("copy");
-        /* Alert the copied text */
-        alert("Link Copied : " + copyText.value);
-    })
-    $("form.proofForm").submit(function (e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
-        var t = $(this);
-        t.find('.loader').css('display', 'block');
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function (data) {
-                var res = JSON.parse(data)
-                alert(res.message);
-                $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                t.find('.loader').css('display', 'none');
-                if (res.success == 1) {
-                    t.find('.verification-img img').attr('src', res.image)
-                    t.find('span.wanki').remove();
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    });
-    $("#bankform").submit(function (e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
-        var t = $(this);
-        t.find('.loader').css('display', 'block');
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: formData,
-            success: function (data) {
-                var res = JSON.parse(data)
-                alert(res.message);
-                $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-                t.find('.loader').css('display', 'none');
-                if (res.success == 1) {
-                }
-            },
-            cache: false,
-            contentType: false,
-            processData: false
-        });
-    });
-    $(document).on('submit', '.pswrdrst', function (e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        var url = $(this).attr('action');
-        var formData = $(this).serialize();
-        $.post(url, formData, function (res) {
-            alert(res.message);
-            $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            // if(res.success == 1){
-            //     document.getElementById("pswrdrst").reset();
-            // }
-        }, 'json')
-    })
-
-    $.get('<?php echo base_url("Admin/Management/bank_list") ?>', function (res) {
-        var html = '<option value="">Choose your bank</option>';
-        var bank_name = '<?php echo $user_bank->bank_name; ?>';
-        $.each(res, function (key, value) {
-            html += '<option value="' + value.id + '" ' + (value.id == bank_name ? 'selected' : '') + '>' + value.bank_name + ' (' + value.country + ') </option>';
-        })
-        $("#txtBakName").html(html);
-    }, 'json')
-
-    $(document).on('change', '#bnktoggle', function () {
-        var tab = $(this).children("option:selected").data('tab');
-        $('.bnkfrm').css('display', 'none');
-        $('#' + tab).toggle();
-    })
-
-    $(document).on('change', '#country', function () {
-        var country_id = $(this).val();
-        $.get('<?php echo base_url(); ?>Dashboard/User/get_states/' + country_id, function (res) {
-            var html = '';
-            $.each(res, function (key, value) {
-                html += '<option value="' + value.id + '">' + value.name + '</option>';
-            });
-            $('#state').html(html);
-            console.log(res[0])
-            $.get('<?php echo base_url(); ?>Dashboard/User/get_city/' + res[0].id, function (res) {
-                var html = '';
-                $.each(res, function (key, value) {
-                    html += '<option value="' + value.id + '">' + value.name + '</option>';
-                });
-                $('#city').html(html);
-            }, 'json')
-        }, 'json')
-    });
-    $(document).on('change', '#state', function () {
-        var state_id = $(this).val();
-        $.get('<?php echo base_url(); ?>/Dashboard/User/get_city/' + state_id, function (res) {
-            var html = '';
-            $.each(res, function (key, value) {
-                html += '<option value="' + value.id + '">' + value.name + '</option>';
-            });
-            $('#city').html(html);
-        }, 'json')
-    });
-</script>
-
 <!--<script src="http://code.jquery.com/jquery-latest.min.js"></script>-->
-<script src="https://www.jqueryscript.net/demo/jQuery-International-Telephone-Input-With-Flags-Dial-Codes/build/js/intlTelInput.js"></script>
-<script>
-//    $("#mobile-number").intlTelInput();
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/6.4.1/js/intlTelInput.min.js"></script>
+<script type="text/javascript">
+                                                                        $("#mobile-number").intlTelInput();
+                                                                        function readURL(input) {
+                                                                            if (input.files && input.files[0]) {
+                                                                                var reader = new FileReader();
+
+                                                                                reader.onload = function (e) {
+                                                                                    $('#blah').attr('src', e.target.result);
+                                                                                }
+
+                                                                                reader.readAsDataURL(input.files[0]);
+                                                                            }
+                                                                        }
+                                                                        $(document).on('click', '#btnCopy', function () {
+                                                                            //linkTxt
+                                                                            var copyText = document.getElementById("linkTxt");
+
+                                                                            /* Select the text field */
+                                                                            copyText.select();
+                                                                            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+                                                                            /* Copy the text inside the text field */
+                                                                            document.execCommand("copy");
+                                                                            /* Alert the copied text */
+                                                                            alert("Link Copied : " + copyText.value);
+                                                                        })
+                                                                        $("form.proofForm").submit(function (e) {
+                                                                            e.preventDefault();
+                                                                            var formData = new FormData(this);
+                                                                            var url = $(this).attr('action');
+                                                                            var t = $(this);
+                                                                            t.find('.loader').css('display', 'block');
+                                                                            $.ajax({
+                                                                                url: url,
+                                                                                type: 'POST',
+                                                                                data: formData,
+                                                                                success: function (data) {
+                                                                                    var res = JSON.parse(data)
+                                                                                    alert(res.message);
+                                                                                    $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    t.find('.loader').css('display', 'none');
+                                                                                    if (res.success == 1) {
+                                                                                        t.find('.verification-img img').attr('src', res.image)
+                                                                                        t.find('span.wanki').remove();
+                                                                                    }
+                                                                                },
+                                                                                cache: false,
+                                                                                contentType: false,
+                                                                                processData: false
+                                                                            });
+                                                                        });
+                                                                        $("#bankform").submit(function (e) {
+                                                                            e.preventDefault();
+                                                                            var formData = new FormData(this);
+                                                                            var url = $(this).attr('action');
+                                                                            var t = $(this);
+                                                                            t.find('.loader').css('display', 'block');
+                                                                            $.ajax({
+                                                                                url: url,
+                                                                                type: 'POST',
+                                                                                data: formData,
+                                                                                success: function (data) {
+                                                                                    var res = JSON.parse(data)
+                                                                                    alert(res.message);
+                                                                                    $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                    t.find('.loader').css('display', 'none');
+                                                                                    if (res.success == 1) {
+                                                                                    }
+                                                                                },
+                                                                                cache: false,
+                                                                                contentType: false,
+                                                                                processData: false
+                                                                            });
+                                                                        });
+                                                                        $(document).on('submit', '.pswrdrst', function (e) {
+                                                                            e.preventDefault();
+                                                                            var formData = new FormData(this);
+                                                                            var url = $(this).attr('action');
+                                                                            var formData = $(this).serialize();
+                                                                            $.post(url, formData, function (res) {
+                                                                                alert(res.message);
+                                                                                $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
+                                                                                // if(res.success == 1){
+                                                                                //     document.getElementById("pswrdrst").reset();
+                                                                                // }
+                                                                            }, 'json')
+                                                                        })
+
+                                                                        $.get('<?php echo base_url("Admin/Management/bank_list") ?>', function (res) {
+                                                                            var html = '<option value="">Choose your bank</option>';
+                                                                            var bank_name = '<?php echo $user_bank->bank_name; ?>';
+                                                                            $.each(res, function (key, value) {
+                                                                                html += '<option value="' + value.id + '" ' + (value.id == bank_name ? 'selected' : '') + '>' + value.bank_name + ' (' + value.country + ') </option>';
+                                                                            })
+                                                                            $("#txtBakName").html(html);
+                                                                        }, 'json')
+
+                                                                        $(document).on('change', '#bnktoggle', function () {
+                                                                            var tab = $(this).children("option:selected").data('tab');
+                                                                            $('.bnkfrm').css('display', 'none');
+                                                                            $('#' + tab).toggle();
+                                                                        })
+
+                                                                        $(document).on('change', '#country', function () {
+                                                                            var country_id = $(this).val();
+                                                                            $.get('<?php echo base_url();?>Dashboard/User/get_states/' + country_id, function (res) {
+                                                                                var html = '';
+                                                                                $.each(res, function (key, value) {
+                                                                                    html += '<option value="' + value.id + '">' + value.name + '</option>';
+                                                                                });
+                                                                                $('#state').html(html);
+                                                                                console.log(res[0])
+                                                                                $.get('<?php echo base_url();?>Dashboard/User/get_city/' + res[0].id, function (res) {
+                                                                                    var html = '';
+                                                                                    $.each(res, function (key, value) {
+                                                                                        html += '<option value="' + value.id + '">' + value.name + '</option>';
+                                                                                    });
+                                                                                    $('#city').html(html);
+                                                                                }, 'json')
+                                                                            }, 'json')
+                                                                        });
+                                                                        $(document).on('change', '#state', function () {
+                                                                            var state_id = $(this).val();
+                                                                            $.get('<?php echo base_url();?>/Dashboard/User/get_city/' + state_id, function (res) {
+                                                                                var html = '';
+                                                                                $.each(res, function (key, value) {
+                                                                                    html += '<option value="' + value.id + '">' + value.name + '</option>';
+                                                                                });
+                                                                                $('#city').html(html);
+                                                                            }, 'json')
+                                                                        });
+
 </script>
 
 <?php
 if ($mode == 'RESETPASSWORD') {
     ?>
     <script>
-    alert('open reset password')
+        alert('open reset password')
     </script>
     <?php
 }

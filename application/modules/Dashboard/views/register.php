@@ -149,7 +149,7 @@
                                 <div class="page-header text-center">
                                     <img src="<?php echo base_url(logo); ?>" style="max-width: 160px;margin-bottom: 20px;padding: 15px;border-radius: 10px;margin: 0;">
                                     <h1 class="page-title">Registration Form</h1>
-                                    <p class="small">You must be a Partners member to be able to login!</p>
+                                    <p class="small">You must be a Partners member to login!</p>
                                 </div>
 
                                 <div class="panel panel-primary">

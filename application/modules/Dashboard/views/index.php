@@ -3,6 +3,31 @@ $userinfo = userinfo();
 // pr($userinfo,true);
 ?>
 
+<style>
+
+@media only screen and (max-width: 767px) {
+
+.mobileviewmain
+{
+display: block !important;
+
+}
+.collapsed .progress-widget__item.current {
+    width: 90% !important;
+    padding: 10px 30px;
+}
+.desktopview{display: none !important}
+}
+.border-dark.collapsed .tooltip-col:hover .tooltiptext3 {
+
+    z-index: 9999999 !important;
+}
+
+
+}
+
+</style>
+
             <!-- BEGIN #content -->
             <div id="content" class="content">
                 <!-- BEGIN page-header -->
@@ -20,7 +45,7 @@ $userinfo = userinfo();
                             <div class="ng-scope">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="progress-widget panel panel-light-grey border border-dark collapsed" style="">
+                                        <div class="progress-widget panel panel-light-grey border border-dark collapsed desktopview" style="">
                                             <!-- ngIf: !isMobile -->
 
                                             <div class="progress-widget__wrapper  kik" id="collapseExample">
@@ -99,6 +124,86 @@ $userinfo = userinfo();
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <div class="progress-widget panel panel-light-grey border border-dark collapsed mobileviewmain" style="display:none">
+                                            <!-- ngIf: !isMobile -->
+
+                                            <div class="progress-widget__wrapper  kik" id="collapseExample">
+                                                <!-- step 1 -->
+
+                                                <!-- step 2 -->
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 1, &#39;current&#39;: state.currentStep === 1 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12">
+                                                            <span>Complete Profile</span>
+                                                            <span class="tooltiptext3">Fill in all your details in the form to take you one step closer to benifits!</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12">
+                                                            <span>Paypal Account</span>
+                                                            <span class="tooltiptext3">Add your Paypal account for payment withdrawal.</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12">
+                                                            <span>Bitcoin Account</span>
+                                                            <span class="tooltiptext3">Add your Bitcoin account for payment withdrawal</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 4, &#39;current&#39;: state.currentStep === 4 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12">
+                                                            <span>Document</span>
+                                                            <span class="tooltiptext3">Don't forget to upload documents for verification within 30 days so you can continue Benifits!</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 5, &#39;current&#39;: state.currentStep === 5 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                                    <div class="progress-widget__item-layer">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
+                                                            <div class="progress-widget__step asaping12">
+                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="progress-widget__title fancing12">
+                                                            <span>Active Account</span>
+                                                            <span class="tooltiptext3">Choose deposit amount, Growth option for deposit. You can deposit for other/self</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -163,7 +268,7 @@ $userinfo = userinfo();
                             <!-- BEGIN widget-card-content -->
                             <div class="widget-card-content bottom p-b-5">
                                 <div class="text-center">
-                                    <h4>Active Member : $<?php echo $userinfo->package_amount;?></h4>
+                                    <h4><?php echo $userinfo->paid_status == 0 ? 'InActive Member' : 'Active Member';?></h4>
                                     <h3 class="m-b-0">Welcome to HOPE Partners
                                         <!-- <span id="Mem_Name1"><?php
                                         //echo $userinfo->name;?></span> -->
@@ -181,7 +286,7 @@ $userinfo = userinfo();
                                         <ul class="widget widget-list m-b-0 no-bg inverse-mode">
                                             <li>
                                                 <!-- BEGIN widget-list-container -->
-                                                <a href="#" class="widget-list-container">
+                                                <a href="<?php echo base_url('Dashboard/User/Directs/')?>" class="widget-list-container">
                                                     <div class="widget-list-media icon p-l-0">
                                                         <i class="ti-user bg-gradient-blue"></i>
                                                     </div>
@@ -197,7 +302,7 @@ $userinfo = userinfo();
                                             </li>
                                             <li>
                                                 <!-- BEGIN widget-list-container -->
-                                                <a href="<?php echo base_url('Dashboard/User/Directs')?>" class="widget-list-container">
+                                                <a href="<?php echo base_url('Dashboard/User/Downline')?>" class="widget-list-container">
                                                     <div class="widget-list-media icon p-l-0">
                                                         <i class="ti-anchor bg-gradient-purple"></i>
                                                     </div>
@@ -220,7 +325,7 @@ $userinfo = userinfo();
                                         <ul class="widget widget-list m-b-0 no-bg inverse-mode">
                                             <li>
                                                 <!-- BEGIN widget-list-container -->
-                                                <a href="#" class="widget-list-container">
+                                                <a href="<?php echo base_url('Dashboard/User/Tree/'.$userinfo->user_id)?>" class="widget-list-container">
                                                     <div class="widget-list-media icon p-l-0">
                                                         <i class="ti-user bg-gradient-blue"></i>
                                                     </div>
@@ -564,7 +669,7 @@ $userinfo = userinfo();
                                         <img width="110" class="img-circle" src="<?php echo base_url('NewTheme/')?>assets/img/Star.png" alt="Rank">
                                     </div>
                                     <div id="prof_pic">
-                                        <img width="72" class="img-circle" src="<?php echo base_url('NewTheme/')?>assets/img/Cropvywozcmeimw.jpg" alt="user">
+                                        <img width="72" class="img-circle" src="<?php echo base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image));?>" alt="user">
                                     </div>
                                     <!-- <img   width="72" class="img-circle" alt=""  src="../UserProfileImg/Open_User.jpg"/>-->
                                 </div>
@@ -576,8 +681,8 @@ $userinfo = userinfo();
                                 <div class="widget-divider m-t-0"></div>
                                 <div class="row m-b-2">
                                     <div class="col-4">
-                                        <div class="widget-title" id="withLimit">Associate</div>
-                                        <div class="widget-desc" style="   white-space: nowrap;">Designation</div>
+                                        <div class="widget-title" id="withLimit"><?php echo !empty($city) ? $city['name'] : '';?></div>
+                                        <div class="widget-desc" style="   white-space: nowrap;"><?php echo !empty($country) ? $country['name'] : '';?></div>
                                     </div>
                                     <div class="col-4">
                                         <div class="widget-title" id="TOTALROI"><?php echo $userinfo->package_amount;?></div>

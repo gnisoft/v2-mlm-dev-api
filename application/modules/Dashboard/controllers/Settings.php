@@ -43,4 +43,12 @@ class Settings extends CI_Controller {
             redirect('Dashboard/User/login');
         }
     }
+    public function view($view) {
+        if (is_logged_in()) {
+            $response = array();
+            $this->load->view($view, $response);
+        } else {
+            redirect('Dashboard/User/login');
+        }
+    }
 }

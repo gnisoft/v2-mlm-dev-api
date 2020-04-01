@@ -65,7 +65,7 @@ class Fund extends CI_Controller {
         if (is_logged_in()) {
             $response = array();
             $response['records'] = $this->User_model->get_records('tbl_wallet', array('user_id' => $this->session->userdata['user_id'], 'type' => 'fund_transfer'), '*');
-            $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as wallet_amount');
+            $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id'], 'type' => 'fund_transfer'), 'ifnull(sum(amount),0) as wallet_amount');
             $this->load->view('header', $response);
             $this->load->view('Fund/transfer_history', $response);
             $this->load->view('footer');
@@ -77,6 +77,7 @@ class Fund extends CI_Controller {
     public function wallet_ledger() {
         if (is_logged_in()) {
             $response = array();
+            $response['header'] = 'Wallet History';
             $response['records'] = $this->User_model->get_records('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), '*');
             $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as wallet_amount');
             $this->load->view('header');
@@ -90,6 +91,7 @@ class Fund extends CI_Controller {
     public function activation_history() {
         if (is_logged_in()) {
             $response = array();
+            $response['header'] = 'Activation History';
             $response['records'] = $this->User_model->get_records('tbl_wallet', array('user_id' => $this->session->userdata['user_id'], 'type' => 'account_activation'), '*');
             $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id'], 'type' => 'account_activation'), 'ifnull(sum(amount),0) as wallet_amount');
             $this->load->view('header');
@@ -108,7 +110,7 @@ class Fund extends CI_Controller {
             $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as wallet_amount');
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 $data = $this->security->xss_clean($this->input->post());
-                if ($data['amount'] > 0) {
+                if ($data['amount'] > 10) {
                     if ($data['user_id'] != $this->session->set_userdata['user_id']) {
                         $receiver = $this->User_model->get_single_record('tbl_users', array('user_id' => $data['user_id']), '*');
                         if (!empty($receiver)) {
@@ -145,7 +147,7 @@ class Fund extends CI_Controller {
                         $this->session->set_flashdata('message', 'You Cannot Transfer Amount In Same Account');
                     }
                 } else {
-                    $this->session->set_flashdata('message', 'Minimun Transfer Amount is rs 0');
+                    $this->session->set_flashdata('message', 'Minimun Transfer Amount is $10');
                 }
             }
             $response['wallet_amount'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as wallet_amount');

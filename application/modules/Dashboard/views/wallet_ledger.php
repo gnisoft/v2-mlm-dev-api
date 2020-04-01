@@ -4,10 +4,10 @@
     <!-- END breadcrumb -->
     <!-- BEGIN page-header -->
     <h2 class="page-titel">
-        <spna style="">Wallet Request </spna> /   Wallet Ledger
+        <spna style="">Reports </spna> /   <?php echo $header;?>
     </h2>
     <h1 class="page-header">
-        <?php echo'Wallet Ledger';?>($<?php echo $wallet_amount['wallet_amount'];?>)
+         <?php echo $header;?>($<?php echo $wallet_amount['wallet_amount'];?>)
         <small>You can see fund requests list and check fund request status.</small>
     </h1>
     <!-- END page-header -->

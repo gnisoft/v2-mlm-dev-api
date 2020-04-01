@@ -52,102 +52,103 @@ if (!function_exists('country_flag')) {
         $ci = & get_instance();
         $ci->load->model('user_model');
         $name = $ci->user_model->get_single_object('countries', array('id' => $country_id), 'name');
-        return str_replace(' ' , '-' ,$name->name);
+        return str_replace(' ', '-', $name->name);
     }
 
 }
 if (!function_exists('calculate_rank')) {
 
     function calculate_rank($directs) {
-        if($directs >= 100)
+        if ($directs >= 100)
             $rank = 'Diamond';
-        elseif($directs >= 50)
+        elseif ($directs >= 50)
             $rank = 'Emerald';
-        elseif($directs >= 25)
+        elseif ($directs >= 25)
             $rank = 'Topaz';
-        elseif($directs >= 20)
+        elseif ($directs >= 20)
             $rank = 'Pearl';
-        elseif($directs >= 15)
+        elseif ($directs >= 15)
             $rank = 'Gold';
-        elseif($directs >= 10)
+        elseif ($directs >= 10)
             $rank = 'Silver';
-        elseif($directs >= 5)
+        elseif ($directs >= 5)
             $rank = 'Star';
         else
             $rank = 'Associate';
 
         return $rank;
     }
+
 }
 if (!function_exists('calculate_package')) {
 
     function calculate_package($package_id) {
-        if($package_id == 1)
+        if ($package_id == 1)
             $package = '3600';
-        elseif($package_id == 2)
+        elseif ($package_id == 2)
             $package = '1400';
 
         return $package;
     }
+
 }
 if (!function_exists('calculate_rank_bonus')) {
 
-    function calculate_rank_bonus($directs , $package_id) {
-        if($package_id == 1){
-            if($directs >= 100)
+    function calculate_rank_bonus($directs, $package_id) {
+        if ($package_id == 1) {
+            if ($directs >= 100)
                 $income = 200;
-            elseif($directs >= 50)
+            elseif ($directs >= 50)
                 $income = 175;
-            elseif($directs >= 25)
-                $income =  150;
-            elseif($directs >= 20)
+            elseif ($directs >= 25)
+                $income = 150;
+            elseif ($directs >= 20)
                 $income = 125;
-            elseif($directs >= 15)
+            elseif ($directs >= 15)
                 $income = 100;
-            elseif($directs >= 10)
+            elseif ($directs >= 10)
                 $income = 75;
-            elseif($directs >= 5)
+            elseif ($directs >= 5)
                 $income = 50;
             else
                 $income = 0;
 
             return $income;
-        }else{
-            if($directs >= 100)
+        }else {
+            if ($directs >= 100)
                 $income = 105;
-            elseif($directs >= 50)
+            elseif ($directs >= 50)
                 $income = 90;
-            elseif($directs >= 25)
-                $income =  75;
-            elseif($directs >= 20)
+            elseif ($directs >= 25)
+                $income = 75;
+            elseif ($directs >= 20)
                 $income = 60;
-            elseif($directs >= 15)
+            elseif ($directs >= 15)
                 $income = 45;
-            elseif($directs >= 10)
+            elseif ($directs >= 10)
                 $income = 30;
-            elseif($directs >= 5)
+            elseif ($directs >= 5)
                 $income = 15;
             else
                 $income = 0;
 
             return $income;
         }
-
     }
+
 }
 if (!function_exists('notify_user')) {
 
-    function notify_user($user_id , $message) {
+    function notify_user($user_id, $message) {
         $ci = & get_instance();
         $ci->load->model('user_model');
         $user = $ci->user_model->get_single_object('tbl_users', array('user_id' => $user_id), 'name,phone,email');
 
-        /*for sms */
+        /* for sms */
         // $key = "303f2b8d83XX";
         // $userkey = "gniweb2";
         // $senderid = "GRAMIN";
         // $baseurl = "sms.gniwebsolutions.com/submitsms.jsp?";
-
         // $msg = urlencode($message);
         // $url = $baseurl . 'user=' . $userkey . '&&key=' . $key . '&&mobile=' . $user->phone . '&&senderid=' . $senderid . '&&message=' . $msg . '&&accusage=1';
         // $ch = curl_init();
@@ -158,19 +159,18 @@ if (!function_exists('notify_user')) {
         // curl_close($ch);
         // $sms_data = array('user_id' => $user_id , 'message' => $msg , 'response' => $data);
         // $ci->user_model->add('tbl_sms_counter', $sms_data);
-        /*for sms */
-        /*for email */
+        /* for sms */
+        /* for email */
         date_default_timezone_set('Asia/Singapore');
-        $CI =& get_instance();
+        $CI = & get_instance();
         $CI->load->library('email');
-        $CI->email->from('info@bittrexbtc.com', 'Bittrex BTC');
+        $CI->email->from('info@hope.net.ph', 'Hope Partners');
         $CI->email->to($user->email);
         $CI->email->subject('Registrataion Alert');
         $CI->email->message($message);
 
         $CI->email->send();
-        /*for email */
-
+        /* for email */
     }
 
 }
@@ -196,15 +196,14 @@ if (!function_exists('cart_items')) {
 }
 if (!function_exists('tree_img')) {
 
-    function tree_img($package_amount ,$empty) {
+    function tree_img($package_amount, $empty) {
         if ($empty == 0) {
-            if($package_amount > 0){
+            if ($package_amount > 0) {
                 $img = base_url('SiteAssets/treeimage/tree.png');
-            }else{
+            } else {
                 $img = base_url('SiteAssets/treeimage/male.jpg');
             }
-
-        }else{
+        } else {
             $img = base_url('SiteAssets/treeimage/unknown.jpg');
         }
         return $img;
@@ -217,11 +216,8 @@ if (!function_exists('get_income_name')) {
 
     function get_income_name($income_name) {
         $incomes = array(
-          'direct_income'=> 'Direct Revenue',
-          'direct_level_income'=> 'Other Revenue',
-
-
-
+            'direct_income' => 'Direct Revenue',
+            'direct_level_income' => 'Other Revenue',
             'income_transfer' => 'Income Transfer',
         );
         // return array_search($income_name, $incomes);
@@ -233,12 +229,8 @@ if (!function_exists('incomes')) {
 
     function incomes() {
         $incomes = array(
-            'direct_income'=> 'Direct Revenue',
-            'direct_level_income'=> 'Other Revenue',
-
-
-
-            'income_transfer' => 'Income Transfer',
+            'direct_income' => 'Direct Revenue',
+            'direct_level_income' => 'Other Revenue',
         );
         // return array_search($income_name, $incomes);
         return $incomes;
@@ -247,8 +239,8 @@ if (!function_exists('incomes')) {
 }
 
 if (!function_exists('getIndianCurrency')) {
-    function getIndianCurrency($number)
-    {
+
+    function getIndianCurrency($number) {
         $decimal = round($number - ($no = floor($number)), 2) * 100;
         $hundred = null;
         $digits_length = strlen($no);
@@ -263,8 +255,8 @@ if (!function_exists('getIndianCurrency')) {
             19 => 'nineteen', 20 => 'twenty', 30 => 'thirty',
             40 => 'forty', 50 => 'fifty', 60 => 'sixty',
             70 => 'seventy', 80 => 'eighty', 90 => 'ninety');
-        $digits = array('', 'hundred','thousand','lakh', 'crore');
-        while( $i < $digits_length ) {
+        $digits = array('', 'hundred', 'thousand', 'lakh', 'crore');
+        while ($i < $digits_length) {
             $divider = ($i == 2) ? 10 : 100;
             $number = floor($no % $divider);
             $no = floor($no / $divider);
@@ -272,14 +264,17 @@ if (!function_exists('getIndianCurrency')) {
             if ($number) {
                 $plural = (($counter = count($str)) && $number > 9) ? 's' : null;
                 $hundred = ($counter == 1 && $str[0]) ? ' and ' : null;
-                $str [] = ($number < 21) ? $words[$number].' '. $digits[$counter]. $plural.' '.$hundred:$words[floor($number / 10) * 10].' '.$words[$number % 10]. ' '.$digits[$counter].$plural.' '.$hundred;
-            } else $str[] = null;
+                $str [] = ($number < 21) ? $words[$number] . ' ' . $digits[$counter] . $plural . ' ' . $hundred : $words[floor($number / 10) * 10] . ' ' . $words[$number % 10] . ' ' . $digits[$counter] . $plural . ' ' . $hundred;
+            } else
+                $str[] = null;
         }
         $Rupees = implode('', array_reverse($str));
         $paise = ($decimal > 0) ? "." . ($words[$decimal / 10] . " " . $words[$decimal % 10]) . ' Paise' : '';
         return ($Rupees ? $Rupees . 'Rupees ' : '') . $paise;
     }
+
 }
+
 function country_dropdown($name, $id, $class, $selected_country, $top_countries = array(), $all, $selection = NULL, $show_all = TRUE) {
     // Getting the array of countries from the config file
     $countries = config_item('country_list');

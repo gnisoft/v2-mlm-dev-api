@@ -5,23 +5,22 @@ $user_info = userinfo();
 <html lang="en" class="gr__dream21_in">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><?php echo title;?></title>
+        <title><?php echo title; ?></title>
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
         <meta content="" name="description">
         <meta content="" name="author">
         <link rel="icon" href="<?php echo base_url('uploads/'); ?>Fav-1.png" type="image/x-icon" />
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/Pricing-Plans.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/jquery-ui.min.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/themify-icons.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/animate.min.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/style.min.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/yellow.css" rel="stylesheet" id="theme">
-        <link rel="stylesheet" href="<?php echo base_url('NewTheme/')?>assets/css/font-awesome.min.css">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/jquery-jvectormap.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/app.min.css" rel="stylesheet" type="text/css">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/other.css" rel="stylesheet">
-        <link href="<?php echo base_url('NewTheme/')?>assets/css/css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/Pricing-Plans.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/jquery-ui.min.css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/themify-icons.css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/animate.min.css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/style.min.css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/yellow.css" rel="stylesheet" id="theme">
+        <link rel="stylesheet" href="<?php echo base_url('NewTheme/') ?>assets/css/font-awesome.min.css">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/jquery-jvectormap.css" rel="stylesheet">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/app.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url('NewTheme/') ?>assets/css/other.css" rel="stylesheet">
         <style>
             .modal-content1.overlay.whiter123 {
                 width: 700px;
@@ -32,7 +31,7 @@ $user_info = userinfo();
                 border: 2px solid green;
             }
             .navbar .navbar-brand img {
-                width: 98px;
+                width: 173px;
             }
 
 
@@ -561,34 +560,34 @@ $user_info = userinfo();
                 background: #000;
             }
             .header.navbar-default .navbar-nav>li>a, .header.navbar.navbar-default .navbar-brand {
-    color: #FFF;
-}
-.nav>li>a:focus, .nav>li>a:hover {
-    background: #484848;
-}
+                color: #FFF;
+            }
+            .nav>li>a:focus, .nav>li>a:hover {
+                background: #484848;
+            }
 
-@media (max-width: 767px) {
-.navbar-nav-list, .navbar-xs-justified {
-    margin: 0 -.9375rem;
-    background: #333;
-    border-top: 1px solid rgba(0, 0, 0, .1);
-}
-}
+            @media (max-width: 767px) {
+                .navbar-nav-list, .navbar-xs-justified {
+                    margin: 0 -.9375rem;
+                    background: #333;
+                    border-top: 1px solid rgba(0, 0, 0, .1);
+                }
+            }
 
-div#content {
+            div#content {
 
-    max-width: 100%;
-    overflow: scroll;
-}
-.wizard .wizard-content .tab-pane {
+                max-width: 100%;
+                overflow: scroll;
+            }
+            .wizard .wizard-content .tab-pane {
 
-    max-width: 100%;
-    overflow: scroll;
-}
-.sidebar, .sidebar:before {
-    top: 3.9125rem;
+                max-width: 100%;
+                overflow: scroll;
+            }
+            .sidebar, .sidebar:before {
+                top: 3.9125rem;
 
-}
+            }
         </style>
     </head>
     <body data-gr-c-s-loaded="true">
@@ -703,9 +702,9 @@ div#content {
                 <div class="container-fluid">
                     <!-- BEGIN mobile sidebar expand / collapse button -->
                     <div class="navbar-header">
-                        <a href="<?php echo base_url('Dashboard');?>" class="navbar-brand">
-                            <img src="<?php echo base_url(logo)?>" alt="logo" id="screen-logo">
-                            <img src="<?php echo base_url('uploads/')?>Fav-1.png" alt="logo" style="max-width:42px" id="mobile-logo">
+                        <a href="<?php echo base_url('Dashboard'); ?>" class="navbar-brand">
+                            <img src="<?php echo base_url(logo) ?>" alt="logo" id="screen-logo">
+                            <img src="<?php echo base_url(logo) ?>" alt="logo"  id="mobile-logo">
                         </a>
                         <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
                             <span class="icon-bar"></span>
@@ -719,28 +718,26 @@ div#content {
                     <div class="navbar-nav-list">
                         <ul class="nav navbar-nav navbar-right">
                             <li class="diamond">
-                                <span class="flg"><img src="<?php echo base_url('NewTheme/')?>assets/img/India.png"></span>
-                                <span id="txt" style="font-size:14px;font-weight: 500; color:#FFF;"><?php
-                                echo $user_info->created_at;?> </span>
+                                <span class="flg"><img src="<?php echo base_url('Assets/flags/flag-of-' . country_flag($user_info->country)) ?>.jpg"></span>
+                                <span id="txt" style="font-size:14px;font-weight: 500; color:#FFF;"><?php echo $user_info->created_at; ?> </span>
                             </li>
                             <li class="dropdown">
-                                <a href="<?php echo base_url('Dashboard/Support/ComposeMail');?>" class=" navbar-icon with-label"><i class="ti-bell"></i></a>
+                                <a href="<?php echo base_url('Dashboard/Support/ComposeMail'); ?>" class=" navbar-icon with-label"><i class="ti-bell"></i></a>
                             </li>
 
                             <li class="dropdown">
                                 <a href="javascript:;" data-toggle="dropdown">
                                     <span class="navbar-user-img online pull-left" id="Mem_Profl_Pic">
-                                        <img width="44" height="44" src="<?php echo base_url('NewTheme/')?>assets/img/Cropvywozcmeimw.jpg" alt="user">
+                                        <img width="44" height="44" src="<?php echo base_url('uploads/' . ($user_info->image == '' ? 'no_image.png' : $user_info->image)); ?>" alt="user">
                                     </span>
-                                    <span class="hidden-xs " id="Mem_Name"><?php
-                                    echo $user_info->name;?></span>
+                                    <span class="hidden-xs " id="Mem_Name"><?php echo $user_info->name; ?></span>
                                     <b class="caret hidden-xs"></b>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Edit Profile</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Support/Inbox');?>">Inbox</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile'); ?>">Edit Profile</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Support/Inbox'); ?>">Inbox</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="<?php echo base_url('Dashboard/User/logout');?>">Log Out</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/logout'); ?>">Log Out</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -761,19 +758,17 @@ div#content {
                         <ul class="nav">
                             <li class="nav-profile">
                                 <div class="image" id="Mem_Profl_Pic1">
-                                    <img width="44" height="44" src="<?php echo base_url('NewTheme/')?>assets/img/Cropvywozcmeimw.jpg" alt="user">
+                                    <img width="44" height="44" src="<?php echo base_url('uploads/' . ($user_info->image == '' ? 'no_image.png' : $user_info->image)); ?>" alt="user">
                                 </div>
                                 <div class="info">
-                                    <h4 id="MName"><?php
-                                    echo $user_info->name;?></h4>
-                                    <p id="MemID"><?php
-                                    echo $user_info->user_id;?></p>
+                                    <h4 id="MName"><?php echo $user_info->name; ?></h4>
+                                    <p id="MemID"><?php echo $user_info->user_id; ?></p>
                                 </div>
                             </li>
                             <li class="nav-divider"></li>
                             <li class="nav-header">Navigation</li>
                             <li class=" active">
-                                <a href="<?php echo base_url('Dashboard/User/');?>"><i class="ti-home"></i><span> Dashboard</span></a>
+                                <a href="<?php echo base_url('Dashboard/User/'); ?>"><i class="ti-home"></i><span> Dashboard</span></a>
                             </li>
                             <li class="has-sub">
                                 <a href="javascript:;">
@@ -782,14 +777,14 @@ div#content {
                                     <span>Profile <span class="notification">4+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">User Profile</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile'); ?>">User Profile</a></li>
 
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile');?>">Change Password</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile#RESETPASSWORD'); ?>">Change Password</a></li>
 
 
                                 </ul>
                             </li>
-  <li class="nav-divider"></li>
+                            <li class="nav-divider"></li>
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
@@ -797,35 +792,35 @@ div#content {
                                     <span>Membership <span class="notification">2+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);?>">Referral Link</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/ActivateAccount');?>"> Activate Membership </a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan');?>" > Business Plan</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Register/?sponser_id=' . $user_info->user_id); ?>">Referral Link</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/ActivateAccount'); ?>"> Activate Membership </a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan'); ?>" > Business Plan</a></li>
 
 
 
                                 </ul>
                             </li>
 
-<li class="nav-divider"></li>
+                            <li class="nav-divider"></li>
 
-                                                        <li class="has-sub">
-                                                            <a href="javascript:;">
-                                                                <b class="caret caret-right pull-right"></b>
-                                                                <i class="ti-palette"></i>
-                                                                <span>Network <span class="notification">3+</span></span>
-                                                            </a>
-                                                            <ul class="sub-menu" style="display: none;">
-                                                                <li><a href="<?php echo base_url('Dashboard/User/Directs');?>">Direct Network</a></li>
-                                                                  <li><a href="<?php echo base_url('Dashboard/User/Downline');?>">Total Network</a></li>
-                                                                  <li><a href="<?php echo base_url('Dashboard/User/Tree/'.$user_info->user_id);?>">Genealogy</a></li>
-
-
-                                                            </ul>
-                                                        </li>
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret caret-right pull-right"></b>
+                                    <i class="ti-palette"></i>
+                                    <span>Network <span class="notification">3+</span></span>
+                                </a>
+                                <ul class="sub-menu" style="display: none;">
+                                    <li><a href="<?php echo base_url('Dashboard/User/Directs'); ?>">Direct Network</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Downline'); ?>">Total Network</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Tree/' . $user_info->user_id); ?>">Genealogy</a></li>
 
 
-                                                        <li class="nav-divider"></li>
-                                                        <li><a href="<?php echo base_url('Dashboard/User/Shopping/');?>"><i class="ti-lock"></i><span>Shop HOPE</span></a></li>
+                                </ul>
+                            </li>
+
+
+                            <li class="nav-divider"></li>
+                            <li><a href="<?php echo base_url('Dashboard/User/Shopping/'); ?>"><i class="ti-lock"></i><span>Shop HOPE</span></a></li>
 
 
                             <li class="nav-divider"></li>
@@ -837,17 +832,17 @@ div#content {
                                     <span>E-Wallet <span class="notification">2+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                  <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Payment Accounts</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund');?>">Fund Request</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/requests');?>">Request Status</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>">Withdrawal</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/IncomeTransfer')?>"> Transfer</a></li>
-                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');?>">Transfer Wallet</a></li> -->
+                                    <li><a href="<?php echo base_url('Dashboard/withdraw_history') ?>">Payment Accounts</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund'); ?>">Fund Request</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/requests'); ?>">Request Status</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw') ?>">Withdrawal</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/IncomeTransfer') ?>"> Transfer</a></li>
+                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');  ?>">Transfer Wallet</a></li> -->
 
                                 </ul>
                             </li>
 
-  <li class="nav-divider"></li>
+                            <li class="nav-divider"></li>
                             <li class="has-sub">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
@@ -855,19 +850,20 @@ div#content {
                                     <span>Reports <span class="notification">5+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                  <?php $incomes = incomes();
-                                  foreach($incomes as $key => $income){
-                                     echo' <li>
-                                              <a href="'.base_url('Dashboard/User/Income/'.$key).'">'.$income.'</a>
+                                    <?php
+                                    $incomes = incomes();
+                                    foreach ($incomes as $key => $income) {
+                                        echo' <li>
+                                              <a href="' . base_url('Dashboard/User/Income/' . $key) . '">' . $income . '</a>
                                            </li>';
-                                  }
-                                  ?>
-                                  <li><a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Total Revenue</a></li>
+                                    }
+                                    ?>
+                                    <li><a href="<?php echo base_url('Dashboard/User/income_ledgar/') ?>">Total Revenue</a></li>
 
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">E-Wallet History</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/withdraw_history')?>">Withdrawal History</a></li>
-                                      <li><a href="<?php echo base_url('Dashboard/Fund/transfer_history')?>"> Transfer History</a></li>
-                                             <li><a href="<?php echo base_url('Dashboard/Fund/activation_history');?>">Membership History</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/wallet_ledger'); ?>">E-Wallet History</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/withdraw_history') ?>">Withdrawal History</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Income/income_transfer') ?>"> Transfer History</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/activation_history'); ?>">Membership History</a></li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
@@ -879,18 +875,18 @@ div#content {
                                     <span>Support <span class="notification">1+</span></span>
                                 </a>
                                 <ul class="sub-menu" style="display: block;">
-                                  <li><a href="<?php echo base_url('Dashboard/Support/Inbox');?>">Mailbox</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Support/ComposeMail');?>">Create Ticket</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Support/Inbox'); ?>">Mailbox</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Support/ComposeMail'); ?>">Create Ticket</a></li>
 
 
                                 </ul>
                             </li>
-<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);?>"> Open New Accounts</a></li> -->
+<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);  ?>"> Open New Accounts</a></li> -->
 
 
 
                             <li class="nav-divider"></li>
-                            <li><a href="<?php echo base_url('Dashboard/User/logout');?>"><i class="ti-lock"></i><span>Log-Out</span></a></li>
+                            <li><a href="<?php echo base_url('Dashboard/User/logout'); ?>"><i class="ti-lock"></i><span>Log-Out</span></a></li>
                             <li class="nav-copyright">© 2020 <b>HOPE Partners</b><br></li>
                         </ul>
                         <!-- END nav -->

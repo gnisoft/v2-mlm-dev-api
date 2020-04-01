@@ -36,9 +36,11 @@ class User extends CI_Controller {
             $response['team_business'] = $this->User_model->get_single_record('tbl_downline_business', 'user_id = "' . $this->session->userdata['user_id'] . '"', 'ifnull(sum(business),0) as team_business');
             $response['package'] = $this->User_model->get_single_record('tbl_package', 'id = "' . $response['user']['package_id'] . '"', '*');
             $response['directs'] = $this->User_model->get_records('tbl_users', 'sponser_id = "' . $response['user']['user_id'] . '"', 'id,user_id,name,first_name,last_name,phone,paid_status,created_at');
-            // pr($response,true);
             $response['team_unpaid'] = $this->User_model->calculate_team($this->session->userdata['user_id'], 0);
             $response['team_paid'] = $this->User_model->calculate_team($this->session->userdata['user_id'], 1);
+            $response['country'] = $this->User_model->get_single_record('countries', array('id' => $response['user']['country']), 'name');
+            $response['state'] = $this->User_model->get_single_record('states', array('id' => $response['user']['state']), 'name');
+            $response['city'] = $this->User_model->get_single_record('cities', array('id' => $response['user']['city']), 'name');
             $this->load->view('header', $response);
             $this->load->view('index', $response);
             $this->load->view('footer', $response);
@@ -79,7 +81,7 @@ class User extends CI_Controller {
         $response['message'] = '';
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
             $data = $this->security->xss_clean($this->input->post());
-            $user = $this->User_model->get_single_record('tbl_users', array('user_id' => $data['user_id'], 'password' => $data['password']), 'id,user_id,role,name,email,paid_status,disabled');
+            $user = $this->User_model->get_single_record('tbl_users', array('email' => $data['email'], 'password' => $data['password']), 'id,user_id,role,name,email,paid_status,disabled');
             if (!empty($user)) {
                 if ($user['disabled'] == 0) {
                     $this->session->set_userdata('user_id', $user['user_id']);
@@ -123,57 +125,57 @@ class User extends CI_Controller {
                 $pan = $this->input->post('pan');
                 $response['sponser_id'] = $sponser_id;
                 $sponser = $this->User_model->get_single_record('tbl_users', array('user_id' => $sponser_id), '*');
-                // $pan_detail = $this->User_model->get_single_record('tbl_bank_details', array('pan' => $pan), 'pan');
-                // if(empty($pan_detail)){
-                if (!empty($sponser)) {
-                    // $user_id = $this->getUserIdForRegister();
-                    $id_number = $this->getUserIdForRegister();
-                    $userData['user_id'] = $id_number;
-                    // $userData['id_number'] = $id_number;
-                    $userData['sponser_id'] = $sponser_id;
-                    $userData['name'] = $this->input->post('name');
-                    $userData['phone'] = $this->input->post('phone');
-                    $userData['password'] = $this->input->post('password');
-                    $userData['position'] = $this->input->post('position');
-                    $userData['last_left'] = $userData['user_id'];
-                    $userData['last_right'] = $userData['user_id'];
-                    $userData['country_code'] = $this->input->post('country');
-                    $userData['email'] = $this->input->post('email');
-                    $userData['master_key'] = rand(100000, 999999);
-                    if ($userData['position'] == 'L') {
-                        $userData['upline_id'] = $sponser['last_left'];
-                    } else {
-                        $userData['upline_id'] = $sponser['last_right'];
-                    }
-                    $res = $this->User_model->add('tbl_users', $userData);
-                    $res = $this->User_model->add('tbl_bank_details', array('user_id' => $userData['user_id']));
-                    if ($res) {
-                        if ($userData['position'] == 'R') {
-                            $this->User_model->update('tbl_users', array('last_right' => $userData['upline_id']), array('last_right' => $userData['user_id']));
-                            $this->User_model->update('tbl_users', array('user_id' => $userData['upline_id']), array('right_node' => $userData['user_id']));
-                        } elseif ($userData['position'] == 'L') {
-                            $this->User_model->update('tbl_users', array('last_left' => $userData['upline_id']), array('last_left' => $userData['user_id']));
-                            $this->User_model->update('tbl_users', array('user_id' => $userData['upline_id']), array('left_node' => $userData['user_id']));
+                $emailAvailablity = $this->User_model->get_single_record('tbl_users', array('email' => $this->input->post('email')), 'email');
+                if (empty($emailAvailablity)) {
+                    if (!empty($sponser)) {
+                        // $user_id = $this->getUserIdForRegister();
+                        $id_number = $this->getUserIdForRegister();
+                        $userData['user_id'] = $id_number;
+                        // $userData['id_number'] = $id_number;
+                        $userData['sponser_id'] = $sponser_id;
+                        $userData['name'] = $this->input->post('name');
+                        $userData['phone'] = $this->input->post('phone');
+                        $userData['password'] = $this->input->post('password');
+                        $userData['position'] = $this->input->post('position');
+                        $userData['last_left'] = $userData['user_id'];
+                        $userData['last_right'] = $userData['user_id'];
+                        $userData['country_code'] = $this->input->post('country');
+                        $userData['email'] = $this->input->post('email');
+                        $userData['master_key'] = rand(100000, 999999);
+                        if ($userData['position'] == 'L') {
+                            $userData['upline_id'] = $sponser['last_left'];
+                        } else {
+                            $userData['upline_id'] = $sponser['last_right'];
                         }
-                        $this->add_counts($userData['user_id'], $userData['user_id'], 1);
-                        $this->add_sponser_counts($userData['user_id'], $userData['user_id'], $level = 1);
-                        $sms_text = 'Dear ' . $userData['name'] . ', Your Account Successfully created. User ID :  ' . $userData['user_id'] . ' Password :' . $userData['password'] . ' Transaction Password:' . $userData['master_key'] . base_url();
-                        notify_user($userData['user_id'], $sms_text);
-                        $response['message'] = 'Dear ' . $userData['name'] . ', Your Account Successfully created. <br>User ID :  ' . $userData['user_id'] . ' <br> Password :' . $userData['password'] . ' <br> Transaction Password:' . $userData['master_key'];
-                        $this->load->view('success', $response);
+                        $res = $this->User_model->add('tbl_users', $userData);
+                        $res = $this->User_model->add('tbl_bank_details', array('user_id' => $userData['user_id']));
+                        if ($res) {
+                            if ($userData['position'] == 'R') {
+                                $this->User_model->update('tbl_users', array('last_right' => $userData['upline_id']), array('last_right' => $userData['user_id']));
+                                $this->User_model->update('tbl_users', array('user_id' => $userData['upline_id']), array('right_node' => $userData['user_id']));
+                            } elseif ($userData['position'] == 'L') {
+                                $this->User_model->update('tbl_users', array('last_left' => $userData['upline_id']), array('last_left' => $userData['user_id']));
+                                $this->User_model->update('tbl_users', array('user_id' => $userData['upline_id']), array('left_node' => $userData['user_id']));
+                            }
+                            $this->add_counts($userData['user_id'], $userData['user_id'], 1);
+                            $this->add_sponser_counts($userData['user_id'], $userData['user_id'], $level = 1);
+                            $sms_text = 'Dear ' . $userData['name'] . ', Your Account Successfully created. <br>Email :  ' . $userData['email'] . '<br> Password :' . $userData['password'] . '<br> Transaction Password:' . $userData['master_key'].'<br><br>' . base_url();
+                            notify_user($userData['user_id'], $sms_text);
+                            $response['message'] = 'Dear ' . $userData['name'] . ', Your Account Successfully created. <br>Email :  ' . $userData['email'] . ' <br> Password :' . $userData['password'] . ' <br> Transaction Password:' . $userData['master_key'];
+                            $this->load->view('success', $response);
+                        } else {
+                            $this->session->set_flashdata('error', 'Error while Registraion please try Again');
+                            $response['message'] = 'Error while Registraion please try Again';
+                            $this->load->view('register', $response);
+                        }
                     } else {
-                        $this->session->set_flashdata('error', 'Error while Registraion please try Again');
-                        $response['message'] = 'Error while Registraion please try Again';
+                        $this->session->set_flashdata('error', 'Invalid Sponser ID');
                         $this->load->view('register', $response);
                     }
                 } else {
-                    $this->session->set_flashdata('error', 'Invalid Sponser ID');
+                    $this->session->set_flashdata('error', 'Email Already Exits');
                     $this->load->view('register', $response);
                 }
-                // }else{
-                //     $this->session->set_flashdata('error', 'PAN number Already Exits');
-                //     $this->load->view('register', $response);
-                // }
             }
         } else {
             $response['countries'] = $this->User_model->get_records('countries', array(), '*');

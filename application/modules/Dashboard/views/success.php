@@ -113,7 +113,7 @@
                 div#wrapper
                 {
 
-                  background: url(https://s.marketwatch.com/public/resources/images/MW-GQ074_bitcoi_ZH_20180914072229.jpg);
+                background: url(http://142.93.203.54/~partners/uploads/AdobeStock_305949962.jpg);
                   background-size:cover;
                 }
                 .small, small {
@@ -146,11 +146,11 @@
                 <div id="main" >
                     <div class="">
                         <div class="row no-gutters">
-                            
+
                             <div class="col-12 col-md-6 columns" >
                                 <div class="form-wrapper">
                                     <div class="page-header text-center">
-                                        <img src="<?php echo base_url(logo); ?>" style="max-width: 160px;margin-bottom: 20px;padding: 15px;border-radius: 10px;margin: 0;">
+                                        <img src="<?php echo base_url('uploads/'); ?>logo.png" style="max-width: 160px;margin-bottom: 20px;padding: 0px;border-radius: 10px;margin: 0;">
                                         <h1 class="page-title">Thank you For Registration</h1>
 
 
