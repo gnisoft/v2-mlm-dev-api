@@ -38,10 +38,10 @@
                         <tr>
                             <th>#</th>
                             <th>Date</th>
-                            <th>Matching Bonus</th>
-                            <th>Direct Bonus</th>
-                            <th>ROI Bonus</th>
-                            <th>Rewards Bonus</th>
+
+                            <th>Direct Revenue</th>
+
+                            <th>Other Revenue</th>
                             <th>Total Payout</th>
                             <th>Action</th>
                         </tr>
@@ -55,10 +55,10 @@
                             <tr>
                                 <td><?php echo $i; ?></td>
                                 <td><?php echo $record['date']; ?></td>
-                                <td><?php echo $record['incomes']['matching_bonus']; ?></td>
+
                                 <td><?php echo $record['incomes']['direct_income']; ?></td>
-                                <td><?php echo $record['incomes']['roi_income']; ?></td>
-                                <td><?php echo $record['incomes']['rewards_income']; ?></td>
+
+                                <td><?php echo $record['incomes']['direct_level_income']; ?></td>
                                 <td><?php echo $record['incomes']['total_payout']; ?></td>
                                 <td><a href="<?php echo base_url('Admin/Withdraw/dateWisePayout/'.$record['date']);?>">View</a></td>
                             </tr>

@@ -154,8 +154,9 @@ class Management extends CI_Controller {
             $response['user'] = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user_id), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
             $response['users'] = $this->Main_model->get_records('tbl_users', array('sponser_id' => $user_id), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
             foreach ($response['users'] as $key => $directs) {
-                $response['users'][$key]['sub_directs'] = $this->Main_model->get_records('tbl_users', array('user_id' => $directs['user_id']), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
+                $response['users'][$key]['sub_directs'] = $this->Main_model->get_records('tbl_users', array('sponser_id' => $directs['user_id']), 'id,user_id,sponser_id,role,name,first_name,last_name,email,phone,paid_status,created_at');
             }
+            
             $this->load->view('tree', $response);
         } else {
             redirect('Admin/Management/login');
@@ -229,11 +230,100 @@ class Management extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+    public function Bill_requests($status = '') {
+        if (is_admin()) {
+            if ($status == '') {
+                $where = array();
+            } else {
+                $where = array('status' => $status);
+            }
+            $response['requests'] = $this->Main_model->get_records('tbl_bill_request', $where, '*');
+            $this->load->view('bill_requests', $response);
+        } else {
+            redirect('Admin/Management/login');
+        }
+    }
 
     public function fund_history() {
         if (is_admin()) {
             $response['requests'] = $this->Main_model->get_records('tbl_wallet', array(), '*');
             $this->load->view('fund_history', $response);
+        } else {
+            redirect('Admin/Management/login');
+        }
+    }
+
+    public function update_bill_request($id) {
+        if (is_admin()) {
+            $response['request'] = $this->Main_model->get_single_record('tbl_bill_request', array('id' => $id), '*');
+            $response['user_info'] = $this->Main_model->get_single_record('tbl_users', array('user_id' => $response['request']['user_id']), 'id,user_id,first_name,last_name,email,phone,country,image,site_url');
+            if ($this->input->server('REQUEST_METHOD') == 'POST') {
+                $data = $this->security->xss_clean($this->input->post());
+                if ($data['status'] == 'Reject') {
+                    $updres = $this->Main_model->update('tbl_bill_request', array('id' => $id), array('status' => 2, 'remarks' => $data['remarks']));
+                    if ($updres == true) {
+                        $this->session->set_flashdata('error', 'Reqeust Rejected Successfully');
+                    } else {
+                        $this->session->set_flashdata('error', 'There is an error while Rejecting request Please try Again ..');
+                    }
+                } elseif ($data['status'] == 'Approve') {
+                    if ($response['request']['status'] !== 1) {
+                        $updres = $this->Main_model->update('tbl_bill_request', array('id' => $id), array('status' => 1, 'remarks' => $data['remarks']));
+                        if ($updres == true) {
+                            $this->session->set_flashdata('error', 'Reqeust Accepted And Fund released Successfully');
+                            $package = $this->Main_model->get_single_record('tbl_network_commission', array('id' => 1), '*');
+                            $user = $this->Main_model->get_single_record('tbl_users', array('user_id' => $response['request']['user_id']), '*');
+                            $DirectIncome = array(
+                               'user_id' => $user['user_id'],
+                               'amount' => $response['request']['amount'] * $package['direct_income'] / 100 ,
+                               'type' => 'network_commisions', 
+                               'description' => 'Network Commsions from Self ',
+                            );
+                            $this->Main_model->add('tbl_income_wallet', $DirectIncome);
+                            $LevelIncome = array(
+                               'user_id' => $user['sponser_id'],
+                               'amount' => $response['request']['amount'] * $package['level_income'] / 100,
+                               'type' => 'network_commisions', 
+                               'description' => 'Network Commsions from '.$user['user_id'],
+                            );
+                            $this->Main_model->add('tbl_income_wallet', $LevelIncome);
+                        } else {
+                            $this->session->set_flashdata('error', 'There is an error while Rejecting request Please try Again ..');
+                        }
+                    } else {
+                        $this->session->set_flashdata('error', 'This Payment Request Already Approved');
+                    }
+                }
+            }
+            $response['request'] = $this->Main_model->get_single_record('tbl_bill_request', array('id' => $id), '*');
+            $this->load->view('update_bill_request', $response);
+        } else {
+            redirect('Admin/Management/login');
+        }
+    }
+
+    public function NetworkCommission($id = 1) {
+        if (is_admin()) {
+            $response['package'] = $this->Main_model->get_single_record('tbl_network_commission', array('id' => $id), '*');
+            if ($this->input->server('REQUEST_METHOD') == 'POST') {
+                $data = $this->security->xss_clean($this->input->post());
+                $this->form_validation->set_rules('direct_income', 'Direct Income', 'trim|required|xss_clean');
+                $this->form_validation->set_rules('level_income', 'Level Income', 'trim|required|xss_clean');
+                if ($this->form_validation->run() != FALSE) {
+                    $packArr = array(
+                        'direct_income' => $data['direct_income'],
+                        'level_income' => $data['level_income'],
+                    );
+                    $res = $this->Main_model->update('tbl_network_commission', array('id' => $id), $packArr);
+                    if ($res) {
+                        $this->session->set_flashdata('message', 'Incomes Updated Successfully');
+                    } else {
+                        $this->session->set_flashdata('message', 'Error While Updating Incomes Please Try Again ...');
+                    }
+                }
+            }
+            $response['package'] = $this->Main_model->get_single_record('tbl_network_commission', array('id' => $id), '*');
+            $this->load->view('network_commission', $response);
         } else {
             redirect('Admin/Management/login');
         }

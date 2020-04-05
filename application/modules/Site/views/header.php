@@ -17,7 +17,7 @@
     <script src="<?php echo base_url('SiteAssets/'); ?>js/vendor/modernizr-2.8.3.min.js"></script>
     <style>
     .header-style-multipage {
-    background: #191919 none repeat scroll 0 0;
+    background: #000000 none repeat scroll 0 0;
 
 }
 .logo {
@@ -27,6 +27,7 @@
     -webkit-transition: all 0.4s ease-in-out 0s;
     transition: all 0.4s ease-in-out 0s;
     z-index: 1111;
+        margin-top: 13px;
 }
 .header-style-multipage .main-menu li a {
     color: #fff;
@@ -34,7 +35,12 @@
 }
 .header-area.header-style-multipage.stricky-fixed {
 
-    background: #191919;
+    background: #000000;
+
+}
+.main-menu > li > a {
+
+    padding: 25px 10px;
 
 }
 

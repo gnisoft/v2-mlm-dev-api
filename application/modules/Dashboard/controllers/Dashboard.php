@@ -553,9 +553,9 @@ class Dashboard extends CI_Controller {
                                             'amount' => $withdraw_amount,
                                             'type' => 'direct_income',
                                             'tds' => 0,
-                                            'admin_charges' => $withdraw_amount * 10 / 100,
+                                            'admin_charges' => $withdraw_amount * 2.5 / 100,
                                             'fund_conversion' => 0,
-                                            'payable_amount' => $withdraw_amount - ($withdraw_amount * 10 / 100)
+                                            'payable_amount' => $withdraw_amount - ($withdraw_amount * 2.5 / 100)
                                         );
                                         $this->User_model->add('tbl_withdraw', $withdrawArr);
                                     } else {
@@ -570,7 +570,7 @@ class Dashboard extends CI_Controller {
                                         // $this->User_model->add('tbl_withdraw', $withdrawArr);
                                         $walletArr = array(
                                             'user_id' => $this->session->userdata['user_id'],
-                                            'amount' => $withdraw_amount * 90 / 100,
+                                            'amount' => $withdraw_amount * 97.5 / 100,
                                             'type' => 'direct_income_withdraw',
                                             'remark' => 'fund generated from direct income withdraw',
                                             'sender_id' => $this->session->userdata['user_id'],

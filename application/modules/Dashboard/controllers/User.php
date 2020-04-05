@@ -274,6 +274,7 @@ class User extends CI_Controller {
                 $Userdata['state'] = $data['state'];
                 $Userdata['city'] = $data['city'];
                 $Userdata['country'] = $data['country'];
+                $Userdata['country_code'] = $data['country'];
                 $updres = $this->User_model->update('tbl_users', array('user_id' => $this->session->userdata['user_id']), $Userdata);
                 if ($updres == true) {
                     $response['message'] = 'Details Updated Successfully';
@@ -447,25 +448,28 @@ class User extends CI_Controller {
             $data = html_escape($data);
             $this->form_validation->set_rules('bank_name', 'Bank Name', 'trim|required|xss_clean');
             $this->form_validation->set_rules('bank_account_number', 'Bank Account Number', 'trim|required|numeric|xss_clean');
+            $this->form_validation->set_rules('confirm_bank_account_number', 'Confirm Bank Account Number', 'trim|required|matches[bank_account_number]');
             $this->form_validation->set_rules('ifsc_code', 'Ifsc Code', 'trim|required|xss_clean');
+            $this->form_validation->set_rules('internation_routing_number', 'Internation Routing Number', 'trim|required|xss_clean');
             if ($this->form_validation->run() != FALSE) {
-                $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|pdf|jpeg';
-                $config['max_size'] = 100000;
-                $config['file_name'] = 'payment_slip1' . time();
-                $this->load->library('upload', $config);
-                if (!$this->upload->do_upload('userfile')) {
-                    // $this->session->set_flashdata('error', $this->upload->display_errors());
-                    $response['message'] = $this->upload->display_errors();
-                } else {
-                    $fileData = array('upload_data' => $this->upload->data());
-                    $userData['passbook_image'] = $fileData['upload_data']['file_name'];
+//                $config['upload_path'] = './uploads/';
+//                $config['allowed_types'] = 'gif|jpg|png|pdf|jpeg';
+//                $config['max_size'] = 100000;
+//                $config['file_name'] = 'payment_slip1' . time();
+//                $this->load->library('upload', $config);
+//                if (!$this->upload->do_upload('userfile')) {
+//                    // $this->session->set_flashdata('error', $this->upload->display_errors());
+//                    $response['message'] = $this->upload->display_errors();
+//                } else {
+//                    $fileData = array('upload_data' => $this->upload->data());
+//                    $userData['passbook_image'] = $fileData['upload_data']['file_name'];
                     $userData['account_type'] = $data['account_type'];
                     $userData['bank_account_number'] = $data['bank_account_number'];
                     $userData['bank_name'] = $data['bank_name'];
                     $userData['account_holder_name'] = $data['account_holder_name'];
                     $userData['ifsc_code'] = $data['ifsc_code'];
                     $userData['pan'] = $data['pan'];
+                    $userData['internation_routing_number'] = $data['internation_routing_number'];
                     $userData['kyc_status'] = 1;
                     $updres = $this->User_model->update('tbl_bank_details', array('user_id' => $this->session->userdata['user_id']), $userData);
                     if ($updres == true) {
@@ -476,10 +480,10 @@ class User extends CI_Controller {
                         // $this->session->set_flashdata('error', 'There is an error while updating Bank details Please try Again ..');
                         $response['message'] = 'Validation Failed 2';
                     }
-                }
+//                }
             } else {
                 // $this->session->set_flashdata('error', 'Validation Failed');
-                $response['message'] = 'Validation Failed';
+                $response['message'] = validation_errors();
             }
             // }
             echo json_encode($response);
@@ -498,7 +502,7 @@ class User extends CI_Controller {
 
             if (!empty($_FILES['userfile'])) {
                 $config['upload_path'] = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|pdf';
+                $config['allowed_types'] = 'gif|jpg|png|PNG|pdf';
                 $config['max_size'] = 100000;
                 $config['file_name'] = 'id_proof' . time();
                 $this->load->library('upload', $config);
@@ -524,6 +528,7 @@ class User extends CI_Controller {
                 $response['message'] = 'There is an error while updating Bank details Proof Please try Again ..';
                 $response['success'] = '0';
             }
+             $response['params'] = $_FILES;
             echo json_encode($response);
         } else {
             redirect('Dashboard/User/login');
@@ -585,7 +590,7 @@ class User extends CI_Controller {
         if (is_logged_in()) {
             $response = array();
             $response['header'] = 'Direct Participants';
-            $response['users'] = $this->User_model->get_records('tbl_users', array('sponser_id' => $this->session->userdata['user_id']), 'id,user_id,sponser_id,role,name,last_name,email,paid_status,phone,upline_id,created_at,topup_date,package_amount');
+            $response['users'] = $this->User_model->get_records('tbl_users', array('sponser_id' => $this->session->userdata['user_id']), 'id,user_id,sponser_id,role,name,last_name,email,paid_status,phone,upline_id,created_at,topup_date,package_amount,country');
             foreach ($response['users'] as $key => $user) {
                 $response['users'][$key]['bonus'] = $this->User_model->get_single_record('tbl_income_wallet', array('user_id' => $user['user_id'], 'amount > ' => 0), 'ifnull(sum(amount),0) as sum');
             }
@@ -679,7 +684,7 @@ class User extends CI_Controller {
     public function Magicincome_ledgar() {
         if (is_logged_in()) {
             $response = array();
-            $response['header'] = 'Magic Income Ledgar';
+            $response['header'] = 'Magic Income Ledger';
             $response['total_income'] = $this->User_model->get_single_record('tbl_repurchase_income', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as total_income');
             $response['user_incomes'] = $this->User_model->get_records('tbl_repurchase_income', array('user_id' => $this->session->userdata['user_id']), 'id,user_id,amount,type,description,created_at');
             $this->load->view('incomes', $response);
@@ -691,7 +696,7 @@ class User extends CI_Controller {
     public function income_ledgar() {
         if (is_logged_in()) {
             $response = array();
-            $response['header'] = 'Income Ledgar';
+            $response['header'] = 'Income Ledger';
             $response['total_income'] = $this->User_model->get_single_record('tbl_income_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as total_income');
             $response['user_incomes'] = $this->User_model->get_records('tbl_income_wallet', array('user_id' => $this->session->userdata['user_id']), 'id,user_id,amount,type,description,created_at');
             $this->load->view('incomes', $response);

@@ -196,6 +196,9 @@
                                                     <div class="form-group" style="text-align:center;">
                                                         <a class="forgot-password" style="color:red" href="<?php echo base_url('Dashboard/forgot_password'); ?>">Forgot password?</a>
                                                     </div>
+                                                    <div class="form-group" style="text-align:center;">
+                                                        <a class="forgot-password" style="color:red" href="<?php echo base_url('Admin/Management/'); ?>">Admin Panel</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </form>

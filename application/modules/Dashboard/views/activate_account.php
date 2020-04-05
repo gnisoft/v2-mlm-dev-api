@@ -182,7 +182,7 @@
             return actions.order.create({
                 purchase_units: [{
                         amount: {
-                            value: '20'
+                            value: '<?php echo $package['price']; ?>'
                         }
                     }]
             });

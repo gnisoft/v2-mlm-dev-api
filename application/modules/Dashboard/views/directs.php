@@ -669,7 +669,7 @@
     <!-- END page-header -->
     <div class="row">
         <div class="col-md-12">
-            
+
         </div>
     </div>
     <div class="row">
@@ -713,27 +713,27 @@
                                         </span>
                                     </div>
                                     <div class="country">
-                                        <img src="<?php echo base_url('NewTheme/')?>assets/img/India.png">
-                                        <span>India</span>
+                                        <img src="<?php echo base_url('Assets/flags/flag-of-') . country_flag($user['country']);?>.jpg">
+                                        <span><?php echo country_flag($user['country']);?></span>
                                     </div>
                                     <div class="other-detail">
                                         <ul>
                                             <li>
                                                 <span>
                                                     <i class="ti-mobile text-warning f-s-13 m-r-5"></i>Mobile No:
-                                                    <i class="fa fa-mobile" style="font-size: 17px;font-weight: 600;"></i>
+                                                    <i class="ti-mobile text-warning" style="font-size: 17px;font-weight: 600;"></i>
                                                     <b><?php echo $user['phone']; ?></b>
                                                 </span>
                                             </li>
                                             <li>
                                                 <span>Member since:
-                                                    <i class="fa fa-mobile" style="font-size: 17px;font-weight: 600;"></i>
+                                                    <i class="ti-calendar text-warning" style="font-size: 17px;font-weight: 600;"></i>
                                                     <b><?php echo $user['created_at']; ?></b>
                                                 </span>
                                             </li>
                                             <li>
                                                 <span>Actived-On:
-                                                    <i class="fa fa-mobile" style="font-size: 17px;font-weight: 600;"></i>
+                                                    <i class="ti-calendar text-warning" style="font-size: 17px;font-weight: 600;"></i>
                                                     <b><?php echo $user['topup_date'];?></b>
                                                 </span>
                                             </li>
@@ -741,7 +741,7 @@
                                         <ul>
                                             <li>
                                                 <span>Rank:
-                                                    <i class="fa fa-mobile" style="font-size: 17px;font-weight: 600;"></i>
+                                                    <i class="ti-user text-warning" style="font-size: 17px;font-weight: 600;"></i>
                                                     <b class="text-danger" style="font-size: 16px;">Member.
                                                         <span style="font-size:11px; color:#00;">Bonus: </span>
                                                         <u>$ <?php echo $user['bonus']['sum'];?></u>

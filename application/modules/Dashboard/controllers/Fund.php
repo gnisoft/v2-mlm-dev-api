@@ -50,7 +50,52 @@ class Fund extends CI_Controller {
             redirect('Dashboard/User/login');
         }
     }
+    public function SubmitBill() {
+        if (is_logged_in()) {
+            $response = array();
+            if ($this->input->server('REQUEST_METHOD') == 'POST') {
+                $data = $this->security->xss_clean($this->input->post());
+                $config['upload_path'] = './uploads/';
+                $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+                $config['file_name'] = 'payment_slip';
+                $this->load->library('upload', $config);
 
+                if (!$this->upload->do_upload('userfile')) {
+                    $this->session->set_flashdata('message', $this->upload->display_errors());
+                } else {
+                    $fileData = array('upload_data' => $this->upload->data());
+                    $reqArr = array(
+                        'user_id' => $this->session->userdata['user_id'],
+                        'purchase_description' => $data['purchase_description'],
+                        'amount' => $data['amount'],
+                        'purchase_date' => $data['purchase_date'],
+                        'proof' => $fileData['upload_data']['file_name'],
+                        'status' => 0,
+                    );
+                    $res = $this->User_model->add('tbl_bill_request', $reqArr);
+                    if ($res) {
+                        $this->session->set_flashdata('message', 'Bill Submitted Successfully');
+                    } else {
+                        $this->session->set_flashdata('message', 'Error While Submitting Bill Please Try Again ...');
+                    }
+                }
+            }
+            $this->load->view('header', $response);
+            $this->load->view('Fund/submit_bill', $response);
+        } else {
+            redirect('Dashboard/User/login');
+        }
+    }
+
+    public function BillStatus() {
+        if (is_logged_in()) {
+            $response = array();
+            $response['requests'] = $this->User_model->get_records('tbl_bill_request', array('user_id' => $this->session->userdata['user_id']), '*');
+            $this->load->view('Fund/bill_requests', $response);
+        } else {
+            redirect('Dashboard/User/login');
+        }
+    }
     public function requests() {
         if (is_logged_in()) {
             $response = array();

@@ -67,44 +67,27 @@ class Package extends CI_Controller {
             $response['package'] = $this->Main_model->get_single_record('tbl_package', array('id' => $id), '*');
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 $data = $this->security->xss_clean($this->input->post());
-//                $this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
-//                $this->form_validation->set_rules('bv', 'BV', 'trim|required|numeric|xss_clean');
-//                $this->form_validation->set_rules('description', 'description', 'trim|required|xss_clean');
-//                $this->form_validation->set_rules('price', 'Price', 'trim|required|xss_clean');
-//                $this->form_validation->set_rules('commision', 'Commision', 'trim|required|xss_clean');
-//                if ($this->form_validation->run() != FALSE) {
-//                    pr($data);
-//                    $products = implode(',', $data['product']);
-                $q = $this->input->post('item_count');
-                $products = $this->input->post('product');
-                if (empty($product))
-                    $product = array();
-                else {
-                    foreach ($products as $key => $p) {
-                        $product[$key]['id'] = $p;
-                        $product[$key]['quantity'] = $q[$key];
+               $this->form_validation->set_rules('title', 'Title', 'trim|required|xss_clean');
+               $this->form_validation->set_rules('description', 'description', 'trim|required|xss_clean');
+               $this->form_validation->set_rules('price', 'Price', 'trim|required|xss_clean');
+               $this->form_validation->set_rules('direct_income', 'Direct Income', 'trim|required|xss_clean');
+               $this->form_validation->set_rules('level_income', 'Level Income', 'trim|required|xss_clean');
+               if ($this->form_validation->run() != FALSE) {
+                    $packArr = array(
+                        'title' => $data['title'],
+                        'description' => $data['description'],
+                        'price' => $data['price'],
+                        'direct_income' => $data['direct_income'],
+                        'level_income' => $data['level_income'],
+                    );
+                    $res = $this->Main_model->update('tbl_package', array('id' => $id), $packArr);
+                    if ($res) {
+                        $this->session->set_flashdata('message', 'Package Updated Successfully');
+                        $response['package'] = $this->Main_model->get_single_record('tbl_package', array('id' => $id), '*');
+                    } else {
+                        $this->session->set_flashdata('message', 'Error While Updating  Package Please Try Again ...');
                     }
-                }
-
-                $packArr = array(
-                    'title' => $data['title'],
-                    'description' => $data['description'],
-                    'price' => $data['price'],
-                    'bv' => $data['bv'],
-                    'products' => json_encode($product),
-                    'commision' => $data['commision'],
-                );
-                $res = $this->Main_model->update('tbl_package', array('id' => $id), $packArr);
-                if ($res) {
-                    $this->session->set_flashdata('message', 'Package Updated Successfully');
-                    $response['package'] = $this->Main_model->get_single_record('tbl_package', array('id' => $id), '*');
-                } else {
-                    $this->session->set_flashdata('message', 'Error While Updating  Package Please Try Again ...');
-                }
-//                }else{
-//                    echo form_error();
-//                    die('we are here');
-//                }
+               }
             }
 
             $this->load->view('edit_package', $response);

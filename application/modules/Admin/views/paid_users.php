@@ -41,7 +41,6 @@
                             <th>Name</th>
                             <th>Phone</th>
                             <th>Sponsor ID</th>
-                            <th>Size</th>
                             <th>Joining Date</th>
                             <th>Action</th>
                         </tr>
@@ -56,7 +55,6 @@
                                 <td><?php echo $user['name'] ; ?></td>
                                 <td><?php echo $user['phone']; ?></td>
                                 <td><?php echo $user['sponser_id']; ?></td>
-                                <td><?php echo $user['jeans'] .',' . $user['t_shirt'] . ','.$user['shoes']; ?></td>
                                 <td><?php echo $user['created_at']; ?></td>
                                 <td><a href="<?php echo base_url('Admin/Management/user_login/'.$user['user_id']);?>" target="_blank">Login</a></td>
                             </tr>

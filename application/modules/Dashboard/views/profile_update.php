@@ -444,7 +444,7 @@ $userinfo = userinfo();
         overflow: hidden;
     }
     .profile-header .profile-header-cover {
-        background: url(../img/profile-cover.jpg) center no-repeat;
+        background: url(<?php echo base_url('NewTheme/assets/img/dashboard-cover-5.jpg');?>) center no-repeat;
         background-size: 100% auto;
 
         left: 0;
@@ -571,20 +571,20 @@ $userinfo = userinfo();
             <!-- BEGIN profile-header-tab -->
             <ul class="profile-header-tab nav nav-tabs" role="tablist">
                 <li class="nav-item" id="T1">
-                    <a id="T21" class="nav-link active" data-toggle="tab" href="#ACCOUNT-DETAILS" role="tab">User Profile</a>
+                    <a id="account-details" class="nav-link active" data-toggle="tab" href="#ACCOUNT-DETAILS" role="tab">User Profile</a>
                 </li>
                 <li class="nav-item" id="T3">
-                    <a id="T23" class="nav-link" data-toggle="tab" href="#RESETPASSWORD" role="tab">Change Password</a>
+                    <a id="reset-password" class="nav-link" data-toggle="tab" href="#RESETPASSWORD" role="tab">Change Password</a>
                 </li>
                 <li class="nav-item" id="T2">
-                    <a id="T22" class="nav-link" data-toggle="tab" href="#E-CURRENCY-ACCOUNT" role="tab">Payment Accounts</a>
+                    <a id="payment-accounts" class="nav-link" data-toggle="tab" href="#E-CURRENCY-ACCOUNT" role="tab">Payment Accounts</a>
                 </li>
 
                 <li class="nav-item" id="T5">
-                    <a id="T25" class="nav-link" data-toggle="tab" href="#KYC" role="tab" >Bank Verification</a>
+                    <a id="identity-verification" class="nav-link" data-toggle="tab" href="#KYC" role="tab" >Identity Verification</a>
                 </li>
                 <li class="nav-item" id="T4">
-                    <a id="T24" class="nav-link" data-toggle="tab" href="#REFERRAL-LINK" role="tab">Referral Link</a>
+                    <a id="refferal-link" class="nav-link" data-toggle="tab" href="#REFERRAL-LINK" role="tab">Referral Link</a>
                 </li>
             </ul>
             <!-- END profile-header-tab -->
@@ -735,10 +735,10 @@ $userinfo = userinfo();
                                             <select class="form-control" name="country" id="country" required="">
                                                 <?php
                                                 foreach ($countries as $key => $country)
-                                                    echo'<option value="' . $country['id'] . '" ' . ($userinfo->country_code == $country['id'] ? "selected" : "") . '>' . $country['name'] . '</option>';
+                                                    echo'<option value="' . $country['id'] . '" ' . ($userinfo->country == $country['id'] ? "selected" : "") . '>' . $country['name'] . '</option>';
                                                 ?>
                                             </select>
-                                    <!--<input type="text" class="form-control" value="<?php //echo $userinfo->country;              ?>" name="country">-->
+                                    <!--<input type="text" class="form-control" value="<?php //echo $userinfo->country;                   ?>" name="country">-->
                                     <!-- <span id="txtCity"></span>
                                     <span class="pull-right">
                                         <a href="#" data-toggle="modal">
@@ -751,7 +751,7 @@ $userinfo = userinfo();
                                     <tr>
                                         <td class="field">State/Province</td>
                                         <td class="value">
-                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->state;       ?>" name="state">-->
+                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->state;            ?>" name="state">-->
                                             <select class="form-control" name="state" required="" id="state">
                                                 <?php
                                                 foreach ($stateArr as $key => $state)
@@ -765,12 +765,13 @@ $userinfo = userinfo();
                                         <td class="field">City</td>
                                         <td class="value">
                                             <select class="form-control" name="city" id="city">
+                                                <option></option>
                                                 <?php
                                                 foreach ($cityArr as $key => $city)
                                                     echo'<option value="' . $city['id'] . '" ' . ($userinfo->city == $city['id'] ? "selected" : "") . '>' . $city['name'] . '</option>';
                                                 ?>
                                             </select>
-                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->city;       ?>" name="city">-->
+                                            <!--<input type="text" class="form-control" value="<?php //echo $userinfo->city;            ?>" name="city">-->
                                             <!-- <span id="txtCity"></span>
                                             <span class="pull-right">
                                                 <a href="#" data-toggle="modal">
@@ -854,7 +855,7 @@ $userinfo = userinfo();
                                                 <div class="col-md-12">
                                                     <select class="form-control form-control-line" name="account_type" id="ddlAccType" required="">
                                                         <option value="">Choose Account Type</option>
-                                                        <option value="saving"  <?php echo $user_bank->account_type == 'saving' ? 'selected' : ''; ?>>Saving Account</option>
+                                                        <option value="saving"  <?php echo $user_bank->account_type == 'saving' ? 'selected' : ''; ?>>Savings Account</option>
                                                         <option value="current" <?php echo $user_bank->account_type == 'current' ? 'selected' : ''; ?>>Checking Account</option>
                                                     </select>
                                                 </div>
@@ -889,7 +890,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-md-12">
-                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Account number" name="bank_account_number" maxlength="16" required="" >
+                                                    <input type="number" class="form-control form-control-line"  value="<?php echo $user_bank->bank_account_number; ?>" placeholder="Confirm Account number" name="confirm_bank_account_number" maxlength="16" required="" >
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -897,7 +898,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code" maxlength="11" required="">
+                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->internation_routing_number; ?>" name="internation_routing_number" placeholder="International Routing Number"  equired="">
                                                 </div>
                                             </div>
                                             <div class="form-group col-md-12">
@@ -905,7 +906,7 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="Bank IFS Code"  maxlength="11" required="">
+                                                    <input type="text" class="form-control form-control-line" value="<?php echo $user_bank->ifsc_code; ?>" name="ifsc_code" placeholder="BIC/SWIFT Code"  maxlength="11" required="">
                                                 </div>
                                             </div>
 
@@ -914,22 +915,22 @@ $userinfo = userinfo();
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
-                                                    <input type="text" class="form-control form-control-line" name="pan" placeholder="Update PAN Number from KYC Section" value="<?php echo $user_bank->pan; ?>" id="txtPanCard" maxlength="10" pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}">
+                                                    <input type="text" class="form-control form-control-line" name="pan" placeholder="Tax/BOR Identification Number" value="<?php echo $user_bank->pan; ?>" id="txtPanCard">
                                                 </div>
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <div id="ifscdt"></div>
                                             </div>
                                             <!--<div class="form-group col-sm-11" style="margin-left:36px;border-top: 1px solid #ccc;"></div>-->
-                                            <div class="form-group col-md-6">
+<!--                                            <div class="form-group col-md-6">
                                                 <label class="col-sm-12">Upload Bank Account Proof
                                                     <span class="text-c-pink">*</span>
                                                 </label>
                                                 <div class="col-sm-12">
                                                     <input type="File" id="bankFileuplaod" name="userfile">
                                                 </div>
-                                            </div>
-                                            <div class="form-group col-md-6">
+                                            </div>-->
+<!--                                            <div class="form-group col-md-6">
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <p style="    color: green;    font-size: 12px;    font-weight: 600;">
@@ -940,7 +941,7 @@ $userinfo = userinfo();
                                                 <div class="col-sm-12">
                                                     <img id="ImgBANKP" src="<?php echo base_url('uploads/' . ($user_bank->passbook_image == '' ? 'no_image.png' : $user_bank->passbook_image)) ?>" alt="Bank Proof">
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class=" form-group col-md-12 text-center m-t-20">
                                                 <div class="loader">
                                                 </div>
@@ -1069,6 +1070,7 @@ $userinfo = userinfo();
                                 <div class="panel-heading">
                                     <h4 class="panel-title">KYC VERIFICATION</h4>
                                 </div>
+
                                 <!-- END panel-heading -->
                                 <!-- BEGIN panel-body -->
                                 <div class="panel-body gtdtf">
@@ -1079,7 +1081,7 @@ $userinfo = userinfo();
                                             <div class="container-fluid my-documents-page">
                                                 <div class="row">
                                                     <div class="col-sm-12">
-                                                        <div class="lead">
+                                                        <div class="lead" style="font-size:16px">
                                                             Verify your Identity and Proof of Residence in order to activate your account and get access to all areas of HOPE Partners.
                                                         </div>
                                                     </div>
@@ -1096,9 +1098,9 @@ $userinfo = userinfo();
                                                                                 <tr>
                                                                                     <td class="uploaded-docs-table-name">
                                                                                         <span class="document-verify-step1 lead mb0">
-                                                                                            <i class="ti-user color-light-blue" style="color: #007aff;"></i>
-                                                                                            Aadhar Card Front
-                                                                                        </span>
+
+                                                                                            Government Issued ID
+                                                                                        </span> <img src="<?php echo base_url('uploads/') ?>govtid.png" style="max-width:74px">
                                                                                     </td>
 
                                                                                     <td class="uploaded-docs-table-status">
@@ -1109,8 +1111,8 @@ $userinfo = userinfo();
                                                                                             if ($user_bank->id_proof != '') {
                                                                                                 echo'<img src="' . base_url('uploads/' . ($user_bank->id_proof == '' ? 'no_image.png' : $user_bank->id_proof)) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/' . ( $user_bank->id_proof == '' ? 'no_image.png' : $user_bank->id_proof)) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
-                                                                                                echo'<span class="wanki">Not Uploaded</span>';
+                                                                                                //echo'<img src="' . base_url('uploads/' . ( $user_bank->id_proof == '' ? 'no_image.png' : $user_bank->id_proof)) . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<span class="wanki text-center">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
                                                                                         </div>
@@ -1132,9 +1134,9 @@ $userinfo = userinfo();
                                                                                 <tr>
                                                                                     <td class="uploaded-docs-table-name">
                                                                                         <span class="document-verify-step1 lead mb0">
-                                                                                            <i class="ti-user color-light-blue" style="color: #007aff;"></i>
-                                                                                            Aadhar Card Back
-                                                                                        </span>
+
+                                                                                            Passport
+                                                                                        </span><img src="<?php echo base_url('uploads/') ?>passport.png" style="max-width:74px">
                                                                                     </td>
 
                                                                                     <td class="uploaded-docs-table-status">
@@ -1145,8 +1147,8 @@ $userinfo = userinfo();
                                                                                             if ($user_bank->id_proof2 != '') {
                                                                                                 echo'<img src="' . base_url('uploads/' . $user_bank->id_proof2) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
-                                                                                                echo'<span class="wanki">Not Uploaded</span>';
+//                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<span class="wanki text-center">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
                                                                                         </div>
@@ -1162,15 +1164,15 @@ $userinfo = userinfo();
                                                                             </tbody>
                                                                         </table>
                                                                         <?php echo form_close(); ?>
-                                                                        <?php echo form_open_multipart(base_url('Dashboard/User/UploadProof/'), array('method' => 'post', 'class' => 'proofForm')); ?>
+                                                                        <?php echo form_open_multipart(base_url('Dashboard/User/UploadProof/'), array('method' => 'post', 'class' => 'proofForm', 'id' => 'Other')); ?>
                                                                         <table class="table table-layout-fixed uploaded-docs-table" width="100%">
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td class="uploaded-docs-table-name">
                                                                                         <span class="document-verify-step1 lead mb0">
-                                                                                            <i class="ti-user color-light-blue" style="color: #007aff;"></i>
-                                                                                            Pan Card
-                                                                                        </span>
+
+                                                                                            Other Proof of Identity
+                                                                                        </span><img src="<?php echo base_url('uploads/') ?>otherproof.png" style="max-width:74px">
                                                                                     </td>
 
                                                                                     <td class="uploaded-docs-table-status">
@@ -1181,8 +1183,8 @@ $userinfo = userinfo();
                                                                                             if ($user_bank->id_proof3 != '') {
                                                                                                 echo'<img src="' . base_url('uploads/' . $user_bank->id_proof3) . '" class="img-responsive" style="max-width:200px;"><br>';
                                                                                             } else {
-                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
-                                                                                                echo'<span class="wanki">Not Uploaded</span>';
+//                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
+                                                                                                echo'<span class="wanki text-center">Not Uploaded</span>';
                                                                                             }
                                                                                             ?>
                                                                                         </div>
@@ -1197,45 +1199,9 @@ $userinfo = userinfo();
                                                                                 </tr>
                                                                             </tbody>
                                                                         </table>
-                                                                        <?php echo form_close(); ?>
-                                                                        <?php echo form_open_multipart(base_url('Dashboard/User/UploadProof/'), array('method' => 'post', 'class' => 'proofForm')); ?>
-                                                                        <table class="table table-layout-fixed uploaded-docs-table" width="100%">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td class="uploaded-docs-table-name">
-                                                                                        <span class="document-verify-step1 lead mb0">
-                                                                                            <i class="ti-user color-light-blue" style="color: #007aff;"></i>
-                                                                                            Bank Passbook/Cancel Check
-                                                                                        </span>
-                                                                                    </td>
 
-                                                                                    <td class="uploaded-docs-table-status">
-                                                                                        <div class="verification-img" id="ImgID">
-                                                                                            <input type="file" name="userfile" class="" placeholder=""/><br>
-                                                                                            <input type="hidden" name="proof_type" value="id_proof4"/><br>
-                                                                                            <?php
-                                                                                            if ($user_bank->id_proof4 != '') {
-                                                                                                echo'<img src="' . base_url('uploads/' . $user_bank->id_proof4) . '" class="img-responsive" style="max-width:200px;"><br>';
-                                                                                            } else {
-                                                                                                echo'<img src="' . base_url('uploads/no_image.png') . '" alt="no-image" class="img-responsive" style="max-width:20px;"><br>';
-                                                                                                echo'<span class="wanki">Not Uploaded</span>';
-                                                                                            }
-                                                                                            ?>
-                                                                                        </div>
-                                                                                    </td>
-                                                                                    <td class="uploaded-docs-table-btn pr0">
-                                                                                        <div class="loader"></div>
-                                                                                        <?php
-                                                                                        if ($user_bank->kyc_status != 2)
-                                                                                            echo'<input type="submit" class="btn btn-primary thgy" value="upload"> ';
-                                                                                        ?>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
                                                                         <?php echo form_close(); ?>
-
-                                                                                  <!-- <tr style="    border-bottom: 1px solid #dee2e6;">
+<!--                                                                                   <tr style="    border-bottom: 1px solid #dee2e6;">
                                                                                       <td class="uploaded-docs-table-name">
                                                                                           <span class="document-verify-step1 lead mb0">
                                                                                               <i class="ti-location-pin pl5 color-light-blue" style="color: #007aff;"></i>
@@ -1255,7 +1221,8 @@ $userinfo = userinfo();
                                                                         <tr>
                                                                             <td colspan="6">
                                                                                 <span id="sta">
-                                                                                    <div class="alert alert-danger alert-rounded">Please Upload your Id &amp; Address Proof for Profile Documents Verification
+                                                                                    <div class="alert alert-danger alert-rounded">Please Upload Your Identity Verification Documentation
+
                                                                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                                             <span aria-hidden="true" style="position: relative;top: -5px;">×</span>
                                                                                         </button>
@@ -1265,6 +1232,7 @@ $userinfo = userinfo();
                                                                         </tr>
                                                                         </tbody>
                                                                         </table>
+                                                                        <div style="color: white; padding: 5px 10px; background: red; font-size: 16px; font-weight: bold; margin-left: 14px;">Note: Only JPG, PNG, GIF, JPEG Files are Allowed. (Max Size: 3 MB)</div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -1726,6 +1694,7 @@ $userinfo = userinfo();
                 if (res.success == 1) {
                     t.find('.verification-img img').attr('src', res.image)
                     t.find('span.wanki').remove();
+                    location.reload();
                 }
             },
             cache: false,
@@ -1751,6 +1720,7 @@ $userinfo = userinfo();
                 $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
                 t.find('.loader').css('display', 'none');
                 if (res.success == 1) {
+                    location.reload();
                 }
             },
             cache: false,
@@ -1768,9 +1738,10 @@ $userinfo = userinfo();
             $("form.proofForm").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
             $("form.pswrdrst").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
             $("form#bankform").append('<input type="hidden" name="' + res.csrfName + '" value="' + res.csrfHash + '" style="display:none;">')
-            // if(res.success == 1){
-            //     document.getElementById("pswrdrst").reset();
-            // }
+            if (res.success == 1) {
+                location.reload();
+                //     document.getElementById("pswrdrst").reset();
+            }
         }, 'json')
     })
 
@@ -1811,9 +1782,13 @@ $userinfo = userinfo();
         var state_id = $(this).val();
         $.get('<?php echo base_url(); ?>/Dashboard/User/get_city/' + state_id, function (res) {
             var html = '';
-            $.each(res, function (key, value) {
-                html += '<option value="' + value.id + '">' + value.name + '</option>';
-            });
+            if (res.length > 0) {
+                $.each(res, function (key, value) {
+                    html += '<option value="' + value.id + '">' + value.name + '</option>';
+                });
+            } else {
+                html += '<option value=""></option>';
+            }
             $('#city').html(html);
         }, 'json')
     });
@@ -1823,14 +1798,5 @@ $userinfo = userinfo();
 <script src="https://www.jqueryscript.net/demo/jQuery-International-Telephone-Input-With-Flags-Dial-Codes/build/js/intlTelInput.js"></script>
 <script>
 //    $("#mobile-number").intlTelInput();
+    $('#<?php echo $mode; ?>').click();
 </script>
-
-<?php
-if ($mode == 'RESETPASSWORD') {
-    ?>
-    <script>
-    alert('open reset password')
-    </script>
-    <?php
-}
-?>

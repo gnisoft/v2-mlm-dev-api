@@ -206,7 +206,9 @@ class Withdraw extends CI_Controller {
             $response['end_date'] = date_format(date_create($end_date), "m/d/Y");
             $response['header'] = 'Bank Address Requests';
             $response['users'] = $this->Main_model->get_records('tbl_bank_details', $where, '*');
-
+            foreach($response['users'] as $key => $banks){
+                $response['users'][$key]['bank'] =  $this->Main_model->get_single_record('tbl_bank_list', array('id' => $banks['bank_name']), '*');
+            }
             $this->load->view('AddressRequests', $response);
         } else {
             redirect('Admin/Management/login');

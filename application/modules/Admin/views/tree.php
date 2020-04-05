@@ -9,7 +9,7 @@
         width: 50%;
         height: 20px;
         z-index: 999999;
-    }	
+    }
     .treemain ul ul::before {
         content: '';
         position: absolute;
@@ -346,9 +346,9 @@
                     <li>
                         <div class="member-img">
                             <a href="<?php echo base_url('Admin/Management/Tree/' . $user['user_id']); ?>">
-                                <img src="https://instaadpro.com/tree/<?php echo $user['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
+                                <img src="<?php echo base_url('uploads/'); ?><?php echo $user['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
                             </a>
-                            <br><span><?php echo($user['name']); ?>(<?php echo($user['user_id']); ?>)</span> 
+                            <br><span><?php echo($user['name']); ?>(<?php echo($user['user_id']); ?>)</span>
                             <span><?php echo($user['user_id']); ?></span>
                         </div>
                         <ul class="clearfix">
@@ -359,10 +359,10 @@
                                 <li>
                                     <div class="member-img">
                                         <a href="<?php echo base_url('Admin/Management/Tree/' . $direct['user_id']); ?>">
-                                            <img src="https://instaadpro.com/tree/<?php echo $direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
+                                            <img src="<?php echo base_url('uploads/'); ?><?php echo $direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
                                         </a>
-                                        <br><span><?php echo($direct['name']); ?></span>  
-                                        <span><?php echo $direct['user_id']; ?></span>  
+                                        <br><span><?php echo($direct['name']); ?></span>
+                                        <span><?php echo $direct['user_id']; ?></span>
                                     </div>
                                     <ul class="clearfix">
                                         <?php
@@ -372,10 +372,10 @@
                                             <li>
                                                 <div class="member-img">
                                                     <a href="<?php echo base_url('Admin/Management/Tree/' . $sub_direct['user_id']); ?>">
-                                                        <img src="https://instaadpro.com/tree/<?php echo $sub_direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
+                                                        <img src="<?php echo base_url('uploads/'); ?><?php echo $sub_direct['paid_status'] == 1 ? 'active' : 'inactive';?>.png">
                                                     </a>
-                                                    <br><span><?php echo($sub_direct['name']); ?></span>  
-                                                    <br><span><?php echo($sub_direct['user_id']); ?></span>  
+                                                    <br><span><?php echo($sub_direct['name']); ?></span>
+                                                    <br><span><?php echo($sub_direct['user_id']); ?></span>
                                                 </div>
                                             </li>
                                             <?php

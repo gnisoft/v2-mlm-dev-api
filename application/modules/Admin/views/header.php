@@ -18,6 +18,14 @@
       <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
       <link rel="stylesheet" href="https://winto.in/Assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
    </head>
+   <style>
+   .brand-link {
+
+       width: 100%;
+       float: left;
+       background: black;
+   }
+   </style>
    <body class="hold-transition sidebar-mini">
       <div class="wrapper">
       <!-- Navbar -->
@@ -42,7 +50,7 @@
          <a href="<?php echo base_url('Admin/Management/');?>" class="brand-link" style="">
          <img src="<?php echo base_url(logo)?>" alt="Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
-         <span class="brand-text font-weight-light"><?php echo title;?> Admin</span>
+
          </a>
          <!-- Sidebar -->
          <div class="sidebar">
@@ -81,7 +89,19 @@
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Settings/ResetPassword');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Password Reset</p>
+                              <p>Change Password</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Package/Edit/1');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Package</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Management/NetworkCommission');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Network Commision</p>
                            </a>
                         </li>
                          <!--<li class="nav-item">
@@ -126,18 +146,18 @@
                               <p>Offer</p>
                            </a>
                         </li> -->
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Settings/news');?>" class="nav-link">
+                        <!-- <li class="nav-item">
+                           <a href="<?php //echo base_url('Admin/Settings/news');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>News</p>
                            </a>
-                        </li>
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Management/popup_upload');?>" class="nav-link">
+                        </li> -->
+                        <!-- <li class="nav-item">
+                           <a href="<?php //echo base_url('Admin/Management/popup_upload');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Upload Popup Image</p>
                            </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/CommingSoon/free_popup_settings');?><" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
@@ -146,77 +166,20 @@
                         </li> -->
                      </ul>
                   </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                           Income Reports
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview" style="display: none;">
-                        <?php
-                        $incomes = incomes();
-                        foreach($incomes as $key => $income){
-                           echo'<li class="nav-item">
-                                    <a href="'.base_url('Admin/Withdraw/income/'.$key).'" class="nav-link">
-                                       <i class="far fa-circle nav-icon"></i>
-                                       <p>'.$income.'</p>
-                                    </a>
-                                 </li>';
-                        }
 
-                        ?>
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Withdraw/incomeLedgar/');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Income Ledgar</p>
-                           </a>
-                        </li>
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Withdraw/payout_summary/');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Payout Summary</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item">
-                     <a href="<?php echo base_url('Admin/Task/');?>" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Videos Settings</p>
-                     </a>
-                  </li>
                   <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                           Notifications
+                           Membership
                            <i class="right fas fa-angle-left"></i>
                         </p>
                      </a>
                      <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Management/CommingSoon/News');?><" class="nav-link">
+                           <a href="<?php echo base_url('Admin/Management/Tree/Admin');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>News</p>
-                           </a>
-                        </li>
-                     </ul>
-                  </li>
-                  <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
-                        <p>
-                           User Detaills
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Management/Tree/adminadmin');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Tree View</p>
+                              <p>Member Genealogy</p>
                            </a>
                         </li>
                         <li class="nav-item">
@@ -228,25 +191,21 @@
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/paidUsers');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Paid Members</p>
+                              <p>Active Members</p>
                            </a>
                         </li>
+
                         <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Management/UserInvoice');?>" class="nav-link">
+                           <a href="<?php echo base_url('Admin/Withdraw/AddressRequests')?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Invoice</p>
+                              <p>Identity Verifications</p>
                            </a>
                         </li>
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Settings/UpdateRank');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Rank Management</p>
-                           </a>
-                        </li>
+
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/today_joinings');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>View Today Joinings</p>
+                              <p>New Members Today</p>
                            </a>
                         </li>
                         <?php
@@ -262,7 +221,34 @@
                         ?>
                      </ul>
                   </li>
-                  <li class="nav-item has-treeview">
+
+
+
+                  <!-- <li class="nav-item">
+                     <a href="<?php echo base_url('Admin/Task/');?>" class="nav-link">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Videos Settings</p>
+                     </a>
+                  </li> -->
+                  <!-- <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                           Notifications
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Management/CommingSoon/News');?><" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>News</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li> -->
+
+                  <!-- <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -271,12 +257,7 @@
                         </p>
                      </a>
                      <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Withdraw/AddressRequests')?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Kyc Requests</p>
-                           </a>
-                        </li>
+
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Withdraw/ApprovedAddressRequests')?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
@@ -290,29 +271,44 @@
                            </a>
                         </li>
                      </ul>
-                  </li>
+                  </li> -->
+
+
                   <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                           Fund Management
+                           Wallet Management
                            <i class="right fas fa-angle-left"></i>
                         </p>
                      </a>
                      <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/Fund_requests/');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Fund Request List</p>
+                              <p>Deposit Requests</p>
                            </a>
                         </li>
                         <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Management/SendWallet');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Initiate Deposit</p>
+                           </a>
+                        </li> -->
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Withdraw/Pending')?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Withdrawal Requests</p>
+                           </a>
+                        </li>
+
+                        <!-- <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/Fund_requests/1');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Approved Fund Request List</p>
                            </a>
-                        </li>
-                        <li class="nav-item">
+                        </li> -->
+                        <!-- <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/Fund_requests/0');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Pending Fund Request List</p>
@@ -323,26 +319,28 @@
                               <i class="far fa-circle nav-icon"></i>
                               <p>Rejected Fund Request List</p>
                            </a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/fund_history');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Fund History</p>
+                              <p>Deposit History</p>
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Management/SendWallet');?>" class="nav-link">
+                           <a href="<?php echo base_url('Admin/Withdraw')?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Send Fund Personally</p>
+                              <p>Withdrawal History</p>
                            </a>
                         </li>
+
                      </ul>
                   </li>
+
                   <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                           Shopping Management
+                           E-Commerce
                            <i class="right fas fa-angle-left"></i>
                         </p>
                      </a>
@@ -355,11 +353,55 @@
                         </li>
                      </ul>
                   </li>
+
                   <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                           Mail
+                           Network Commisions
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Management/Bill_requests');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Pending Bill Requests</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                           Reports
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview" style="display: none;">
+
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Withdraw/incomeLedgar/');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Revenue History</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Withdraw/payout_summary/');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Payout Summary</p>
+                           </a>
+                        </li>
+                     </ul>
+                  </li>
+
+                  <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-chart-pie"></i>
+                        <p>
+                           Support
                            <i class="right fas fa-angle-left"></i>
                         </p>
                      </a>
@@ -367,24 +409,19 @@
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Support/inbox');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Inbox</p>
+                              <p>Mailbox</p>
                            </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Support/Compose');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Compose Mail</p>
+                              <p>Inbox</p>
                            </a>
-                        </li>
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Support/Outbox');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Outbox</p>
-                           </a>
-                        </li>
+                        </li> -->
+
                      </ul>
                   </li>
-                  <li class="nav-item has-treeview">
+                  <!-- <li class="nav-item has-treeview">
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
@@ -393,24 +430,14 @@
                         </p>
                      </a>
                      <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Withdraw')?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Withdraw Request</p>
-                           </a>
-                        </li>
+
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Withdraw/Approved')?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Approved Withdraw Request</p>
                            </a>
                         </li>
-                        <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Withdraw/Pending')?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Pending Withdraw Request</p>
-                           </a>
-                        </li>
+
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Withdraw/Rejected')?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
@@ -418,7 +445,7 @@
                            </a>
                         </li>
                      </ul>
-                  </li>
+                  </li> -->
                   <li class="nav-item has-treeview">
                      <a href="<?php echo base_url('Admin/Management/logout');?>" class="nav-link">
                         <i class="nav-icon fas fa-chart-pie"></i>

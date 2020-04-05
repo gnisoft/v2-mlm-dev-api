@@ -5,7 +5,7 @@
     <!-- END breadcrumb -->
     <!-- BEGIN page-header -->
     <h2 class="page-titel">
-        <spna style="">Withdraw </spna> /   Transfer to W-wallet
+        <spna style="">Withdraw </spna> /  Withdrawal
     </h2>
     <h1 class="page-header">
 
@@ -38,7 +38,7 @@
                           </div>
                           <div class="form-group">
                               <label>Admin Charges</label>
-                              <span class="text-info">10%</span>
+                              <span class="text-info">2.5%</span>
                           </div>
                           <div class="form-group">
                               <label>Net Amount For Withdrawal</label>
@@ -62,12 +62,12 @@
                               $<span class="text-success" id="NetbankAmount"></span>
                           </div>
                           <div class="form-group">
-                              <label>Transaction Pin</label>
-                              <input type="password" class="form-control" name="master_key" placeholder="Transaction Key" value=""/>
+                              <label>Transaction Password</label>
+                              <input type="password" class="form-control" name="master_key" placeholder="Enter Transaction Password" value=""/>
                               <span class="text-danger"><?php echo form_error('master_key')?></span>
                           </div>
                           <div class="form-group">
-                              <button type="subimt" name="save" class="btn btn-success" />Acitvate</button>
+                              <button type="subimt" name="save" class="btn btn-success" />Submit</button>
                           </div>
                           <?php echo form_close();?>
                         </div>
@@ -126,10 +126,10 @@
         var transfer_wallet = $("input[name='pin_transfer']:checked").val();
         console.log(transfer_wallet);
         if(transfer_wallet == 0){
-            bankAmount = amount * 90 /100;
+            bankAmount = amount * 97.5 /100;
             // tds = amount * 5 /100;
         }else{
-            bankAmount = amount * 90 /100;
+            bankAmount = amount * 97.5 /100;
             // tds = amount * 5 /100;
         }
 

@@ -24,7 +24,7 @@
 
         <style>
         body{
-          background:url(https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1063787606%2F0x0.jpg); background-size:cover; padding:40px 0px
+          background:url(<?php echo base_url('uploads/')?>admin-login.jpg); background-size:cover; padding:40px 0px
         }
         p {
     margin: 0 0 10px;

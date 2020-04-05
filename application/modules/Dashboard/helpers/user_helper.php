@@ -223,6 +223,8 @@ if (!function_exists('get_income_name')) {
             'direct_income' => 'Direct Revenue',
             'direct_level_income' => 'Other Revenue',
             'income_transfer' => 'Income Transfer',
+            'direct_income_withdraw' => 'Withdraw Amount',
+            'network_commisions' => 'Network Commisions',
         );
         // return array_search($income_name, $incomes);
         return $incomes[$income_name];

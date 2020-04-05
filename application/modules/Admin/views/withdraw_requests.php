@@ -44,6 +44,7 @@
                             <th>Payable Amount</th>
                             <th>Status</th>
                             <th style="width:500px">BTC</th>
+                            <th style="width:500px">PAYPAL</th>
                             <th>Remark</th>
                             <th>Request Date</th>
                             <th>Action</th>
@@ -52,7 +53,7 @@
                     <tbody>
                         <?php
                         foreach ($requests as $key => $request) {
-    //                        pr($request);
+//                            pr($request);
                             ?>
                             <tr>
                                 <td><?php echo ($key + 1) ?></td>
@@ -87,8 +88,9 @@
                                         // echo 'Kyc Status :'. $kyc_status.'<br>';
                                     ?>
                                 </td>
-                                <td><?php echo $request['remark']; ?></td>
+                                <td><?php echo $request['bank']['paypal'] ?></td>
                                 <td><?php echo $request['created_at']; ?></td>
+                                <td><?php echo $request['remark']; ?></td>
                                 <td><a href="<?php echo base_url('Admin/Withdraw/request/' . $request['id']); ?>" target="_blank">View</a></td>
                             </tr>
                             <?php

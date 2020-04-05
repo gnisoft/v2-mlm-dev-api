@@ -25,6 +25,9 @@ display: block !important;
 
 
 }
+.with-rounded-corner {
+    background: white !important;
+}
 
 </style>
 
@@ -213,33 +216,33 @@ display: block !important;
 
                 </div>
                 <script>
-                    var countDownDate = new Date("<?php echo date('Y-m-d H:i',strtotime('+78 hour',strtotime($userinfo->topup_date))); ?>").getTime();
-
-                    // Update the count down every 1 second
-                    var x = setInterval(function() {
-
-                    // Get today's date and time
-                    var now = new Date().getTime();
-
-                    // Find the distance between now and the count down date
-                    var distance = countDownDate - now;
-
-                    // Time calculations for days, hours, minutes and seconds
-                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                    // Output the result in an element with id="demo"
-                    document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-                    + minutes + "m " + seconds + "s ";
-
-                    // If the count down is over, write some text
-                    if (distance < 0) {
-                        clearInterval(x);
-                        document.getElementById("timer").innerHTML = "EXPIRED";
-                    }
-                    }, 1000);
+//                    var countDownDate = new Date("<?php echo date('Y-m-d H:i',strtotime('+78 hour',strtotime($userinfo->topup_date))); ?>").getTime();
+//
+//                    // Update the count down every 1 second
+//                    var x = setInterval(function() {
+//
+//                    // Get today's date and time
+//                    var now = new Date().getTime();
+//
+//                    // Find the distance between now and the count down date
+//                    var distance = countDownDate - now;
+//
+//                    // Time calculations for days, hours, minutes and seconds
+//                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+//                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+//                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+//                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+//
+//                    // Output the result in an element with id="demo"
+//                    document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+//                    + minutes + "m " + seconds + "s ";
+//
+//                    // If the count down is over, write some text
+//                    if (distance < 0) {
+//                        clearInterval(x);
+//                        document.getElementById("timer").innerHTML = "EXPIRED";
+//                    }
+//                    }, 1000);
                 </script>
                 <!-- END page-header -->
                 <div class="row">
@@ -288,7 +291,7 @@ display: block !important;
                                                 <!-- BEGIN widget-list-container -->
                                                 <a href="<?php echo base_url('Dashboard/User/Directs/')?>" class="widget-list-container">
                                                     <div class="widget-list-media icon p-l-0">
-                                                        <i class="ti-user bg-gradient-blue"></i>
+                                                        <i class="ti-star bg-gradient-blue"></i>
                                                     </div>
                                                     <div class="widget-list-content">
                                                         <h4 class="widget-title">My Direct Team</h4>
@@ -344,7 +347,7 @@ display: block !important;
                                                 <!-- BEGIN widget-list-container -->
                                                 <a href="<?php echo base_url('Dashboard/User/Register/?sponser_id='.$userinfo->user_id);?>" target="_blank" class="widget-list-container">
                                                     <div class="widget-list-media icon p-l-0">
-                                                        <i class="ti-lock bg-gradient-green"></i>
+                                                        <i class="ti-plus bg-gradient-green"></i>
                                                     </div>
                                                     <div class="widget-list-content">
                                                         <h4 class="widget-title">Add Teammate</h4>
@@ -366,167 +369,89 @@ display: block !important;
                     </div>
                     <!-- END col-6 -->
                     <!-- BEGIN col-3 -->
-                    <div class="col-lg-3 col-sm-6">
-                        <!-- BEGIN widget -->
 
+                    <div class="col-lg-6 col-sm-12 with-rounded-corner" style="background:white">
+
+                        <!-- BEGIN widget -->
+                        <div class="widget widget-card dynamic inverse-mode  with-rounded-corner with-shadow text-center m-b-0">
+                            <div class="widget-card-cover with-rounded-corner">
+                                <div class="cover-bg with-gradient"></div>
+                                <img class="img-portrait" src="<?php echo base_url('NewTheme/')?>assets/img/dashboard-cover-5.jpg" style="width:100% !important" alt="">
+                            </div>
+                            <div class="widget-card-content with-rounded-corner">
+                                <div class="m-b-10 m-t-10">
+                                    <div id="mem_rank">
+                                        <img width="110" class="img-circle" src="<?php echo base_url('NewTheme/')?>assets/img/Star.png" alt="Rank">
+                                    </div>
+                                    <div id="prof_pic">
+                                        <img width="72" class="img-circle" src="<?php echo base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image));?>" alt="user">
+                                    </div>
+                                    <!-- <img   width="72" class="img-circle" alt=""  src="../UserProfileImg/Open_User.jpg"/>-->
+                                </div>
+                                <!--id="prof_pic"-->
+                                <h4 class="widget-title f-s-13" id="MemID1"><?php echo $userinfo->name;?></h4>
+                                <div class="widget-desc " id="email1"><?php echo $userinfo->email;?></div>
+                            </div>
+                            <div class="widget-card-content with-rounded-corner p-10 p-t-0">
+                                <div class="widget-divider m-t-0"></div>
+                                <div class="row m-b-2">
+                                    <div class="col-4">
+                                        <div class="widget-title" id="withLimit"><?php echo !empty($city) ? $city['name'] : '';?></div>
+                                        <div class="widget-desc" style="   white-space: nowrap;"><?php echo !empty($country) ? $country['name'] : '';?></div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="widget-title" id="TOTALROI"><?php echo $userinfo->package_amount;?></div>
+                                        <div class="widget-desc">Package Amount</div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="widget-title" style="color: #4cd964;" id="MemSts"><?php echo $userinfo->paid_status == 0 ? 'Free' : 'Active';?></div>
+                                        <div class="widget-desc">Status</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- END widget -->
                         <!-- BEGIN widget -->
-                        <div class="widget widget-card inverse-mode with-min-height">
-                            <!-- BEGIN widget-card-cover -->
-                            <div class="widget-card-cover">
-                                <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/e-wallet-2.png" alt="">
-                            </div>
-                            <!-- END widget-card-cover -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content">
-                                <div class="dropdown dropdown-icon pull-right">
-                                    <a data-toggle="dropdown">
-                                        <i class="ti-more-alt"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/Fund/Request_fund');?>">Fund Request</a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>">Withdraw</a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/IncomeTransfer')?>">Transfer</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4 class="widget-title">E-Wallet</h4>
-                            </div>
-                            <!-- END widget-card-content -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content bottom">
-                                <div class="widget-card-icon bg-gradient-red">
-                                    <i class="ti-control-forward"></i>
-                                </div>
-                                <div class="widget-card-info">
-                                    <h4 class="widget-title">
-                                        <a href="/Dashboard.html#" id="MAR"><?php echo $wallet_balance['wallet_balance'];?> Points</a>
-                                    </h4>
-                                    <ul class="widget-inline-list">
-                                        <li>Available On E- Wallet </li>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- END widget-card-content -->
-                        </div>
+                        <ul class="widget widget-list with-rounded-corner">
+                            <li>
+                                <a href="#" class="widget-list-container">
+                                    <div class="widget-list-media square">
+                                        <div class="img-container">
+                                            <img src="<?php echo base_url('NewTheme/')?>assets/img/team.png" alt="" class="img-portrait">
+                                        </div>
+                                    </div>
+                                    <div class="widget-list-content">
+                                        <h4 class="widget-title text-ellipsis" id="Actived_On1">
+                                            <b>Joined : </b><?php echo $userinfo->created_at;?>
+                                        </h4>
+                                        <!--	<div class="widget-desc" id="TotTeam1"></div>-->
+                                    </div>
 
-                        <div class="widget widget-card inverse-mode with-min-height">
-                            <!-- BEGIN widget-card-cover -->
-                            <div class="widget-card-cover">
-                                <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/insurance.jpg" alt="">
-                            </div>
-                            <!-- END widget-card-cover -->
-                            <!-- BEGIN widget-card-content -->
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="widget-list-container">
+                                    <div class="widget-list-media square">
+                                        <div class="img-container">
+                                            <img src="<?php echo base_url('NewTheme/')?>assets/img/business.png" alt="" class="img-portrait">
+                                        </div>
+                                    </div>
+                                    <div class="widget-list-content">
+                                        <h4 class="widget-title text-ellipsis" id="DOJ">
+                                            <b>Activated : </b><?php echo $userinfo->paid_status == 0 ? 'Free' : $userinfo->topup_date;?>
+                                        </h4>
+                                        <!--<div class="widget-desc" id="Totbussiness"></div>-->
+                                    </div>
 
-                            <!-- END widget-card-content -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content bottom">
-                                <div class="widget-card-icon bg-gradient-blue">
-                                    <i class="ti-wand"></i>
-                                </div>
-                                <div class="widget-card-info">
-                                    <h4 class="widget-title">
-                                        <a href="https://hope.net.ph/insurance/" id="MAR">Your Coverage</a>
-                                    </h4>
-                                    <ul class="widget-inline-list">
-
-                                        <li>Insurance</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- END widget-card-content -->
-                        </div>
+                                </a>
+                            </li>
+                        </ul>
                         <!-- END widget -->
                     </div>
+
                     <!-- END col-3 -->
                     <!-- BEGIN col-3 -->
-                    <div class="col-lg-3 col-sm-6">
-                        <!-- BEGIN widget -->
 
-                        <!-- END widget -->
-                        <!-- BEGIN widget -->
-                        <div class="widget widget-card inverse-mode with-min-height">
-                            <!-- BEGIN widget-card-cover -->
-                            <div class="widget-card-cover">
-                                <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/e-wallet.png">
-                            </div>
-                            <!-- END widget-card-cover -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content">
-                                <div class="dropdown dropdown-icon pull-right">
-                                    <a href="/Dashboard.html#" data-toggle="dropdown">
-                                        <i class="ti-more-alt"></i>
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-right">
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">E-Wallet History</a>
-                                        </li>
-                                        <li>
-                                            <a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Total Revenue</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4 class="widget-title">
-                                    <b>TOTAL BONUS</b>
-                                </h4>
-                            </div>
-                            <!-- END widget-card-content -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content bottom">
-                                <div class="widget-card-icon  bg-gradient-green">
-                                    <i class="ti-wallet"></i>
-                                </div>
-                                <div class="widget-card-info">
-                                    <h4 class="widget-title text-ellipsis">
-                                        <a href="<?php echo base_url('Dashboard/User/income_ledgar');?>" id="DED"><?php echo $total_income['total_income'];?> Points</a>
-                                    </h4>
-                                    <ul class="widget-inline-list">
-                                        <li>Total Income</li>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- END widget-card-content -->
-                        </div>
-
-                        <div class="widget widget-card inverse-mode with-min-height">
-                            <!-- BEGIN widget-card-cover -->
-                            <div class="widget-card-cover">
-                                <div class="cover-bg with-gradient"></div>
-                                <img src="<?php echo base_url('NewTheme/')?>assets/img/hope-partner.png">
-                            </div>
-                            <!-- END widget-card-cover -->
-                            <!-- BEGIN widget-card-content -->
-
-                            <!-- END widget-card-content -->
-                            <!-- BEGIN widget-card-content -->
-                            <div class="widget-card-content bottom">
-                                <div class="widget-card-icon  bg-gradient-blue">
-                                    <i class="ti-shopping-cart"></i>
-                                </div>
-                                <div class="widget-card-info">
-                                    <h4 class="widget-title text-ellipsis">
-                                        <a href="https://hope.net.ph/insurance/" id="DED">Shop Hope</a>
-                                    </h4>
-                                    <ul class="widget-inline-list">
-                                        <li>Empower Yourself</li>
-                                        <li></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- END widget-card-content -->
-                        </div>
-                        <!-- END widget -->
-                    </div>
                     <!-- END col-3 -->
                 </div>
 
@@ -652,85 +577,174 @@ display: block !important;
                     </div>
                 </div>
                 <div class="row">
-                    <!-- BEGIN col-3 -->
-                    <div class="col-lg-4 col-sm-6 with-rounded-corner">
-                        <!-- BEGIN section-title -->
-                        <div class="section-title m-t-10">USER PROFILE</div>
-                        <!-- END section-title -->
+
+                  <div class="col-lg-3 col-sm-6">
+                      <!-- BEGIN widget -->
+
+                      <!-- END widget -->
+                      <!-- BEGIN widget -->
+                      <div class="widget widget-card inverse-mode with-min-height">
+                          <!-- BEGIN widget-card-cover -->
+                          <div class="widget-card-cover">
+                              <div class="cover-bg with-gradient"></div>
+                              <img src="<?php echo base_url('NewTheme/')?>assets/img/e-wallet-2.png" alt="">
+                          </div>
+                          <!-- END widget-card-cover -->
+                          <!-- BEGIN widget-card-content -->
+                          <div class="widget-card-content">
+                              <div class="dropdown dropdown-icon pull-right">
+                                  <a data-toggle="dropdown">
+                                      <i class="ti-more-alt"></i>
+                                  </a>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                      <li>
+                                          <a href="<?php echo base_url('Dashboard/Fund/Request_fund');?>">Fund Request</a>
+                                      </li>
+                                      <li>
+                                          <a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw')?>">Withdraw</a>
+                                      </li>
+                                      <li>
+                                          <a href="<?php echo base_url('Dashboard/IncomeTransfer')?>">Transfer</a>
+                                      </li>
+                                  </ul>
+                              </div>
+                              <h4 class="widget-title">E-Wallet</h4>
+                          </div>
+                          <!-- END widget-card-content -->
+                          <!-- BEGIN widget-card-content -->
+                          <div class="widget-card-content bottom">
+                              <div class="widget-card-icon bg-gradient-red">
+                                  <i class="ti-wallet"></i>
+                              </div>
+                              <div class="widget-card-info">
+                                  <h4 class="widget-title">
+                                      <a href="/Dashboard.html#" id="MAR"><?php echo $wallet_balance['wallet_balance'];?> Points</a>
+                                  </h4>
+                                  <ul class="widget-inline-list">
+                                      <li>Available On E- Wallet </li>
+                                      <li></li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <!-- END widget-card-content -->
+                      </div>
+
+
+                    </div>
+
+                    <div class="col-lg-3 col-sm-6">
                         <!-- BEGIN widget -->
-                        <div class="widget widget-card dynamic inverse-mode  with-rounded-corner with-shadow text-center m-b-0">
-                            <div class="widget-card-cover with-rounded-corner">
-                                <div class="cover-bg with-gradient"></div>
-                                <img class="img-portrait" src="<?php echo base_url('NewTheme/')?>assets/img/dashboard-cover-5.jpg" alt="">
-                            </div>
-                            <div class="widget-card-content with-rounded-corner">
-                                <div class="m-b-10 m-t-10">
-                                    <div id="mem_rank">
-                                        <img width="110" class="img-circle" src="<?php echo base_url('NewTheme/')?>assets/img/Star.png" alt="Rank">
-                                    </div>
-                                    <div id="prof_pic">
-                                        <img width="72" class="img-circle" src="<?php echo base_url('uploads/' . ($userinfo->image == '' ? 'no_image.png' : $userinfo->image));?>" alt="user">
-                                    </div>
-                                    <!-- <img   width="72" class="img-circle" alt=""  src="../UserProfileImg/Open_User.jpg"/>-->
-                                </div>
-                                <!--id="prof_pic"-->
-                                <h4 class="widget-title f-s-13" id="MemID1"><?php echo $userinfo->name;?></h4>
-                                <div class="widget-desc " id="email1"><?php echo $userinfo->email;?></div>
-                            </div>
-                            <div class="widget-card-content with-rounded-corner p-10 p-t-0">
-                                <div class="widget-divider m-t-0"></div>
-                                <div class="row m-b-2">
-                                    <div class="col-4">
-                                        <div class="widget-title" id="withLimit"><?php echo !empty($city) ? $city['name'] : '';?></div>
-                                        <div class="widget-desc" style="   white-space: nowrap;"><?php echo !empty($country) ? $country['name'] : '';?></div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="widget-title" id="TOTALROI"><?php echo $userinfo->package_amount;?></div>
-                                        <div class="widget-desc">Package Amount</div>
-                                    </div>
-                                    <div class="col-4">
-                                        <div class="widget-title" style="color: #4cd964;" id="MemSts"><?php echo $userinfo->paid_status == 0 ? 'Free' : 'Active';?></div>
-                                        <div class="widget-desc">Status</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                         <!-- END widget -->
                         <!-- BEGIN widget -->
-                        <ul class="widget widget-list with-rounded-corner">
-                            <li>
-                                <a href="#" class="widget-list-container">
-                                    <div class="widget-list-media square">
-                                        <div class="img-container">
-                                            <img src="<?php echo base_url('NewTheme/')?>assets/img/team.png" alt="" class="img-portrait">
-                                        </div>
-                                    </div>
-                                    <div class="widget-list-content">
-                                        <h4 class="widget-title text-ellipsis" id="Actived_On1">
-                                            <b>Joined : </b><?php echo $userinfo->created_at;?>
-                                        </h4>
-                                        <!--	<div class="widget-desc" id="TotTeam1"></div>-->
-                                    </div>
+                        <div class="widget widget-card inverse-mode with-min-height">
+                            <!-- BEGIN widget-card-cover -->
+                            <div class="widget-card-cover">
+                                <div class="cover-bg with-gradient"></div>
+                                <img src="<?php echo base_url('NewTheme/')?>assets/img/e-wallet.png">
+                            </div>
+                            <!-- END widget-card-cover -->
+                            <!-- BEGIN widget-card-content -->
+                            <div class="widget-card-content">
+                                <div class="dropdown dropdown-icon pull-right">
+                                    <a href="/Dashboard.html#" data-toggle="dropdown">
+                                        <i class="ti-more-alt"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+                                            <a href="<?php echo base_url('Dashboard/Fund/wallet_ledger');?>">E-Wallet History</a>
+                                        </li>
+                                        <li>
+                                            <a href="<?php echo base_url('Dashboard/User/income_ledgar/')?>">Total Revenue</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <h4 class="widget-title">
+                                    <b>TOTAL BONUS</b>
+                                </h4>
+                            </div>
+                            <!-- END widget-card-content -->
+                            <!-- BEGIN widget-card-content -->
+                            <div class="widget-card-content bottom">
+                                <div class="widget-card-icon  bg-gradient-green">
+                                    <i class="ti-money"></i>
+                                </div>
+                                <div class="widget-card-info">
+                                    <h4 class="widget-title text-ellipsis">
+                                        <a href="<?php echo base_url('Dashboard/User/income_ledgar');?>" id="DED"><?php echo $total_income['total_income'];?> Points</a>
+                                    </h4>
+                                    <ul class="widget-inline-list">
+                                        <li>Total Income</li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- END widget-card-content -->
+                        </div>
+                      </div>
 
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" class="widget-list-container">
-                                    <div class="widget-list-media square">
-                                        <div class="img-container">
-                                            <img src="<?php echo base_url('NewTheme/')?>assets/img/business.png" alt="" class="img-portrait">
-                                        </div>
-                                    </div>
-                                    <div class="widget-list-content">
-                                        <h4 class="widget-title text-ellipsis" id="DOJ">
-                                            <b>Activated : </b><?php echo $userinfo->paid_status == 0 ? 'Free' : $userinfo->topup_date;?>
-                                        </h4>
-                                        <!--<div class="widget-desc" id="Totbussiness"></div>-->
-                                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                      <div class="widget widget-card inverse-mode with-min-height">
+                          <!-- BEGIN widget-card-cover -->
+                          <div class="widget-card-cover">
+                              <div class="cover-bg with-gradient"></div>
+                              <img src="<?php echo base_url('NewTheme/')?>assets/img/insurance.jpg" alt="">
+                          </div>
+                          <!-- END widget-card-cover -->
+                          <!-- BEGIN widget-card-content -->
 
-                                </a>
-                            </li>
-                        </ul>
+                          <!-- END widget-card-content -->
+                          <!-- BEGIN widget-card-content -->
+                          <div class="widget-card-content bottom">
+                              <div class="widget-card-icon bg-gradient-blue">
+                                  <i class="ti-wand"></i>
+                              </div>
+                              <div class="widget-card-info">
+                                  <h4 class="widget-title">
+                                      <a href="https://hope.net.ph/insurance/" id="MAR">Your Coverage</a>
+                                  </h4>
+                                  <ul class="widget-inline-list">
+
+                                      <li>Insurance</li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <!-- END widget-card-content -->
+                      </div>
+                      <!-- END widget -->
+                  </div>
+                    <!-- BEGIN col-3 -->
+
+
+                        <div class="col-lg-3 col-sm-6">
+
+                        <div class="widget widget-card inverse-mode with-min-height">
+                            <!-- BEGIN widget-card-cover -->
+                            <div class="widget-card-cover">
+                                <div class="cover-bg with-gradient"></div>
+                                <img src="<?php echo base_url('NewTheme/')?>assets/img/hope-partner.png">
+                            </div>
+                            <!-- END widget-card-cover -->
+                            <!-- BEGIN widget-card-content -->
+
+                            <!-- END widget-card-content -->
+                            <!-- BEGIN widget-card-content -->
+                            <div class="widget-card-content bottom">
+                                <div class="widget-card-icon  bg-gradient-blue">
+                                    <i class="ti-shopping-cart"></i>
+                                </div>
+                                <div class="widget-card-info">
+                                    <h4 class="widget-title text-ellipsis">
+                                        <a href="https://hope.net.ph/insurance/" id="DED">Shop Hope</a>
+                                    </h4>
+                                    <ul class="widget-inline-list">
+                                        <li>Empower Yourself</li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- END widget-card-content -->
+                        </div>
                         <!-- END widget -->
                     </div>
                     <!-- END col-3 -->

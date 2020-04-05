@@ -74,12 +74,8 @@ if (!function_exists('incomes')) {
 
     function incomes() {
         $incomes = array(
-            'direct_income'=> 'Direct Income',
-            'matching_bonus'=> 'Matching Income',
-            'roi_income'=> 'ROI Income',
-            'rewards_income'=> 'Rewards Bonus',
-            'direct_income_withdraw' => 'Withdraw Request',
-            'fasttrack_income' => 'FastTrack Income',
+          'direct_income'=> 'Direct Revenue',
+          'direct_level_income'=> 'Other Revenue',
         );
         // return array_search($income_name, $incomes);
         return $incomes;
@@ -90,12 +86,8 @@ if (!function_exists('get_income_name')) {
 
     function get_income_name($income_name) {
         $incomes = array(
-            'direct_income'=> 'Direct Income',
-            'matching_bonus'=> 'Matching Income',
-            'roi_income'=> 'ROI Income',
-            'rewards_income'=> 'Rewards Bonus',
-            'direct_income_withdraw' => 'Withdraw Request',
-            'fasttrack_income' => 'FastTrack Income',
+          'direct_income'=> 'Direct Revenue',
+          'direct_level_income'=> 'Other Revenue',
         );
         // return array_search($income_name, $incomes);
         return $incomes[$income_name];
@@ -105,14 +97,11 @@ if (!function_exists('get_income_name')) {
 if (!function_exists('calculate_income')) {
 
     function calculate_income($incomeArr) {
-        
+
         $incomes = array(
-            'direct_income'=> 'Direct Income',
-            'matching_bonus'=> 'Matching Income',
-            'roi_income'=> 'ROI Income',
-            'rewards_income'=> 'Rewards Bonus',
-            'direct_income_withdraw' => 'Withdraw Request',
-            'fasttrack_income' => 'FastTrack Income',
+            'direct_income'=> 'Direct Revenue',
+            'direct_level_income'=> 'Other Revenue',
+
         );
         $income_count = array();
         $total_payout = 0;
@@ -129,5 +118,3 @@ if (!function_exists('calculate_income')) {
         return $income_count;
     }
 }
-
-

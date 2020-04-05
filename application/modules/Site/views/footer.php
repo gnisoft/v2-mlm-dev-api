@@ -35,7 +35,7 @@
                         <h4>Recent Post</h4>
                         <div class="widget-post">
                             <div class="widget-post-thumb">
-                                <img src="img/blog/thumb.jpg" alt="thumb">
+                                <img src="<?php echo base_url('SiteAssets/'); ?>img/blog/thumb.jpg" alt="thumb">
                             </div>
                             <div class="widget-post-content">
                                 <div class="widget-date">29 JAN 20178</div>
@@ -44,7 +44,7 @@
                         </div>
                         <div class="widget-post">
                             <div class="widget-post-thumb">
-                                <img src="img/blog/thumb-1.jpg" alt="thumb">
+                                <img src="<?php echo base_url('SiteAssets/'); ?>img/blog/thumb-1.jpg" alt="thumb">
                             </div>
                             <div class="widget-post-content">
                                 <div class="widget-date">29 JAN 20178</div>
@@ -53,7 +53,7 @@
                         </div>
                         <div class="widget-post">
                             <div class="widget-post-thumb">
-                                <img src="img/blog/thumb-2.jpg" alt="thumb">
+                                <img src="<?php echo base_url('SiteAssets/'); ?>img/blog/thumb-2.jpg" alt="thumb">
                             </div>
                             <div class="widget-post-content">
                                 <div class="widget-date">29 JAN 20178</div>
@@ -86,7 +86,7 @@
         <div class="container">
             <div class="row">
                 <div class="copyright">
-                    <p>Copyright 2020 &copy; <a href="#">ScootPool</a>. All Rights Reserved.</p>
+                    <p>Copyright 2020 &copy; <a href="#">Hope Partners</a>. All Rights Reserved.</p>
                 </div>
             </div>
         </div>

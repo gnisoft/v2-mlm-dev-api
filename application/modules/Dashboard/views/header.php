@@ -31,7 +31,7 @@ $user_info = userinfo();
                 border: 2px solid green;
             }
             .navbar .navbar-brand img {
-                width: 173px;
+                width: 116px;
             }
 
 
@@ -121,7 +121,7 @@ $user_info = userinfo();
             }
             #OrderLink ul{    padding: 0;}
             .widget-desc, .widget-desc a {
-                font-size: 10px!important;
+                font-size: 16px!important;
 
             }
             .widget.widget-card.dynamic {
@@ -584,8 +584,9 @@ $user_info = userinfo();
                 max-width: 100%;
                 overflow: scroll;
             }
-            .sidebar, .sidebar:before {
-                top: 3.9125rem;
+
+            .widget .widget-title, .widget .widget-title a {
+                font-size: 15px;
 
             }
         </style>
@@ -722,7 +723,7 @@ $user_info = userinfo();
                                 <span id="txt" style="font-size:14px;font-weight: 500; color:#FFF;"><?php echo $user_info->created_at; ?> </span>
                             </li>
                             <li class="dropdown">
-                                <a href="<?php echo base_url('Dashboard/Support/ComposeMail'); ?>" class=" navbar-icon with-label"><i class="ti-bell"></i></a>
+                                <a href="<?php echo base_url('Dashboard/Support/ComposeMail'); ?>" class=" navbar-icon with-label"><i class="ti-email"></i></a>
                             </li>
 
                             <li class="dropdown">
@@ -774,14 +775,12 @@ $user_info = userinfo();
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-user"></i>
-                                    <span>Profile <span class="notification">4+</span></span>
+                                    <span>Profile </span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile'); ?>">User Profile</a></li>
-
-                                    <li><a href="<?php echo base_url('Dashboard/User/Profile#RESETPASSWORD'); ?>">Change Password</a></li>
-
-
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile/identity-verification'); ?>">Identity Verification</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile/reset-password'); ?>">Change Password</a></li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
@@ -789,10 +788,11 @@ $user_info = userinfo();
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-hand-point-right"></i>
-                                    <span>Membership <span class="notification">2+</span></span>
+                                    <span>Membership </span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/User/Register/?sponser_id=' . $user_info->user_id); ?>">Referral Link</a></li>
+                                    <!--<li><a href="<?php // echo base_url('Dashboard/User/Register/?sponser_id=' . $user_info->user_id); ?>">Referral Link</a></li>-->
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile/refferal-link'); ?>">Referral Link</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/ActivateAccount'); ?>"> Activate Membership </a></li>
                                     <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan'); ?>" > Business Plan</a></li>
 
@@ -807,18 +807,27 @@ $user_info = userinfo();
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-palette"></i>
-                                    <span>Network <span class="notification">3+</span></span>
+                                    <span>Network </span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
                                     <li><a href="<?php echo base_url('Dashboard/User/Directs'); ?>">Direct Network</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Downline'); ?>">Total Network</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Tree/' . $user_info->user_id); ?>">Genealogy</a></li>
-
-
                                 </ul>
                             </li>
+                            <li class="nav-divider"></li>
 
-
+                            <li class="has-sub">
+                                <a href="javascript:;">
+                                    <b class="caret caret-right pull-right"></b>
+                                    <i class="ti-palette"></i>
+                                    <span>Network Commission </span>
+                                </a>
+                                <ul class="sub-menu" style="display: none;">
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/SubmitBill'); ?>">Network Commission</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/BillStatus'); ?>">Bills Status</a></li>
+                                </ul>
+                            </li>
                             <li class="nav-divider"></li>
                             <li><a href="<?php echo base_url('Dashboard/User/Shopping/'); ?>"><i class="ti-lock"></i><span>Shop HOPE</span></a></li>
 
@@ -829,15 +838,15 @@ $user_info = userinfo();
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-wallet"></i>
-                                    <span>E-Wallet <span class="notification">2+</span></span>
+                                    <span>E-Wallet </span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/withdraw_history') ?>">Payment Accounts</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund'); ?>">Fund Request</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/User/Profile/payment-accounts'); ?>">Payment Accounts</a></li>
+                                    <!-- <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund'); ?>">Fund Request</a></li> -->
                                     <li><a href="<?php echo base_url('Dashboard/Fund/requests'); ?>">Request Status</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw') ?>">Withdrawal</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/IncomeTransfer') ?>"> Transfer</a></li>
-                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');  ?>">Transfer Wallet</a></li> -->
+                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');   ?>">Transfer Wallet</a></li> -->
 
                                 </ul>
                             </li>
@@ -847,7 +856,7 @@ $user_info = userinfo();
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-package"></i>
-                                    <span>Reports <span class="notification">5+</span></span>
+                                    <span>Reports </span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
                                     <?php
@@ -872,7 +881,7 @@ $user_info = userinfo();
                                 <a href="javascript:;">
                                     <span class="caret caret-right pull-right"></span>
                                     <i class="ti-email"></i>
-                                    <span>Support <span class="notification">1+</span></span>
+                                    <span>Support </span>
                                 </a>
                                 <ul class="sub-menu" style="display: block;">
                                     <li><a href="<?php echo base_url('Dashboard/Support/Inbox'); ?>">Mailbox</a></li>
@@ -881,7 +890,7 @@ $user_info = userinfo();
 
                                 </ul>
                             </li>
-<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);  ?>"> Open New Accounts</a></li> -->
+<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);   ?>"> Open New Accounts</a></li> -->
 
 
 
