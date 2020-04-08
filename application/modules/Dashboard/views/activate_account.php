@@ -72,7 +72,7 @@
                                     <input title="item_tax" name="item_tax" type="hidden" value="1">
                                     <input title="item_price" name="item_price" type="hidden" value="<?php echo $package['price'] ?>">
                                     <input title="details_tax" name="details_tax" type="hidden" value="0">
-                                    <input title="details_subtotal" name="details_subtotal" type="hidden" value="2<?php //echo $package['price']             ?>">
+                                    <input title="details_subtotal" name="details_subtotal" type="hidden" value="2<?php //echo $package['price']                 ?>">
                                     <input type="hidden" name="notify_url" value="<?php echo base_url('Dashboard/Paypal/CallBack/' . $user_info->user_id); ?>" />
             
                                     <div class="form-group">
@@ -106,8 +106,9 @@
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="payment_method" id="payment_method">
-                            <option>E-wallet</option>
-                            <option>BTC</option>
+                            <option value="e_wallet">E-wallet</option>
+                            <option value="btc">BTC</option>
+                            <option value="paypal">PayPal</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -117,7 +118,7 @@
                         <span class="text-danger" id="errorMessage"></span>
                     </div>
                     <div class="form-group" id="SaveBtn">
-                        <button type="submit" name="save" class="btn btn-success" />Acitvate</button>
+                        <button type="submit" name="save" class="btn btn-success" />Activate</button>
                     </div>
                     <div class="form-group">
                         <label></label>
@@ -197,7 +198,7 @@
                 $.get(url, function (res) {
                     console.log(res)
                     alert(res.message)
-                    if(res.success == 1){
+                    if (res.success == 1) {
                         location.reload();
                     }
                 }, 'json')
@@ -215,9 +216,9 @@
             $.get(url, function (res) {
                 if (res.success == 1) {
                     $('#user_id').val(user_id);
-                    $('#paypal-button-container').css('display', 'block')
+//                    $('#paypal-button-container').css('display', 'block')
                 } else {
-                    $('#paypal-button-container').css('display', 'none')
+//                    $('#paypal-button-container').css('display', 'none')
                 }
                 $('#errorMessage').html(res.message);
             }, 'json')
@@ -236,8 +237,17 @@
         // alert(package_price)
     })
     $(document).on('change', '#payment_method', function () {
-        $('#SaveBtn').toggle();
-        $('#PayBtcBtn').toggle();
+        var val = $(this).val();
+        $('#SaveBtn').css('display', 'none');
+        $('#PayBtcBtn').css('display', 'none');
+        $('#paypal-button-container').css('display', 'none');
+        if (val == 'e_wallet') {
+            $('#SaveBtn').css('display', 'block');
+        } else if (val == 'btc') {
+            $('#PayBtcBtn').css('display', 'block');
+        } else if (val == 'paypal') {
+            $('#paypal-button-container').css('display', 'block');
+        }
     })
     $(document).on('click', '#PayBtcBtn', function (e) {
         var formData = $(this).serialize();

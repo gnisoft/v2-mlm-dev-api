@@ -670,7 +670,7 @@
     <div class="row">
         <div class="col-md-12">
           <p>HOPE Partners: Become your own boss with the empowerment of being an entrepreneur.</p>
-            <a href="<?php echo base_url('NewTheme/')?>assets/bittrexbtcplans.pdf" >Click here to Download Business Plan </a>
+            <a href="<?php echo base_url('uploads/hope-partners.pdf')?>" >Click here to Download Business Plan </a>
         </div>
     </div>
     <div class="row">

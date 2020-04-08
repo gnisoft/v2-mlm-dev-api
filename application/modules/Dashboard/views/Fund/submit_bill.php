@@ -28,7 +28,7 @@
                                 <div class="col-md-6">
                                     <a href="Fund-Request.html?TB=tabFundRequestForm#" class="to-padding widget widget-stats">
                                         <div class="widget-stats-info mm-info">
-                                            <!-- <div class="widget-stats-value to-fontsize" id="FBald58">$ <?php //echo $balance['sum'];?></div> -->
+                                            <!-- <div class="widget-stats-value to-fontsize" id="FBald58">$ <?php //echo $balance['sum'];      ?></div> -->
                                             <!-- <div class="widget-desc">E-Wallet Balance </div> -->
                                         </div>
                                     </a>
@@ -43,7 +43,7 @@
                                     <div class="form-group">
                                         <label>Purchase Description</label>
                                         <?php
-                                        echo form_textarea(array('class' => 'form-control','name' => 'purchase_description','rows'=> '5','cols' => '10',));
+                                        echo form_textarea(array('class' => 'form-control', 'name' => 'purchase_description', 'rows' => '5', 'cols' => '10',));
                                         ?>
                                     </div>
                                     <div class="form-group">
@@ -104,13 +104,20 @@
     function readURL(input) {
 
         if (input.files && input.files[0]) {
-            var reader = new FileReader();
+            var fileTypes = ['jpg', 'jpeg', 'png', 'gif'];
+            var extension = input.files[0].name.split('.').pop().toLowerCase(), //file extension from input file
+                    isSuccess = fileTypes.indexOf(extension) > -1;
+            if (isSuccess) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#slipImage').css('display','block')
+                    $('#slipImage').attr('src', e.target.result);
+                }
 
-            reader.onload = function (e) {
-                $('#slipImage').attr('src', e.target.result);
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                    $('#slipImage').css('display','none');                
             }
-
-            reader.readAsDataURL(input.files[0]);
         }
     }
 
