@@ -95,13 +95,13 @@
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Package/Edit/1');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Package</p>
+                              <p>Membership Package</p>
                            </a>
                         </li>
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/NetworkCommission');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Network Commision</p>
+                              <p>Network Commissions</p>
                            </a>
                         </li>
                          <!--<li class="nav-item">
@@ -366,7 +366,7 @@
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/Bill_requests');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
-                              <p>Pending Bill Requests</p>
+                              <p>Commission Requests</p>
                            </a>
                         </li>
                      </ul>

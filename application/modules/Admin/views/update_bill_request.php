@@ -40,7 +40,7 @@
                                 <div class="form-group row">
                                     <label class="col-xl-3 col-lg-3 col-form-label">Proof :</label>
                                     <div class="col-lg-9 col-xl-6">
-                                        <img src="<?php echo $request['proof'] != '' ? base_url('uploads/' . $request['proof']) : base_url('uploads/no_image.png'); ?>">
+                                        <img style="max-width:100%" src="<?php echo $request['proof'] != '' ? base_url('uploads/' . $request['proof']) : base_url('uploads/no_image.png'); ?>">
                                     </div>
                                 </div>
                                 <div class="form-group row">

@@ -4,12 +4,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> Edit Package</h1>
+            <h1 class="m-0 text-dark"> Edit Network Commissions</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"> Edit Package</li>
+              <li class="breadcrumb-item active"> Edit Network Commissions</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -27,13 +27,13 @@
                 <h3><?php echo $this->session->flashdata('message');?></h3>
                 <?php echo form_open();?>
                     <div class="form-group">
-                        <label>Direct Income</label>
+                        <label>Self Commission (%)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'direct_income', 'required' => 'required', 'value' => $package['direct_income']));
                         ?>
                     </div>
                     <div class="form-group">
-                        <label>Level Income</label>
+                        <label>Direct Commission (%)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'level_income', 'required' => 'required', 'value' => $package['level_income']));
                         ?>

@@ -4,12 +4,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> Edit Package</h1>
+            <h1 class="m-0 text-dark"> Edit Membership Package</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active"> Edit Package</li>
+              <li class="breadcrumb-item active"> Edit Membership Package</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -39,19 +39,19 @@
                         ?>
                     </div>
                     <div class="form-group">
-                        <label>Package Price</label>
+                        <label>Package Price ($)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'price', 'required' => 'required', 'value' => $package['price']));
                         ?>
                     </div>
                     <div class="form-group">
-                        <label>Direct Income</label>
+                        <label>Direct Commission ($)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'direct_income', 'required' => 'required', 'value' => $package['direct_income']));
                         ?>
                     </div>
                     <div class="form-group">
-                        <label>Level Income</label>
+                        <label>Level Commission ($)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'level_income', 'required' => 'required', 'value' => $package['level_income']));
                         ?>

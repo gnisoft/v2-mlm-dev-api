@@ -824,8 +824,8 @@ $user_info = userinfo();
                                     <span>Network Commission </span>
                                 </a>
                                 <ul class="sub-menu" style="display: none;">
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/SubmitBill'); ?>">Network Commission</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/Fund/BillStatus'); ?>">Bills Status</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/SubmitBill'); ?>">Network Commissions</a></li>
+                                    <li><a href="<?php echo base_url('Dashboard/Fund/BillStatus'); ?>">Submission Status</a></li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>

@@ -4,10 +4,10 @@
     <!-- END breadcrumb -->
     <!-- BEGIN page-header -->
     <h2 class="page-titel">
-        <spna style="">Network Commisions </spna> /  Submit Bill
+        <spna style="">Network Commisions </spna> /  Submit for Commissions
     </h2>
     <h1 class="page-header">
-        Submit Bill
+        Submit for Commissions
         <small></small>
     </h1>
     <!-- END page-header -->
