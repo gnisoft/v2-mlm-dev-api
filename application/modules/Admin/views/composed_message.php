@@ -24,6 +24,7 @@
                         <thead>
                             <tr>
                                 <th>#</th>
+                                <th>User ID</th>
                                 <th>Title</th>
                                 <th>Message</th>
                                 <th>Status</th>
@@ -38,6 +39,7 @@
                                 ?>
                                 <tr>
                                     <td><?php echo ($key + 1) ?></td>
+                                    <td><?php echo $message['user_id']; ?></td>
                                     <td><?php echo $message['title']; ?></td>
                                     <td><?php echo $message['message']; ?></td>
                                     <td><?php

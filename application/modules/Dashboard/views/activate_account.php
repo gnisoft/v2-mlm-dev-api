@@ -106,9 +106,9 @@
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="payment_method" id="payment_method">
+                            <option value="paypal">PayPal</option>
                             <option value="e_wallet">E-wallet</option>
                             <option value="btc">BTC</option>
-                            <option value="paypal">PayPal</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -117,7 +117,7 @@
                         <span class="text-danger"><?php echo form_error('user_id') ?></span>
                         <span class="text-danger" id="errorMessage"></span>
                     </div>
-                    <div class="form-group" id="SaveBtn">
+                    <div class="form-group" id="SaveBtn" style="display:none;">
                         <button type="submit" name="save" class="btn btn-success" />Activate</button>
                     </div>
                     <div class="form-group">
@@ -125,7 +125,7 @@
                         <input type="button" name="updateProfileBtn" value="Pay With BTC" id="PayBtcBtn"  style="display:none;" class="btn btn-primary">
                     </div>
                     <?php echo form_close(); ?>
-                    <div id="paypal-button-container" style="display:none;"></div>
+                    <div id="paypal-button-container" style="display:block;"></div>
                     <!-- END col-6 -->
                     <form id="BtcForm" style="display:none;" action="https://www.coinpayments.net/index.php"  method="post" style="text-align:center;">
                         <div class="form-row">

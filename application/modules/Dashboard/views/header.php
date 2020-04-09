@@ -829,7 +829,7 @@ $user_info = userinfo();
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
-                            <li><a href="<?php echo base_url('Dashboard/User/Shopping/'); ?>"><i class="ti-lock"></i><span>Shop HOPE</span></a></li>
+                            <li><a href="https://shophealth.hope.partners/" target="_blank"><i class="ti-lock"></i><span>Shop HOPE</span></a></li>
 
 
                             <li class="nav-divider"></li>

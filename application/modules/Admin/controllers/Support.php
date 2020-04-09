@@ -65,7 +65,7 @@ class Support extends CI_Controller {
         if (is_admin()) {
             $response = array();
             $response['header'] = 'Inbox';
-            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array('user_id !=' => 'admin'), '*');
+            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array(), '*');
             $this->load->view('composed_message', $response);
         } else {
             redirect('Dashboard/User/login');
@@ -75,7 +75,7 @@ class Support extends CI_Controller {
         if (is_admin()) {
             $response = array();
             $response['header'] = 'Inbox';
-            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array('user_id =' => 'admin'), '*');
+            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array(), '*');
             $this->load->view('composed_message', $response);
         } else {
             redirect('Dashboard/User/login');
@@ -85,7 +85,7 @@ class Support extends CI_Controller {
         if (is_admin()) {
             $response = array();
             $response['header'] = 'Inbox';
-            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array('user_id !=' => 'admin'), '*');
+            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array(), '*');
             $this->load->view('composed_message', $response);
         } else {
             redirect('Dashboard/User/login');

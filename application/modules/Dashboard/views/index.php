@@ -28,6 +28,11 @@ display: block !important;
 .with-rounded-corner {
     background: white !important;
 }
+.widget-list-container>div {
+
+    padding: 7px;
+  
+}
 
 </style>
 
@@ -370,7 +375,10 @@ display: block !important;
                     <!-- END col-6 -->
                     <!-- BEGIN col-3 -->
 
-                    <div class="col-lg-6 col-sm-12 with-rounded-corner" style="background:white">
+                    <div class="col-lg-6 col-sm-12 with-rounded-corner" style="    background: white;
+    padding: 0px !important;
+    margin-bottom: 18px;
+    border-radius: 0px !important;">
 
                         <!-- BEGIN widget -->
                         <div class="widget widget-card dynamic inverse-mode  with-rounded-corner with-shadow text-center m-b-0">
