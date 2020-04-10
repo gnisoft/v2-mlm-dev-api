@@ -45,13 +45,13 @@
                         ?>
                     </div>
                     <div class="form-group">
-                        <label>Direct Commission ($)</label>
+                        <label>Direct Commission (%)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'direct_income', 'required' => 'required', 'value' => $package['direct_income']));
                         ?>
                     </div>
                     <div class="form-group">
-                        <label>Level Commission ($)</label>
+                        <label>Level Commission (%)</label>
                         <?php
                             echo form_input(array('type' => 'number', 'class' => 'form-control', 'name' => 'level_income', 'required' => 'required', 'value' => $package['level_income']));
                         ?>

@@ -62,7 +62,7 @@ class Dashboard extends CI_Controller {
                                 $sponser = $this->User_model->get_single_record('tbl_users', array('user_id' => $user['sponser_id']), 'sponser_id,directs');
                                 $DirectIncome = array(
                                     'user_id' => $user['sponser_id'],
-                                    'amount' => $package['direct_income'],
+                                    'amount' => $package['price'] * $package['direct_income'] / 100,
                                     'type' => 'direct_income',
                                     'description' => 'Direct Income from Activation of Member ' . $user_id,
                                 );
@@ -75,7 +75,7 @@ class Dashboard extends CI_Controller {
                                 );
                                 $this->User_model->add('tbl_roi', $roiArr);
                                 // $this->repurchase_income($user['sponser_id'],($package['direct_income'] * 20 / 100),'direct_income' ,'Direct Income from Activation of Member '.$user_id);
-                                $this->level_income($sponser['sponser_id'], $user['user_id'], $package['level_income']);
+                                $this->level_income($sponser['sponser_id'], $user['user_id'], ($package['price'] * $package['level_income'] / 100 ));
                                 // $this->pool_entry($user['user_id'],1 , 500);
                                 // if($package['price'] == 3600)
                                 // $this->rank_bonus($user['user_id'], 200,$user['user_id'],0 , $package['price']);
