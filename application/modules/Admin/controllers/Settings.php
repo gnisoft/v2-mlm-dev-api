@@ -19,6 +19,7 @@ class Settings extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+
     public function news() {
         if (is_admin()) {
             $response['news'] = $this->Main_model->get_records('tbl_news', array(), '*');
@@ -27,7 +28,30 @@ class Settings extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
-    public function ResetPassword(){
+
+    public function manage_store_url() {
+        if (is_admin()) {
+            $response = array();
+            if ($this->input->server('REQUEST_METHOD') == 'POST') {
+                $data = $this->security->xss_clean($this->input->post());
+                $this->form_validation->set_rules('url', 'Store Url', 'trim|required|xss_clean');
+                if ($this->form_validation->run() != FALSE) {
+                    $res = $this->Main_model->update('tbl_shopping_url', array('id' => 1), array('url' => $data['url']));
+                    if ($res == TRUE) {
+                        $this->session->set_flashdata('message', 'Store Url Updated Successfully');
+                    } else {
+                        $this->session->set_flashdata('message', 'Error While Updating Store Url  Please Try Again ...');
+                    }
+                }
+            }
+            $response['store_url'] = $this->Main_model->get_single_record('tbl_shopping_url', array(), '*');
+            $this->load->view('manage_store_url', $response);
+        } else {
+            redirect('Admin/Management/login');
+        }
+    }
+
+    public function ResetPassword() {
         if (is_admin()) {
             $response = array();
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -43,7 +67,7 @@ class Settings extends CI_Controller {
                     // $response['message'] = 'Wrong Current Password';
                     $this->session->set_flashdata('message', 'Wrong Current Password');
                 } else {
-                    $updres = $this->Main_model->update('tbl_admin', array('user_id' =>  'admin'), array('password' => $cnpassword));
+                    $updres = $this->Main_model->update('tbl_admin', array('user_id' => 'admin'), array('password' => $cnpassword));
                     if ($updres == true) {
                         // $response['message'] = 'Password Updated Successfully';
                         $this->session->set_flashdata('message', 'Password Updated Successfully');
@@ -75,12 +99,13 @@ class Settings extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+
     public function EditUser($user_id) {
         if (is_admin()) {
             $response = array();
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 $data = $this->security->xss_clean($this->input->post());
-                if($data['form_type'] == 'personal'){
+                if ($data['form_type'] == 'personal') {
                     $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
                     $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
                     $this->form_validation->set_rules('phone', 'Phone', 'trim|numeric|required|xss_clean');
@@ -90,40 +115,40 @@ class Settings extends CI_Controller {
                             'email' => $data['email'],
                             'phone' => $data['phone'],
                         );
-                        $res = $this->Main_model->update('tbl_users', array('user_id' => $user_id),$UserData);
+                        $res = $this->Main_model->update('tbl_users', array('user_id' => $user_id), $UserData);
                         if ($res == TRUE) {
                             $this->session->set_flashdata('message', 'User Details Updated Successfully');
                         } else {
                             $this->session->set_flashdata('message', 'Error While Updating Details Please Try Again ...');
                         }
                     }
-                }elseif($data['form_type'] == 'password'){
+                } elseif ($data['form_type'] == 'password') {
                     $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
                     if ($this->form_validation->run() != FALSE) {
                         $UserData = array(
                             'password' => $data['password']
                         );
-                        $res = $this->Main_model->update('tbl_users', array('user_id' => $user_id),$UserData);
+                        $res = $this->Main_model->update('tbl_users', array('user_id' => $user_id), $UserData);
                         if ($res == TRUE) {
                             $this->session->set_flashdata('message', 'Password Updated Successfully');
                         } else {
                             $this->session->set_flashdata('message', 'Error While Password Please Try Again ...');
                         }
                     }
-                }elseif($data['form_type'] == 'master_key'){
+                } elseif ($data['form_type'] == 'master_key') {
                     $this->form_validation->set_rules('master_key', 'Transaction Password', 'trim|required|xss_clean');
                     if ($this->form_validation->run() != FALSE) {
                         $UserData = array(
                             'master_key' => $data['master_key']
                         );
-                        $res = $this->Main_model->update('tbl_users', array('user_id' => $user_id),$UserData);
+                        $res = $this->Main_model->update('tbl_users', array('user_id' => $user_id), $UserData);
                         if ($res == TRUE) {
                             $this->session->set_flashdata('message', 'Transaction Password Updated Successfully');
                         } else {
                             $this->session->set_flashdata('message', 'Error While Transaction Password Please Try Again ...');
                         }
                     }
-                }else{
+                } else {
                     // pr($data,true);
                     $this->form_validation->set_rules('account_holder_name', 'Account Holder Name', 'trim|required|xss_clean');
                     $this->form_validation->set_rules('bank_name', 'Bank Name', 'trim|required|xss_clean');
@@ -138,7 +163,7 @@ class Settings extends CI_Controller {
                             'ifsc_code' => $data['ifsc_code'],
                             'btc' => $data['btc'],
                         );
-                        $res = $this->Main_model->update('tbl_bank_details', array('user_id' => $user_id),$UserData);
+                        $res = $this->Main_model->update('tbl_bank_details', array('user_id' => $user_id), $UserData);
                         if ($res == TRUE) {
                             $this->session->set_flashdata('message', 'BANK Details Updated Successfully');
                         } else {
@@ -154,7 +179,8 @@ class Settings extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
-    public function UpdateRank(){
+
+    public function UpdateRank() {
         if (is_admin()) {
             $response = array();
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
@@ -163,14 +189,14 @@ class Settings extends CI_Controller {
                 $this->form_validation->set_rules('directs', 'Directs', 'trim|numeric|required|xss_clean');
                 if ($this->form_validation->run() != FALSE) {
                     $user = $this->Main_model->get_single_record('tbl_users', array('user_id' => $data['user_id']), '*');
-                    if(!empty($user)){
-                        $res = $this->Main_model->update('tbl_users', array('user_id' => $data['user_id']),array('directs' => $data['directs']));
+                    if (!empty($user)) {
+                        $res = $this->Main_model->update('tbl_users', array('user_id' => $data['user_id']), array('directs' => $data['directs']));
                         if ($res == TRUE) {
                             $this->session->set_flashdata('message', 'Rank Updated Successfully');
                         } else {
                             $this->session->set_flashdata('message', 'Error While Updating Rank  Please Try Again ...');
                         }
-                    }else{
+                    } else {
                         $this->session->set_flashdata('message', 'Invalid user');
                     }
                 }
@@ -180,6 +206,7 @@ class Settings extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+
     public function CreateNews() {
         if (is_admin()) {
             $response = array();
@@ -205,6 +232,7 @@ class Settings extends CI_Controller {
             redirect('Admin/Management/login');
         }
     }
+
     public function popup() {
         if (is_admin()) {
             $response = array();
@@ -212,7 +240,7 @@ class Settings extends CI_Controller {
                 $config['upload_path'] = './uploads/';
                 $config['allowed_types'] = 'doc|pdf|jpg|png';
                 $config['file_name'] = 'am' . time();
-                if($this->input->post('type') == 'image'){
+                if ($this->input->post('type') == 'image') {
                     $this->load->library('upload', $config);
                     if (!$this->upload->do_upload('media')) {
                         $this->session->set_flashdata('message', $this->upload->display_errors());
@@ -222,28 +250,27 @@ class Settings extends CI_Controller {
                             'caption' => $this->input->post('caption'),
                             'media' => $data['upload_data']['file_name'],
                             'type' => 'image'
-                        ); 
-                        $res = $this->Main_model->update('tbl_popup', array('id' => 1),$promoArr);
+                        );
+                        $res = $this->Main_model->update('tbl_popup', array('id' => 1), $promoArr);
                         if ($res) {
                             $this->session->set_flashdata('message', 'Image Update Successfully');
                         } else {
                             $this->session->set_flashdata('message', 'Error While Adding Popup Please Try Again ...');
                         }
                     }
-                }else{
+                } else {
                     $promoArr = array(
                         'caption' => $this->input->post('caption'),
                         'media' => $this->input->post('media'),
                         'type' => 'video'
-                    ); 
-                    $res = $this->Main_model->update('tbl_popup', array('id' => 1),$promoArr);
+                    );
+                    $res = $this->Main_model->update('tbl_popup', array('id' => 1), $promoArr);
                     if ($res) {
                         $this->session->set_flashdata('message', 'Image Updated Successfully');
                     } else {
                         $this->session->set_flashdata('message', 'Error While Adding Popup Please Try Again ...');
                     }
                 }
-                
             }
             $response['materials'] = $this->Main_model->get_records('tbl_popup', array(), '*');
             $this->load->view('popup', $response);

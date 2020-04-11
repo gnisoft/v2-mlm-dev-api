@@ -27,6 +27,11 @@ class Management extends CI_Controller {
             $response['total_sent_fund'] = $this->Main_model->get_sum('tbl_wallet', array(), 'ifnull(sum(amount),0) as sum');
             $response['used_fund'] = $this->Main_model->get_sum('tbl_wallet', array('amount <' => '0'), 'ifnull(sum(amount),0) as sum ');
             $response['requested_fund'] = $this->Main_model->get_sum('tbl_payment_request', array(), 'ifnull(sum(amount),0) as sum');
+            
+            $response['total_mails'] = $this->Main_model->get_single_record('tbl_support_message', array(), 'ifnull(count(id),0) as total_mails');
+            $response['read_mails'] = $this->Main_model->get_single_record('tbl_support_message', array('status !=' => 0), 'ifnull(count(id),0) as read_mails');
+            $response['unread_mails'] = $this->Main_model->get_single_record('tbl_support_message', array('status' => 0), 'ifnull(count(id),0) as unread_mails');
+            
             $this->load->view('dashboard', $response);
         } else {
             redirect('Admin/Management/login');

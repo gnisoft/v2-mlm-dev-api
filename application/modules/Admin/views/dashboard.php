@@ -1,11 +1,11 @@
 <?php include_once'header.php'; ?>
 <style>
-  h3 a {
-      color: white;
-  }
-  a h3 {
-      color: white;
-  }
+    h3 a {
+        color: white;
+    }
+    a h3 {
+        color: white;
+    }
 </style>
 <div class="content-wrapper">
     <div class="content-header">
@@ -25,7 +25,7 @@
     </div>
     <div class="content">
         <div class="container-fluid">
-          <div class="row">
+            <div class="row">
 
 
 
@@ -33,8 +33,8 @@
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3><a href="<?php echo base_url('Admin/Management/users/');?>">Total Members</a></h3>
-                            <p>Total : <?php echo $total_users;?></p>
+                            <h3><a href="<?php echo base_url('Admin/Management/users/'); ?>">Total Members</a></h3>
+                            <p>Total : <?php echo $total_users; ?></p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-shopping-cart"></i>
@@ -47,9 +47,9 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <a href="<?php echo base_url('Admin/Management/paidUsers/');?>"><h3>Active Members</h3></a>
-                            <p class="mb-0">Total : <?php echo $paid_users;?></p>
-                          </div>
+                            <a href="<?php echo base_url('Admin/Management/paidUsers/'); ?>"><h3>Active Members</h3></a>
+                            <p class="mb-0">Total : <?php echo $paid_users; ?></p>
+                        </div>
                         <div class="icon">
                             <i class="fa fa-users"></i>
                         </div>
@@ -60,9 +60,9 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <a href="<?php echo base_url('Admin/Management/today_joinings/');?>"><h3>New Members</h3></a>
-                            <p class="mb-0">Total : <?php echo $today_joined_users;?></p>
-                          </div>
+                            <a href="<?php echo base_url('Admin/Management/today_joinings/'); ?>"><h3>New Members</h3></a>
+                            <p class="mb-0">Total : <?php echo $today_joined_users; ?></p>
+                        </div>
                         <div class="icon">
                             <i class="fa fa-users"></i>
                         </div>
@@ -75,9 +75,9 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>E-Mail</h3>
-                            <p class="mb-0">Total : 0</p>
-                            <p class="mb-0">Read : 0</p>
-                            <p>Unread : 0</p>
+                            <p class="mb-0">Total : <?php echo $total_mails['total_mails'];?></p>
+                            <p class="mb-0">Read : <?php echo $read_mails['read_mails'];?></p>
+                            <p>Unread : <?php echo $unread_mails['unread_mails'];?></p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-envelope"></i>
@@ -90,9 +90,9 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3>E-Wallet</h3>
-                            <p class="mb-0">Wallet Bal.: <?php echo $total_sent_fund;?></p>
-                            <p class="mb-0">Used : <?php echo $used_fund;?></p>
-                            <p>Requested : <?php echo $requested_fund;?></p>
+                            <p class="mb-0">Wallet Bal.: <?php echo $total_sent_fund; ?></p>
+                            <p class="mb-0">Used : <?php echo $used_fund; ?></p>
+                            <p>Requested : <?php echo $requested_fund; ?></p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-inr"></i>
@@ -107,8 +107,8 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <a href="<?php echo base_url('Admin/Withdraw/incomeLedgar');?>"><h3>Member Payouts</h3></a>
-                            <p>Total : <?php echo number_format($total_payout,2);?></p>
+                            <a href="<?php echo base_url('Admin/Withdraw/incomeLedgar'); ?>"><h3>Member Payouts</h3></a>
+                            <p>Total : <?php echo number_format($total_payout, 2); ?></p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-inr"></i>
@@ -118,7 +118,7 @@
                 </div>
 
 
-               </div>
+            </div>
 
 
         </div>

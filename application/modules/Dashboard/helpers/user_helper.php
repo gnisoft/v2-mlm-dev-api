@@ -36,6 +36,16 @@ if (!function_exists('userinfo')) {
     }
 
 }
+if (!function_exists('store_url')) {
+
+    function store_url() {
+        $ci = & get_instance();
+        $ci->load->model('user_model');
+        $url = $ci->user_model->get_single_object('tbl_shopping_url', array(), '*');
+        return $url->url;
+    }
+
+}
 if (!function_exists('pool_count')) {
 
     function pool_count() {

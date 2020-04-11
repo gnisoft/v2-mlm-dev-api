@@ -346,7 +346,7 @@
                      </a>
                      <ul class="nav nav-treeview" style="display: none;">
                         <li class="nav-item">
-                            <a href="https://shophealth.hope.partners/" class="nav-link" target="_blank">
+                            <a href="<?php echo base_url('Admin/Settings/manage_store_url')?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Store Settings </p>
                            </a>
