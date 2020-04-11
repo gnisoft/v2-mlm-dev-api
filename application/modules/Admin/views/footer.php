@@ -7,7 +7,7 @@
       Anything you want
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2020.</strong><?php echo title;?> All rights reserved.
+    <strong>Copyright © 2014-2020. HOPE Partners. All rights reserved
   </footer>
 </div>
 <!-- ./wrapper -->
