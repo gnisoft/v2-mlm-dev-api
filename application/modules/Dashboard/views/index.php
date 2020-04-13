@@ -31,7 +31,7 @@ display: block !important;
 .widget-list-container>div {
 
     padding: 7px;
-  
+
 }
 
 </style>
@@ -709,7 +709,7 @@ display: block !important;
                               </div>
                               <div class="widget-card-info">
                                   <h4 class="widget-title">
-                                      <a href="https://hope.net.ph/insurance/" id="MAR">Your Coverage</a>
+                                      <a target="_blank" href="https://hope.net.ph/insurance/" id="MAR">Your Coverage</a>
                                   </h4>
                                   <ul class="widget-inline-list">
 
@@ -743,7 +743,7 @@ display: block !important;
                                 </div>
                                 <div class="widget-card-info">
                                     <h4 class="widget-title text-ellipsis">
-                                        <a href="https://hope.net.ph/insurance/" id="DED">Shop Hope</a>
+                                        <a  target="_blank" href="https://shophealth.hope.partners/" id="DED">Shop Hope</a>
                                     </h4>
                                     <ul class="widget-inline-list">
                                         <li>Empower Yourself</li>

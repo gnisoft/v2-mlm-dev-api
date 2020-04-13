@@ -75,7 +75,7 @@ class Dashboard extends CI_Controller {
                                 );
                                 $this->User_model->add('tbl_roi', $roiArr);
                                 // $this->repurchase_income($user['sponser_id'],($package['direct_income'] * 20 / 100),'direct_income' ,'Direct Income from Activation of Member '.$user_id);
-                                $this->level_income($sponser['sponser_id'], $user['user_id'], ($package['price'] * $package['level_income'] / 100 ));
+                                $this->level_income($sponser['sponser_id'], $user['user_id'], ($package['price'] * $package['level_income'] / 100));
                                 // $this->pool_entry($user['user_id'],1 , 500);
                                 // if($package['price'] == 3600)
                                 // $this->rank_bonus($user['user_id'], 200,$user['user_id'],0 , $package['price']);
@@ -96,6 +96,18 @@ class Dashboard extends CI_Controller {
             $response['wallet'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as wallet_balance');
             $response['packages'] = $this->User_model->get_records('tbl_package', array(), '*');
             $this->load->view('activate_account', $response);
+        } else {
+            redirect('Dashboard/User/login');
+        }
+    }
+
+    public function start_subscription() {
+        if (is_logged_in()) {
+            $response = array();
+            if ($this->input->server('REQUEST_METHOD') == 'POST') {
+                
+            }
+            $this->load->view('start_subscription', $response);
         } else {
             redirect('Dashboard/User/login');
         }

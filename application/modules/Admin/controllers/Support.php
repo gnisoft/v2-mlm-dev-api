@@ -81,11 +81,11 @@ class Support extends CI_Controller {
             redirect('Dashboard/User/login');
         }
     }
-    public function Compose() {
+    public function Compose($status) {
         if (is_admin()) {
             $response = array();
             $response['header'] = 'Inbox';
-            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array(), '*');
+            $response['messages'] = $this->Main_model->get_records('tbl_support_message', array('status' => $status), '*');
             $this->load->view('composed_message', $response);
         } else {
             redirect('Dashboard/User/login');

@@ -406,18 +406,12 @@
                         </p>
                      </a>
                      <ul class="nav nav-treeview" style="display: none;">
-                        <li class="nav-item">
+                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Support/inbox');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Mailbox</p>
                            </a>
                         </li>
-                        <!-- <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Support/Compose');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Inbox</p>
-                           </a>
-                        </li> -->
 
                      </ul>
                   </li>

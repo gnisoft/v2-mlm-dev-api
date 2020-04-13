@@ -74,10 +74,10 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>E-Mail</h3>
-                            <p class="mb-0">Total : <?php echo $total_mails['total_mails'];?></p>
-                            <p class="mb-0">Read : <?php echo $read_mails['read_mails'];?></p>
-                            <p>Unread : <?php echo $unread_mails['unread_mails'];?></p>
+                            <h3>Support Tickets</h3>
+                            <p class="mb-0">Pending : <?php echo $unread_mails['unread_mails'];?></p>
+                            <p class="mb-0">Accepted : <?php echo $read_mails['read_mails'];?></p>
+                            <p>Rejected : <?php echo $rejected_mails['rejected_mails'];?></p>
                         </div>
                         <div class="icon">
                             <i class="fa fa-envelope"></i>
