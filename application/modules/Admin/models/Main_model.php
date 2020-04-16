@@ -22,6 +22,7 @@ class Main_model extends CI_Model {
 //        echo $this->db->last_query();
         return $res;
     }
+
     public function withdraw_users($minimum_amount) {
         $this->db->select('sum(amount) as total_amount,user_id');
         $this->db->from('tbl_income_wallet');
@@ -31,17 +32,20 @@ class Main_model extends CI_Model {
         $res = $query->result_array();
         return $res;
     }
+
     public function get_records($table, $where, $select) {
         $this->db->select($select);
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get_where($table, $where);
         $res = $query->result_array();
 //        echo $this->db->last_query();
         return $res;
     }
-    public function get_limit_records($table, $where, $select , $limit , $offset) {
+
+    public function get_limit_records($table, $where, $select, $limit, $offset) {
         $this->db->select($select);
         $this->db->where($where);
-        $this->db->limit($limit , $offset);
+        $this->db->limit($limit, $offset);
         $query = $this->db->get($table);
         $res = $query->result_array();
 //        echo $this->db->last_query();
@@ -62,6 +66,7 @@ class Main_model extends CI_Model {
         $res = $query->result_array();
         return $res;
     }
+
     public function payout_summary() {
         $this->db->select('date(created_at) as date');
         $this->db->group_by('date');
@@ -91,15 +96,15 @@ class Main_model extends CI_Model {
         return $res;
     }
 
-    public function update_business($position, $user_id , $business) {
-        $this->db->set($position, $position . ' + '.$business, FALSE);
+    public function update_business($position, $user_id, $business) {
+        $this->db->set($position, $position . ' + ' . $business, FALSE);
         $this->db->where('user_id', $user_id);
         $this->db->update('tbl_users');
-    //    echo $this->db->last_query();
+        //    echo $this->db->last_query();
     }
 
     public function update_directs($user_id) {
-        $this->db->set('directs',  'directs + 1', FALSE);
+        $this->db->set('directs', 'directs + 1', FALSE);
         $this->db->where('user_id', $user_id);
         $this->db->update('tbl_users');
     }

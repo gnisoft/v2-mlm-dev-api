@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 05, 2020 at 11:10 AM
+-- Generation Time: Apr 16, 2020 at 10:56 AM
 -- Server version: 10.1.44-MariaDB
 -- PHP Version: 7.0.32
 
@@ -48380,8 +48380,32 @@ CREATE TABLE `paypal_transactions` (
 --
 
 INSERT INTO `paypal_transactions` (`id`, `user_id`, `transaction_id`, `activate_user_id`, `amount`, `payment_status`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', '7A523159YP6358940', 'admin', 20, 'COMPLETED', '2020-03-30 07:18:38', '2020-03-30 07:18:38'),
 (2, 'Admin', '3C836707YD523921W', 'admin', 20, 'COMPLETED', '2020-03-30 07:25:26', '2020-03-30 07:25:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `plan_subscription`
+--
+
+CREATE TABLE `plan_subscription` (
+  `id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `orderID` varchar(50) NOT NULL,
+  `subscriptionID` varchar(50) NOT NULL,
+  `amount` varchar(20) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `plan_subscription`
+--
+
+INSERT INTO `plan_subscription` (`id`, `user_id`, `orderID`, `subscriptionID`, `amount`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '2M168753WV800021J', 'I-DGWW5UGT8XTY', '', '2020-04-16 10:01:08', '2020-04-16 10:01:08'),
+(2, '600880', '29K86279FY094923R', 'I-B6J1XWXSCWVC', '', '2020-04-16 10:18:42', '2020-04-16 10:18:42'),
+(3, '515603', '01762132P67039524', 'I-3SY7R6TFDPTE', '', '2020-04-16 10:33:27', '2020-04-16 10:33:27');
 
 -- --------------------------------------------------------
 
@@ -53417,9 +53441,10 @@ CREATE TABLE `tbl_bill_request` (
 INSERT INTO `tbl_bill_request` (`id`, `user_id`, `amount`, `purchase_description`, `purchase_date`, `proof`, `status`, `remarks`, `created_at`, `updated_at`) VALUES
 (1, '600880', 60, 'easyday shopping\r\nmilk 20\r\nsugar 40', '2020-04-05', 'payment_slip.jpeg', 1, 'approved', '2020-04-05 09:03:08', '2020-04-05 10:59:16'),
 (2, '600880', 60, 'easyday shopping\r\nmilk 20\r\nsugar 40', '2020-03-20', 'payment_slip1.jpeg', 1, 'bill approved', '2020-04-05 09:03:56', '2020-04-05 10:46:04'),
-(3, 'admin', 1000, 'This is a test purchase iincome please check and appprove', '2020-04-09', 'payment_slip.pdf', 0, '', '2020-04-05 09:27:11', '2020-04-05 09:27:11'),
+(3, 'admin', 1000, 'This is a test purchase iincome please check and appprove', '2020-04-09', 'payment_slip.pdf', 1, 'Looks good.', '2020-04-05 09:27:11', '2020-04-05 17:51:35'),
 (4, 'admin', 240, 'this is second test with png file', '2020-04-10', 'payment_slip3.png', 1, '', '2020-04-05 09:28:18', '2020-04-05 10:45:00'),
-(5, '600880', 1010, 'sdfsd sfsdf sdfds', '2020-04-25', 'payment_slip4.png', 1, 'accespt', '2020-04-05 11:07:10', '2020-04-05 11:07:26');
+(5, '600880', 1010, 'sdfsd sfsdf sdfds', '2020-04-25', 'payment_slip4.png', 1, 'accespt', '2020-04-05 11:07:10', '2020-04-05 11:07:26'),
+(6, 'Admin', 1000, 'kjhkjhkhkhkhkj', '2020-04-10', 'payment_slip1.pdf', 0, '', '2020-04-08 05:45:09', '2020-04-08 05:45:09');
 
 -- --------------------------------------------------------
 
@@ -53862,7 +53887,13 @@ INSERT INTO `tbl_income_wallet` (`id`, `user_id`, `amount`, `type`, `description
 (29, '600880', '10', 'network_commisions', 'Network Commsions from Self ', '2020-04-05 10:59:16', '2020-04-05 10:59:16'),
 (30, 'admin', '5', 'network_commisions', 'Network Commsions from 600880', '2020-04-05 10:59:16', '2020-04-05 10:59:16'),
 (31, '600880', '101', 'network_commisions', 'Network Commsions from Self ', '2020-04-05 11:07:26', '2020-04-05 11:07:26'),
-(32, 'admin', '50.5', 'network_commisions', 'Network Commsions from 600880', '2020-04-05 11:07:26', '2020-04-05 11:07:26');
+(32, 'admin', '50.5', 'network_commisions', 'Network Commsions from 600880', '2020-04-05 11:07:26', '2020-04-05 11:07:26'),
+(33, 'Admin', '100', 'network_commisions', 'Network Commsions from Self ', '2020-04-05 17:51:35', '2020-04-05 17:51:35'),
+(34, 'none', '50', 'network_commisions', 'Network Commsions from Admin', '2020-04-05 17:51:35', '2020-04-05 17:51:35'),
+(35, '600880', '0.8', 'direct_income', 'Direct Income from Activation of Member 600880', '2020-04-16 10:18:42', '2020-04-16 10:18:42'),
+(36, 'Admin', '0.6', 'direct_level_income', 'Level Income from Activation of Member 600880 At level 2', '2020-04-16 10:18:42', '2020-04-16 10:18:42'),
+(37, '515603', '0.8', 'direct_income', 'Direct Income from Activation of Member 515603', '2020-04-16 10:33:27', '2020-04-16 10:33:27'),
+(38, 'Admin', '0.6', 'direct_level_income', 'Level Income from Activation of Member 515603 At level 2', '2020-04-16 10:33:27', '2020-04-16 10:33:27');
 
 -- --------------------------------------------------------
 
@@ -53976,7 +54007,8 @@ CREATE TABLE `tbl_package` (
 --
 
 INSERT INTO `tbl_package` (`id`, `title`, `description`, `price`, `bv`, `commision`, `direct_income`, `level_income`, `products`, `capping`, `image`, `created_at`, `updated_at`) VALUES
-(1, '$30 Package', 'this is Rs 3600 Package1', 30, 0, 0, '5', '3', '', 1000000, '', '2020-01-17 03:48:38', '2020-04-05 10:17:31');
+(1, 'Membership Package', 'this is Rs 3600 Package1', 30, 0, 0, '5', '3', '', 1000000, '', '2020-01-17 03:48:38', '2020-04-16 10:45:09'),
+(2, 'Subscription Package', 'this is second package', 20, 0, 0, '4', '3', '', 0, '', '2020-04-16 10:09:13', '2020-04-16 10:43:16');
 
 -- --------------------------------------------------------
 
@@ -54178,6 +54210,24 @@ INSERT INTO `tbl_roi` (`id`, `user_id`, `amount`, `roi_amount`, `days`, `created
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_shopping_url`
+--
+
+CREATE TABLE `tbl_shopping_url` (
+  `id` int(11) NOT NULL,
+  `url` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_shopping_url`
+--
+
+INSERT INTO `tbl_shopping_url` (`id`, `url`) VALUES
+(1, 'https://shophealth.hope.partners/');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_slider_images`
 --
 
@@ -54311,7 +54361,10 @@ INSERT INTO `tbl_support_message` (`id`, `user_id`, `title`, `message`, `status`
 (1, '703756', 'Withdraw', 'adsdsd s f sf ', 1, 'asdsadasda sdasd as', '2020-04-01 15:32:56', '2020-04-01 15:32:56'),
 (2, '703756', 'Topup', 'sadsadsasa sad asdas', 2, 'reject', '2020-04-01 15:34:18', '2020-04-01 15:34:18'),
 (3, '703756', 'General', 'asda sda as', 0, '', '2020-04-01 15:35:14', '2020-04-01 15:35:14'),
-(4, 'Admin', 'Withdraw', 'asaasa', 0, '', '2020-04-01 18:30:24', '2020-04-01 18:30:24');
+(4, 'Admin', 'Withdraw', 'asaasa', 0, '', '2020-04-01 18:30:24', '2020-04-01 18:30:24'),
+(5, 'Admin', 'General', 'What is wrong?', 0, '', '2020-04-08 04:19:43', '2020-04-08 04:19:43'),
+(6, '600880', 'Topup', 'hi i have problem with ticket', 1, 'yeah its resolved', '2020-04-09 15:10:17', '2020-04-09 15:10:17'),
+(7, 'Admin', 'Withdraw', 'how can i withdraw my money', 0, '', '2020-04-09 15:29:32', '2020-04-09 15:29:32');
 
 -- --------------------------------------------------------
 
@@ -54545,6 +54598,12 @@ ALTER TABLE `paypal_transactions`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `plan_subscription`
+--
+ALTER TABLE `plan_subscription`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `states`
 --
 ALTER TABLE `states`
@@ -54707,6 +54766,12 @@ ALTER TABLE `tbl_roi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_shopping_url`
+--
+ALTER TABLE `tbl_shopping_url`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tbl_slider_images`
 --
 ALTER TABLE `tbl_slider_images`
@@ -54801,6 +54866,12 @@ ALTER TABLE `paypal_transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `plan_subscription`
+--
+ALTER TABLE `plan_subscription`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `states`
 --
 ALTER TABLE `states`
@@ -54834,7 +54905,7 @@ ALTER TABLE `tbl_bank_list`
 -- AUTO_INCREMENT for table `tbl_bill_request`
 --
 ALTER TABLE `tbl_bill_request`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tbl_business_matching`
@@ -54876,7 +54947,7 @@ ALTER TABLE `tbl_downline_count`
 -- AUTO_INCREMENT for table `tbl_income_wallet`
 --
 ALTER TABLE `tbl_income_wallet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `tbl_network_commission`
@@ -54906,7 +54977,7 @@ ALTER TABLE `tbl_order_details`
 -- AUTO_INCREMENT for table `tbl_package`
 --
 ALTER TABLE `tbl_package`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_payment_request`
@@ -54963,6 +55034,12 @@ ALTER TABLE `tbl_roi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `tbl_shopping_url`
+--
+ALTER TABLE `tbl_shopping_url`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_slider_images`
 --
 ALTER TABLE `tbl_slider_images`
@@ -54984,7 +55061,7 @@ ALTER TABLE `tbl_sponser_count`
 -- AUTO_INCREMENT for table `tbl_support_message`
 --
 ALTER TABLE `tbl_support_message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tbl_task`

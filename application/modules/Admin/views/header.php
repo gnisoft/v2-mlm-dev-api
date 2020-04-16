@@ -99,6 +99,12 @@
                            </a>
                         </li>
                         <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Package/Edit/2');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Subscription Package</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/NetworkCommission');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Network Commissions</p>

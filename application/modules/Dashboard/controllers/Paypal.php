@@ -8,6 +8,12 @@ use PayPal\Api\ItemList;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\PaymentExecution;
+use PayPal\Api\ChargeModel;
+use PayPal\Api\Currency;
+use PayPal\Api\MerchantPreferences;
+use PayPal\Api\PaymentDefinition;
+use PayPal\Api\Plan;
+use PayPal\Api\Agreement;
 
 class Paypal extends CI_Controller {
 
@@ -26,16 +32,89 @@ class Paypal extends CI_Controller {
         );
     }
 
+    function createPlan() {
+        $plan = new Plan();
+        $plan->setName('Partners Subscription')
+                ->setDescription('Subscription Plan for Level Income')
+                ->setType('fixed');
+        $paymentDefinition = new PaymentDefinition();
+        $paymentDefinition->setName('Regular Payments')
+                ->setType('REGULAR')
+                ->setFrequency('Month')
+                ->setFrequencyInterval("1")
+                ->setCycles("12")
+                ->setAmount(new Currency(array('value' => 20, 'currency' => 'USD')));
+        $chargeModel = new ChargeModel();
+        $chargeModel->setType('SHIPPING')
+                ->setAmount(new Currency(array('value' => 0, 'currency' => 'USD')));
+
+        $paymentDefinition->setChargeModels(array($chargeModel));
+        $merchantPreferences = new MerchantPreferences();
+        $baseUrl = base_url() . 'Dashboard/payment_response';
+        $merchantPreferences->setReturnUrl("$baseUrl/success")
+                ->setCancelUrl("$baseUrl/failure")
+                ->setAutoBillAmount("yes")
+                ->setInitialFailAmountAction("CONTINUE")
+                ->setMaxFailAttempts("0")
+                ->setSetupFee(new Currency(array('value' => 1, 'currency' => 'USD')));
+
+        $plan->setPaymentDefinitions(array($paymentDefinition));
+        $plan->setMerchantPreferences($merchantPreferences);
+        $request = clone $plan;
+        try {
+            $output = $plan->create($this->_api_context);
+        } catch (Exception $ex) {
+            ResultPrinter::printError("Created Plan", "Plan", null, $request, $ex);
+            exit(1);
+        }
+        ResultPrinter::printResult("Created Plan", "Plan", $output->getId(), $request, $output);
+
+        pr($output);
+    }
+
+    function plan_list() {
+        try {
+            $params = array('page_size' => '10');
+            $planList = Plan::all($params, $this->_api_context);
+        } catch (Exception $ex) {
+            ResultPrinter::printError("List of Plans", "Plan", null, $params, $ex);
+            exit(1);
+        } ResultPrinter::printResult("List of Plans", "Plan", null, $params, $planList);
+
+        return $planList;
+    }
+
+    public function SearchBillingTransactions() {
+        // Adding Params to search transaction within a given time frame.
+        $agreementId = 'I-DNYGSVPPX9PG';
+        $params = array('start_date' => date('Y-m-d', strtotime('-15 years')), 'end_date' => date('Y-m-d', strtotime('+5 days')));
+
+        try {
+            $result = Agreement::searchTransactions($agreementId, $params, $this->_api_context);
+        } catch (Exception $ex) {
+            // NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
+            ResultPrinter::printError("Search for Transactions", "AgreementTransaction", $agreementId, null, $ex);
+            exit(1);
+        }
+
+// NOTE: PLEASE DO NOT USE RESULTPRINTER CLASS IN YOUR ORIGINAL CODE. FOR SAMPLE ONLY
+        ResultPrinter::printResult("Search for Transactions", "AgreementTransaction", $agreementId, $params, $result);
+
+//        return $agreement;
+    }
+
     function index() {
         $this->load->view('content/payment_credit_form');
     }
-    public function paypal_token(){
-        pr($payment->getAccessToken($this->_api_context)); 
+
+    public function paypal_token() {
+        pr($payment->getAccessToken($this->_api_context));
     }
+
     function create_payment_with_paypal() {
 
         // setup PayPal api context
-         $payment = new Payment();
+        $payment = new Payment();
         $this->_api_context->setConfig($this->config->item('settings'));
 
 
@@ -148,7 +227,6 @@ class Paypal extends CI_Controller {
         $result = $payment->execute($execution, $this->_api_context);
 
 //        pr($result,true);
-
         //  DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') {
             $trans = $result->getTransactions();
@@ -189,7 +267,9 @@ class Paypal extends CI_Controller {
         $this->paypal->create_payment();
         $this->load->view("content/cancel");
     }
-    function CallBack($user_id){
-       echo $this->paypal->add('tbl_callback', array('user_id' => $user_id));
+
+    function CallBack($user_id) {
+        echo $this->paypal->add('tbl_callback', array('user_id' => $user_id));
     }
+
 }

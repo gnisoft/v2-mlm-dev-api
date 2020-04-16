@@ -94,7 +94,7 @@ class Dashboard extends CI_Controller {
                 }
             }
             $response['wallet'] = $this->User_model->get_single_record('tbl_wallet', array('user_id' => $this->session->userdata['user_id']), 'ifnull(sum(amount),0) as wallet_balance');
-            $response['packages'] = $this->User_model->get_records('tbl_package', array(), '*');
+            $response['packages'] = $this->User_model->get_records('tbl_package', array('id' => 1), '*');
             $this->load->view('activate_account', $response);
         } else {
             redirect('Dashboard/User/login');
@@ -107,10 +107,45 @@ class Dashboard extends CI_Controller {
             if ($this->input->server('REQUEST_METHOD') == 'POST') {
                 
             }
+            $response['membership'] = $this->User_model->get_single_record('plan_subscription', array('user_id' => $this->session->userdata['user_id']), '*');
             $this->load->view('start_subscription', $response);
         } else {
             redirect('Dashboard/User/login');
         }
+    }
+
+    public function start_monthly_subscription($orderID, $subscriptionID) {
+        $response = array();
+        $response['success'] = 0;
+        $user_id = $this->session->userdata['user_id'];
+        $user = $this->User_model->get_single_record('plan_subscription', array('user_id' => $user_id), '*');
+        if (empty($user)) {
+            $insArr = array(
+                'user_id' => $user_id,
+                'orderID' => $orderID,
+                'subscriptionID' => $subscriptionID,
+            );
+            $this->User_model->add('plan_subscription', $insArr);
+            /* distribute incomes */
+            $package = $this->User_model->get_single_record('tbl_package', array('id' => 2), '*');
+            $user = $this->User_model->get_single_record('tbl_users', array('user_id' => $user_id), 'sponser_id,user_id');
+            $DirectIncome = array(
+                'user_id' => $user['sponser_id'],
+                'amount' => $package['price'] * $package['direct_income'] / 100,
+                'type' => 'direct_income',
+                'description' => 'Direct Income from Activation of Member ' . $user_id,
+            );
+            $this->User_model->add('tbl_income_wallet', $DirectIncome);
+            $sponser = $this->User_model->get_single_record('tbl_users', array('user_id' => $user['sponser_id']), 'sponser_id,user_id');
+            $this->level_income($sponser['sponser_id'], $user['user_id'], ($package['price'] * $package['level_income'] / 100));
+            /* distribute incomes */
+            $response['message'] = 'Subscription Started Successfully';
+            $response['success'] = 1;
+        } else {
+            $response['message'] = 'This User Already Subscribed';
+        }
+
+        echo json_encode($response);
     }
 
     public function UpgradeAccount() {

@@ -66,6 +66,7 @@ class Support extends CI_Controller {
             $response = array();
             $response['header'] = 'Inbox';
             $response['messages'] = $this->Main_model->get_records('tbl_support_message', array(), '*');
+            ksort($response['messages']);
             $this->load->view('composed_message', $response);
         } else {
             redirect('Dashboard/User/login');
