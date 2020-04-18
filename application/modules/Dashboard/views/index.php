@@ -61,11 +61,14 @@ display: block !important;
                                                 <div class="progress-widget__item  progress-widget__item_3-items passed disabled tooltip-col">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle">
-                                                            <div class="progress-widget__step">
-                                                                <!-- ngIf: state.currentStep <= 1 -->
-                                                                <!-- ngIf: state.currentStep > 1 -->
-                                                                <span class="ti-check ng-scope" style="position: relative;top: -3px;"></span>
-                                                                <!-- end ngIf: state.currentStep > 1 -->
+                                                            <div class="progress-widget__step asaping12">
+                                                                <?php
+                                                                // echo $user['postal_code'];
+                                                                if($user['postal_code'] == 0)
+                                                                    echo'<span id="KycCnt">1</span>';
+                                                                else
+                                                                    echo'<span id="DepCnt" class="ti-check passed progress-widget__circle"></span>';
+                                                                ?>
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title">
@@ -79,7 +82,12 @@ display: block !important;
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle wr1ing passed" id="DepCnt1">
                                                             <div class="progress-widget__step asaping12">
-                                                                <span id="PmAcnt" class="ti-check passed progress-widget__circle"></span>
+                                                            <?php
+                                                                if($bank['paypal'] == '')
+                                                                    echo'<span id="KycCnt">2</span>';
+                                                                else
+                                                                    echo'<span id="DepCnt" class="ti-check passed progress-widget__circle"></span>';
+                                                            ?>
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title fancing12">
@@ -92,9 +100,22 @@ display: block !important;
                                                 <!-- step 3 -->
                                                 <div class="progress-widget__item  progress-widget__item_3-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
                                                     <div class="progress-widget__item-layer">
-                                                        <div class="progress-widget__circle wr1ing" id="DepCnt2">
+                                                        <div class="progress-widget__circle wr1ing passed" id="DepCnt2">
+                                                            <!-- <div class="progress-widget__step asaping12">
+                                                                <?php
+                                                                // if($bank['btc'] == '')
+                                                                //     echo'<span id="KycCnt">3</span>';
+                                                                // else
+                                                                //     echo'<span id="DepCnt" class="ti-check passed progress-widget__circle"></span>';
+                                                                ?>
+                                                            </div> -->
                                                             <div class="progress-widget__step asaping12">
-                                                                <span id="KycCnt">3</span>
+                                                                <?php
+                                                                if($bank['id_proof'] == '')
+                                                                    echo'<span id="KycCnt">3</span>';
+                                                                else
+                                                                    echo'<span id="DepCnt" class="ti-check passed progress-widget__circle"></span>';
+                                                                ?>
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title fancing12 ">
@@ -107,8 +128,13 @@ display: block !important;
                                                 <div class="progress-widget__item  progress-widget__item_3-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 4, &#39;current&#39;: state.currentStep === 4}" ui-sref="app.platforms.download" href="/en/platforms">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle passed" id="DepCnt3">
-                                                            <div class="progress-widget__step">
-                                                                <span id="DepCnt" class="ti-check passed progress-widget__circle"></span>
+                                                            <div class="progress-widget__step asaping12">
+                                                                <?php
+                                                                if($bank['id_proof'] == '')
+                                                                    echo'<span id="KycCnt">4</span>';
+                                                                else
+                                                                    echo'<span id="DepCnt" class="ti-check passed progress-widget__circle"></span>';
+                                                                ?>
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title ">
@@ -120,8 +146,15 @@ display: block !important;
                                                 <div class="progress-widget__item  progress-widget__item_3-items last tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 5, &#39;current&#39;: state.currentStep === 5}" ui-sref="app.platforms.download" href="/en/platforms">
                                                     <div class="progress-widget__item-layer">
                                                         <div class="progress-widget__circle passed" id="DepCnt3">
-                                                            <div class="progress-widget__step">
-                                                                <span id="DepCnt" class="ti-check passed progress-widget__circle"></span>
+                                                            <div class="progress-widget__step asaping12">
+                                                                <?php
+                                                                if($userinfo->paid_status == 1){
+                                                                    echo'<span id="DepCnt" class="ti-check passed progress-widget__circle"></span>';
+                                                                }else{
+                                                                    echo'<span id="KycCnt">5</span>';
+                                                                }
+                                                                ?>
+
                                                             </div>
                                                         </div>
                                                         <div class="progress-widget__title ">

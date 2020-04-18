@@ -793,8 +793,13 @@ $user_info = userinfo();
                                 <ul class="sub-menu" style="display: none;">
                                     <!--<li><a href="<?php // echo base_url('Dashboard/User/Register/?sponser_id=' . $user_info->user_id); ?>">Referral Link</a></li>-->
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile/refferal-link'); ?>">Referral Link</a></li>
-                                    <li><a href="<?php echo base_url('Dashboard/ActivateAccount'); ?>"> Activate Membership </a></li>
                                     <li><a href="<?php echo base_url('Dashboard/start_subscription'); ?>" > Monthly Subscription</a></li>
+                                    <?php
+                                    if(subscription_status()){
+                                        echo'<li><a href="'.base_url('Dashboard/ActivateAccount').'"> Activate Membership </a></li>';
+                                    }
+                                    ?>
+                                    
                                     <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan'); ?>" > Business Plan</a></li>
 
 

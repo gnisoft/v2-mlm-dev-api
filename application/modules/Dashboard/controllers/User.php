@@ -14,6 +14,7 @@ class User extends CI_Controller {
     public function index() {
         if (is_logged_in()) {
             $response['user'] = $this->User_model->get_single_record('tbl_users', array('user_id' => $this->session->userdata['user_id']), '*');
+            $response['bank'] = $this->User_model->get_single_record('tbl_bank_details', array('user_id' => $this->session->userdata['user_id']), '*');
             $response['today_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "' . $this->session->userdata['user_id'] . '" and date(created_at) = date(now())', 'ifnull(sum(amount),0) as today_income');
             /* incomes */
             $response['direct_income'] = $this->User_model->get_single_record('tbl_income_wallet', 'user_id = "' . $this->session->userdata['user_id'] . '" and type = "direct_income"', 'ifnull(sum(amount),0) as direct_income');

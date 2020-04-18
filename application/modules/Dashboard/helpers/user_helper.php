@@ -36,6 +36,19 @@ if (!function_exists('userinfo')) {
     }
 
 }
+if (!function_exists('subscription_status')) {
+
+    function subscription_status() {
+        $ci = & get_instance();
+        $ci->load->model('user_model');
+        $userdetails = $ci->user_model->get_single_record('plan_subscription', array('user_id' => $ci->session->userdata['user_id']), '*');
+        if(!empty($userdetails))
+            return false;
+        else
+            return true;
+    }
+
+}
 if (!function_exists('store_url')) {
 
     function store_url() {

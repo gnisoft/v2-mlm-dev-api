@@ -14,6 +14,44 @@ class Cron extends CI_Controller {
     public function index() {
 
     }
+    public function paypal_subscription_plan(){
+        $response['users'] = $this->Main_model->get_records('plan_subscription', ' date(created_at) = date(now()) - 2', '*');
+        foreach ($response['users'] as $user) {
+            pr($user);
+            /* distribute incomes */
+            $package = $this->Main_model->get_single_record('tbl_package', array('id' => 2), '*');
+            $user = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user['user_id']), 'sponser_id,user_id');
+            $DirectIncome = array(
+                'user_id' => $user['sponser_id'],
+                'amount' => $package['price'] * $package['direct_income'] / 100,
+                'type' => 'direct_income',
+                'description' => 'Direct Income from Activation of Member ' . $user['user_id'],
+            );
+            $this->Main_model->add('tbl_income_wallet', $DirectIncome);
+            $sponser = $this->Main_model->get_single_record('tbl_users', array('user_id' => $user['sponser_id']), 'sponser_id,user_id');
+            $this->level_income($sponser['sponser_id'], $user['user_id'], ($package['price'] * $package['level_income'] / 100));
+            /* distribute incomes */
+        }
+    }
+    function level_income($sponser_id, $activated_id, $package_income) {
+        $incomes = explode(',', $package_income);
+        // $incomes = array(70,35,30,25,20,15,10,5,5);
+        foreach ($incomes as $key => $income) {
+            $sponser = $this->Main_model->get_single_record('tbl_users', array('user_id' => $sponser_id), 'id,user_id,sponser_id,paid_status');
+            if (!empty($sponser)) {
+                if ($sponser['paid_status'] == 1) {
+                    $LevelIncome = array(
+                        'user_id' => $sponser['user_id'],
+                        'amount' => $income,
+                        'type' => 'direct_level_income',
+                        'description' => 'Level Income from Activation of Member ' . $activated_id . ' At level ' . ($key + 2),
+                    );
+                    $this->Main_model->add('tbl_income_wallet', $LevelIncome);
+                }
+                $sponser_id = $sponser['sponser_id'];
+            }
+        }
+    }
 
     public function point_match_cron() {
         $response['users'] = $this->Main_model->get_records('tbl_users', '(leftPower >= 1 and rightPower >= 1 )', 'id,user_id,sponser_id,leftPower,rightPower,package_amount,capping');

@@ -93,17 +93,18 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="<?php echo base_url('Admin/Package/Edit/1');?>" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
-                              <p>Membership Package</p>
-                           </a>
-                        </li>
-                        <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Package/Edit/2');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Subscription Package</p>
                            </a>
                         </li>
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Package/Edit/1');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Membership Package</p>
+                           </a>
+                        </li>
+
                         <li class="nav-item">
                            <a href="<?php echo base_url('Admin/Management/NetworkCommission');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
@@ -198,6 +199,12 @@
                            <a href="<?php echo base_url('Admin/Management/paidUsers');?>" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Active Members</p>
+                           </a>
+                        </li>
+                        <li class="nav-item">
+                           <a href="<?php echo base_url('Admin/Management/subscription_members');?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Subscription Members</p>
                            </a>
                         </li>
 

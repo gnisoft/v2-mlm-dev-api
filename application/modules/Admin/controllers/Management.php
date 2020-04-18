@@ -108,6 +108,15 @@ class Management extends CI_Controller {
         }
     }
 
+    public function subscription_members() {
+        if (is_admin()) {
+            $response['users'] = $this->Main_model->get_records('plan_subscription', array(), '*');
+            $this->load->view('subscription_members', $response);
+        } else {
+            redirect('Admin/Management/login');
+        }
+    }
+
     public function UserInvoice() {
         if (is_admin()) {
             $response['users'] = $this->Main_model->get_records('tbl_users', array('paid_status' => 1), '*');
