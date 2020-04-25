@@ -2,7 +2,13 @@
 <script
     src="https://www.paypal.com/sdk/js?client-id=ATWYJH57rO1BhOQJIaU_2MowAyuZIThp3sOPCSRs9hQgjLVirSMHBxTTWNdPef80QZbymV8zsAQwXt7m&vault=true">
 </script>
-
+<style>
+span.offermain {
+    text-decoration: line-through !important;
+    color: red;
+    font-weight: bold;
+}
+</style>
 <div id="content" class="content">
     <!-- BEGIN breadcrumb -->
     <!--<ul class="breadcrumb"><li class="breadcrumb-item"><a href="#">FORMS</a></li><li class="breadcrumb-item active">FORM WIZARS</li></ul>-->
@@ -90,6 +96,13 @@
         <div class="wizard-content tab-content">
             <!-- BEGIN tab-pane -->
             <div class="tab-pane active show" id="tabFundRequestForm">
+              <h3>Join today with a Paypal Subscription a 33% saving off the regular<br> membership price  to HOPE Partners Application.</h3>
+              <p style="    font-weight: bold;
+    font-size: 20px;"><span class="offermain">$30</span> $20.00/ month</p>
+                <p>You subscription includes full access to the HOPE Partners Application as well as certain other benefits detailed here. <br>
+You will be automatically billed once a month on your renewal date. You can cancel anytime with thirty days' notice.
+                </p>
+              <h3>  Subscribe now via: </h3>
                 <!-- BEGIN row -->
                 <div class="col-md-12">
                   <?php

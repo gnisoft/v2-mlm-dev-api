@@ -42,7 +42,7 @@ if (!function_exists('subscription_status')) {
         $ci = & get_instance();
         $ci->load->model('user_model');
         $userdetails = $ci->user_model->get_single_record('plan_subscription', array('user_id' => $ci->session->userdata['user_id']), '*');
-        if(!empty($userdetails))
+        if (!empty($userdetails))
             return false;
         else
             return true;
@@ -77,7 +77,7 @@ if (!function_exists('country_flag')) {
             $ci->load->model('user_model');
             $name = $ci->user_model->get_single_object('countries', array('id' => $country_id), 'name');
             return str_replace(' ', '-', $name->name);
-        }else{
+        } else {
             return;
         }
     }
@@ -208,6 +208,56 @@ if (!function_exists('tax')) {
         $ci->load->model('user_model');
         $tax = $ci->user_model->get_single_object('tbl_tax', array('id' => 1), '*');
         return $tax->tax;
+    }
+
+}
+if (!function_exists('active_menu')) {
+
+    function active_menu($link, $call_from) {
+        //profile
+        $status = 0;
+        if ($call_from == 'profile') {
+            if ($link == '/Dashboard/User/Profile' || $link == '/Dashboard/User/Profile/identity-verification' || $link == '/Dashboard/User/Profile/reset-password') {
+                $status = 1;
+            }
+        }
+        //MemberShip
+        if ($call_from == 'Membership') {
+            if ($link == '/Dashboard/User/Profile/refferal-link' || $link == '/Dashboard/start_subscription' || $link == '/Dashboard/Settings/BusinessPlan') {
+                $status = 1;
+            }
+        }
+        //Network
+        if ($call_from == 'Network') {
+            if ($link == '/Dashboard/User/Directs' || $link == '/Dashboard/User/Downline' || $link == '/Dashboard/User/Directs') {
+                $status = 1;
+            }
+        }
+        //Network Commision
+        if ($call_from == 'NetworkCommision') {
+            if ($link == '/Dashboard/Fund/SubmitBill' || $link == '/Dashboard/Fund/BillStatus') {
+                $status = 1;
+            }
+        }
+        //E-wallet
+        if ($call_from == 'E-wallet') {
+            if ($link == '/Dashboard/User/Profile/payment-accounts' || $link == '/Dashboard/Fund/requests' || $link == '/Dashboard/DirectIncomeWithdraw' || $link == '/Dashboard/IncomeTransfer') {
+                $status = 1;
+            }
+        }
+        //Reports
+        if ($call_from == 'Reports') {
+            if ($link == '/Dashboard/User/Income/direct_income' || $link == '/Dashboard/User/Income/direct_level_income' || $link == '/Dashboard/User/income_ledgar' || $link == '/Dashboard/Fund/wallet_ledger' || $link == 'Dashboard/withdraw_history' || $link == 'Dashboard/User/Income/income_transfer' || $link == 'Dashboard/Fund/activation_history') {
+                $status = 1;
+            }
+        }
+        //Support
+        if ($call_from == 'Support') {
+            if ($link == '/Dashboard/Support/Inbox' || $link == '/Dashboard/Support/ComposeMail') {
+                $status = 1;
+            }
+        }
+        return $status;
     }
 
 }

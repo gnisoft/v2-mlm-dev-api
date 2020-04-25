@@ -18,49 +18,59 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-md-3">
+                    Minimum Date:<input name="min" id="min" type="text">
+                </div>
+                <div class="col-md-3">
+                    Maximum Date:<input name="max" id="max" type="text">
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-12">
                     <div class="table-responsive p-4 bg-white mb-4">
-                        <table class="table table-bordered table-striped dataTable" id="tableView">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>User ID</th>
-                                <th>Title</th>
-                                <th>Message</th>
-                                <th>Status</th>
-                                <th>Remark</th>
-                                <th>View</th>
-                                <th> Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            foreach ($messages as $key => $message) {
-                                ?>
+                        <table class="table table-bordered table-striped dataTable" id="tableView" data-date_col="7">
+                            <thead>
                                 <tr>
-                                    <td><?php echo ($key + 1) ?></td>
-                                    <td><?php echo $message['user_id']; ?></td>
-                                    <td><?php echo $message['title']; ?></td>
-                                    <td><?php echo $message['message']; ?></td>
-                                    <td><?php
-                                        if($message['status'] == 0){
-                                            echo'Pending';
-                                        }elseif($message['status'] == 1){
-                                            echo'Approved';
-                                        }elseif($message['status'] == 2){
-                                            echo'Rejected';
-                                        }
-        //                                echo $transaction['status'];
-                                        ?></td>
-                                    <td><?php echo $message['remark']; ?></td>
-                                    <td><a href="<?php echo base_url('Admin/Support/view/'.$message['id']); ?>">View</a></td>
-                                    <td><?php echo $message['created_at']; ?></td>
+                                    <th>#</th>
+                                    <th>User ID</th>
+                                    <th>Title</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                    <th>Remark</th>
+                                    <th>View</th>
+                                    <th> Date</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 <?php
-                            }
-                            ?>
+                                foreach ($messages as $key => $message) {
+                                    ?>
+                                    <tr>
+                                        <td><?php echo ($key + 1) ?></td>
+                                        <td><?php echo $message['user_id']; ?></td>
+                                        <td><?php echo $message['title']; ?></td>
+                                        <td><?php echo $message['message']; ?></td>
+                                        <td><?php
+                                            if ($message['status'] == 0) {
+                                                echo'Pending';
+                                            } elseif ($message['status'] == 1) {
+                                                echo'Approved';
+                                            } elseif ($message['status'] == 2) {
+                                                echo'Rejected';
+                                            }
+                                            //                                echo $transaction['status'];
+                                            ?></td>
+                                        <td><?php echo $message['remark']; ?></td>
+                                        <td><a href="<?php echo base_url('Admin/Support/view/' . $message['id']); ?>">View</a></td>
+                                        <td><?php echo date("m/d/Y", strtotime($message['created_at'])); ?></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
 
-                        </tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>

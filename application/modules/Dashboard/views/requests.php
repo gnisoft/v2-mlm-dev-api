@@ -19,72 +19,81 @@
         <!-- END wizard-header -->
         <!-- BEGIN wizard-form -->
 
-            <div class="wizard-content tab-content">
-                <!-- BEGIN tab-pane -->
-                <div class="tab-pane active show" id="tabFundRequestForm">
-                    <!-- BEGIN row -->
-                    <div class="row">
-                        <!-- BEGIN col-6 -->
-                        <div class="col-md-12">
-                            <p class="desc m-b-20">Make sure to use a valid input, you'll need to verify it before you can submit request.</p>
-                            <div class="form-group m-b-10">
-
+        <div class="wizard-content tab-content">
+            <!-- BEGIN tab-pane -->
+            <div class="tab-pane active show" id="tabFundRequestForm">
+                <!-- BEGIN row -->
+                <div class="row">
+                    <!-- BEGIN col-6 -->
+                    <div class="col-md-12">
+                        <p class="desc m-b-20">Make sure to use a valid input, you'll need to verify it before you can submit request.</p>
+                        <div class="form-group m-b-10">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Minimum Date:<input name="min" id="min" type="text">
+                                </div>
+                                <div class="col-md-3">
+                                    Maximum Date:<input name="max" id="max" type="text">
+                                </div>
+                                <div class="col-md-3">
+                                </div>
                             </div>
-                            <div class="form-group m-b-10">
-                              <table class="table table-bordered table-striped dataTable" id="tableView">
-                                  <thead>
-                                      <tr>
-                                          <th>#</th>
-                                          <th>User ID</th>
-                                          <th>Amount</th>
-                                          <th>Image</th>
-                                          <th>Status</th>
-                                          <th>Remark</th>
-                                          <th>CreatedAt</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                      <?php
-                                      foreach ($requests as $key => $request) {
-                                          ?>
-                                          <tr>
-                                              <td><?php echo ($key + 1) ?></td>
-                                              <td><?php echo $request['user_id']; ?></td>
-                                              <td>$ <?php echo $request['amount']; ?></td>
-                                              <td><img src="<?php echo base_url('uploads/' . $request['image']); ?>" height="100px" width="100px"></td>
-                                              <td><?php
-                                                  if ($request['status'] == 0) {
-                                                      echo'<span class="btn btn-primary">Pending</span>';
-                                                  } elseif ($request['status'] == 1) {
-                                                      echo'<span class="btn btn-success">Approved</span>';
-                                                  } elseif ($request['status'] == 2) {
-                                                      echo'<span class="btn btn-danger">Rejected</span>';
-                                                  }
-                                                  ?></td>
-                                              <td><?php echo $request['remarks']; ?></td>
-                                              <td><?php echo $request['created_at']; ?></td>
-                                          </tr>
-                                          <?php
-                                      }
-                                      ?>
-
-                                  </tbody>
-                              </table>
-                            </div>
-
-
-
-
                         </div>
-                        <!-- END col-6 -->
-                    </div>
-                    <!-- END row -->
-                </div>
-                <!-- END tab-pane -->
-                <!-- BEGIN tab-pane -->
+                        <div class="form-group m-b-10">
+                            <table class="table table-bordered table-striped dataTable" id="tableView" data-date_col="6">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>User ID</th>
+                                        <th>Amount</th>
+                                        <th>Image</th>
+                                        <th>Status</th>
+                                        <th>Remark</th>
+                                        <th>CreatedAt</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($requests as $key => $request) {
+                                        ?>
+                                        <tr>
+                                            <td><?php echo ($key + 1) ?></td>
+                                            <td><?php echo $request['user_id']; ?></td>
+                                            <td>$ <?php echo $request['amount']; ?></td>
+                                            <td><img src="<?php echo base_url('uploads/' . $request['image']); ?>" height="100px" width="100px"></td>
+                                            <td><?php
+                                                if ($request['status'] == 0) {
+                                                    echo'<span class="btn btn-primary">Pending</span>';
+                                                } elseif ($request['status'] == 1) {
+                                                    echo'<span class="btn btn-success">Approved</span>';
+                                                } elseif ($request['status'] == 2) {
+                                                    echo'<span class="btn btn-danger">Rejected</span>';
+                                                }
+                                                ?></td>
+                                            <td><?php echo $request['remarks']; ?></td>
+                                            <td><?php echo date("m/d/Y", strtotime($request['created_at'])); ?></td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
 
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+
+                    </div>
+                    <!-- END col-6 -->
+                </div>
+                <!-- END row -->
             </div>
-            <!-- END wizard-content -->
+            <!-- END tab-pane -->
+            <!-- BEGIN tab-pane -->
+
+        </div>
+        <!-- END wizard-content -->
 
         <!-- END wizard-form -->
     </div>

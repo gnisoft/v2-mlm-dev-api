@@ -40,10 +40,19 @@ function is_image($path) {
                     <div class="col-md-12">
                         <!-- <p class="desc m-b-20">Make sure to use a valid input, you'll need to verify it before you can submit request.</p> -->
                         <div class="form-group m-b-10">
-
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Minimum Date:<input name="min" id="min" type="text">
+                                </div>
+                                <div class="col-md-3">
+                                    Maximum Date:<input name="max" id="max" type="text">
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group m-b-10">
-                            <table class="table table-bordered table-striped dataTable" id="tableView">
+                            <table class="table table-bordered table-striped dataTable" id="tableView"  data-date_col="6">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -83,7 +92,7 @@ function is_image($path) {
                                                 }
                                                 ?></td>
                                             <td><?php echo $request['remarks']; ?></td>
-                                            <td><?php echo $request['created_at']; ?></td>
+                                            <td><?php echo date("m/d/Y", strtotime($request['created_at'])); ?></td>
                                         </tr>
                                         <?php
                                     }

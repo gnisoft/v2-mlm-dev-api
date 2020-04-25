@@ -175,15 +175,16 @@ class Withdraw extends CI_Controller {
     public function incomeLedgar($type = '') {
         if (is_admin()) {
             $response['header'] = 'Income Ledgar';
-            $config['base_url'] = base_url() . 'Admin/Withdraw/incomeLedgar';
-            $config['total_rows'] = $this->Main_model->get_sum('tbl_income_wallet', array(), 'ifnull(count(id),0) as sum');
-            $config ['uri_segment'] = 4;
-            $config['per_page'] = 50;
-            $this->pagination->initialize($config);
-            $segment = $this->uri->segment(4);
+//            $config['base_url'] = base_url() . 'Admin/Withdraw/incomeLedgar';
+//            $config['total_rows'] = $this->Main_model->get_sum('tbl_income_wallet', array(), 'ifnull(count(id),0) as sum');
+//            $config ['uri_segment'] = 4;
+//            $config['per_page'] = 50;
+//            $this->pagination->initialize($config);
+//            $segment = $this->uri->segment(4);
             $response['total_income'] = $this->Main_model->get_sum('tbl_income_wallet', array(), 'ifnull(sum(amount),0) as sum');
-            $response['user_incomes'] = $this->Main_model->get_limit_records('tbl_income_wallet', array(), '*', $config['per_page'], $segment);
-            $response['segament'] = $segment;
+//            $response['user_incomes'] = $this->Main_model->get_limit_records('tbl_income_wallet', array(), '*', $config['per_page'], $segment);
+            $response['user_incomes'] = $this->Main_model->get_records('tbl_income_wallet', array(), '*');
+//            $response['segament'] = $segment;
             $this->load->view('incomes', $response);
         } else {
             redirect('Admin/Management/login');

@@ -33,19 +33,20 @@ function is_image($path) {
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                                    </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    Minimum Date:<input name="min" id="min" type="text">
+                                </div>
+                                <div class="col-md-3">
+                                    Maximum Date:<input name="max" id="max" type="text">
+                                </div>
+                                <div class="col-md-3">
                                 </div>
                             </div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover" id="tableView">
+                            <table class="table table-hover" id="tableView" data-date_col="4">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -55,7 +56,7 @@ function is_image($path) {
                                         <th>Status</th>
                                         <th>Purchase Description</th>
                                         <th>Remark</th>
-                                        <th>CreatedAt</th>
+                                        <th>Created At</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -79,17 +80,17 @@ function is_image($path) {
 
                                             </td>
                                             <td><?php
-                                            if ($request['status'] == 0) {
-                                                echo'<span class="btn btn-primary">Pending</span>';
-                                            } elseif ($request['status'] == 1) {
-                                                echo'<span class="btn btn-success">Approved</span>';
-                                            } elseif ($request['status'] == 2) {
-                                                echo'<span class="btn btn-danger">Rejected</span>';
-                                            }
+                                                if ($request['status'] == 0) {
+                                                    echo'<span class="btn btn-primary">Pending</span>';
+                                                } elseif ($request['status'] == 1) {
+                                                    echo'<span class="btn btn-success">Approved</span>';
+                                                } elseif ($request['status'] == 2) {
+                                                    echo'<span class="btn btn-danger">Rejected</span>';
+                                                }
                                                 ?></td>
                                             <td><?php echo $request['purchase_description']; ?></td>
                                             <td><?php echo $request['remarks']; ?></td>
-                                            <td><?php echo $request['created_at']; ?></td>
+                                            <td><?php echo date("m/d/Y", strtotime($request['created_at'])); ?></td>
                                             <td><a href="<?php echo base_url('Admin/Management/update_bill_request/' . $request['id']); ?>" class="btn btn-info">View</a></td>
                                         </tr>
                                         <?php

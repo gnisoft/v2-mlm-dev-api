@@ -21,6 +21,9 @@ $user_info = userinfo();
         <link href="<?php echo base_url('NewTheme/') ?>assets/css/jquery-jvectormap.css" rel="stylesheet">
         <link href="<?php echo base_url('NewTheme/') ?>assets/css/app.min.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url('NewTheme/') ?>assets/css/other.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://winto.in/Assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             .modal-content1.overlay.whiter123 {
                 width: 700px;
@@ -589,6 +592,42 @@ $user_info = userinfo();
                 font-size: 15px;
 
             }
+            .ui-datepicker{
+                background: white;
+                border: 1px solid;
+                padding: 10px;
+            }
+            .ui-datepicker select{
+                height: calc(1.8125rem + 2px);
+                padding-top: .25rem;
+                padding-bottom: .25rem;
+                padding-left: .5rem;
+                font-size: 75%;
+            }
+            .ui-datepicker .ui-icon {
+                padding: 3px;
+                background: #4682b4;
+            }
+            .dt-button.dt-copy {
+                color: white;
+                background: #4682b4;
+            }
+            .dt-button.dt-excel {
+                color: white;
+                background: #3ca23c;
+            }
+            .dt-button.dt-csv {
+                color: white;
+                background: #e86c3a;
+            }
+            .dt-button.dt-pdf {
+                color: white;
+                background: #dc2f2f;
+            }
+            .dt-button.dt-print {
+                color: white;
+                background: #8766b1;
+            }
         </style>
     </head>
     <body data-gr-c-s-loaded="true">
@@ -606,92 +645,92 @@ $user_info = userinfo();
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">×</button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="progress-widget_modal pt20 pb20 ng-scope">
-                            <div class="progress-widget__wrapper  kik" id="Div1">
-                                <!-- step 1 -->
-                                <div class="progress-widget__item  progress-widget__item_4-items passed disabled tooltip-col" ng-class="{&#39;passed disabled&#39;: state.currentStep & gt; 1, &#39;current&#39;: state.currentStep === 1}" ng-click="clickOnFirstStep(state.currentStep === 1)">
-                                    <div class="progress-widget__item-layer" uib-popover="Fill in all your details in the form to take you one step closer to trading!" popover-placement="bottom" popover-trigger="mouseenter">
-                                        <div class="progress-widget__circle">
-                                            <div class="progress-widget__step">
-                                                <!-- ngIf: state.currentStep <= 1 -->
-                                                <!-- ngIf: state.currentStep > 1 -->
-                                                <span class="ti-check ng-scope" ng-if="state.currentStep & gt; 1"></span>
-                                                <!-- end ngIf: state.currentStep > 1 -->
+        <!--        <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                         Modal content
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="progress-widget_modal pt20 pb20 ng-scope">
+                                    <div class="progress-widget__wrapper  kik" id="Div1">
+                                         step 1 
+                                        <div class="progress-widget__item  progress-widget__item_4-items passed disabled tooltip-col" ng-class="{&#39;passed disabled&#39;: state.currentStep & gt; 1, &#39;current&#39;: state.currentStep === 1}" ng-click="clickOnFirstStep(state.currentStep === 1)">
+                                            <div class="progress-widget__item-layer" uib-popover="Fill in all your details in the form to take you one step closer to trading!" popover-placement="bottom" popover-trigger="mouseenter">
+                                                <div class="progress-widget__circle">
+                                                    <div class="progress-widget__step">
+                                                         ngIf: state.currentStep <= 1 
+                                                         ngIf: state.currentStep > 1 
+                                                        <span class="ti-check ng-scope" ng-if="state.currentStep & gt; 1"></span>
+                                                         end ngIf: state.currentStep > 1 
+                                                    </div>
+                                                </div>
+                                                <div class="progress-widget__title">
+                                                    <span>Complete Profile</span>
+                                                    <span class="tooltiptext3">Fill in all your details in the form to take you one step closer to trading!</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="progress-widget__title">
-                                            <span>Complete Profile</span>
-                                            <span class="tooltiptext3">Fill in all your details in the form to take you one step closer to trading!</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- step 2 -->
-                                <div class="progress-widget__item  progress-widget__item_4-items passed tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2}" ui-sref="app.accounts.open.live" href="/en/accounts/open/live">
-                                    <div class="progress-widget__item-layer">
-                                        <div class="progress-widget__circle">
-                                            <div class="progress-widget__step">
-                                                <!-- ngIf: state.currentStep <= 2 -->
-                                                <!-- ngIf: state.currentStep > 2 -->
-                                                <span class="ti-check ng-scope" ng-if="state.currentStep & gt; 2"></span>
-                                                <!-- end ngIf: state.currentStep > 2 -->
+                                         step 2 
+                                        <div class="progress-widget__item  progress-widget__item_4-items passed tooltip-col" ng-class="{&#39;passed&#39;: state.currentStep & gt; 2, &#39;current&#39;: state.currentStep === 2}" ui-sref="app.accounts.open.live" href="/en/accounts/open/live">
+                                            <div class="progress-widget__item-layer">
+                                                <div class="progress-widget__circle">
+                                                    <div class="progress-widget__step">
+                                                         ngIf: state.currentStep <= 2 
+                                                         ngIf: state.currentStep > 2 
+                                                        <span class="ti-check ng-scope" ng-if="state.currentStep & gt; 2"></span>
+                                                         end ngIf: state.currentStep > 2 
+                                                    </div>
+                                                </div>
+                                                <div class="progress-widget__title">
+                                                    <span>Payment Account</span>
+                                                    <span class="tooltiptext3">Add your bank account for payment withdrawal.</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="progress-widget__title">
-                                            <span>Payment Account</span>
-                                            <span class="tooltiptext3">Add your bank account for payment withdrawal.</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ************************* GLOBAL Version ************************* -->
-                                <!-- step 3 -->
-                                <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
-                                    <div class="progress-widget__item-layer">
-                                        <div class="progress-widget__circle">
-                                            <div class="progress-widget__step">
-                                                <!-- ngIf: state.currentStep <= 3 -->
-                                                <span ng-if="state.currentStep & lt; = 3" class="ng-scope">3</span>
-                                                <!-- end ngIf: state.currentStep <= 3 -->
-                                                <!-- ngIf: state.currentStep > 3 -->
+                                         ************************* GLOBAL Version ************************* 
+                                         step 3 
+                                        <div class="progress-widget__item  progress-widget__item_4-items current tooltip-col nocs" ng-class="{&#39;passed&#39;: state.currentStep & gt; 3, &#39;current&#39;: state.currentStep === 3 }" ui-sref="app.money.deposits" href="/en/deposits">
+                                            <div class="progress-widget__item-layer">
+                                                <div class="progress-widget__circle">
+                                                    <div class="progress-widget__step">
+                                                         ngIf: state.currentStep <= 3 
+                                                        <span ng-if="state.currentStep & lt; = 3" class="ng-scope">3</span>
+                                                         end ngIf: state.currentStep <= 3 
+                                                         ngIf: state.currentStep > 3 
+                                                    </div>
+                                                </div>
+                                                <div class="progress-widget__title">
+                                                    <span class="amazesd1234">Document</span>
+                                                    <span class="tooltiptext3 amazesd1234">Don't forget to upload documents for verification within 30 days so you can continue trading!</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="progress-widget__title">
-                                            <span class="amazesd1234">Document</span>
-                                            <span class="tooltiptext3 amazesd1234">Don't forget to upload documents for verification within 30 days so you can continue trading!</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- step 4 -->
-                                <div class="progress-widget__item  progress-widget__item_4-items last tooltip-col" ng-class="{&#39;current&#39;: state.currentStep === 4 }" ui-sref="app.platforms.download" href="/en/platforms">
-                                    <div class="progress-widget__item-layer">
-                                        <div class="progress-widget__circle">
-                                            <div class="progress-widget__step">
-                                                <!-- ngIf: state.currentStep <= 4 -->
-                                                <span ng-if="state.currentStep & lt; = 4" class="ng-scope">4</span>
-                                                <!-- end ngIf: state.currentStep <= 4 -->
-                                                <!-- ngIf: state.currentStep > 4 -->
+                                         step 4 
+                                        <div class="progress-widget__item  progress-widget__item_4-items last tooltip-col" ng-class="{&#39;current&#39;: state.currentStep === 4 }" ui-sref="app.platforms.download" href="/en/platforms">
+                                            <div class="progress-widget__item-layer">
+                                                <div class="progress-widget__circle">
+                                                    <div class="progress-widget__step">
+                                                         ngIf: state.currentStep <= 4 
+                                                        <span ng-if="state.currentStep & lt; = 4" class="ng-scope">4</span>
+                                                         end ngIf: state.currentStep <= 4 
+                                                         ngIf: state.currentStep > 4 
+                                                    </div>
+                                                </div>
+                                                <div class="progress-widget__title ">
+                                                    <span class="amazesd1234">Active Account</span>
+                                                    <span class="tooltiptext3 amazesd1234">Choose deposit amount, Growth option for deposit. You can deposit for other/self</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="progress-widget__title ">
-                                            <span class="amazesd1234">Active Account</span>
-                                            <span class="tooltiptext3 amazesd1234">Choose deposit amount, Growth option for deposit. You can deposit for other/self</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="modal-footer"></div>
                         </div>
                     </div>
-                    <div class="modal-footer"></div>
-                </div>
-            </div>
-        </div>
+                </div>-->
 
 
         <div id="page-container" class="page-header-fixed fade in">
@@ -771,35 +810,36 @@ $user_info = userinfo();
                             <li class=" active">
                                 <a href="<?php echo base_url('Dashboard/User/'); ?>"><i class="ti-home"></i><span> Dashboard</span></a>
                             </li>
-                            <li class="has-sub">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'profile') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-user"></i>
-                                    <span>Profile </span>
+                                    <span>Profile
+                                    </span>
                                 </a>
-                                <ul class="sub-menu" style="display: none;">
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'profile') ? 'block' : 'none'; ?>;">
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile'); ?>">User Profile</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile/identity-verification'); ?>">Identity Verification</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile/reset-password'); ?>">Change Password</a></li>
                                 </ul>
                             </li>
                             <li class="nav-divider"></li>
-                            <li class="has-sub">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Membership') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-hand-point-right"></i>
                                     <span>Membership </span>
                                 </a>
-                                <ul class="sub-menu" style="display: none;">
-                                    <!--<li><a href="<?php // echo base_url('Dashboard/User/Register/?sponser_id=' . $user_info->user_id); ?>">Referral Link</a></li>-->
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Membership') ? 'block' : 'none'; ?>;">
+                                    <!--<li><a href="<?php // echo base_url('Dashboard/User/Register/?sponser_id=' . $user_info->user_id);     ?>">Referral Link</a></li>-->
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile/refferal-link'); ?>">Referral Link</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/start_subscription'); ?>" > Monthly Subscription</a></li>
                                     <?php
-                                    if(subscription_status()){
-                                        echo'<li><a href="'.base_url('Dashboard/ActivateAccount').'"> Activate Membership </a></li>';
+                                    if (subscription_status()) {
+                                        echo'<li><a href="' . base_url('Dashboard/ActivateAccount') . '"> Activate Membership </a></li>';
                                     }
                                     ?>
-                                    
+
                                     <li><a href="<?php echo base_url('Dashboard/Settings/BusinessPlan'); ?>" > Business Plan</a></li>
 
 
@@ -809,13 +849,13 @@ $user_info = userinfo();
 
                             <li class="nav-divider"></li>
 
-                            <li class="has-sub">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Network') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-palette"></i>
                                     <span>Network </span>
                                 </a>
-                                <ul class="sub-menu" style="display: none;">
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Network') ? 'block' : 'none'; ?>;">
                                     <li><a href="<?php echo base_url('Dashboard/User/Directs'); ?>">Direct Network</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Downline'); ?>">Total Network</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/User/Tree/' . $user_info->user_id); ?>">Genealogy</a></li>
@@ -823,13 +863,13 @@ $user_info = userinfo();
                             </li>
                             <li class="nav-divider"></li>
 
-                            <li class="has-sub">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'NetworkCommision') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-palette"></i>
                                     <span>Network Commission </span>
                                 </a>
-                                <ul class="sub-menu" style="display: none;">
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'NetworkCommision') ? 'block' : 'none'; ?>;">
                                     <li><a href="<?php echo base_url('Dashboard/Fund/SubmitBill'); ?>">Network Commissions</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/Fund/BillStatus'); ?>">Submission Status</a></li>
                                 </ul>
@@ -840,31 +880,31 @@ $user_info = userinfo();
 
                             <li class="nav-divider"></li>
 
-                            <li class="has-sub">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'E-wallet') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-wallet"></i>
                                     <span>E-Wallet </span>
                                 </a>
-                                <ul class="sub-menu" style="display: none;">
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'E-wallet') ? 'block' : 'none'; ?>;">
                                     <li><a href="<?php echo base_url('Dashboard/User/Profile/payment-accounts'); ?>">Payment Accounts</a></li>
                                     <!-- <li><a href="<?php echo base_url('Dashboard/Fund/Request_fund'); ?>">Fund Request</a></li> -->
                                     <li><a href="<?php echo base_url('Dashboard/Fund/requests'); ?>">Request Status</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/DirectIncomeWithdraw') ?>">Withdrawal</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/IncomeTransfer') ?>"> Transfer</a></li>
-                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');   ?>">Transfer Wallet</a></li> -->
+                                    <!-- <li><a href="<?php //echo base_url('Dashboard/Fund/transfer_fund');       ?>">Transfer Wallet</a></li> -->
 
                                 </ul>
                             </li>
 
                             <li class="nav-divider"></li>
-                            <li class="has-sub">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Reports') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <b class="caret caret-right pull-right"></b>
                                     <i class="ti-package"></i>
                                     <span>Reports </span>
                                 </a>
-                                <ul class="sub-menu" style="display: none;">
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Reports') ? 'block' : 'none'; ?>;">
                                     <?php
                                     $incomes = incomes();
                                     foreach ($incomes as $key => $income) {
@@ -883,20 +923,20 @@ $user_info = userinfo();
                             </li>
                             <li class="nav-divider"></li>
 
-                            <li class="has-sub expand">
+                            <li class="has-sub <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Support') ? 'expand' : ''; ?>">
                                 <a href="javascript:;">
                                     <span class="caret caret-right pull-right"></span>
                                     <i class="ti-email"></i>
                                     <span>Support </span>
                                 </a>
-                                <ul class="sub-menu" style="display: block;">
+                                <ul class="sub-menu" style="display: <?php echo active_menu($_SERVER['REDIRECT_QUERY_STRING'] ,'Support') ? 'block' : 'none'; ?>;">
                                     <li><a href="<?php echo base_url('Dashboard/Support/Inbox'); ?>">Mailbox</a></li>
                                     <li><a href="<?php echo base_url('Dashboard/Support/ComposeMail'); ?>">Create Ticket</a></li>
 
 
                                 </ul>
                             </li>
-<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);   ?>"> Open New Accounts</a></li> -->
+<!-- <li><a href="<?php //  echo base_url('Dashboard/User/Register/?sponser_id='.$user_info->user_id);       ?>"> Open New Accounts</a></li> -->
 
 
 
